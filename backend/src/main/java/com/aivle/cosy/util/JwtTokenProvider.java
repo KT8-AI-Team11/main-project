@@ -5,8 +5,6 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,13 +34,13 @@ public class JwtTokenProvider {
     public String createToken(String email) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expiration);
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("email",email); // 나중에 필요시 확장, 변경
+        //Map<String, Object> claims = new HashMap<>();
+        //claims.put("email",email); // 나중에 필요시 확장, 변경
 
 
         return Jwts.builder()
                 .subject(email)
-                .claims(claims) // 나중에 필요시 확장, 변경
+                //.claims(claims) // 나중에 필요시 확장, 변경
                 .issuedAt(now)
                 .issuer(issuer)
                 .expiration(expiryDate)
@@ -76,7 +74,7 @@ public class JwtTokenProvider {
     public boolean validateToken(String token){
         try{
             return !isTokenExpired(token);
-        }catch(Exception e){// token이 잘못된 경우
+        }catch(Exception e){
             return false;
         }
     }
