@@ -52,7 +52,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-
+    //TODO:필요시 protected나 private으로 변경
     public Claims extractClaims(String token){
         return Jwts.parser()
                 .verifyWith(secretKey)
