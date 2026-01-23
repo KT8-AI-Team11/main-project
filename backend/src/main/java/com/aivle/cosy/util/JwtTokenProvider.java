@@ -1,7 +1,11 @@
 package com.aivle.cosy.util;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 import jakarta.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -48,6 +52,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+
     public Claims extractClaims(String token){
         return Jwts.parser()
                 .verifyWith(secretKey)
@@ -61,22 +66,22 @@ public class JwtTokenProvider {
         return extractClaims(token).getSubject();
     }
 
-    public boolean isTokenExpired(String token){
-        try{
-            return extractClaims(token).getExpiration().before(new Date());
-        }catch(Exception e){ // token이 잘못 된 경우
-            log.debug("잘못된 토큰");
-            return false;
-        }
-
-    }
-
     public boolean validateToken(String token){
         try{
-            return !isTokenExpired(token);
-        }catch(Exception e){
-            return false;
+            extractClaims(token);
+            return true;
+        }catch(ExpiredJwtException e){
+            log.debug("토큰 만료: {}", e.getMessage());
+        }catch(MalformedJwtException e){
+            log.debug("토큰 형식 오류: {}", e.getMessage());
+        }catch(SignatureException e){
+            log.debug("서명 불일치: {}", e.getMessage());
+        }catch(UnsupportedJwtException e){
+            log.debug("지원하지 않는 토큰: {}", e.getMessage());
+        }catch(IllegalArgumentException e){
+            log.debug("토큰이 비어있음: {}", e.getMessage());
         }
+        return false;
     }
 
 }
