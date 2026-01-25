@@ -2,6 +2,9 @@
 
 ## fastapi를 위한 환경 세팅
 1. Python 3.10.x 설치
+- 그 이상은 paddle ocr이 안됨
+- 기존 버전이 3.10.x 이상이면 삭제할 필요 없이 추가로 3.10.x 버전 다운로드
+- 이후 py -3.10 --version으로 버전 체크하고 다음 스텝으로 넘어가기
 2. pycharm, vscode 준비 (개발은 pycharm으로 진행)
 3. fastapi 디렉토리에서 cmd 열기
 4. py -3.10 -m venv .venv → 가상환경 생성
