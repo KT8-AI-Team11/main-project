@@ -1,3 +1,13 @@
 spring:
   application:
     name: cosy
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+jwt:
+  secret: ${JWT_SECRET:1RUb2tlbkdlbmVyYXRpb25BbmRWYWxpZGF0aW9u} # 바꿔야함 아무거나 집어넣은거라
+  issuer: ${JWT_ISSUER:cosy}
+  access-token-expiration: 10800000 # 3 hours
+  refresh-token-expiration: 604800000 # 7 days
