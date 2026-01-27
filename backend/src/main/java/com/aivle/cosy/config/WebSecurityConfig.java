@@ -30,18 +30,18 @@ public class WebSecurityConfig {
 
        //
        http.authorizeHttpRequests(auth -> auth
-         .requestMatchers("/api/login", "/login", "/api/data").permitAll()
+         .requestMatchers("/api/auth/login", "/login", "/api/data","/api/auth/signup").permitAll()
          .anyRequest().authenticated()
        );
 
        http.csrf(csrf -> csrf.disable()); // CSRF 보호 기능 비활성화
        http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
        // http.cors(cors -> cors.disable());
-
        return http.build();
      }
 
-     @Bean
+
+    @Bean
      public PasswordEncoder passwordEncoder() {
        return new BCryptPasswordEncoder();
      }

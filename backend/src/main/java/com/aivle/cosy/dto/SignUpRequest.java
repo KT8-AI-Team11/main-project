@@ -4,16 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class LoginResponse {
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class SignUpRequest {
     private String email;
-    private Message message;
-    private String token;
+    private String password;
+
 }
