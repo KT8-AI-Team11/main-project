@@ -1,17 +1,43 @@
-import React, { useMemo, useRef, useState } from "react";
-import {
-  AlertTriangle,
-  CheckCircle2,
-  Image as ImageIcon,
-  Minus,
-  RefreshCw,
-  Upload,
-  X,
-} from "lucide-react";
-
+import React, { useMemo, useState } from "react";
+import { AlertTriangle, CheckCircle2, Minus } from "lucide-react";
 import CountryMultiSelect from "../components/CountryMultiSelect";
 
 export default function ClaimCheckPage() {
+  // 데모용 제품/문구 데이터 (나중에 백엔드/DB로 교체)
+  const [products] = useState([
+    {
+      id: 1,
+      name: "제품 A",
+      claim:
+        "이 제품은 여드름 치료에 도움을 주며 항염 효과가 있습니다. 즉시 효과를 느낄 수 있고 100% 만족을 보장합니다.",
+      location: "상세페이지",
+    },
+    {
+      id: 2,
+      name: "제품 B",
+      claim: "미백 및 주름 개선에 도움을 줄 수 있습니다. 부작용 없음.",
+      location: "패키지 라벨",
+    },
+    {
+      id: 3,
+      name: "제품 C",
+      claim: "피부 진정에 도움을 줄 수 있으며 촉촉함을 제공합니다.",
+      location: "상세페이지",
+    },
+    {
+      id: 4,
+      name: "제품 D",
+      claim: "살균 효과로 트러블을 치료합니다.",
+      location: "광고 배너",
+    },
+    {
+      id: 5,
+      name: "제품 E",
+      claim: "항균/항염 케어로 피부 고민을 해결합니다.",
+      location: "상세페이지",
+    },
+  ]);
+
   // ✅ 국가: 미국 / 유럽연합 / 중국 / 일본
   const allCountries = useMemo(
     () => [
@@ -42,97 +68,42 @@ export default function ClaimCheckPage() {
     []
   );
 
-  const fileInputRef = useRef(null);
-
-  const [dragOver, setDragOver] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
-
-  const [ocrStatus, setOcrStatus] = useState("idle"); // idle | loading | done | error
-  const [ocrError, setOcrError] = useState("");
-  const [labelText, setLabelText] = useState("");
+  const [selectedProductId, setSelectedProductId] = useState(null);
   const [selectedCountries, setSelectedCountries] = useState([]); // code[]
-
   const [summary, setSummary] = useState(null); // { status: 'pass'|'warn'|'fail', text }
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([]); // table rows
 
-  const resetResults = () => {
+  const selectedProduct = useMemo(
+    () => products.find((p) => p.id === selectedProductId),
+    [products, selectedProductId]
+  );
+
+  const reset = () => {
     setSummary(null);
     setRows([]);
   };
 
   const onCountriesChange = (next) => {
     setSelectedCountries(next);
-    resetResults();
+    reset();
   };
 
-  const cleanupImageUrl = () => {
-    if (imageUrl) URL.revokeObjectURL(imageUrl);
-  };
-
-  const setImage = (file) => {
-    if (!file) return;
-    cleanupImageUrl();
-    setImageFile(file);
-    setImageUrl(URL.createObjectURL(file));
-    setOcrStatus("idle");
-    setOcrError("");
-    resetResults();
-  };
-
-  const removeImage = () => {
-    cleanupImageUrl();
-    setImageFile(null);
-    setImageUrl("");
-    setOcrStatus("idle");
-    setOcrError("");
-    resetResults();
-  };
-
-  const demoOcrText = () =>
-    [
-      "[DEMO OCR 결과]",
-      "본 제품은 여드름 치료에 도움을 줍니다.",
-      "즉시 효과를 느낄 수 있으며 100% 만족을 보장합니다.",
-      "부작용 없음.",
-    ].join("\n");
-
-  const runOcr = () => {
-    resetResults();
-
-    if (!imageFile) {
-      setOcrStatus("error");
-      setOcrError("이미지를 업로드하면 OCR을 시도할 수 있어요. (텍스트 직접 입력도 가능)");
-      return;
-    }
-
-    setOcrStatus("loading");
-    setOcrError("");
-
-    // ✅ 프론트 데모: 실제 OCR은 백엔드 또는 OCR 라이브러리 연동 예정
-    window.setTimeout(() => {
-      setOcrStatus("done");
-      setLabelText((prev) => (prev.trim() ? prev : demoOcrText()));
-    }, 700);
-  };
-
-  const clearText = () => {
-    setLabelText("");
-    setOcrStatus("idle");
-    setOcrError("");
-    resetResults();
+  const onSelectProduct = (id) => {
+    setSelectedProductId(id);
+    reset();
   };
 
   const runAudit = () => {
-    if (!labelText.trim()) return alert("라벨 텍스트를 입력해주세요.");
+    if (!selectedProductId) return alert("제품을 선택해주세요.");
     if (selectedCountries.length === 0) return alert("국가를 선택해주세요.");
 
-    const text = labelText;
+    const claim = selectedProduct.claim;
     const hits = [];
     rules.forEach((r) => {
-      if (text.includes(r.k)) hits.push(r);
+      if (claim.includes(r.k)) hits.push(r);
     });
 
+    // 데모 판정
     const score = hits.reduce((acc, h) => acc + (h.severity === "high" ? 3 : 1), 0);
     const status = score >= 6 ? "fail" : score >= 2 ? "warn" : "pass";
     const statusText =
@@ -140,21 +111,23 @@ export default function ClaimCheckPage() {
 
     setSummary({ status, text: statusText });
 
+    // 테이블 rows 생성 (국가별 동일 hits를 펼치는 데모)
     const out = [];
     selectedCountries.forEach((c) => {
       const countryName = allCountries.find((x) => x.code === c)?.name || c;
       hits.forEach((h) => {
         out.push({
-          labelName: imageFile ? imageFile.name : "직접 입력",
+          productName: selectedProduct.name,
           countryName,
           badClaim: h.k,
-          location: imageFile ? "라벨 이미지(OCR/입력)" : "직접 입력",
+          location: selectedProduct.location,
           detail: h.detail,
           action: h.action,
           severity: h.severity,
         });
       });
     });
+
     setRows(out);
   };
 
@@ -167,300 +140,144 @@ export default function ClaimCheckPage() {
       <div className="cosy-circle" style={{ borderColor: "#6EE7B7" }}>
         <CheckCircle2 size={18} color="#059669" />
       </div>
+    ) : summary.status === "warn" ? (
+      <div className="cosy-circle" style={{ borderColor: "#FCD34D" }}>
+        <AlertTriangle size={18} color="#D97706" />
+      </div>
     ) : (
-      <div
-        className="cosy-circle"
-        style={{ borderColor: summary.status === "warn" ? "#FCD34D" : "#FCA5A5" }}
-      >
-        <AlertTriangle
-          size={18}
-          color={summary.status === "warn" ? "#D97706" : "#DC2626"}
-        />
+      <div className="cosy-circle" style={{ borderColor: "#FCA5A5" }}>
+        <AlertTriangle size={18} color="#DC2626" />
       </div>
     );
 
-  const readyText = !!labelText.trim();
-
   return (
     <div className="cosy-page">
-      <div className="cosy-container">
-        {/* 상단 3패널 */}
-        <div className="cosy-grid-3" style={{ gridTemplateColumns: "1.25fr 1.1fr .9fr" }}>
-          {/* 라벨 이미지 업로드 */}
-          <div className="cosy-panel">
-            <div className="cosy-panel__title">라벨 이미지 업로드 (선택)</div>
+      {/* 상단 3패널 */}
+      <div className="cosy-grid-3">
+        {/* 제품 리스트 */}
+        <div className="cosy-panel">
+          <div className="cosy-panel__title">제품 리스트</div>
 
-            <div className="cosy-card cosy-inner">
-              <div
-                className={`cosy-dropzone ${dragOver ? "is-active" : ""}`}
-                onDragOver={(e) => {
-                  e.preventDefault();
-                  setDragOver(true);
-                }}
-                onDragLeave={() => setDragOver(false)}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  setDragOver(false);
-                  const f = e.dataTransfer?.files?.[0];
-                  if (f) setImage(f);
-                }}
-              >
-                {!imageUrl ? (
-                  <>
-                    <div className="cosy-circle">
-                      <Upload size={18} />
-                    </div>
-                    <div style={{ fontWeight: 900, fontSize: 13 }}>
-                      업로드하지 않아도 됩니다 (텍스트 직접 입력 가능)
-                    </div>
-                    <div className="cosy-subtext">업로드 시 OCR 자동 추출을 시도합니다</div>
-
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/*"
-                      style={{ display: "none" }}
-                      onChange={(e) => {
-                        const f = e.target.files?.[0];
-                        if (f) setImage(f);
-                        e.target.value = "";
-                      }}
-                    />
-
-                    <button
-                      type="button"
-                      className="cosy-btn"
-                      onClick={() => fileInputRef.current?.click()}
-                      style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
-                    >
-                      <ImageIcon size={16} /> 이미지 선택
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <img className="cosy-preview" src={imageUrl} alt="label" />
-
-                    <div style={{ width: "100%", display: "flex", gap: 8, justifyContent: "space-between" }}>
-                      <div className="cosy-subtext" style={{ fontWeight: 900 }}>
-                        {imageFile?.name}
-                      </div>
-                      <button
-                        type="button"
-                        className="cosy-btn"
-                        onClick={removeImage}
-                        style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
-                        title="이미지 제거"
-                      >
-                        <X size={16} /> 제거
-                      </button>
-                    </div>
-
-                    <div style={{ width: "100%", display: "flex", gap: 8 }}>
-                      <button
-                        type="button"
-                        className="cosy-btn"
-                        onClick={() => fileInputRef.current?.click()}
-                        style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
-                      >
-                        <RefreshCw size={16} /> 이미지 변경
-                      </button>
-
-                      <button
-                        type="button"
-                        className="cosy-btn"
-                        onClick={runOcr}
-                        disabled={ocrStatus === "loading"}
-                        style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
-                      >
-                        {ocrStatus === "loading" ? "OCR 중..." : "OCR 실행"}
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              <div className="cosy-hint">
-                * 이미지 업로드는 선택입니다. 텍스트만 입력해도 심사 가능합니다.
-              </div>
-            </div>
-          </div>
-
-          {/* 라벨 텍스트 */}
-          <div className="cosy-panel">
-            <div className="cosy-panel__title">라벨 텍스트 (OCR + 직접 입력)</div>
-
-            <div className="cosy-card cosy-inner">
-              <div className="cosy-toolbar">
-                <div className="cosy-toolbar__status">
-                  OCR 상태: {ocrStatus === "idle" ? "대기" : ocrStatus === "loading" ? "진행" : ocrStatus === "done" ? "완료" : "오류"}
-                </div>
-
-                <div className="cosy-toolbar__right">
-                  <button type="button" className="cosy-btn" onClick={clearText}>
-                    텍스트 지우기
-                  </button>
-                  <button
-                    type="button"
-                    className="cosy-btn"
-                    onClick={runOcr}
-                    disabled={!imageFile || ocrStatus === "loading"}
-                    title={!imageFile ? "이미지를 업로드하면 OCR을 실행할 수 있어요" : ""}
-                  >
-                    {ocrStatus === "loading" ? "OCR 중..." : "OCR 실행"}
-                  </button>
-                </div>
-              </div>
-
-              {ocrError && <div className="cosy-error">{ocrError}</div>}
-
-              <textarea
-                className="cosy-textarea"
-                value={labelText}
-                onChange={(e) => {
-                  setLabelText(e.target.value);
-                  resetResults();
-                }}
-                placeholder="라벨 문구를 여기에 붙여넣거나 직접 작성하세요. (이미지 없이도 가능)"
-              />
-
-              <div className="cosy-hint">
-                * OCR은 데모입니다. (실서비스: 백엔드 OCR/규제 근거 연동 예정)
-              </div>
-            </div>
-          </div>
-
-          {/* 국가 선택 */}
-          <div className="cosy-panel">
-            <div className="cosy-panel__title">국가 선택</div>
-
-            <div className="cosy-card cosy-inner">
-              <CountryMultiSelect
-                label="대상 국가 선택"
-                options={allCountries}
-                value={selectedCountries}
-                onChange={onCountriesChange}
-                placeholder="국가를 선택하세요"
-              />
-
-              <div className="cosy-mini-actions">
+          <div className="cosy-product-list">
+            {products.map((p) => {
+              const active = p.id === selectedProductId;
+              return (
                 <button
+                  key={p.id}
                   type="button"
-                  className="cosy-btn"
-                  onClick={() => onCountriesChange(allCountries.map((c) => c.code))}
+                  className={`cosy-product-item ${active ? "is-active" : ""}`}
+                  onClick={() => onSelectProduct(p.id)}
                 >
-                  전체 선택
+                  <div className="cosy-product-item__name">{p.name}</div>
+                  <div className="cosy-product-item__desc">
+                    {p.claim.length > 44 ? p.claim.slice(0, 44) + "..." : p.claim}
+                  </div>
                 </button>
-                <button type="button" className="cosy-btn" onClick={() => onCountriesChange([])}>
-                  해제
-                </button>
-              </div>
-
-              <div className="cosy-kv">
-                <div className="cosy-kv__row">
-                  <span className="cosy-kv__label">텍스트 입력</span>
-                  <span className={`cosy-kv__value ${readyText ? "" : "is-bad"}`}>
-                    {readyText ? "완료" : "필요"}
-                  </span>
-                </div>
-                <div className="cosy-kv__row" style={{ marginTop: 8 }}>
-                  <span className="cosy-kv__label">국가 선택</span>
-                  <span className={`cosy-kv__value ${selectedCountries.length > 0 ? "" : "is-bad"}`}>
-                    {selectedCountries.length > 0 ? `${selectedCountries.length}개` : "필요"}
-                  </span>
-                </div>
-                <div className="cosy-hint" style={{ marginTop: 8 }}>
-                  * 심사 결과 요약은 아래 결과 영역에 표시됩니다.
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="cosy-btn cosy-btn--primary cosy-btn--full"
-                onClick={runAudit}
-                disabled={!readyText || selectedCountries.length === 0}
-                style={{ marginTop: "auto" }}
-              >
-                심사
-              </button>
-            </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* 하단 결과 */}
-        <div className="cosy-panel is-tall" style={{ minHeight: 360 }}>
-          <div className="cosy-panel__title">문구 규제 부적합 요소(데모)</div>
+        {/* 국가 */}
+        <div className="cosy-panel">
+          <div className="cosy-panel__title">국가</div>
 
-          {/* 요약 */}
-          <div className="cosy-card" style={{ padding: 12 }}>
-            <div className="cosy-center-box" style={{ minHeight: 120 }}>
-              {summaryIcon}
-              {!summary ? (
-                <div className="cosy-subtext">텍스트와 국가를 준비한 뒤, ‘심사’를 눌러주세요</div>
-              ) : (
-                <>
-                  <div style={{ fontSize: 14, fontWeight: 900, color: "#111827" }}>{summary.text}</div>
-                  <div className="cosy-subtext">* 데모 판정입니다. 실제 규정/근거 기반 확인 필요</div>
-                </>
-              )}
-            </div>
+          <CountryMultiSelect
+            label="대상 국가 선택"
+            options={allCountries}
+            value={selectedCountries}
+            onChange={onCountriesChange}
+            placeholder="국가를 선택하세요"
+          />
+
+          <div className="cosy-mini-actions">
+            <button
+              type="button"
+              className="cosy-btn"
+              onClick={() => onCountriesChange(allCountries.map((c) => c.code))}
+            >
+              전체 선택
+            </button>
+
+            <button type="button" className="cosy-btn" onClick={() => onCountriesChange([])}>
+              해제
+            </button>
           </div>
 
-          <div style={{ height: 12 }} />
+          <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "auto", paddingTop: 18 }}>
+            <button type="button" className="cosy-btn" onClick={runAudit}>
+              심사
+            </button>
+          </div>
+        </div>
 
-          {/* 테이블 */}
-          <div className="cosy-card">
-            <div className="cosy-table-wrap">
-              <table className="cosy-table">
-                <thead>
+        {/* 요약 */}
+        <div className="cosy-panel">
+          <div className="cosy-panel__title">규제 통과 여부 요약</div>
+
+          <div className="cosy-card cosy-center-box" style={{ minHeight: 220 }}>
+            {summaryIcon}
+
+            {!summary ? (
+              <div className="cosy-subtext">제품과 국가를 선택하세요</div>
+            ) : (
+              <>
+                <div style={{ fontSize: 14, fontWeight: 900, color: "#111827" }}>{summary.text}</div>
+                <div className="cosy-subtext">* 데모 판정입니다. 실제 규정/근거 기반 확인 필요</div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* 하단 테이블 */}
+      <div className="cosy-panel is-tall" style={{ minHeight: 360 }}>
+        <div className="cosy-panel__title">제품별 상세 규제 부적합 요소</div>
+
+        <div className="cosy-card">
+          <div className="cosy-table-wrap">
+            <table className="cosy-table">
+              <thead>
+                <tr>
+                  <th>제품명</th>
+                  <th>국가명</th>
+                  <th>부적합한 문구</th>
+                  <th>문구 위치</th>
+                  <th>상세 규제 내용</th>
+                  <th>필요한 작업</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {rows.length === 0 ? (
                   <tr>
-                    <th>라벨명</th>
-                    <th>국가명</th>
-                    <th>부적합 문구</th>
-                    <th>문구 위치</th>
-                    <th>상세 규제 내용</th>
-                    <th>필요한 작업</th>
+                    <td colSpan={6} style={{ padding: "40px 14px" }}>
+                      <div className="cosy-center-box" style={{ minHeight: 140 }}>
+                        <div className="cosy-circle">
+                          <Minus size={18} />
+                        </div>
+                        <div className="cosy-subtext">분석을 실행하면 상세 결과가 표시됩니다</div>
+                      </div>
+                    </td>
                   </tr>
-                </thead>
-
-                <tbody>
-                  {!summary ? (
-                    <tr>
-                      <td colSpan={6} style={{ padding: "34px 14px" }}>
-                        <div className="cosy-center-box" style={{ minHeight: 120 }}>
-                          <div className="cosy-circle">
-                            <Minus size={18} />
-                          </div>
-                          <div className="cosy-subtext">심사를 실행하면 결과가 표시됩니다</div>
-                        </div>
+                ) : (
+                  rows.map((r, idx) => (
+                    <tr key={idx}>
+                      <td className="cosy-strong">{r.productName}</td>
+                      <td>{r.countryName}</td>
+                      <td>
+                        <span className={`cosy-chip ${r.severity === "high" ? "is-high" : "is-mid"}`}>
+                          {r.badClaim}
+                        </span>
                       </td>
+                      <td>{r.location}</td>
+                      <td>{r.detail}</td>
+                      <td>{r.action}</td>
                     </tr>
-                  ) : rows.length === 0 ? (
-                    <tr>
-                      <td colSpan={6} style={{ padding: "22px 14px" }}>
-                        <div className="cosy-subtext" style={{ fontWeight: 900 }}>
-                          부적합 요소가 발견되지 않았습니다. (데모)
-                        </div>
-                      </td>
-                    </tr>
-                  ) : (
-                    rows.map((r, idx) => (
-                      <tr key={idx}>
-                        <td className="cosy-strong">{r.labelName}</td>
-                        <td>{r.countryName}</td>
-                        <td>
-                          <span className={`cosy-chip ${r.severity === "high" ? "is-high" : "is-mid"}`}>
-                            {r.badClaim}
-                          </span>
-                        </td>
-                        <td>{r.location}</td>
-                        <td>{r.detail}</td>
-                        <td>{r.action}</td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
