@@ -39,10 +39,6 @@ public class UserService {
         String email = loginInfo.getEmail();
         String password = loginInfo.getPassword();
 
-        System.out.println(">>> [DEBUG] 입력된 이메일: [" + loginInfo.getEmail() + "]");
-        System.out.println(">>> [DEBUG] 입력된 비밀번호: [" + loginInfo.getPassword() + "]");
-        System.out.println(">>> [DEBUG] DB 내 전체 유저 수: " + userRepository.count());
-
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED));
 
@@ -50,10 +46,14 @@ public class UserService {
             throw new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED);
         }
 
+        // token 추가
+        String token = tokenProvider.createToken(user.getEmail(), user.getCompany().getId());
+
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
-        response.setToken(tokenProvider.createToken(email));
         response.setMessage(Message.LOGIN_SUCCESS);
+        // token 추가
+        response.setToken(token);
         return response;
     }
 
