@@ -36,16 +36,12 @@ public class UserService {
             throw new IllegalArgumentException("존재하지 않는 이메일 또는 비밀번호입니다.");
         }
 
-        // 토큰 생성 시 유저가 속한 회사 ID 함께 전달
-        Long companyId = (user.getCompany() != null) ? user.getCompany().getId() : null;
-//        String token = tokenProvider.createToken(email,companyId);
 
 
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
         response.setStatus(Status.SUCCESS);
-        response.setToken(tokenProvider.createToken(email,companyId));
-//        response.setToken(token);
+        response.setToken(tokenProvider.createToken(email));
         response.setMessage(Message.SUCCESS); //TODO: 나중에 메시지 일괄작으로 변경
         return response;
     }

@@ -8,9 +8,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "Product")
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -22,7 +24,7 @@ public class Product {
     // 외래키
     private Company company;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 255)
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -51,22 +53,19 @@ public class Product {
         STEP_1, STEP_2, STEP_3, STEP_4, STEP_5
     }
 
-    @Builder
-    public Product(Company company, String name, ProductType type, String image, String fullIngredient, Status status) {
-        this.company = company;
-        this.name = name;
-        this.type = type;
-        this.image = image;
-        this.fullIngredient = fullIngredient;
-        this.status = status;
-    }
-
-    // Setter 대신
-    public void update(String name, String type, String image, String fullIngredient, Status status) {
-        this.name = name;
-        this.type = ProductType.valueOf(type);
-        this.image = image;
-        this.fullIngredient = fullIngredient;
-        this.status = status;
-    }
+//    Setter을 사용하지 않을 때 로직(id 때문)
+//    @Builder
+//    public Product(Company company, String name, ProductType type, String image, String fullIngredient, Status status) {
+//        this.company = company;
+//        this.name = name;
+//        this.type = type;
+//        this.image = image;
+//        this.fullIngredient = fullIngredient;
+//        this.status = status;
+//    }
+//
+//    // Setter 대신
+//    public void updateStatus(Status newStatus) {
+//        this.status = newStatus;
+//    }
 }

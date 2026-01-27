@@ -10,5 +10,4 @@ public class ProductUpdateRequest {
     private String type;
     private String image;
     private String fullIngredient;
-    private String status;
 }
