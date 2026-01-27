@@ -29,8 +29,10 @@ public class UserService {
     private final CompanyRepository companyRepository;
     private final JwtTokenProvider tokenProvider;
     private final PasswordEncoder passwordEncoder;
-    private final static String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-    private final static String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{10,}$";
+    private final static String EMAIL_REGEX = "^(?=.{5,254}$)[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
+    private final static String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{10,72}$";
+
+
 
     @Transactional(readOnly = true)
     public LoginResponse login(LoginRequest loginInfo) {
@@ -85,13 +87,21 @@ public class UserService {
         return response;
     }
 
+    /**
+     *
+     * @param email
+     */
     private void validateDuplicatedEmail(String email){
         userRepository.findByEmail(email)
                 .ifPresent(u->{ throw new BusinessException(SignUpErrorCode.DUPLICATE_EMAIL); });
 
     }
 
-
+    /**
+     *
+     * @param email
+     * @return
+     */
     private Company validateCompanyDomain(String email){
         String domain = email.substring(email.indexOf('@')+1);
 
@@ -99,8 +109,9 @@ public class UserService {
                 .orElseThrow(()-> new BusinessException(SignUpErrorCode.COMPANY_NOT_FOUND));
     }
 
-
-    private boolean isValidFormat(String userInput, String regex){
+    public boolean isValidFormat(String userInput, String regex){
         return userInput!=null && !userInput.isEmpty() && userInput.matches(regex);
     }
+
+
 }
