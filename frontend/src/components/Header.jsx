@@ -50,7 +50,6 @@ export default function Header({
 
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
         <HeaderButton label="공지사항" onClick={() => {}} />
-        <HeaderButton label="최근 검색" onClick={() => {}} />
 
         {isLoggedIn ? (
           <>
