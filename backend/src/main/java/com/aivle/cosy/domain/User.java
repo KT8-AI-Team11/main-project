@@ -22,7 +22,7 @@ public class User {
     // 외래키
     private Company company;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String email;
 
     @Column(nullable = false)

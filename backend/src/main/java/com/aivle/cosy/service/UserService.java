@@ -25,6 +25,10 @@ public class UserService {
         String email = loginInfo.getEmail();
         String password = loginInfo.getPassword();
 
+        System.out.println(">>> [DEBUG] 입력된 이메일: [" + loginInfo.getEmail() + "]");
+        System.out.println(">>> [DEBUG] 입력된 비밀번호: [" + loginInfo.getPassword() + "]");
+        System.out.println(">>> [DEBUG] DB 내 전체 유저 수: " + userRepository.count());
+
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 이메일 또는 비밀번호입니다.")); //TODO: 나중에 메시지 일괄작으로 변경
 
