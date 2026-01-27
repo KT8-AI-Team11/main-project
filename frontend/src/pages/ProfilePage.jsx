@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { User, Mail, Building, Phone, Bell, Lock, Trash2, Save, Edit2, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { User, Mail, Building, Phone, Bell, Lock, Trash2, Save, Edit2, X, Eye, EyeOff } from 'lucide-react';
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    username: 'coach-demo',
-    email: 'coach-demo@example.com',
+    username: '',
+    email: '',
     company: '',
     phone: '',
     department: '',
@@ -14,11 +14,61 @@ export default function ProfilePage() {
 
   const [tempData, setTempData] = useState({ ...profileData });
   const [notifications, setNotifications] = useState({
-    email: true,
+    email: false,
     sms: false,
-    push: true
+    push: false
   });
   const [tempNotifications, setTempNotifications] = useState({ ...notifications });
+
+  // 비밀번호 변경 모달
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [showPasswords, setShowPasswords] = useState({
+    current: false,
+    new: false,
+    confirm: false
+  });
+
+  // 계정 삭제 모달
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState('');
+
+  // 로그인 정보에서 프로필 데이터 로드
+  useEffect(() => {
+    const loadProfileFromLogin = () => {
+      // localStorage에서 로그인 정보 가져오기
+      const userEmail = localStorage.getItem('cosy_user_email') || '';
+      const loginType = localStorage.getItem('cosy_login_type') || '';
+
+      // 로그인 정보를 기반으로 프로필 초기화
+      const initialProfile = {
+        username: userEmail.split('@')[0] || 'user', // 이메일에서 username 추출
+        email: userEmail,
+        company: '',
+        phone: '',
+        department: '',
+        position: ''
+      };
+
+      // TODO: 실제로는 API를 통해 사용자 프로필 정보를 가져와야 함
+      // try {
+      //   const response = await fetch(`/api/profile?email=${userEmail}`);
+      //   const data = await response.json();
+      //   setProfileData(data);
+      // } catch (error) {
+      //   console.error('프로필 로드 실패:', error);
+      // }
+
+      setProfileData(initialProfile);
+      setTempData(initialProfile);
+    };
+
+    loadProfileFromLogin();
+  }, []); // 컴포넌트 마운트 시 한 번만 실행
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -33,6 +83,18 @@ export default function ProfilePage() {
   };
 
   const handleSave = () => {
+    // TODO: 실제 API 호출로 프로필 저장
+    // try {
+    //   await fetch('/api/profile', {
+    //     method: 'PUT',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(tempData)
+    //   });
+    // } catch (error) {
+    //   alert('프로필 저장에 실패했습니다.');
+    //   return;
+    // }
+
     setProfileData({ ...tempData });
     setNotifications({ ...tempNotifications });
     setIsEditing(false);
@@ -51,6 +113,83 @@ export default function ProfilePage() {
       ...tempNotifications,
       [type]: !tempNotifications[type]
     });
+  };
+
+  // 비밀번호 변경 핸들러
+  const handlePasswordChange = () => {
+    // 유효성 검사
+    if (!passwordData.currentPassword || !passwordData.newPassword || !passwordData.confirmPassword) {
+      alert('모든 필드를 입력해주세요.');
+      return;
+    }
+
+    if (passwordData.newPassword.length < 8) {
+      alert('새 비밀번호는 최소 8자 이상이어야 합니다.');
+      return;
+    }
+
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      alert('새 비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    // TODO: 실제 API 호출
+    // try {
+    //   const response = await fetch('/api/change-password', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       email: profileData.email,
+    //       currentPassword: passwordData.currentPassword,
+    //       newPassword: passwordData.newPassword
+    //     })
+    //   });
+    //   if (!response.ok) throw new Error('비밀번호 변경 실패');
+    // } catch (error) {
+    //   alert('비밀번호 변경에 실패했습니다: ' + error.message);
+    //   return;
+    // }
+
+    alert('비밀번호가 성공적으로 변경되었습니다.');
+    setShowPasswordModal(false);
+    setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+  };
+
+  // 계정 삭제 핸들러
+  const handleDeleteAccount = () => {
+    if (deleteConfirmText !== '삭제') {
+      alert('"삭제"를 정확히 입력해주세요.');
+      return;
+    }
+
+    const confirmed = window.confirm(
+      '정말로 계정을 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.'
+    );
+
+    if (confirmed) {
+      // TODO: 실제 API 호출
+      // try {
+      //   await fetch('/api/delete-account', {
+      //     method: 'DELETE',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({ email: profileData.email })
+      //   });
+      // } catch (error) {
+      //   alert('계정 삭제에 실패했습니다: ' + error.message);
+      //   return;
+      // }
+
+      alert('계정이 삭제되었습니다.');
+
+      // 로그아웃 처리
+      localStorage.removeItem("cosy_logged_in");
+      localStorage.removeItem("cosy_login_type");
+      localStorage.removeItem("cosy_user_email");
+      localStorage.removeItem("cosy_demo_user");
+
+      // 페이지 새로고침으로 로그인 페이지로 이동
+      window.location.reload();
+    }
   };
 
   return (
@@ -423,6 +562,7 @@ export default function ProfilePage() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <button
+                onClick={() => setShowPasswordModal(true)}
                 style={{
                   padding: '12px 16px',
                   backgroundColor: 'white',
@@ -445,6 +585,7 @@ export default function ProfilePage() {
               </button>
 
               <button
+                onClick={() => setShowDeleteModal(true)}
                 style={{
                   padding: '12px 16px',
                   backgroundColor: 'white',
@@ -475,6 +616,310 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
+
+      {/* 비밀번호 변경 모달 */}
+      {showPasswordModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            padding: '32px',
+            width: '90%',
+            maxWidth: '500px',
+            maxHeight: '90vh',
+            overflow: 'auto'
+          }}>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937', marginBottom: '24px' }}>
+              비밀번호 변경
+            </h2>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {/* 현재 비밀번호 */}
+              <div>
+                <label style={{ fontSize: '14px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '8px' }}>
+                  현재 비밀번호
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showPasswords.current ? 'text' : 'password'}
+                    value={passwordData.currentPassword}
+                    onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '10px 40px 10px 12px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '4px',
+                      fontSize: '14px',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                  <button
+                    onClick={() => setShowPasswords({ ...showPasswords, current: !showPasswords.current })}
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0
+                    }}
+                  >
+                    {showPasswords.current ?
+                      <EyeOff style={{ width: '20px', height: '20px', color: '#6b7280' }} /> :
+                      <Eye style={{ width: '20px', height: '20px', color: '#6b7280' }} />
+                    }
+                  </button>
+                </div>
+              </div>
+
+              {/* 새 비밀번호 */}
+              <div>
+                <label style={{ fontSize: '14px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '8px' }}>
+                  새 비밀번호 (최소 8자)
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showPasswords.new ? 'text' : 'password'}
+                    value={passwordData.newPassword}
+                    onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '10px 40px 10px 12px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '4px',
+                      fontSize: '14px',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                  <button
+                    onClick={() => setShowPasswords({ ...showPasswords, new: !showPasswords.new })}
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0
+                    }}
+                  >
+                    {showPasswords.new ?
+                      <EyeOff style={{ width: '20px', height: '20px', color: '#6b7280' }} /> :
+                      <Eye style={{ width: '20px', height: '20px', color: '#6b7280' }} />
+                    }
+                  </button>
+                </div>
+              </div>
+
+              {/* 새 비밀번호 확인 */}
+              <div>
+                <label style={{ fontSize: '14px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '8px' }}>
+                  새 비밀번호 확인
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showPasswords.confirm ? 'text' : 'password'}
+                    value={passwordData.confirmPassword}
+                    onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '10px 40px 10px 12px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '4px',
+                      fontSize: '14px',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                  <button
+                    onClick={() => setShowPasswords({ ...showPasswords, confirm: !showPasswords.confirm })}
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0
+                    }}
+                  >
+                    {showPasswords.confirm ?
+                      <EyeOff style={{ width: '20px', height: '20px', color: '#6b7280' }} /> :
+                      <Eye style={{ width: '20px', height: '20px', color: '#6b7280' }} />
+                    }
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
+              <button
+                onClick={() => {
+                  setShowPasswordModal(false);
+                  setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+                }}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  backgroundColor: 'white',
+                  color: '#1f2937',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600'
+                }}
+              >
+                취소
+              </button>
+              <button
+                onClick={handlePasswordChange}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  backgroundColor: '#3b82f6',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600'
+                }}
+              >
+                변경하기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 계정 삭제 모달 */}
+      {showDeleteModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            padding: '32px',
+            width: '90%',
+            maxWidth: '500px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                backgroundColor: '#fee2e2',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Trash2 style={{ width: '24px', height: '24px', color: '#dc2626' }} />
+              </div>
+              <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937', margin: 0 }}>
+                계정 삭제
+              </h2>
+            </div>
+
+            <div style={{ marginBottom: '24px' }}>
+              <p style={{ color: '#4b5563', marginBottom: '16px', lineHeight: '1.6' }}>
+                정말로 계정을 삭제하시겠습니까?
+              </p>
+              <div style={{
+                backgroundColor: '#fef3c7',
+                padding: '16px',
+                borderRadius: '6px',
+                border: '1px solid #fbbf24',
+                marginBottom: '16px'
+              }}>
+                <p style={{ color: '#92400e', fontSize: '14px', margin: 0, lineHeight: '1.5' }}>
+                  <strong>⚠️ 주의:</strong> 이 작업은 되돌릴 수 없습니다. 모든 데이터가 영구적으로 삭제됩니다.
+                </p>
+              </div>
+              <label style={{ fontSize: '14px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '8px' }}>
+                계속하려면 "삭제"를 입력하세요
+              </label>
+              <input
+                type="text"
+                value={deleteConfirmText}
+                onChange={(e) => setDeleteConfirmText(e.target.value)}
+                placeholder="삭제"
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '4px',
+                  fontSize: '14px',
+                  boxSizing: 'border-box'
+                }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  setDeleteConfirmText('');
+                }}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  backgroundColor: 'white',
+                  color: '#1f2937',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600'
+                }}
+              >
+                취소
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                disabled={deleteConfirmText !== '삭제'}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  backgroundColor: deleteConfirmText === '삭제' ? '#dc2626' : '#9ca3af',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: deleteConfirmText === '삭제' ? 'pointer' : 'not-allowed',
+                  fontSize: '14px',
+                  fontWeight: '600'
+                }}
+              >
+                계정 삭제
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
