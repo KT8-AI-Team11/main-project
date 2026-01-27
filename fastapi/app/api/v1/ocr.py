@@ -7,6 +7,7 @@ from starlette.concurrency import run_in_threadpool
 router = APIRouter()
 
 
+# 이미지 받아서 텍스트 추출
 @router.post("/extract", response_model=OcrExtractResponse)
 async def extract_text_from_image(image: UploadFile = File(...),
 lang: str = Query(default="korean", description="korean | en | ch 등")
@@ -20,7 +21,7 @@ lang: str = Query(default="korean", description="korean | en | ch 등")
     if not image_bytes:
         raise HTTPException(status_code=400, detail="Empty file")
 
-    # 여기서부터 OCR 처리로 이어짐 (지금은 더미)
+    # 여기서부터 OCR 처리로 이어짐
     service = get_ocr_service(lang=lang) # 일단은 한국어 default로. todo: 언어 힌트 설정
     full_text, lines = await run_in_threadpool(service.extract, image_bytes)
 
