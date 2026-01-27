@@ -25,7 +25,7 @@ public class ProductService {
     public List<ProductResponse.DetailResponse> getProducts(Long companyId) {
         return productRepository.findByCompanyId(companyId)
                 .stream()
-                .map(ProductResponse.DetailResponse::from) // 깔끔한 변환!
+                .map(ProductResponse.DetailResponse::from)
                 .toList();
     }
 
