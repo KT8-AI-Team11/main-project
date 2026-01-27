@@ -47,7 +47,7 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn, userEmail
         overflowY: "auto",
       }}
     >
-      {/* ✅ 6) 게스트/유저 표시 영역 */}
+      {/* ✅ 게스트/유저 표시 영역 */}
       <div
         style={{
           backgroundColor: "white",
@@ -75,7 +75,16 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn, userEmail
           </div>
 
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontSize: 13, fontWeight: 900, color: "#111827", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <div
+              style={{
+                fontSize: 13,
+                fontWeight: 900,
+                color: "#111827",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
               {isLoggedIn ? (userEmail || "로그인됨") : "게스트"}
             </div>
             <div style={{ fontSize: 12, color: "#6b7280" }}>
@@ -117,7 +126,15 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn, userEmail
           hint={!isLoggedIn ? lockHint : ""}
         />
 
-        <SidebarItem label="프로필 설정" onClick={() => onNavigate("home")} />
+        {/* ✅ 프로필 페이지 연결 */}
+        <SidebarItem
+          active={currentPage === "profile"}
+          onClick={() => onNavigate("profile")}
+          label="프로필 설정"
+          locked={!isLoggedIn}
+          hint={!isLoggedIn ? lockHint : ""}
+        />
+
         <SidebarItem label="알림 설정" onClick={() => onNavigate("home")} />
         <SidebarItem label="국가별 규제 정보" onClick={() => onNavigate("home")} />
       </div>
