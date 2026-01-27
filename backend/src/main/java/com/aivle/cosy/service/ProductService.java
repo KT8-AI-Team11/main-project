@@ -50,7 +50,7 @@ public class ProductService {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ProductErrorCode.PRODUCT_NOT_FOUND));
 
-        // 본인 회사의 제품인지 검증 (보안 필수!)
+        // 사용자의 회사 ID와 제품의 회사 ID 검증
         if (!product.getCompany().getId().equals(companyId)) {
             throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
         }
