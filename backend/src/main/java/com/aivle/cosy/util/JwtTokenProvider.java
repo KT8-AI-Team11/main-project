@@ -28,30 +28,58 @@ public class JwtTokenProvider {
     private String issuer;
 
     @Value("${jwt.access-token-expiration}")
-    private Long expiration;
+    private Long accessExpiration;
+
+    @Value("${jwt.refresh-token-expiration}")
+    private Long refreshExpiration;
 
     @PostConstruct
     public void initKey(){
         secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-//    public String createToken(String email) {
-    public String createToken(String email, Long companyId) {
+    public String createAccessToken(String email, Long companyId) {
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + expiration);
+        Date expiryDate = new Date(now.getTime() + accessExpiration);
+
+
         //Map<String, Object> claims = new HashMap<>();
-        //claims.put("email",email); // 나중에 필요시 확장, 변경
+        //claims.put("companyId",companyId); // 나중에 필요시 확장, 변경
 
 
         return Jwts.builder()
                 .subject(email)
-                //.claims(claims) // 나중에 필요시 확장, 변경
-                .claim("companyId", companyId) // 회사 ID 추가
+                //.claims(claims)
+                .claim("companyId", companyId)
+                .claim("type", "access")
                 .issuedAt(now)
                 .issuer(issuer)
                 .expiration(expiryDate)
                 .signWith(secretKey)
                 .compact();
+    }
+
+    //TODO: refresh token 발급
+    public String createRefreshToken(String email){
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + refreshExpiration);
+
+        return Jwts.builder()
+                .subject(email)
+                .claim("type","refresh")
+                .issuedAt(now)
+                .issuer(issuer)
+                .expiration(expiryDate)
+                .signWith(secretKey)
+                .compact();
+
+    }
+
+    public long getRemainingExpiration(String token) {
+        return extractClaims(token)
+                .getExpiration()
+                .toInstant()
+                .toEpochMilli() - System.currentTimeMillis();
     }
 
     //TODO:필요시 protected나 private으로 변경
@@ -66,6 +94,14 @@ public class JwtTokenProvider {
 
     public String extractEmail(String token){
         return extractClaims(token).getSubject();
+    }
+
+    public Long extractCompanyId(String token){
+        return extractClaims(token).get("companyId", Long.class);
+    }
+
+    public String extractTokenType(String token){
+        return extractClaims(token).get("type", String.class);
     }
 
     public boolean validateToken(String token){
