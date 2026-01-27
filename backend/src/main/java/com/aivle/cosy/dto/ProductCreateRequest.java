@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductCreateRequest {
+public  class ProductCreateRequest {
     private String name;
     private ProductType type;
     private String image;

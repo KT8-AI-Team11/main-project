@@ -35,7 +35,7 @@ public class JwtTokenProvider {
         secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String createToken(String email) {
+    public String createToken(String email, Long companyId) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expiration);
         //Map<String, Object> claims = new HashMap<>();
@@ -45,6 +45,7 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .subject(email)
                 //.claims(claims) // 나중에 필요시 확장, 변경
+                .claim("companyId", companyId)
                 .issuedAt(now)
                 .issuer(issuer)
                 .expiration(expiryDate)
@@ -84,4 +85,7 @@ public class JwtTokenProvider {
         return false;
     }
 
+    public Long extractCompanyId(String token){
+        return extractClaims(token).get("companyId", Long.class);
+    }
 }

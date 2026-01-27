@@ -32,7 +32,7 @@ public class JwtFilter extends GenericFilterBean {
         }
 
         // 2. 토큰 유효성 검증 및 인증 설정
-        if (jwtProvider.validateToken(token)) {
+        if (token != null && jwtProvider.validateToken(token)) {
             String email = jwtProvider.extractEmail(token);
 
             // SecurityContext에 인증 정보 설정
