@@ -9,6 +9,7 @@ import ProductsPage from "./pages/ProductsPage";
 import IngredientCheckPage from "./pages/IngredientCheckPage";
 import ClaimCheckPage from "./pages/ClaimCheckPage";
 import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/ProfilePage"; // ✅ 추가
 
 export default function CosyUI() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -52,13 +53,14 @@ export default function CosyUI() {
     localStorage.setItem("cosy_login_type", "demo-oneclick");
     localStorage.setItem("cosy_user_email", "coach-demo");
 
-    setIsLoggedIn(true);      // ✅ 화면 즉시 로그인 상태로 전환
+    setIsLoggedIn(true); // ✅ 화면 즉시 로그인 상태로 전환
     setCurrentPage("home");
   };
 
   // ✅ 로그인 필요 페이지 가드
   const requireAuth = (targetPage) => {
-    const protectedPages = ["products", "ingredient-check", "claim-check"];
+    // ✅ profile 추가
+    const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
 
     if (!isLoggedIn && protectedPages.includes(targetPage)) {
       alert("해당 기능은 로그인 후 이용할 수 있어요.");
@@ -90,10 +92,10 @@ export default function CosyUI() {
     >
       {/* Sidebar */}
       <Sidebar
-      currentPage={currentPage}
-      onNavigate={requireAuth}
-      isLoggedIn={isLoggedIn}
-      userEmail={userEmail}
+        currentPage={currentPage}
+        onNavigate={requireAuth}
+        isLoggedIn={isLoggedIn}
+        userEmail={userEmail}
       />
 
       {/* Main */}
@@ -121,6 +123,9 @@ export default function CosyUI() {
         {currentPage === "products" && <ProductsPage />}
         {currentPage === "ingredient-check" && <IngredientCheckPage />}
         {currentPage === "claim-check" && <ClaimCheckPage />}
+
+        {/* ✅ profile 페이지 분기 추가 */}
+        {currentPage === "profile" && <ProfilePage />}
       </div>
 
       {/* Chat */}
