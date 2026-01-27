@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 public class LoginResponse {
 
     private String email;
-    private String status;
     private Message message;
     private String token;
 }

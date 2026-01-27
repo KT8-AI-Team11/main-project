@@ -48,7 +48,6 @@ public class UserService {
 
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
-        response.setStatus(HttpStatus.OK.name());
         response.setToken(tokenProvider.createToken(email));
         response.setMessage(Message.LOGIN_SUCCESS);
         return response;
@@ -82,8 +81,6 @@ public class UserService {
         // creates response here
         SignUpResponse response = new SignUpResponse();
         response.setMessage(Message.SIGNUP_SUCCESS);
-        response.setStatus(HttpStatus.OK.name());
-
         return response;
     }
 
