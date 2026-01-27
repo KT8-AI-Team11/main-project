@@ -89,7 +89,12 @@ export default function CosyUI() {
       }}
     >
       {/* Sidebar */}
-      <Sidebar currentPage={currentPage} onNavigate={requireAuth} />
+      <Sidebar
+      currentPage={currentPage}
+      onNavigate={requireAuth}
+      isLoggedIn={isLoggedIn}
+      userEmail={userEmail}
+      />
 
       {/* Main */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
