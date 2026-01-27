@@ -323,3 +323,209 @@
     .cosy-chip.is-mid{ background:#FFFBEB; border-color:#FCD34D; color:#92400E; }
     .cosy-chip.is-pass{ background:#ECFDF5; border-color:#6EE7B7; color:#065F46; }
 
+/* --- Claim/Ingredient 공통 정렬 규칙(패널 내부) --- */
+.panel-body{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex:1;
+}
+
+.panel-main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.panel-footer{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:auto;
+}
+
+/* 카드 공통(없으면 추가) */
+.card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+}
+
+.card.dashed{
+  border-style:dashed;
+  border-width:2px;
+}
+
+/* 로딩 아이콘 회전(없으면 추가) */
+@keyframes cosySpin { to { transform: rotate(360deg); } }
+.spin{ animation: cosySpin 1s linear infinite; }
+
+/* ===== ClaimCheckPage: 성분규제 페이지 스타일(회색 박스 + 흰 패널) ===== */
+
+.page-wrap.inset {
+  padding: 18px 22px 42px; /* 헤더/사이드바와 내용 사이 여백 */
+}
+
+.content-max {
+  max-width: 1120px;  /* 화면 꽉 채우지 않게 */
+  margin: 0 auto;     /* 가운데 정렬 */
+}
+
+.soft-panel {
+  background: #d1d5db;          /* 회색 박스 */
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.soft-panel-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 10px;           /* 제목이 박스 안에 위치 */
+}
+
+.soft-panel-inner {
+  background: #ffffff;           /* 안쪽 흰 판넬 */
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.soft-panel-inner.fill {
+  min-height: 340px;             /* 상단 3패널 높이감 통일 */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.soft-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.soft-footer.stretch {
+  justify-content: stretch;
+}
+
+@keyframes cosySpin { to { transform: rotate(360deg); } }
+.spin { animation: cosySpin 1s linear infinite; }
+
+
+/* -----------------------------
+   ClaimCheckPage (라벨 업로드 + OCR/직접입력)
+-------------------------------- */
+
+/* 페이지 내용 폭을 살짝 제한해서, "꽉 채우는 느낌"을 완화 */
+.cosy-container{
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* 패널 내부 흰 판넬(카드) */
+.cosy-inner{
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 업로드 영역 */
+.cosy-dropzone{
+  width: 100%;
+  border: 2px dashed var(--cosy-border);
+  border-radius: 12px;
+  padding: 14px;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.cosy-dropzone.is-active{
+  border-color: var(--cosy-blue);
+  background: #eff6ff;
+}
+
+.cosy-preview{
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--cosy-border);
+}
+
+/* OCR/텍스트 상단 툴바 */
+.cosy-toolbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cosy-toolbar__status{
+  font-size: var(--cosy-font-sm);
+  font-weight: var(--cosy-fw-bold);
+  color: var(--cosy-subtext);
+}
+
+.cosy-toolbar__right{
+  display: flex;
+  gap: 8px;
+}
+
+.cosy-textarea{
+  width: 100%;
+  flex: 1;
+  min-height: 210px;
+  resize: vertical;
+  border: 1px solid var(--cosy-border);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: var(--cosy-font-base);
+  font-weight: 700;
+  color: var(--cosy-text);
+  outline: none;
+  line-height: 1.5;
+}
+
+.cosy-hint{
+  font-size: 11px;
+  color: var(--cosy-muted);
+  font-weight: var(--cosy-fw-bold);
+  line-height: 1.4;
+}
+
+.cosy-error{
+  font-size: 11px;
+  font-weight: var(--cosy-fw-bold);
+  color: #b45309;
+}
+
+/* 오른쪽 패널: 상태/요약 작은 박스 */
+.cosy-kv{
+  border: 1px solid var(--cosy-border);
+  border-radius: 12px;
+  padding: 12px;
+  background: #f9fafb;
+}
+
+.cosy-kv__row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: var(--cosy-font-sm);
+  font-weight: var(--cosy-fw-bold);
+}
+
+.cosy-kv__label{ color: var(--cosy-subtext); }
+.cosy-kv__value{ color: var(--cosy-text); }
+.cosy-kv__value.is-bad{ color: #dc2626; }
