@@ -28,6 +28,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
+    @Column(length = 2048)
     private String image;
 
     @Column(columnDefinition = "TEXT")

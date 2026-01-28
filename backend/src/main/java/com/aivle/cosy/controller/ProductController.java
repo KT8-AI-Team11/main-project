@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173") // React 기본 포트 허용
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
