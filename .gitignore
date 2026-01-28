@@ -4,3 +4,6 @@
 
 # IDE
 .idea/
+__pycache__/
+*.pyc
+.venv/
