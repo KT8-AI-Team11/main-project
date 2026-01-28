@@ -45,9 +45,10 @@ export async function ocrExtract(file, { lang = "korean" } = {}) {
       : "";
 
   return {
-    language: data?.language || lang,
-    text,
-    lines: Array.isArray(data?.lines) ? data.lines : Array.isArray(data) ? data : [],
-    raw: data,
-  };
+  language: data?.language || lang,
+  text,
+  normalized_text: data?.normalized_text ?? text, //
+  lines: Array.isArray(data?.lines) ? data.lines : Array.isArray(data) ? data : [],
+  raw: data,
+};
 }

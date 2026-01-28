@@ -71,8 +71,8 @@ export default function ClaimCheckPage() {
 
       // ✅ FastAPI OCR 호출 (form-data key=image, query lang=korean)
       const result = await ocrExtract(imageFile, { lang: "korean" });
-
-      setOcrText(result.text || "");
+      
+      setOcrText(result.normalized_text);
       setOcrPhase("done");
     } catch (err) {
       setOcrPhase("error");
@@ -297,3 +297,4 @@ export default function ClaimCheckPage() {
     </div>
   );
 }
+
