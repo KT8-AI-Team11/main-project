@@ -52,9 +52,11 @@ public class UserService {
             throw new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED);
         }
 
+        // response 작성
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
-        response.setToken(tokenProvider.createAccessToken(email,user.getCompany().getId())); // 수정
+        response.setAccessToken(tokenProvider.createAccessToken(email,user.getCompany().getId()));
+        response.setRefreshToken(tokenProvider.createRefreshToken(email));
         response.setMessage(Message.LOGIN_SUCCESS);
         return response;
     }
