@@ -8,15 +8,17 @@ import com.aivle.cosy.dto.LoginResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
 import com.aivle.cosy.dto.Message;
+import com.aivle.cosy.dto.UserInfoResponse;
+import com.aivle.cosy.exception.AuthErrorCode;
 import com.aivle.cosy.exception.BusinessException;
 import com.aivle.cosy.exception.LoginErrorCode;
+import com.aivle.cosy.exception.MyPageErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.UserRepository;
 import com.aivle.cosy.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +35,11 @@ public class UserService {
     private final static String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{10,72}$";
 
 
-
+    /**
+     * 로그인 서비스
+     * @param loginInfo
+     * @return
+     */
     @Transactional(readOnly = true)
     public LoginResponse login(LoginRequest loginInfo) {
         String email = loginInfo.getEmail();
@@ -46,17 +52,18 @@ public class UserService {
             throw new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED);
         }
 
-        // token 추가
-        String token = tokenProvider.createToken(user.getEmail(), user.getCompany().getId());
-
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
+        response.setToken(tokenProvider.createAccessToken(email,user.getCompany().getId())); // 수정
         response.setMessage(Message.LOGIN_SUCCESS);
-        // token 추가
-        response.setToken(token);
         return response;
     }
 
+    /**
+     * 회원 가입 서비스
+     * @param userInfo
+     * @return
+     */
     @Transactional
     public SignUpResponse signUp(SignUpRequest userInfo){
         String email = userInfo.getEmail();
@@ -89,7 +96,27 @@ public class UserService {
     }
 
     /**
+     * 마이페이지 정보 조회
      *
+     * @param accessToken : 조회에 필요한 토큰
+     * @return 아이디에 해당하는 정보
+     */
+    @Transactional(readOnly = true)
+    public UserInfoResponse getUserInfo(String accessToken){
+        if(!tokenProvider.validateAccessToken(accessToken)){
+            throw new BusinessException(AuthErrorCode.INVALID_TOKEN);
+        }
+        String email = tokenProvider.extractEmail(accessToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(MyPageErrorCode.USER_NOT_FOUND));
+
+        return new UserInfoResponse(user.getEmail(), user.getCompany().getCompanyName());
+
+    }
+    
+
+    /**
+     * 로그인시 중복된 이메일인지 확인하는 helper function
      * @param email
      */
     private void validateDuplicatedEmail(String email){
@@ -99,7 +126,7 @@ public class UserService {
     }
 
     /**
-     *
+     * 등록된 회사 도메인인지 확인하는 helper function
      * @param email
      * @return
      */
@@ -110,6 +137,12 @@ public class UserService {
                 .orElseThrow(()-> new BusinessException(SignUpErrorCode.COMPANY_NOT_FOUND));
     }
 
+    /**
+     * 정규식 확인용 helper function, 추후 util로 뺄거임
+     * @param userInput
+     * @param regex
+     * @return
+     */
     public boolean isValidFormat(String userInput, String regex){
         return userInput!=null && !userInput.isEmpty() && userInput.matches(regex);
     }
