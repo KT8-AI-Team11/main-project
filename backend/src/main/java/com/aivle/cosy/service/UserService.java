@@ -8,15 +8,17 @@ import com.aivle.cosy.dto.LoginResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
 import com.aivle.cosy.dto.Message;
+import com.aivle.cosy.dto.UserInfoResponse;
+import com.aivle.cosy.exception.AuthErrorCode;
 import com.aivle.cosy.exception.BusinessException;
 import com.aivle.cosy.exception.LoginErrorCode;
+import com.aivle.cosy.exception.MyPageErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.UserRepository;
 import com.aivle.cosy.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,7 +50,7 @@ public class UserService {
 
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
-        response.setToken(tokenProvider.createToken(email));
+        response.setToken(tokenProvider.createAccessToken(email,user.getCompany().getId())); // 수정
         response.setMessage(Message.LOGIN_SUCCESS);
         return response;
     }
@@ -83,6 +85,20 @@ public class UserService {
         response.setMessage(Message.SIGNUP_SUCCESS);
         return response;
     }
+
+    @Transactional(readOnly = true)
+    public UserInfoResponse getUserInfo(String accessToken){
+        if(!tokenProvider.validateAccessToken(accessToken)){
+            throw new BusinessException(AuthErrorCode.INVALID_TOKEN);
+        }
+        String email = tokenProvider.extractEmail(accessToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED));
+
+        return new UserInfoResponse(user.getEmail(), user.getCompany().getCompanyName());
+
+    }
+    
 
     /**
      *
