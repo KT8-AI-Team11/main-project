@@ -5,6 +5,8 @@ import com.aivle.cosy.domain.Company;
 import com.aivle.cosy.domain.User;
 import com.aivle.cosy.dto.LoginRequest;
 import com.aivle.cosy.dto.LoginResponse;
+import com.aivle.cosy.dto.RefreshRequest;
+import com.aivle.cosy.dto.RefreshResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
 import com.aivle.cosy.dto.Message;
@@ -12,7 +14,7 @@ import com.aivle.cosy.dto.UserInfoResponse;
 import com.aivle.cosy.exception.AuthErrorCode;
 import com.aivle.cosy.exception.BusinessException;
 import com.aivle.cosy.exception.LoginErrorCode;
-import com.aivle.cosy.exception.MyPageErrorCode;
+import com.aivle.cosy.exception.UserErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.UserRepository;
@@ -110,12 +112,31 @@ public class UserService {
         }
         String email = tokenProvider.extractEmail(accessToken);
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new BusinessException(MyPageErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
 
         return new UserInfoResponse(user.getEmail(), user.getCompany().getCompanyName());
 
     }
-    
+
+    /**
+     * access token 재발급용
+     * @param refreshTokenInfo
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public RefreshResponse refresh (RefreshRequest refreshTokenInfo){
+        String refreshToken = refreshTokenInfo.refreshToken();
+
+        if(!tokenProvider.validateRefreshToken(refreshToken)){
+            throw new BusinessException(AuthErrorCode.INVALID_TOKEN);
+        }
+        String email = tokenProvider.extractEmail(refreshToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
+        return new RefreshResponse(tokenProvider.createAccessToken(email,user.getCompany().getId()));
+    }
+
+
 
     /**
      * 로그인시 중복된 이메일인지 확인하는 helper function
