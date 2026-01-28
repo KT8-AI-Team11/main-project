@@ -9,7 +9,6 @@ from app.repositories.vectorstore_repo import get_retriever
 from app.services.ocr_service import get_ocr_service
 from app.services.llm_service import LlmService
 
-# todo: schemas에 맞춰 이름만 조정
 from app.schemas.compliance import LlmResult, Finding
 
 def _normalize_text(text: str) -> str:

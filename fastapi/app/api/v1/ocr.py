@@ -22,7 +22,7 @@ lang: str = Query(default="korean", description="korean | en | ch 등")
         raise HTTPException(status_code=400, detail="Empty file")
 
     # 여기서부터 OCR 처리로 이어짐
-    service = get_ocr_service(lang=lang) # 일단은 한국어 default로. todo: 언어 힌트 설정
+    service = get_ocr_service(lang=lang) # 일단은 한국어 default로. todo: 다른 언어로 설정할 경우가 있나?
     full_text, lines = await run_in_threadpool(service.extract, image_bytes)
     parts = [l.strip() for l in full_text.splitlines() if l.strip()]
     normalized_text = " ".join(parts)
@@ -32,11 +32,11 @@ lang: str = Query(default="korean", description="korean | en | ch 등")
         language=lang,
         text=full_text,
         normalized_text=normalized_text,
-        lines=[
+        lines=[ # todo: 이 부분 활용?
             OcrLine(
                 text=line.text, # 텍스트
                 score=line.score, # 예상되는 정확도
-                box=line.box, # 텍스트 박스의 꼭짓점. todo: 이걸 llm에 활용해보기?
+                box=line.box, # 텍스트 박스의 꼭짓점.
             )
             for line in lines
         ],
