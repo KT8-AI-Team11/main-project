@@ -153,7 +153,7 @@ public class JwtTokenProvider {
         return extractClaims(token).getSubject();
     }
 
-    public Long extractCompanyId(String token) {
+    public Long getCompanyId(String token) {
         return extractClaims(token).get("companyId", Long.class);
     }
 
