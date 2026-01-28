@@ -24,11 +24,14 @@ lang: str = Query(default="korean", description="korean | en | ch 등")
     # 여기서부터 OCR 처리로 이어짐
     service = get_ocr_service(lang=lang) # 일단은 한국어 default로. todo: 언어 힌트 설정
     full_text, lines = await run_in_threadpool(service.extract, image_bytes)
+    parts = [l.strip() for l in full_text.splitlines() if l.strip()]
+    normalized_text = " ".join(parts)
 
     # 3) JSON 응답
     return OcrExtractResponse(
         language=lang,
         text=full_text,
+        normalized_text=normalized_text,
         lines=[
             OcrLine(
                 text=line.text, # 텍스트
