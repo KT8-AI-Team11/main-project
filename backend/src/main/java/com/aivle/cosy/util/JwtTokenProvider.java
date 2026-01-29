@@ -9,6 +9,7 @@ import io.jsonwebtoken.security.SignatureException;
 import jakarta.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.UUID;
 import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,6 +51,7 @@ public class JwtTokenProvider {
         //claims.put("companyId",companyId); // 나중에 필요시 확장, 변경
 
         return Jwts.builder()
+                .id(UUID.randomUUID().toString())
                 .subject(email)
                 //.claims(claims)
                 .claim("companyId", companyId)
@@ -68,6 +70,7 @@ public class JwtTokenProvider {
 
         return Jwts.builder()
                 .subject(email)
+                .id(UUID.randomUUID().toString())
                 .claim("type", REFRESH)
                 .issuedAt(now)
                 .issuer(issuer)
@@ -78,10 +81,27 @@ public class JwtTokenProvider {
     }
 
     public long getRemainingExpiration(String token) {
-        return extractClaims(token)
-                .getExpiration()
-                .toInstant()
-                .toEpochMilli() - System.currentTimeMillis();
+        try{
+            return extractClaims(token)
+                    .getExpiration()
+                    .toInstant()
+                    .toEpochMilli() - System.currentTimeMillis();
+        }catch (ExpiredJwtException e){ // 만료된 경우
+            return e.getClaims()
+                    .getExpiration()
+                    .toInstant()
+                    .toEpochMilli() - System.currentTimeMillis();
+
+        }
+
+    }
+
+    public String extractJti(String token){
+        try {
+            return extractClaims(token).getId();
+        }catch (ExpiredJwtException e){ // 만료된 경우
+            return e.getClaims().getId();
+        }
     }
 
     //TODO:필요시 protected나 private으로 변경

@@ -1,5 +1,6 @@
 package com.aivle.cosy.util;
 
+import com.aivle.cosy.service.TokenBlacklistService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.filter.GenericFilterBean;
 @RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
     private final JwtTokenProvider jwtProvider;
+    private final TokenBlacklistService tokenBlacklistService;
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -32,7 +34,7 @@ public class JwtFilter extends GenericFilterBean {
         }
 
         // 2. 토큰 유효성 검증 및 인증 설정
-        if (jwtProvider.validateAccessToken(token)) {
+        if (jwtProvider.validateAccessToken(token) && !tokenBlacklistService.isBlacklisted(token)) {
             String email = jwtProvider.extractEmail(token);
 
             // SecurityContext에 인증 정보 설정

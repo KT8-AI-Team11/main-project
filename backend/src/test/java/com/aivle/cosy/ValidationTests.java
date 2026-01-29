@@ -17,7 +17,7 @@ public class ValidationTests {
     @BeforeEach
     void setup() {
         // validation 테스트만 하므로 의존성은 null로 전달
-        userService = new UserService(null, null, null, null);
+        userService = new UserService(null, null, null, null, null);
     }
     // email validation check starts from here
     @Test

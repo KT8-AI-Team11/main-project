@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -58,6 +59,30 @@ public class AuthController {
         }
 
         return new ResponseEntity<>(userService.refresh(refreshToken), HttpStatus.OK);
+    }
+
+    @PostMapping("/logout")
+    @NonNull
+    public ResponseEntity<Void> logout(@RequestHeader("Authorization") String token, @CookieValue(name = "refresh_token", required = false) String refreshToken){
+
+        if(token == null || !token.startsWith("Bearer ")){ // TODO: 검증용, 나중에 refactoring 가능
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String accessToken = token.substring(7);
+
+        //refresh token 삭제
+        ResponseCookie cookie = ResponseCookie.from("refresh_token",
+                        "")
+                .httpOnly(true)
+                .path("/api/auth")
+                .maxAge(0) // 즉시 만료
+                .secure(true)
+                .sameSite("Strict")
+                .build();
+
+        userService.logout(accessToken,refreshToken);
+        return ResponseEntity.status(HttpStatus.OK).header(HttpHeaders.SET_COOKIE, cookie.toString()).build();
     }
 
 

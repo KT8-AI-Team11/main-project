@@ -20,7 +20,11 @@ public class UserProfileController {
     @GetMapping("")
     @NonNull
     public ResponseEntity<UserInfoResponse> me(@RequestHeader("Authorization") String token){
-        String accessToken = token.replace("Bearer ", "");
+        if(token == null || !token.startsWith("Bearer ")){ // TODO: 검증용, 나중에 refactoring 가능
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String accessToken = token.substring(7);
         UserInfoResponse userInfoResponse = userService.getUserInfo(accessToken);
         return new ResponseEntity<>(userInfoResponse, HttpStatus.OK);
     }

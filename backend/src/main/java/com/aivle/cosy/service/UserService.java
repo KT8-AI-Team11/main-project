@@ -31,6 +31,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final CompanyRepository companyRepository;
     private final JwtTokenProvider tokenProvider;
+    private final TokenBlacklistService tokenBlacklistService;
     private final PasswordEncoder passwordEncoder;
     private final static String EMAIL_REGEX = "^(?=.{5,254}$)[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
     private final static String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{10,72}$";
@@ -121,13 +122,22 @@ public class UserService {
      */
     @Transactional(readOnly = true)
     public RefreshResponse refresh (String refreshToken){
-        if(!tokenProvider.validateRefreshToken(refreshToken)){
+        // 로그아웃해서 토큰이 더이상 유효하지 않거나 토큰이 잘못된 경우 체크
+        if(!tokenProvider.validateRefreshToken(refreshToken) || tokenBlacklistService.isBlacklisted(refreshToken)){
             throw new BusinessException(AuthErrorCode.INVALID_TOKEN);
         }
         String email = tokenProvider.extractEmail(refreshToken);
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
         return new RefreshResponse(tokenProvider.createAccessToken(email,user.getCompany().getId()));
+    }
+
+    /**
+     *
+     */
+    public void logout(String accessToken, String refreshToken){
+        tokenBlacklistService.addToBlacklist(accessToken,tokenProvider.getRemainingExpiration(accessToken));
+        tokenBlacklistService.addToBlacklist(refreshToken,tokenProvider.getRemainingExpiration(refreshToken));
     }
 
 
