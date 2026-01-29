@@ -2,15 +2,16 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Image, X, ArrowLeft, ArrowRight } from "lucide-react";
 import axios from "axios";
 
-// 임시 API 설정
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmcm9udEB0ZXN0LmNvbSIsImNvbXBhbnlJZCI6MTQsImlhdCI6MTc2OTU5NjkyNiwiaXNzIjoiY29zeSIsImV4cCI6MTc2OTYwNzcyNn0.L13aExynqYrDmCVx7WRDr5lzFhPx9BDek9FzEpZNQRU";
-
 const api = axios.create({
     baseURL: "http://localhost:8080/api",
-    headers: {
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-        "Content-Type": "application/json",
-    },
+});
+
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("cosy_token"); // 로그인 시 저장한 키값 (JWT Token)
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
 });
 
 export default function ProductsPage() {
