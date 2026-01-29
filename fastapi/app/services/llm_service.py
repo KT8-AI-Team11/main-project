@@ -11,13 +11,13 @@ class LlmService:
         self.model = OPENAI_MODEL
 
     # 문구규제 페이지에서 바로 쓸 수 있는 텍스트 생성 함수
-    def _format_for_ui(self, market: str, domain_desc: str, data: dict) -> str:
+    def _format_for_ui(self, data: dict) -> str:
         overall = data.get("overall_risk", "MEDIUM")
         findings = data.get("findings", []) or []
         notes = data.get("notes", []) or []
 
         lines = []
-        lines.append(f"[{market}] {domain_desc} 규제 검토 결과")
+        lines.append(f"규제 검토 결과")
         lines.append(f"종합 리스크: {overall}")
         lines.append("")
 
@@ -114,7 +114,7 @@ class LlmService:
         else:
             notes = [str(x) for x in (notes_val or [])]
 
-        formatted_text = self._format_for_ui(market, domain_desc, data)
+        formatted_text = self._format_for_ui(data)
 
         return LlmResult(
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
