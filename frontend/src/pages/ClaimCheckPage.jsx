@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -11,12 +11,12 @@ import {
 import CountryMultiSelect from "../components/CountryMultiSelect";
 import { ocrExtract } from "../api/ocr";
 
-// ClaimCheckPage (문구/라벨 규제 확인)
-// ✅ chore/ocr: OCR 연동 흐름 유지
-// ✅ yg: 하단 결과 UI(요약+테이블) 복구(데모 로직 포함)
+const COUNTRY_CODES = ["US", "EU", "CN", "JP"];
 
 export default function ClaimCheckPage() {
-  // ✅ 국가: 미국 / 유럽연합 / 중국 / 일본
+  // =========================
+  // 1) 국가 옵션 (최종: US/EU/CN/JP)
+  // =========================
   const countryOptions = useMemo(
     () => [
       { code: "US", name: "미국" },
@@ -27,363 +27,566 @@ export default function ClaimCheckPage() {
     []
   );
 
-  // ✅ (yg 결과 UI용) 데모 키워드 룰: 나중에 백엔드 결과로 교체 예정
-  const rules = useMemo(
+  const getCountryName = (code) =>
+    countryOptions.find((c) => c.code === code)?.name || code;
+
+  // =========================
+  // 2) (DEMO용) 키워드 룰
+  // =========================
+  const demoRules = useMemo(
     () => [
-      { k: "치료", severity: "high", detail: "의학적 치료 효능 표현 가능성", action: "‘개선에 도움’ 등으로 완화 권장" },
-      { k: "완치", severity: "high", detail: "완치/보장 표현(과장/금지 가능)", action: "절대적 표현 제거" },
-      { k: "처방", severity: "high", detail: "의료행위 연상 표현", action: "‘케어/관리’로 표현 변경" },
-      { k: "살균", severity: "high", detail: "살균/소독 효능 주장", action: "표현 삭제 또는 근거/분류 확인" },
-      { k: "소독", severity: "high", detail: "살균/소독 효능 주장", action: "표현 삭제 또는 근거/분류 확인" },
-      { k: "항염", severity: "mid", detail: "염증 관련 의학 효능 연상", action: "‘진정’ 등 완화 표현 고려" },
-      { k: "항균", severity: "mid", detail: "항균 효능 주장", action: "표현 완화/근거 확인" },
-      { k: "즉시 효과", severity: "mid", detail: "즉시/극적 효과(과장 가능)", action: "효과 표현 완화" },
-      { k: "100%", severity: "mid", detail: "절대적 보장(과장 가능)", action: "보장/수치 표현 제거" },
-      { k: "부작용 없음", severity: "mid", detail: "안전성 절대 표현(과장 가능)", action: "절대 표현 제거" },
-      { k: "미백", severity: "mid", detail: "기능성 효능 표현(요건 확인 필요)", action: "근거/표기 요건 확인" },
-      { k: "주름 개선", severity: "mid", detail: "기능성 효능 표현(요건 확인 필요)", action: "근거/표기 요건 확인" },
+      { key: "미백", label: "미백(Whitening) 표현", severity: "WARN" },
+      { key: "주름", label: "주름 개선(Anti-wrinkle) 표현", severity: "WARN" },
+      { key: "치료", label: "치료(Treatment) 의학적 표현", severity: "FAIL" },
+      { key: "완치", label: "완치(Cure) 의학적 표현", severity: "FAIL" },
+      { key: "100%", label: "과장/절대 표현(100%)", severity: "WARN" },
     ],
     []
   );
 
-  // ====== chore/ocr: 이미지 업로드 + OCR 상태 ======
-  const fileInputRef = useRef(null);
+  // =========================
+  // 3) 상단 3패널 상태
+  // =========================
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
-
-  const [selectedCountryCodes, setSelectedCountryCodes] = useState([]);
-
   const [ocrText, setOcrText] = useState("");
   const [ocrPhase, setOcrPhase] = useState("idle"); // idle | loading | done | error
-  const [ocrError, setOcrError] = useState("");
+  const [ocrMsg, setOcrMsg] = useState("");
 
-  // ====== yg: 하단 결과 UI 상태 ======
-  const [summary, setSummary] = useState(null); // { status: 'pass'|'warn'|'fail', text }
-  const [rows, setRows] = useState([]);
+  const [selectedCountryCodes, setSelectedCountryCodes] = useState(["US", "EU"]);
+  const onCountriesChange = (codes) => setSelectedCountryCodes(codes);
 
-  const resetResults = () => {
-    setSummary(null);
-    setRows([]);
+  // =========================
+  // 4) 검사 결과 상태(국가별)
+  // =========================
+  const [resultsByCountry, setResultsByCountry] = useState({});
+  const [inspectionStarted, setInspectionStarted] = useState(false);
+
+  // 결과 탭
+  const [activeTab, setActiveTab] = useState("US");
+  const [tabPinned, setTabPinned] = useState(false); // 사용자가 탭 클릭하면 true로 고정
+
+  // 스크롤/포커스
+  const resultsRef = useRef(null);
+
+  // =========================
+  // 4-1) 준비상태 체크
+  // =========================
+  const hasImage = !!imageFile;
+  const hasOcrText = (ocrText || "").trim().length > 0;
+  const hasCountries = selectedCountryCodes.length > 0;
+
+  const canRunInspection = hasOcrText && hasCountries; // 이미지 없어도 텍스트로만 검사 가능
+
+  // =========================
+  // 4-2) 전체 요약 계산
+  // =========================
+  const overall = useMemo(() => {
+    const codes = selectedCountryCodes || [];
+    let total = codes.length;
+    let loading = 0;
+    let doneCount = 0;
+    let pass = 0;
+    let warn = 0;
+    let fail = 0;
+
+    codes.forEach((c) => {
+      const r = resultsByCountry?.[c];
+      if (!r) return;
+      if (r.phase === "loading") loading++;
+      if (r.phase === "done" || r.phase === "error") doneCount++;
+
+      if (r.phase === "done") {
+        if (r.status === "PASS") pass++;
+        if (r.status === "WARN") warn++;
+        if (r.status === "FAIL") fail++;
+      }
+    });
+
+    return { total, loading, doneCount, pass, warn, fail };
+  }, [selectedCountryCodes, resultsByCountry]);
+
+  const allDone =
+    inspectionStarted && overall.total > 0 && overall.doneCount === overall.total;
+
+  // =========================
+  // 4-3) highlight(우선 확인 국가)
+  // =========================
+  const highlight = useMemo(() => {
+    if (!allDone) return null;
+
+    // FAIL 우선, 없으면 WARN
+    const codes = selectedCountryCodes || [];
+    let failPick = null;
+    let warnPick = null;
+
+    codes.forEach((c) => {
+      const r = resultsByCountry?.[c];
+      if (!r || r.phase !== "done") return;
+      const count = Array.isArray(r.violations) ? r.violations.length : 0;
+
+      if (r.status === "FAIL") {
+        if (!failPick || count > failPick.count)
+          failPick = { code: c, status: "FAIL", count };
+      } else if (r.status === "WARN") {
+        if (!warnPick || count > warnPick.count)
+          warnPick = { code: c, status: "WARN", count };
+      }
+    });
+
+    return failPick || warnPick || null;
+  }, [allDone, selectedCountryCodes, resultsByCountry]);
+
+  // =========================
+  // 4-4) 자동 탭 이동(FAIL > WARN)
+  // =========================
+  useEffect(() => {
+    if (!inspectionStarted) return;
+    if (tabPinned) return; // 사용자가 탭 클릭해서 고정하면 자동 이동 X
+    if (!allDone) return;
+
+    if (highlight?.code) setActiveTab(highlight.code);
+  }, [inspectionStarted, tabPinned, allDone, highlight]);
+
+  // =========================
+  // 4-5) 탭 클릭 핸들러(고정)
+  // =========================
+  const onTabClick = (code) => {
+    setActiveTab(code);
+    setTabPinned(true);
   };
 
-  const pickFile = () => fileInputRef.current?.click();
+  // =========================
+  // 5) OCR 연동 (절대 깨지면 안 됨)
+  // =========================
+  const onPickImage = (file) => {
+    if (!file) return;
+    setImageFile(file);
 
-  const onChangeFile = (e) => {
-    const f = e.target.files?.[0];
-    if (!f) return;
-
-    setImageFile(f);
-    setOcrText("");
-    setOcrPhase("idle");
-    setOcrError("");
-    resetResults();
-
-    const url = URL.createObjectURL(f);
+    const url = URL.createObjectURL(file);
     setImagePreview(url);
-  };
 
-  const clearFile = () => {
-    setImageFile(null);
+    // OCR 결과 초기화
     setOcrText("");
     setOcrPhase("idle");
-    setOcrError("");
-    resetResults();
-    if (imagePreview) URL.revokeObjectURL(imagePreview);
-    setImagePreview("");
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    setOcrMsg("");
+
+    // 검사 결과 초기화
+    resetAllResults();
   };
 
-  const onCountriesChange = (next) => {
-    setSelectedCountryCodes(next);
-    resetResults();
+  const removeImage = () => {
+    setImageFile(null);
+    setImagePreview("");
+    setOcrText("");
+    setOcrPhase("idle");
+    setOcrMsg("");
+    resetAllResults();
   };
 
   const runOcr = async () => {
-    if (!imageFile) return alert("이미지를 먼저 선택해주세요.");
-
+    if (!imageFile) return;
     try {
       setOcrPhase("loading");
-      setOcrError("");
-      resetResults();
+      setOcrMsg("");
 
-      // ✅ FastAPI OCR 호출 (form-data key=image, query lang=korean)
-      const result = await ocrExtract(imageFile, { lang: "korean" });
+      const res = await ocrExtract(imageFile, "korean"); // ✅ FormData key=image, lang=korean
+      // 백엔드 요청: 화면에는 normalized_text 우선 표시
+      const normalized = res?.normalized_text || "";
+      const text = res?.text || "";
 
-      // ✅ normalized_text 우선 적용
-      setOcrText(result.normalized_text ?? result.text ?? "");
+      setOcrText(normalized || text || "");
       setOcrPhase("done");
-    } catch (err) {
+      setOcrMsg("OCR 완료");
+      resetAllResults();
+    } catch (e) {
       setOcrPhase("error");
-      setOcrError(err?.message || "OCR 요청 중 오류가 발생했어요.");
+      setOcrMsg(e?.message || "OCR 실패");
     }
   };
 
-  // ====== 결과 UI(데모) 실행: 나중에 Spring API 호출 결과로 교체 ======
-  const runAuditDemo = () => {
-    if (!ocrText.trim()) return alert("OCR 결과 텍스트(또는 직접 입력)를 준비해주세요.");
-    if (selectedCountryCodes.length === 0) return alert("국가를 선택해주세요.");
-
-    const text = ocrText;
-
-    const hits = [];
-    rules.forEach((r) => {
-      if (text.includes(r.k)) hits.push(r);
-    });
-
-    const score = hits.reduce((acc, h) => acc + (h.severity === "high" ? 3 : 1), 0);
-    const status = score >= 6 ? "fail" : score >= 2 ? "warn" : "pass";
-    const statusText =
-      status === "pass" ? "통과(데모)" : status === "warn" ? "주의(데모)" : "부적합(데모)";
-
-    setSummary({ status, text: statusText });
-
-    const out = [];
-    selectedCountryCodes.forEach((c) => {
-      const countryName = countryOptions.find((x) => x.code === c)?.name || c;
-      hits.forEach((h) => {
-        out.push({
-          labelName: imageFile ? imageFile.name : "직접 입력",
-          countryName,
-          badClaim: h.k,
-          location: imageFile ? "라벨 이미지(OCR/입력)" : "직접 입력",
-          detail: h.detail,
-          action: h.action,
-          severity: h.severity,
-        });
-      });
-    });
-
-    setRows(out);
+  // =========================
+  // 6) 검사 실행 (현재는 DEMO)
+  // =========================
+  const resetAllResults = () => {
+    setResultsByCountry({});
+    setInspectionStarted(false);
+    setTabPinned(false);
   };
 
-  const canRunInspection =
-    selectedCountryCodes.length > 0 && ocrText.trim().length > 0;
+  // ✅ 상태를 짧고 보기 좋게: countryName 제거, code + status chip
+  const getMiniStatusMeta = (code) => {
+    if (!inspectionStarted) return null;
 
-  const statusChip =
-    ocrPhase === "idle" ? null : ocrPhase === "loading" ? (
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          fontSize: 12,
-          fontWeight: 900,
-          color: "#6b7280",
-        }}
-      >
-        <Loader2 size={14} className="cosy-spin" /> OCR 추출 중...
-      </span>
-    ) : ocrPhase === "done" ? (
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          fontSize: 12,
-          fontWeight: 900,
-          color: "#059669",
-        }}
-      >
-        <CheckCircle2 size={14} /> OCR 완료
-      </span>
-    ) : (
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          fontSize: 12,
-          fontWeight: 900,
-          color: "#dc2626",
-        }}
-      >
-        <AlertTriangle size={14} /> OCR 실패
-      </span>
-    );
+    const r = resultsByCountry?.[code];
+    if (!r) return { label: "PEND", tone: "pending" };
 
-  // ✅ yg 요약 아이콘
-  const summaryIcon =
-    !summary ? (
-      <div className="cosy-circle">
-        <Minus size={18} />
-      </div>
-    ) : summary.status === "pass" ? (
-      <div className="cosy-circle" style={{ borderColor: "#6EE7B7" }}>
-        <CheckCircle2 size={18} color="#059669" />
-      </div>
-    ) : (
+    if (r.phase === "loading") return { label: "RUN", tone: "loading" };
+    if (r.phase === "error") return { label: "ERR", tone: "error" };
+
+    // done
+    if (r.status === "PASS") return { label: "PASS", tone: "pass", className: "is-pass" };
+    if (r.status === "WARN") return { label: "WARN", tone: "warn", className: "is-mid" };
+    if (r.status === "FAIL") return { label: "FAIL", tone: "fail", className: "is-high" };
+
+    return { label: r.status || "DONE", tone: "pending" };
+  };
+
+  const getChipInlineStyle = (tone) => {
+    // cosy-chip에 없는 상태들만 inline로 처리
+    if (tone === "loading") {
+      return { background: "#EFF6FF", borderColor: "#93C5FD", color: "#1D4ED8" };
+    }
+    if (tone === "error") {
+      return { background: "#FFF1F2", borderColor: "#FDA4AF", color: "#BE123C" };
+    }
+    // pending/default
+    return { background: "#F9FAFB", borderColor: "#E5E7EB", color: "#6B7280" };
+  };
+
+  const renderMiniStatusChips = () => {
+    // ✅ 스크롤 대신 wrap (자동 줄바꿈)
+    return (
       <div
-        className="cosy-circle"
         style={{
-          borderColor: summary.status === "warn" ? "#FCD34D" : "#FCA5A5",
+          display: "flex",
+          gap: 8,
+          flexWrap: "wrap",
+          alignItems: "center",
         }}
       >
-        <AlertTriangle
-          size={18}
-          color={summary.status === "warn" ? "#D97706" : "#DC2626"}
-        />
+        {selectedCountryCodes.map((code) => {
+          const meta = getMiniStatusMeta(code);
+          if (!meta) return null;
+
+          const useInline = !meta.className; // PASS/WARN/FAIL은 cosy-chip variant 사용
+          const chipStyle = useInline ? getChipInlineStyle(meta.tone) : {};
+
+          return (
+            <span
+              key={code}
+              className={`cosy-chip ${meta.className ? meta.className : ""}`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "4px 10px",
+                ...chipStyle,
+              }}
+              title={getCountryName(code)}
+            >
+              <span style={{ fontWeight: 900 }}>{code}</span>
+              <span style={{ fontWeight: 900, opacity: 0.85 }}>{meta.label}</span>
+            </span>
+          );
+        })}
       </div>
     );
+  };
 
+  const renderTabBadge = (code) => {
+    const meta = getMiniStatusMeta(code);
+    if (!inspectionStarted || !meta) return null;
+
+    const useInline = !meta.className;
+    const badgeStyle = useInline ? getChipInlineStyle(meta.tone) : {};
+    return (
+      <span
+        className={`cosy-chip ${meta.className ? meta.className : ""}`}
+        style={{
+          marginLeft: 8,
+          padding: "2px 8px",
+          fontSize: 11,
+          ...badgeStyle,
+        }}
+      >
+        {meta.label}
+      </span>
+    );
+  };
+
+  const renderReadyRow = (label, ok) => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 10,
+        }}
+      >
+        <div className="cosy-subtext" style={{ color: "#111827" }}>
+          {label}
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          {ok ? (
+            <>
+              <CheckCircle2 size={16} color="#16a34a" />
+              <div className="cosy-subtext" style={{ color: "#16a34a", fontWeight: 900 }}>
+                완료
+              </div>
+            </>
+          ) : (
+            <>
+              <Minus size={16} color="#9ca3af" />
+              <div className="cosy-subtext" style={{ color: "#9ca3af", fontWeight: 900 }}>
+                대기
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const makeDemoResult = (countryCode, text) => {
+    const hits = demoRules
+      .filter((r) => (text || "").includes(r.key))
+      .map((r) => ({
+        key: r.key,
+        label: r.label,
+        severity: r.severity,
+      }));
+
+    let status = "PASS";
+    if (hits.some((h) => h.severity === "FAIL")) status = "FAIL";
+    else if (hits.some((h) => h.severity === "WARN")) status = "WARN";
+
+    return {
+      phase: "done",
+      status,
+      violations: hits,
+      llmText: makeDemoLLMText(countryCode, status, hits),
+    };
+  };
+
+  const makeDemoLLMText = (countryCode, status, hits) => {
+    const country = getCountryName(countryCode);
+    if (!hits || hits.length === 0) {
+      return `[${country} ${countryCode}] 결과: PASS\n- 부적합 요소가 발견되지 않았습니다.`;
+    }
+    const lines = hits.map((h) => `- (${h.severity}) ${h.label}`).join("\n");
+    return `[${country} ${countryCode}] 결과: ${status}\n${lines}\n\n권장: 문구를 보다 보수적으로 수정하세요.`;
+  };
+
+  const runInspection = async () => {
+    if (!canRunInspection) return;
+
+    setInspectionStarted(true);
+    setTabPinned(false); // ✅ 새 검사 시작하면 자동 이동 다시 활성화
+
+    // 1) 선택된 국가를 모두 loading으로 세팅
+    const loadingState = {};
+    selectedCountryCodes.forEach((c) => {
+      loadingState[c] = { phase: "loading", status: "", violations: [], llmText: "" };
+    });
+    setResultsByCountry(loadingState);
+
+    // 2) 결과 UI로 스크롤
+    setTimeout(() => {
+      resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+
+    // =========================
+    // 🚀 TODO(백엔드 연동 포인트)
+    // - Spring API (/api/ai-inspection/labels) 호출 결과로
+    //   resultsByCountry[countryCode]를 채우면 됩니다.
+    // - 여러 국가 선택 시: 프론트에서 국가별 반복 호출(현재 계획)
+    // =========================
+
+    // 3) DEMO: 국가별로 0.6초 간격으로 완료되는 척
+    for (let i = 0; i < selectedCountryCodes.length; i++) {
+      const c = selectedCountryCodes[i];
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((r) => setTimeout(r, 600));
+
+      try {
+        const demo = makeDemoResult(c, ocrText);
+        setResultsByCountry((prev) => ({ ...prev, [c]: demo }));
+      } catch (err) {
+        setResultsByCountry((prev) => ({
+          ...prev,
+          [c]: {
+            phase: "error",
+            status: "",
+            violations: [],
+            llmText: "",
+            error: err?.message || "검사 중 오류가 발생했어요.",
+          },
+        }));
+      }
+    }
+  };
+
+  // 현재 탭 결과
+  const activeResult = resultsByCountry?.[activeTab];
+
+  // =========================
+  // 7) 상단 3패널: 업로드 / OCR 텍스트 / 국가+검사
+  // =========================
   return (
     <div className="cosy-page">
-      {/* 상단 3패널: 업로드 / OCR 텍스트 / 국가+검사 */}
-      <div className="cosy-grid-3">
-        {/* 1) 이미지 업로드 */}
+      <div className="cosy-grid-3 claim-top-grid">
+        {/* 1) 라벨 이미지 업로드 */}
         <div className="cosy-panel">
           <div className="cosy-panel__title">라벨 이미지 업로드</div>
 
-          <div
-            className="cosy-card"
-            style={{
-              padding: 14,
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-            }}
-          >
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/png,image/jpeg,image/webp"
-              onChange={onChangeFile}
-              style={{ display: "none" }}
-            />
-
-            {!imageFile ? (
-              <div
-                onClick={pickFile}
-                style={{
-                  flex: 1,
-                  border: "2px dashed #d1d5db",
-                  borderRadius: 12,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 10,
-                  cursor: "pointer",
-                  background: "#f9fafb",
-                }}
-              >
-                <UploadCloud size={28} color="#6b7280" />
-                <div style={{ fontWeight: 900, fontSize: 13, color: "#111827" }}>
-                  이미지를 선택하세요
+          <div className="cosy-card" style={{ padding: 14, display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <ImageIcon size={18} />
+                <div style={{ fontWeight: 900, fontSize: 13 }}>
+                  {imageFile ? imageFile.name : "이미지를 선택하세요"}
                 </div>
-                <div className="cosy-subtext">png / jpg / webp 지원</div>
               </div>
-            ) : (
-              <>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: 10,
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <ImageIcon size={18} color="#111827" />
-                    <div
-                      style={{
-                        fontSize: 12,
-                        fontWeight: 900,
-                        color: "#111827",
-                      }}
-                    >
-                      {imageFile.name}
-                    </div>
-                  </div>
 
-                  <button type="button" className="cosy-btn" onClick={clearFile}>
-                    제거
-                  </button>
-                </div>
+              {imageFile ? (
+                <button type="button" className="cosy-btn" onClick={removeImage}>
+                  제거
+                </button>
+              ) : null}
+            </div>
 
-                <div
-                  className="cosy-card"
+            <div
+              className="cosy-card"
+              style={{
+                border: "1px dashed #d1d5db",
+                borderRadius: 12,
+                background: "#f9fafb",
+                height: 260,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+              }}
+            >
+              {imagePreview ? (
+                <img
+                  src={imagePreview}
+                  alt="preview"
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                />
+              ) : (
+                <label
                   style={{
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    height: 260,
+                    width: "100%",
+                    height: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    background: "#f3f4f6",
+                    cursor: "pointer",
+                    flexDirection: "column",
+                    gap: 10,
+                    color: "#6b7280",
+                    fontWeight: 900,
                   }}
                 >
-                  {imagePreview ? (
-                    <img
-                      src={imagePreview}
-                      alt="라벨 미리보기"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  ) : (
-                    <div className="cosy-subtext">미리보기를 표시할 수 없어요</div>
-                  )}
-                </div>
+                  <UploadCloud />
+                  <div>클릭해서 업로드</div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={(e) => onPickImage(e.target.files?.[0])}
+                  />
+                </label>
+              )}
+            </div>
 
-                <div className="cosy-subtext">
-                  * 다음 패널에서 “OCR 추출”을 눌러 텍스트로 변환할 수 있어요.
-                </div>
-              </>
-            )}
+            <div className="cosy-subtext">
+              * 다음 패널에서 “OCR 추출”을 눌러 텍스트로 변환할 수 있어요.
+            </div>
           </div>
         </div>
 
-        {/* 2) OCR 텍스트 */}
+        {/* 2) OCR 결과 텍스트 */}
         <div className="cosy-panel">
           <div className="cosy-panel__title">OCR 결과 텍스트</div>
 
-          <div
-            className="cosy-card"
-            style={{
-              padding: 14,
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              flex: 1,
-            }}
-          >
+          <div className="cosy-card" style={{ padding: 14, display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
             <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <div className="cosy-subtext">
-                OCR 결과가 자동으로 입력되고, 직접 수정할 수 있어요.
-              </div>
-              {statusChip}
-            </div>
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+    width: "100%",
+  }}
+>
+  {/* 왼쪽 안내 문구: 한 줄 고정 + 말줄임 */}
+  <div
+    className="cosy-subtext"
+    style={{
+      fontSize: 13,
+      fontWeight: 900,
+      flex: 1,
+      minWidth: 0,
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    }}
+    title="OCR 결과가 자동으로 입력되고, 직접 수정할 수 있어요."
+  >
+    OCR 결과가 자동으로 입력되고, 직접 수정할 수 있어요.
+  </div>
 
-            {ocrPhase === "error" && (
-              <div
-                style={{
-                  background: "#FEF2F2",
-                  border: "1px solid #FCA5A5",
-                  color: "#991B1B",
-                  borderRadius: 12,
-                  padding: "10px 12px",
-                  fontSize: 12,
-                  fontWeight: 800,
-                }}
-              >
-                {ocrError}
-              </div>
-            )}
+  {/* 오른쪽 상태: 줄바꿈 금지 + 오른쪽 고정 */}
+  <div
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 8,
+      flexShrink: 0,
+      whiteSpace: "nowrap",
+    }}
+  >
+    {ocrPhase === "done" ? (
+      <>
+        <CheckCircle2 size={16} color="#16a34a" />
+        <div
+          className="cosy-subtext"
+          style={{ color: "#16a34a", fontWeight: 900, whiteSpace: "nowrap" }}
+        >
+          {ocrMsg || "OCR 완료"}
+        </div>
+      </>
+    ) : ocrPhase === "loading" ? (
+      <>
+        <Loader2 size={16} className="cosy-spin" />
+        <div className="cosy-subtext" style={{ fontWeight: 900, whiteSpace: "nowrap" }}>
+          OCR 중...
+        </div>
+      </>
+    ) : ocrPhase === "error" ? (
+      <>
+        <AlertTriangle size={16} color="#ef4444" />
+        <div
+          className="cosy-subtext"
+          style={{ color: "#ef4444", fontWeight: 900, whiteSpace: "nowrap" }}
+        >
+          {ocrMsg || "OCR 실패"}
+        </div>
+      </>
+    ) : (
+      <>
+        <Minus size={16} color="#9ca3af" />
+        <div
+          className="cosy-subtext"
+          style={{ color: "#9ca3af", fontWeight: 900, whiteSpace: "nowrap" }}
+        >
+          대기
+        </div>
+      </>
+    )}
+  </div>
+</div>
+
 
             <textarea
               value={ocrText}
               onChange={(e) => {
                 setOcrText(e.target.value);
-                resetResults();
+                resetAllResults();
               }}
               placeholder="OCR 추출 결과가 여기 표시됩니다. (원하면 직접 수정 가능)"
               style={{
@@ -433,132 +636,313 @@ export default function ClaimCheckPage() {
               전체 선택
             </button>
 
-            <button
-              type="button"
-              className="cosy-btn"
-              onClick={() => onCountriesChange([])}
-            >
+            <button type="button" className="cosy-btn" onClick={() => onCountriesChange([])}>
               해제
             </button>
           </div>
 
           <div
-            className="cosy-card cosy-center-box"
-            style={{ minHeight: 220, marginTop: 14 }}
+            style={{
+              display: "flex",
+              gap: 12,
+              marginTop: 14,
+              alignItems: "stretch",
+            }}
           >
-            <div className="cosy-subtext">
-              지금 단계 목표: <b>이미지 업로드 → OCR 호출</b>이 정상인지 확인
+            {/* 왼쪽: 하얀 박스(진행/요약) */}
+            <div
+              className="cosy-card"
+              style={{
+                flex: 1,
+                minHeight: 220,
+                padding: 18,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              {!inspectionStarted ? (
+                <div style={{ width: "100%" }}>
+                  <div style={{ fontWeight: 900, color: "#111827", marginBottom: 10 }}>
+                    준비 상태 체크
+                  </div>
+
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {renderReadyRow("이미지 업로드", hasImage)}
+                    {renderReadyRow("OCR 텍스트 준비(추출/직접입력)", hasOcrText)}
+                    {renderReadyRow(`국가 선택 (${selectedCountryCodes.length}개)`, hasCountries)}
+                  </div>
+
+                  <div style={{ height: 10 }} />
+
+                  <div
+                    className="cosy-subtext"
+                    style={{
+                      fontWeight: 900,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {canRunInspection
+                      ? "준비 완료! 오른쪽 ‘검사 실행’을 누르면 국가별 검사가 시작됩니다."
+                      : "위 항목이 모두 ‘완료’가 되면 ‘검사 실행’이 가능합니다."}
+                  </div>
+                </div>
+              ) : (
+                <div style={{ width: "100%" }}>
+                  {/* 진행률(한줄 고정) */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "baseline",
+                      justifyContent: "space-between",
+                      gap: 10,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <div style={{ fontWeight: 900, color: "#111827" }}>
+                      검사 진행: {overall.doneCount}/{overall.total} 완료
+                    </div>
+                    <div
+                      className="cosy-subtext"
+                      style={{
+                        fontWeight: 900,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      처리중 {overall.loading}
+                    </div>
+                  </div>
+
+                  <div style={{ height: 10 }} />
+
+                  {/* ✅ 국가별 상태: 긴 텍스트 제거 -> 짧은 code+status chip */}
+                  {renderMiniStatusChips()}
+
+                  <div style={{ height: 12 }} />
+
+                  {/* 완료 시 요약 */}
+                  {allDone ? (
+                    <>
+                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                        <span className="cosy-chip is-pass">PASS {overall.pass}</span>
+                        <span className="cosy-chip is-mid">WARN {overall.warn}</span>
+                        <span className="cosy-chip is-high">FAIL {overall.fail}</span>
+                      </div>
+
+                      <div style={{ height: 10 }} />
+
+                      {highlight ? (
+                        <div
+                          className="cosy-subtext"
+                          style={{
+                            fontWeight: 900,
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          우선 확인: {highlight.code} {highlight.status} ({highlight.count}건)
+                        </div>
+                      ) : (
+                        <div
+                          className="cosy-subtext"
+                          style={{
+                            fontWeight: 900,
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          모든 국가에서 큰 이슈가 발견되지 않았습니다.
+                        </div>
+                      )}
+
+                      <div
+                        className="cosy-subtext"
+                        style={{
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        자세한 내용은 아래 ‘문구 규제 검사 결과’ 영역에서 국가 탭을 눌러 확인하세요.
+                      </div>
+                    </>
+                  ) : (
+                    <div
+                      className="cosy-subtext"
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      일부 국가는 아직 처리 중입니다. 완료되는 대로 아래 결과 탭에 반영됩니다.
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-            <div className="cosy-subtext">
-              다음 단계: 선택한 국가별로 Spring 검사 API 호출 (결과는 아래 영역에 표시)
+
+            {/* 오른쪽: 검사 실행 버튼(겹침 방지용) */}
+            <div
+              className="cosy-card"
+              style={{
+                width: 150,
+                padding: 14,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                gap: 8,
+              }}
+            >
+              <div
+                className="cosy-subtext"
+                style={{
+                  fontWeight: 900,
+                  textAlign: "center",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {canRunInspection ? "준비됨" : "대기중"}
+              </div>
+
+              <button
+                type="button"
+                className="cosy-btn cosy-btn--primary"
+                onClick={runInspection}
+                disabled={!canRunInspection}
+                title={!canRunInspection ? "국가 선택 + OCR 텍스트가 있어야 실행할 수 있어요" : ""}
+                style={{ width: "100%" }}
+              >
+                검사 실행
+              </button>
             </div>
           </div>
-
-          {/* ✅ 현재는 yg 결과 UI 복구를 위해 "데모 심사"로 연결 */}
-          <button
-            type="button"
-            className="cosy-btn cosy-btn--primary cosy-submit"
-            onClick={runAuditDemo}
-            disabled={!canRunInspection}
-            title={!canRunInspection ? "국가 선택 + OCR 텍스트가 있어야 실행할 수 있어요" : ""}
-          >
-            검사 실행
-          </button>
         </div>
       </div>
 
-      {/* ✅ 하단 결과 UI(yg에서 가져온 영역) */}
-      <div style={{ marginTop: 16 }}>
+      {/* =========================
+          하단 결과 UI: 전체 요약 + 국가별 탭 + LLM 답변만
+         ========================= */}
+      <div style={{ marginTop: 16 }} ref={resultsRef}>
         <div className="cosy-panel is-tall" style={{ minHeight: 360 }}>
-          <div className="cosy-panel__title">문구 규제 부적합 요소(데모)</div>
+          <div className="cosy-panel__title">문구 규제 검사 결과</div>
 
-          {/* 요약 */}
+          {/* 1) 전체 요약 */}
           <div className="cosy-card" style={{ padding: 12 }}>
-            <div className="cosy-center-box" style={{ minHeight: 120 }}>
-              {summaryIcon}
-              {!summary ? (
+            {!inspectionStarted ? (
+              <div className="cosy-subtext">
+                텍스트와 국가를 준비한 뒤, ‘검사 실행’을 눌러주세요
+              </div>
+            ) : (
+              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                <div style={{ fontWeight: 900 }}>선택 국가: {selectedCountryCodes.length}개</div>
                 <div className="cosy-subtext">
-                  텍스트와 국가를 준비한 뒤, ‘검사 실행’을 눌러주세요
+                  (완료 {overall.doneCount}/{overall.total}, 처리중 {overall.loading})
                 </div>
-              ) : (
-                <>
-                  <div style={{ fontSize: 14, fontWeight: 900, color: "#111827" }}>
-                    {summary.text}
-                  </div>
-                  <div className="cosy-subtext">
-                    * 현재는 데모 판정입니다. (추후 Spring 검사 API 결과로 교체)
-                  </div>
-                </>
-              )}
+
+                <div style={{ marginLeft: "auto", display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <span className="cosy-chip is-pass">PASS {overall.pass}</span>
+                  <span className="cosy-chip is-mid">WARN {overall.warn}</span>
+                  <span className="cosy-chip is-high">FAIL {overall.fail}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div style={{ height: 10 }} />
+
+          {/* 2) 국가 탭 */}
+          <div className="cosy-card" style={{ padding: 10 }}>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {(selectedCountryCodes.length ? selectedCountryCodes : COUNTRY_CODES).map((code) => {
+                const isActive = activeTab === code;
+
+                return (
+                  <button
+                    key={code}
+                    type="button"
+                    className={`cosy-tab ${isActive ? "is-active" : ""}`}
+                    onClick={() => onTabClick(code)}
+                    title={tabPinned ? "탭 고정됨(자동 이동 중지)" : "탭 클릭 시 고정됨"}
+                  >
+                    <span style={{ fontWeight: 900 }}>{getCountryName(code)}</span>
+                    <span style={{ fontWeight: 900, opacity: 0.85 }}>({code})</span>
+                    {/* ✅ 긴 텍스트 대신 작은 상태 배지 */}
+                    {renderTabBadge(code)}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div style={{ height: 8 }} />
+
+            <div className="cosy-subtext">
+              검사 실행 후 국가별 결과를 확인할 수 있어요. (탭을 클릭하면 자동 이동이 멈춥니다)
             </div>
           </div>
 
-          <div style={{ height: 12 }} />
+          <div style={{ height: 10 }} />
 
-          {/* 테이블 */}
-          <div className="cosy-card">
-            <div className="cosy-table-wrap">
-              <table className="cosy-table">
-                <thead>
-                  <tr>
-                    <th>라벨명</th>
-                    <th>국가명</th>
-                    <th>부적합 문구</th>
-                    <th>문구 위치</th>
-                    <th>상세 규제 내용</th>
-                    <th>필요한 작업</th>
-                  </tr>
-                </thead>
+          {/* 3) 탭 상세: LLM 답변만 표시 */}
+          <div className="cosy-card" style={{ padding: 14 }}>
+            {!inspectionStarted ? (
+              <div className="cosy-subtext">아직 검사 전입니다.</div>
+            ) : !activeResult ? (
+              <div className="cosy-subtext">{getCountryName(activeTab)} 결과가 아직 없습니다.</div>
+            ) : activeResult.phase === "loading" ? (
+              <div className="cosy-subtext">{getCountryName(activeTab)} 검사 중...</div>
+            ) : activeResult.phase === "error" ? (
+              <div className="cosy-subtext" style={{ color: "#ef4444" }}>
+                {getCountryName(activeTab)} 검사 실패: {activeResult.error}
+              </div>
+            ) : (
+              <>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  <div style={{ fontWeight: 900, fontSize: 14 }}>
+                    {getCountryName(activeTab)}({activeTab}) 결과: {activeResult.status}
+                  </div>
 
-                <tbody>
-                  {!summary ? (
-                    <tr>
-                      <td colSpan={6} style={{ padding: "34px 14px" }}>
-                        <div className="cosy-center-box" style={{ minHeight: 120 }}>
-                          <div className="cosy-circle">
-                            <Minus size={18} />
-                          </div>
-                          <div className="cosy-subtext">
-                            검사를 실행하면 결과가 표시됩니다
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  ) : rows.length === 0 ? (
-                    <tr>
-                      <td colSpan={6} style={{ padding: "22px 14px" }}>
-                        <div className="cosy-subtext" style={{ fontWeight: 900 }}>
-                          부적합 요소가 발견되지 않았습니다. (데모)
-                        </div>
-                      </td>
-                    </tr>
-                  ) : (
-                    rows.map((r, idx) => (
-                      <tr key={idx}>
-                        <td className="cosy-strong">{r.labelName}</td>
-                        <td>{r.countryName}</td>
-                        <td>
-                          <span
-                            className={`cosy-chip ${
-                              r.severity === "high" ? "is-high" : "is-mid"
-                            }`}
-                          >
-                            {r.badClaim}
-                          </span>
-                        </td>
-                        <td>{r.location}</td>
-                        <td>{r.detail}</td>
-                        <td>{r.action}</td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
+                  <div className="cosy-subtext" style={{ marginLeft: "auto" }}>
+                    * 이 영역은 백엔드 검사 API 응답으로 갱신됩니다.
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  <div style={{ fontWeight: 900 }}>AI 검사 답변(LLM)</div>
+
+                  <textarea
+                    value={activeResult.llmText || ""}
+                    readOnly
+                    style={{
+                      width: "100%",
+                      minHeight: 180,
+                      borderRadius: 12,
+                      border: "1px solid #e5e7eb",
+                      padding: 12,
+                      resize: "vertical",
+                      fontSize: 13,
+                      lineHeight: 1.55,
+                      outline: "none",
+                      background: "#f9fafb",
+                      whiteSpace: "pre-wrap",
+                    }}
+                  />
+                </div>
+              </>
+            )}
           </div>
 
-          <div className="cosy-hint" style={{ marginTop: 10 }}>
-            * 이 결과 영역은 “백엔드 검사 API 응답”으로 교체될 자리입니다.
+          <div style={{ height: 8 }} />
+          <div className="cosy-subtext">
+            * 멀티국가 결과는 country별 반복 호출 → resultsByCountry에 저장 → 탭에서 출력하는 구조입니다.
           </div>
         </div>
       </div>
