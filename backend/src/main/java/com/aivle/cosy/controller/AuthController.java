@@ -2,16 +2,17 @@ package com.aivle.cosy.controller;
 
 import com.aivle.cosy.dto.LoginRequest;
 import com.aivle.cosy.dto.LoginResponse;
-import com.aivle.cosy.dto.RefreshRequest;
 import com.aivle.cosy.dto.RefreshResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
 import com.aivle.cosy.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,17 @@ public class AuthController {
     @NonNull
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request){
         LoginResponse loginResponse = userService.login(request);
-        return new ResponseEntity<>(loginResponse, HttpStatus.OK);
+
+        ResponseCookie cookie = ResponseCookie.from("refresh_token",
+                loginResponse.getRefreshToken())
+                .httpOnly(true)
+                .path("/api/auth")
+                .maxAge(7 * 24 * 60 * 60) // 7일
+                .secure(true)
+                .sameSite("Strict")
+                .build();
+
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString()).body(loginResponse);
     }
 
     @PostMapping("/signup")
@@ -40,8 +51,13 @@ public class AuthController {
 
     @PostMapping("/refresh")
     @NonNull
-    public ResponseEntity<RefreshResponse> refresh(@RequestBody RefreshRequest token){
-        return new ResponseEntity<>(userService.refresh(token), HttpStatus.OK);
+    public ResponseEntity<RefreshResponse> refresh(@CookieValue(name = "refresh_token", required = false) String refreshToken
+    ){
+        if (refreshToken == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return new ResponseEntity<>(userService.refresh(refreshToken), HttpStatus.OK);
     }
 
 

@@ -5,7 +5,6 @@ import com.aivle.cosy.domain.Company;
 import com.aivle.cosy.domain.User;
 import com.aivle.cosy.dto.LoginRequest;
 import com.aivle.cosy.dto.LoginResponse;
-import com.aivle.cosy.dto.RefreshRequest;
 import com.aivle.cosy.dto.RefreshResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
@@ -107,9 +106,6 @@ public class UserService {
      */
     @Transactional(readOnly = true)
     public UserInfoResponse getUserInfo(String accessToken){
-        if(!tokenProvider.validateAccessToken(accessToken)){
-            throw new BusinessException(AuthErrorCode.INVALID_TOKEN);
-        }
         String email = tokenProvider.extractEmail(accessToken);
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
@@ -120,13 +116,11 @@ public class UserService {
 
     /**
      * access token 재발급용
-     * @param refreshTokenInfo
+     * @param refreshToken
      * @return
      */
     @Transactional(readOnly = true)
-    public RefreshResponse refresh (RefreshRequest refreshTokenInfo){
-        String refreshToken = refreshTokenInfo.refreshToken();
-
+    public RefreshResponse refresh (String refreshToken){
         if(!tokenProvider.validateRefreshToken(refreshToken)){
             throw new BusinessException(AuthErrorCode.INVALID_TOKEN);
         }
