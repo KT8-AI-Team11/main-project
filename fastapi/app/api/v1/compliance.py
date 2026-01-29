@@ -37,4 +37,5 @@ async def check_from_image(
             for f in llm_result.findings
         ],
         notes=llm_result.notes,
+        formatted_text=llm_result.formatted_text,
     )

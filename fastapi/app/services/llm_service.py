@@ -3,13 +3,47 @@ from typing import List
 import json
 from openai import OpenAI
 from app.core.config import OPENAI_API_KEY, OPENAI_MODEL
-
 from app.schemas.compliance import LlmResult, Finding
 
 class LlmService:
     def __init__(self):
         self.client = OpenAI(api_key=OPENAI_API_KEY)
         self.model = OPENAI_MODEL
+
+    # 문구규제 페이지에서 바로 쓸 수 있는 텍스트 생성 함수
+    def _format_for_ui(self, market: str, domain_desc: str, data: dict) -> str:
+        overall = data.get("overall_risk", "MEDIUM")
+        findings = data.get("findings", []) or []
+        notes = data.get("notes", []) or []
+
+        lines = []
+        lines.append(f"[{market}] {domain_desc} 규제 검토 결과")
+        lines.append(f"종합 리스크: {overall}")
+        lines.append("")
+
+        if findings:
+            lines.append("문제 항목:")
+            for i, f in enumerate(findings, 1):
+                snippet = f.get("snippet", "")
+                risk = f.get("risk", "MEDIUM")
+                reason = f.get("reason", "")
+                rewrite = f.get("suggested_rewrite") or ""
+                lines.append(f"{i}. ({risk}) {snippet}")
+                lines.append(f"   - 사유: {reason}")
+                if rewrite:
+                    lines.append(f"   - 수정 제안: {rewrite}")
+        else:
+            lines.append("문제 항목: 없음")
+
+        if isinstance(notes, str):
+            notes = [notes]
+        if notes:
+            lines.append("")
+            lines.append("참고/주의:")
+            for n in notes:
+                lines.append(f"- {n}")
+
+        return "\n".join(lines)
 
     # todo: 성분규제와 문구규제를 나누기?
     def analyze_with_context(self, market: str, domain: str, text: str, context: str) -> LlmResult:
@@ -80,10 +114,13 @@ class LlmService:
         else:
             notes = [str(x) for x in (notes_val or [])]
 
+        formatted_text = self._format_for_ui(market, domain_desc, data)
+
         return LlmResult(
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
             findings=findings,
             notes=notes,
+            formatted_text=formatted_text,
         )
 
     def generate(self, prompt: str) -> str:
