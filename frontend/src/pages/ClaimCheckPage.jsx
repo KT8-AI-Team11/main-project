@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 
 import CountryMultiSelect from "../components/CountryMultiSelect";
-import { ocrExtract } from "../api/ocr"; // ✅ OCR은 절대 흐름 깨지면 안 됨
-import { checkRegulation } from "../api/compliance"; // ✅ 규제 검사(FastAPI) 분리 호출
+import { ocrExtract } from "../api/ocr"; 
+import { checkRegulation } from "../api/compliance"; 
 
 // 백엔드가 현재 US/JP만 지원이면 유지(원하면 EU/CN 추가 or 가드 제거)
 const SUPPORTED_MARKETS = new Set(["US", "JP"]);
@@ -31,17 +31,7 @@ function mapFindingRiskToSeverity(risk) {
   return "PASS";
 }
 
-/**
- * ✅ 백엔드 응답 → 프론트 상태 형태로 정규화
- * 기대 응답:
- * {
- *   market: "JP",
- *   overall_risk: "HIGH",
- *   findings: [{ snippet, risk, reason, suggested_rewrite }, ...],
- *   notes: [...],
- *   formatted_text: "..."
- * }
- */
+
 function normalizeInspectionResult(apiJson, countryCode) {
   const status = mapOverallRiskToStatus(apiJson?.overall_risk);
 
@@ -108,13 +98,10 @@ export default function ClaimCheckPage() {
   const [resultsByCountry, setResultsByCountry] = useState({});
   const [inspectionStarted, setInspectionStarted] = useState(false);
 
-<<<<<<< HEAD
-=======
   // ✅ “돌아가는 중”을 버튼/패널에 강하게 표시하기 위한 상태
   const [isInspecting, setIsInspecting] = useState(false);
   const [currentInspectingCode, setCurrentInspectingCode] = useState("");
 
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
   const [activeTab, setActiveTab] = useState("US");
   const [tabPinned, setTabPinned] = useState(false);
 
@@ -129,11 +116,8 @@ export default function ClaimCheckPage() {
     setResultsByCountry({});
     setInspectionStarted(false);
     setTabPinned(false);
-<<<<<<< HEAD
-=======
     setIsInspecting(false);
     setCurrentInspectingCode("");
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
   };
 
   // 선택한 국가가 바뀌면 activeTab이 범위 밖일 수 있어 보정
@@ -173,15 +157,12 @@ export default function ClaimCheckPage() {
   const allDone =
     inspectionStarted && overall.total > 0 && overall.doneCount === overall.total;
 
-<<<<<<< HEAD
-=======
   const progressPct = useMemo(() => {
     if (!inspectionStarted || overall.total <= 0) return 0;
     const pct = Math.round((overall.doneCount / overall.total) * 100);
     return Math.max(0, Math.min(100, pct));
   }, [inspectionStarted, overall.total, overall.doneCount]);
 
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
   const highlight = useMemo(() => {
     if (!allDone) return null;
 
@@ -271,62 +252,6 @@ export default function ClaimCheckPage() {
   // =========================
   const runInspection = async () => {
     if (!canRunInspection) return;
-<<<<<<< HEAD
-
-    setInspectionStarted(true);
-    setTabPinned(false);
-
-    // 1) 선택 국가 초기 상태 세팅
-    const initState = {};
-    selectedCountryCodes.forEach((c) => {
-      if (!SUPPORTED_MARKETS.has(c)) {
-        // ❗ 미지원 국가: ERR 대신 PEND로 처리(보기 좋게)
-        initState[c] = {
-          phase: "done",
-          status: "PEND",
-          violations: [],
-          llmText: `[${c}] 현재 백엔드가 ${Array.from(SUPPORTED_MARKETS).join(
-            "/"
-          )}만 지원합니다.`,
-        };
-      } else {
-        initState[c] = { phase: "loading", status: "", violations: [], llmText: "" };
-      }
-    });
-    setResultsByCountry(initState);
-
-    // 2) 결과 영역으로 스크롤
-    setTimeout(() => {
-      resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-
-    // 3) 국가별 반복 호출
-    for (let i = 0; i < selectedCountryCodes.length; i++) {
-      const c = selectedCountryCodes[i];
-      if (!SUPPORTED_MARKETS.has(c)) continue;
-
-      try {
-        const apiJson = await checkRegulation({
-          market: c,
-          text: ocrText,
-          domain: "labeling",
-        });
-
-        const normalized = normalizeInspectionResult(apiJson, c);
-        setResultsByCountry((prev) => ({ ...prev, [c]: normalized }));
-      } catch (err) {
-        setResultsByCountry((prev) => ({
-          ...prev,
-          [c]: {
-            phase: "error",
-            status: "",
-            violations: [],
-            llmText: "",
-            error: err?.message || "검사 중 오류가 발생했어요.",
-          },
-        }));
-      }
-=======
     if (isInspecting) return; // ✅ 중복 클릭 방지
 
     setInspectionStarted(true);
@@ -391,7 +316,6 @@ export default function ClaimCheckPage() {
     } finally {
       setCurrentInspectingCode("");
       setIsInspecting(false);
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
     }
   };
 
@@ -498,20 +422,14 @@ export default function ClaimCheckPage() {
           {ok ? (
             <>
               <CheckCircle2 size={16} color="#16a34a" />
-              <div
-                className="cosy-subtext"
-                style={{ color: "#16a34a", fontWeight: 900 }}
-              >
+              <div className="cosy-subtext" style={{ color: "#16a34a", fontWeight: 900 }}>
                 완료
               </div>
             </>
           ) : (
             <>
               <Minus size={16} color="#9ca3af" />
-              <div
-                className="cosy-subtext"
-                style={{ color: "#9ca3af", fontWeight: 900 }}
-              >
+              <div className="cosy-subtext" style={{ color: "#9ca3af", fontWeight: 900 }}>
                 대기
               </div>
             </>
@@ -728,15 +646,6 @@ export default function ClaimCheckPage() {
         <div className="cosy-panel is-relative">
           <div className="cosy-panel__title">검사</div>
 
-<<<<<<< HEAD
-          <CountryMultiSelect
-            label="대상 국가 선택"
-            options={countryOptions}
-            value={selectedCountryCodes}
-            onChange={setSelectedCountryCodes}
-            placeholder="국가를 선택하세요"
-          />
-=======
           {/* ✅ 검사 중에는 국가 선택 UI 잠금 + 약간 투명 */}
           <div style={{ pointerEvents: isInspecting ? "none" : "auto", opacity: isInspecting ? 0.65 : 1 }}>
             <CountryMultiSelect
@@ -747,27 +656,19 @@ export default function ClaimCheckPage() {
               placeholder="국가를 선택하세요"
             />
           </div>
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
 
           <div className="cosy-mini-actions" style={{ opacity: isInspecting ? 0.65 : 1 }}>
             <button
               type="button"
               className="cosy-btn"
-<<<<<<< HEAD
-              onClick={() => setSelectedCountryCodes(countryOptions.map((c) => c.code))}
-=======
               disabled={isInspecting}
               onClick={() => setSelectedCountryCodes(countryOptions.map((c) => c.code))}
               style={{ cursor: isInspecting ? "not-allowed" : "pointer" }}
               title={isInspecting ? "검사 중에는 변경할 수 없어요" : ""}
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
             >
               전체 선택
             </button>
 
-<<<<<<< HEAD
-            <button type="button" className="cosy-btn" onClick={() => setSelectedCountryCodes([])}>
-=======
             <button
               type="button"
               className="cosy-btn"
@@ -776,7 +677,6 @@ export default function ClaimCheckPage() {
               style={{ cursor: isInspecting ? "not-allowed" : "pointer" }}
               title={isInspecting ? "검사 중에는 변경할 수 없어요" : ""}
             >
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
               해제
             </button>
           </div>
@@ -991,11 +891,6 @@ export default function ClaimCheckPage() {
                 type="button"
                 className="cosy-btn cosy-btn--primary"
                 onClick={runInspection}
-<<<<<<< HEAD
-                disabled={!canRunInspection}
-                style={{ width: "100%" }}
-                title={!canRunInspection ? "국가 선택 + OCR 텍스트가 있어야 실행할 수 있어요" : ""}
-=======
                 disabled={!canRunInspection || isInspecting}
                 style={{
                   width: "100%",
@@ -1013,7 +908,6 @@ export default function ClaimCheckPage() {
                     ? "검사 진행 중입니다"
                     : ""
                 }
->>>>>>> b5875ecdfab28405b16a4df64a85674895c955a6
               >
                 {isInspecting ? <Loader2 size={16} className="cosy-spin" /> : null}
                 {isInspecting
