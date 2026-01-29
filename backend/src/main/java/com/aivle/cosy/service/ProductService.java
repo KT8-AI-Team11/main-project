@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -67,6 +68,7 @@ public class ProductService {
         return new ProductResponse.MessageResponse("제품 정보가 성공적으로 수정되었습니다.");
     }
 
+    // 하나만 삭제
     public ProductResponse.MessageResponse deleteProduct(Long id, Long companyId) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ProductErrorCode.PRODUCT_NOT_FOUND));
@@ -77,5 +79,19 @@ public class ProductService {
 
         productRepository.delete(product);
         return new ProductResponse.MessageResponse("제품이 삭제되었습니다.");
+    }
+
+    // 여러 삭제
+    public ProductResponse.MessageResponse deleteMultipleProducts(List<Long> ids, Long companyId) {
+        List<Product> products = productRepository.findAllById(ids);
+
+        for (Product p : products) {
+            if (!p.getCompany().getId().equals(companyId)) {
+                throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
+            }
+        }
+
+        productRepository.deleteAllInBatch(products); // 대량 삭제 최적화 메서드
+        return new ProductResponse.MessageResponse(ids.size() + "개의 제품이 삭제되었습니다.");
     }
 }

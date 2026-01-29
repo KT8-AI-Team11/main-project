@@ -32,6 +32,7 @@ public class ProductResponse {
         private String fullIngredient;
         private Status status;
         private LocalDateTime regDate;
+        private LocalDateTime upDate;
 
         public static DetailResponse from(Product product) {
             return DetailResponse.builder()
@@ -42,6 +43,7 @@ public class ProductResponse {
                     .fullIngredient(product.getFullIngredient())
                     .status(product.getStatus())
                     .regDate(product.getRegDate())
+                    .upDate(product.getUpdDate())
                     .build();
         }
     }
