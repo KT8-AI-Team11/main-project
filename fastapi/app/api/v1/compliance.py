@@ -25,6 +25,7 @@ async def check_from_image(
     )
 
     return ComplianceCheckResponse(
+        market = market,
         overall_risk=llm_result.overall_risk,
         findings=[
             Finding(

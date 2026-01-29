@@ -11,9 +11,10 @@ class LlmService:
         self.client = OpenAI(api_key=OPENAI_API_KEY)
         self.model = OPENAI_MODEL
 
+    # todo: 성분규제와 문구규제를 나누기?
     def analyze_with_context(self, market: str, domain: str, text: str, context: str) -> LlmResult:
         domain_desc = "전성분(성분) 규제" if domain == "ingredients" else "라벨/문구(표시·광고) 규제"
-
+        input_desc = "화장품에 들어가는 전성분을 나열한 것" if domain == "ingredients" else "제품의 판매에 쓰일 라벨/문구"
         prompt = f"""
 너는 {market} 화장품 규제 검토를 도와주는 컴플라이언스 전문가다.
 검토 범위는 "{domain_desc}"이다.
@@ -24,6 +25,7 @@ class LlmService:
 [CONTEXT]
 {context}
 
+아래 [INPUT]은 {input_desc}이다.
 [INPUT]
 {text}
 

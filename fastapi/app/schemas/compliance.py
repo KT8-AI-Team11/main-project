@@ -25,6 +25,7 @@ class LlmResult:
     notes: List[str]
 
 class ComplianceCheckResponse(BaseModel):
+    market: str
     overall_risk: str
     findings: List[Finding]
     notes: List[str]
