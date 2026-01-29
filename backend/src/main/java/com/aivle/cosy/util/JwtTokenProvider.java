@@ -81,26 +81,32 @@ public class JwtTokenProvider {
     }
 
     public long getRemainingExpiration(String token) {
-        try{
+        if (token == null || token.isEmpty()) return -1;
+
+        try {
             return extractClaims(token)
                     .getExpiration()
                     .toInstant()
                     .toEpochMilli() - System.currentTimeMillis();
-        }catch (ExpiredJwtException e){ // 만료된 경우
+        } catch (ExpiredJwtException e) {
             return e.getClaims()
                     .getExpiration()
                     .toInstant()
                     .toEpochMilli() - System.currentTimeMillis();
-
+        } catch (Exception e) {
+            return -1;
         }
-
     }
 
     public String extractJti(String token){
+        if (token == null || token.isEmpty()) return null;
+
         try {
             return extractClaims(token).getId();
-        }catch (ExpiredJwtException e){ // 만료된 경우
+        } catch (ExpiredJwtException e) {
             return e.getClaims().getId();
+        } catch (Exception e) {
+            return null;
         }
     }
 

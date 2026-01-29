@@ -21,18 +21,21 @@ public class TokenBlacklistService {
      * @param expirationMs 토큰의 남은 만료 시간 (밀리초)
      */
     public void addToBlacklist(String token, long expirationMs) {
-        String key = BLACKLIST_PREFIX + jwtTokenProvider.extractJti(token);
+        String jti = jwtTokenProvider.extractJti(token);
+        if (jti == null || expirationMs < 0) return;
 
-        if(expirationMs < 0) return; // 유효기간이 만료된 토큰일 경우
-        // value에 아무 의미 없는 String도 라고?? 왜지
-        redisTemplate.opsForValue().set(key,"1",expirationMs,TimeUnit.MILLISECONDS);
+        String key = BLACKLIST_PREFIX + jti;
+        redisTemplate.opsForValue().set(key, "1", expirationMs, TimeUnit.MILLISECONDS);
     }
 
     /**
      * 토큰이 블랙리스트에 있는지 확인
      */
     public boolean isBlacklisted(String token) {
-        String key = BLACKLIST_PREFIX + jwtTokenProvider.extractJti(token);
+        String jti = jwtTokenProvider.extractJti(token);
+        if (jti == null) return false;
+
+        String key = BLACKLIST_PREFIX + jti;
         return Boolean.TRUE.equals(redisTemplate.hasKey(key));
     }
 }
