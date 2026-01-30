@@ -9,7 +9,6 @@ from app.repositories.vectorstore_repo import get_retriever
 from app.services.ocr_service import get_ocr_service
 from app.services.llm_service import LlmService
 
-# todo: schemas에 맞춰 이름만 조정
 from app.schemas.compliance import LlmResult, Finding
 
 def _normalize_text(text: str) -> str:
@@ -73,14 +72,16 @@ class ComplianceService:
             return LlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
 
         # 1) RAG
+        # 1-1. 벡터db에게 무엇을 물어볼지 쿼리 생성
         rag_query = _build_rag_query(market=market, domain=domain, text=normalized)
+        # 1-2. 벡터db retriever 생성 (벡터db에서 관련 문서 찾아주는 탐색기)
         retriever = get_retriever(market=market, domain=domain, k=6, fetch_k=20)
+        # 1-3. 문서 검색 실행
         docs = retriever.invoke(rag_query)
+        # 1-4. LLM에게 전달할 문자열 context 생성
         context = _format_docs_for_context(docs)
 
-        # 2) LLM (✅ 여기만 너 LlmService에 맞춰 호출 방식 조정)
-        # 기존 방식: analyze_label_text(market, text)
-        # -> RAG 붙이려면 context까지 넘기는 새 메서드가 필요함
+        # 2) LLM 호출
         llm_result = self.llm.analyze_with_context(
             market=market,
             domain=domain,
