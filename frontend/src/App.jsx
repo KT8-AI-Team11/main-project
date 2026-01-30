@@ -9,7 +9,9 @@ import ProductsPage from "./pages/ProductsPage";
 import IngredientCheckPage from "./pages/IngredientCheckPage";
 import ClaimCheckPage from "./pages/ClaimCheckPage";
 import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage"; // ✅ 추가
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
+import { logout } from "./api/auth";
 
 export default function CosyUI() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -36,15 +38,26 @@ export default function CosyUI() {
   };
 
   // ✅ 로그아웃
-  const handleLogout = () => {
-    localStorage.removeItem("cosy_logged_in");
-    localStorage.removeItem("cosy_login_type");
-    localStorage.removeItem("cosy_user_email");
-    localStorage.removeItem("cosy_demo_user");
+  const handleLogout = async () => {
+    const token = localStorage.getItem("cosy_access_token");
 
-    setIsLoggedIn(false);
-    setCurrentPage("home");
-    setIsChatOpen(false);
+    try {
+      if (token) {
+        await logout(token);
+      }
+    } catch (error) {
+      console.error("로그아웃 API 호출 실패:", error);
+    } finally {
+      localStorage.removeItem("cosy_access_token");
+      localStorage.removeItem("cosy_logged_in");
+      localStorage.removeItem("cosy_login_type");
+      localStorage.removeItem("cosy_user_email");
+      localStorage.removeItem("cosy_demo_user");
+
+      setIsLoggedIn(false);
+      setCurrentPage("home");
+      setIsChatOpen(false);
+    }
   };
 
   // ✅ 코치 임의 로그인(홈 버튼용)
@@ -73,7 +86,22 @@ export default function CosyUI() {
 
   // ✅ 로그인 페이지는 레이아웃 숨김
   if (currentPage === "login") {
-    return <LoginPage onLoginSuccess={handleLoginSuccess} />;
+    return (
+      <LoginPage
+        onLoginSuccess={handleLoginSuccess}
+        onGoToRegister={() => setCurrentPage("register")}
+      />
+    );
+  }
+
+  // ✅ 회원가입 페이지
+  if (currentPage === "register") {
+    return (
+      <RegisterPage
+        onRegisterSuccess={() => setCurrentPage("login")}
+        onBackToLogin={() => setCurrentPage("login")}
+      />
+    );
   }
 
   return (

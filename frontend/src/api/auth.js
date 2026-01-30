@@ -11,3 +11,14 @@ export const signup = (email, password) =>
     method: "POST",
     body: { email, password },
   });
+
+export const logout = (accessToken) =>
+    apiFetch("/api/auth/logout", {
+        method: "POST",
+        token: accessToken,
+    })
+
+export const refresh = (accessToken) =>
+    apiFetch("/api/auth/refresh", {
+        method: "POST",
+    })

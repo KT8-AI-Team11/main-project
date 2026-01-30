@@ -3,12 +3,11 @@ import { Image, X, CheckCircle, Camera } from "lucide-react";
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: "/api",  // Vite 프록시 사용
 });
 
 api.interceptors.request.use((config) => {
-    // 로그인 시 저장한 키값 (JWT Token)
-    const token = localStorage.getItem("cosy_token");
+    const token = localStorage.getItem("cosy_access_token");
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
