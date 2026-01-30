@@ -14,7 +14,15 @@ import ProfilePage from "./pages/ProfilePage";
 import { login, logout } from "./api/auth";
 
 export default function CosyUI() {
-  const [currentPage, setCurrentPage] = useState("home");
+  // 세션 만료로 인한 로그인 페이지 리다이렉트 체크
+  const [currentPage, setCurrentPage] = useState(() => {
+    const redirectToLogin = sessionStorage.getItem("redirect_to_login");
+    if (redirectToLogin) {
+      sessionStorage.removeItem("redirect_to_login");
+      return "login";
+    }
+    return "home";
+  });
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   // ✅ localStorage 기반 로그인 상태

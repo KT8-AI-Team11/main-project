@@ -11,6 +11,7 @@ export class ApiError extends Error {
 // refresh 중복 요청 방지
 let isRefreshing = false;
 let refreshPromise = null;
+let isLoggingOut = false;  // 중복 로그아웃 방지
 
 async function refreshToken() {
   const res = await fetch(`${BASE}/api/auth/refresh`, {
@@ -40,8 +41,24 @@ export async function apiFetch(path, { method = "GET", body, token, _retry = fal
 
   const data = await res.json().catch(() => null);
 
+  // 재시도에서도 401/403이면 세션 만료 처리
+  if ((res.status === 401 || res.status === 403) && _retry) {
+    if (!isLoggingOut) {
+      isLoggingOut = true;
+      localStorage.removeItem("cosy_access_token");
+      localStorage.removeItem("cosy_logged_in");
+      localStorage.removeItem("cosy_user_email");
+      alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+      sessionStorage.setItem("redirect_to_login", "true");
+      window.location.reload();
+    }
+    throw new ApiError(401, { message: "세션이 만료되었습니다." });
+  }
+
   // 401/403 에러 && 재시도 아님 && 토큰 사용 요청인 경우 refresh 시도
+  // console.log('[client] status:', res.status, '_retry:', _retry, 'token:', !!token, 'isLoggingOut:', isLoggingOut);
   if ((res.status === 401 || res.status === 403) && !_retry && token) {
+    // console.log('[client] refresh 시도...');
     try {
       if (!isRefreshing) {
         isRefreshing = true;
@@ -59,10 +76,15 @@ export async function apiFetch(path, { method = "GET", body, token, _retry = fal
       refreshPromise = null;
 
       // refresh 실패 시 로그아웃 처리
-      localStorage.removeItem("cosy_access_token");
-      localStorage.removeItem("cosy_logged_in");
-      localStorage.removeItem("cosy_user_email");
-      window.location.reload();
+      if (!isLoggingOut) {
+        isLoggingOut = true;
+        localStorage.removeItem("cosy_access_token");
+        localStorage.removeItem("cosy_logged_in");
+        localStorage.removeItem("cosy_user_email");
+        alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+        sessionStorage.setItem("redirect_to_login", "true");
+        window.location.reload();
+      }
 
       throw new ApiError(401, { message: "세션이 만료되었습니다." });
     }

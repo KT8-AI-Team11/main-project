@@ -18,22 +18,39 @@ api.interceptors.request.use((config) => {
 // response interceptor: 401/403 시 refresh 시도
 let isRefreshing = false;
 let refreshPromise = null;
+let isLoggingOut = false;  // 중복 로그아웃 방지
 
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
 
+        // 재시도에서도 401/403이면 세션 만료 처리
+        if ((error.response?.status === 401 || error.response?.status === 403) && originalRequest._retry) {
+            if (!isLoggingOut) {
+                isLoggingOut = true;
+                localStorage.removeItem("cosy_access_token");
+                localStorage.removeItem("cosy_logged_in");
+                localStorage.removeItem("cosy_user_email");
+                alert("세션이 만료되었습니다.");
+                window.location.reload();
+            }
+            return Promise.reject(error);
+        }
+
         if ((error.response?.status === 401 || error.response?.status === 403) && !originalRequest._retry) {
             originalRequest._retry = true;
+            // console.log('[ProductsPage] 401/403 감지, refresh 시도...');
 
             try {
                 if (!isRefreshing) {
                     isRefreshing = true;
+                    // console.log('[ProductsPage] refresh 호출 시작');
                     refreshPromise = axios.post(`${BASE}/api/auth/refresh`, {}, { withCredentials: true });
                 }
 
                 const res = await refreshPromise;
+                // console.log('[ProductsPage] refresh 성공, 새 토큰:', res.data.accessToken?.substring(0, 20) + '...');
                 isRefreshing = false;
                 refreshPromise = null;
 
@@ -46,10 +63,14 @@ api.interceptors.response.use(
                 isRefreshing = false;
                 refreshPromise = null;
 
-                localStorage.removeItem("cosy_access_token");
-                localStorage.removeItem("cosy_logged_in");
-                localStorage.removeItem("cosy_user_email");
-                window.location.reload();
+                if (!isLoggingOut) {
+                    isLoggingOut = true;
+                    localStorage.removeItem("cosy_access_token");
+                    localStorage.removeItem("cosy_logged_in");
+                    localStorage.removeItem("cosy_user_email");
+                    alert("세션이 만료되었습니다.");
+                    window.location.reload();
+                }
 
                 return Promise.reject(error);
             }
