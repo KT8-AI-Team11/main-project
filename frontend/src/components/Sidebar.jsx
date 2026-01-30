@@ -90,12 +90,6 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn }) {
                 />
 
                 <SidebarItem
-                    label="알림 설정"
-                    requiresLogin={true}
-                    isLoggedIn={isLoggedIn}
-                />
-
-                <SidebarItem
                     label="국가별 규제 정보"
                     isLoggedIn={isLoggedIn}
                 />
