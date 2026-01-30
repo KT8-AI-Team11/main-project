@@ -11,7 +11,7 @@ import ClaimCheckPage from "./pages/ClaimCheckPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
-import { logout } from "./api/auth";
+import { login, logout } from "./api/auth";
 
 export default function CosyUI() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -61,13 +61,23 @@ export default function CosyUI() {
   };
 
   // ✅ 코치 임의 로그인(홈 버튼용)
-  const handleCoachDemoLogin = () => {
-    localStorage.setItem("cosy_logged_in", "true");
-    localStorage.setItem("cosy_login_type", "demo-oneclick");
-    localStorage.setItem("cosy_user_email", "coach-demo");
+  const handleCoachDemoLogin = async () => {
+    const DEMO_EMAIL = "aivle@test.com";
+    const DEMO_PASSWORD = "*Aivle0611!";
 
-    setIsLoggedIn(true); // ✅ 화면 즉시 로그인 상태로 전환
-    setCurrentPage("home");
+    try {
+      const response = await login(DEMO_EMAIL, DEMO_PASSWORD);
+      localStorage.setItem("cosy_access_token", response.accessToken);
+      localStorage.setItem("cosy_logged_in", "true");
+      localStorage.setItem("cosy_login_type", "demo-oneclick");
+      localStorage.setItem("cosy_user_email", response.email);
+
+      setIsLoggedIn(true);
+      setCurrentPage("home");
+    } catch (error) {
+      console.error("데모 로그인 실패:", error);
+      alert("데모 로그인에 실패했습니다.");
+    }
   };
 
   // ✅ 로그인 필요 페이지 가드

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Building, Phone, Bell, Lock, Trash2, Save, Edit2, X, Eye, EyeOff } from 'lucide-react';
+import { getMe } from '../api/auth';
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
@@ -39,35 +40,45 @@ export default function ProfilePage() {
 
   // 로그인 정보에서 프로필 데이터 로드
   useEffect(() => {
-    const loadProfileFromLogin = () => {
-      // localStorage에서 로그인 정보 가져오기
-      const userEmail = localStorage.getItem('cosy_user_email') || '';
-      const loginType = localStorage.getItem('cosy_login_type') || '';
+    const loadProfile = async () => {
+      const accessToken = localStorage.getItem('cosy_access_token');
 
-      // 로그인 정보를 기반으로 프로필 초기화
-      const initialProfile = {
-        username: userEmail.split('@')[0] || 'user', // 이메일에서 username 추출
-        email: userEmail,
-        company: '',
-        phone: '',
-        department: '',
-        position: ''
-      };
+      if (!accessToken) {
+        console.error('로그인 토큰이 없습니다.');
+        return;
+      }
 
-      // TODO: 실제로는 API를 통해 사용자 프로필 정보를 가져와야 함
-      // try {
-      //   const response = await fetch(`/api/profile?email=${userEmail}`);
-      //   const data = await response.json();
-      //   setProfileData(data);
-      // } catch (error) {
-      //   console.error('프로필 로드 실패:', error);
-      // }
+      try {
+        const response = await getMe(accessToken);
+        const initialProfile = {
+          username: response.email?.split('@')[0] || 'user',
+          email: response.email || '',
+          company: response.companyName || '',
+          phone: '',
+          department: '',
+          position: ''
+        };
 
-      setProfileData(initialProfile);
-      setTempData(initialProfile);
+        setProfileData(initialProfile);
+        setTempData(initialProfile);
+      } catch (error) {
+        console.error('프로필 로드 실패:', error);
+        // 에러 시 localStorage에서 기본 정보 로드
+        const userEmail = localStorage.getItem('cosy_user_email') || '';
+        const fallbackProfile = {
+          username: userEmail.split('@')[0] || 'user',
+          email: userEmail,
+          company: '',
+          phone: '',
+          department: '',
+          position: ''
+        };
+        setProfileData(fallbackProfile);
+        setTempData(fallbackProfile);
+      }
     };
 
-    loadProfileFromLogin();
+    loadProfile();
   }, []); // 컴포넌트 마운트 시 한 번만 실행
 
   const handleEdit = () => {

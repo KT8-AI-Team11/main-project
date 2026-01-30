@@ -2,15 +2,62 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Image, X, CheckCircle, Camera } from "lucide-react";
 import axios from "axios";
 
+const BASE = import.meta.env.VITE_API_BASE_URL || "";
+
 const api = axios.create({
-    baseURL: "/api",  // Vite 프록시 사용
+    baseURL: `${BASE}/api`,
 });
 
+// request interceptor: 토큰 추가
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem("cosy_access_token");
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
+
+// response interceptor: 401/403 시 refresh 시도
+let isRefreshing = false;
+let refreshPromise = null;
+
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
+
+        if ((error.response?.status === 401 || error.response?.status === 403) && !originalRequest._retry) {
+            originalRequest._retry = true;
+
+            try {
+                if (!isRefreshing) {
+                    isRefreshing = true;
+                    refreshPromise = axios.post(`${BASE}/api/auth/refresh`, {}, { withCredentials: true });
+                }
+
+                const res = await refreshPromise;
+                isRefreshing = false;
+                refreshPromise = null;
+
+                const newToken = res.data.accessToken;
+                localStorage.setItem("cosy_access_token", newToken);
+
+                originalRequest.headers.Authorization = `Bearer ${newToken}`;
+                return api(originalRequest);
+            } catch {
+                isRefreshing = false;
+                refreshPromise = null;
+
+                localStorage.removeItem("cosy_access_token");
+                localStorage.removeItem("cosy_logged_in");
+                localStorage.removeItem("cosy_user_email");
+                window.location.reload();
+
+                return Promise.reject(error);
+            }
+        }
+
+        return Promise.reject(error);
+    }
+);
 
 export default function ProductsPage() {
     // 상태 관리

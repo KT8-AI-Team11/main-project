@@ -3,7 +3,7 @@ export const LS_KEYS = {
   LOGGED_IN: "cosy_logged_in",
   LOGIN_TYPE: "cosy_login_type",
   USER_EMAIL: "cosy_user_email",
-  TOKEN: "cosy_token",
+  TOKEN: "cosy_access_token",
 
   // (선택) ProductsPage에서 선택된 상품 id를 저장해두면 ClaimCheckPage에서 바로 쓸 수 있음
   SELECTED_PRODUCT_ID: "cosy_selected_product_id",

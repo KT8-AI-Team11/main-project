@@ -22,3 +22,9 @@ export const refresh = (accessToken) =>
     apiFetch("/api/auth/refresh", {
         method: "POST",
     })
+
+export const getMe = (accessToken) =>
+    apiFetch("/api/users/me", {
+        method: "GET",
+        token: accessToken,
+    })
