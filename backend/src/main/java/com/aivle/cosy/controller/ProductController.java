@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173") // React 기본 포트 허용
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
@@ -64,5 +65,16 @@ public class ProductController {
         Long companyId = tokenProvider.getCompanyId(token);
 
         return ResponseEntity.ok(productService.deleteProduct(id, companyId));
+    }
+
+    @DeleteMapping("/batch")
+    public ResponseEntity<ProductResponse.MessageResponse> deleteMultipleProducts(
+            @RequestHeader("Authorization") String bearerToken,
+            @RequestBody List<Long> ids) { // 삭제할 ID 리스트를 Body로 받음
+
+        String token = bearerToken.substring(7);
+        Long companyId = tokenProvider.getCompanyId(token);
+
+        return ResponseEntity.ok(productService.deleteMultipleProducts(ids, companyId));
     }
 }

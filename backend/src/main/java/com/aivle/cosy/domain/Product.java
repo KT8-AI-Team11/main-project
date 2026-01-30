@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
+    @Column(length = 2048)
     private String image;
 
     @Column(columnDefinition = "TEXT")
@@ -52,7 +54,7 @@ public class Product {
     }
 
     @Builder
-    public Product(Company company, String name, ProductType type, String image, String fullIngredient, Status status) {
+    public Product(Company company, String name, ProductType type, String image, String fullIngredient, Status status, LocalDateTime updDate) {
         this.company = company;
         this.name = name;
         this.type = type;

@@ -23,11 +23,14 @@ class LlmResult:
     overall_risk: str
     findings: List[Finding]
     notes: List[str]
+    formatted_text: str | None = None
 
 class ComplianceCheckResponse(BaseModel):
+    market: str
     overall_risk: str
     findings: List[Finding]
     notes: List[str]
+    formatted_text: str | None = None
 
 # 규제 확인 요청 폼
 class CheckFromTextRequest(BaseModel):
