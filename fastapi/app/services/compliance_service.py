@@ -6,7 +6,6 @@ from typing import List, Optional, Tuple
 from langchain_core.documents import Document
 
 from app.repositories.vectorstore_repo import get_retriever
-from app.services.ocr_service import get_ocr_service
 from app.services.llm_service import LlmService
 
 from app.schemas.compliance import LlmResult, Finding
@@ -63,8 +62,6 @@ class ComplianceService:
         market: str,
         text: str,
         domain: str = "labeling",
-        # k: int = 6,
-        # fetch_k: int = 20,
     ):
 
         normalized = _normalize_text(text)
@@ -89,26 +86,6 @@ class ComplianceService:
             context=context,
         )
         return llm_result
-
-    # 내부 로직은 ocr에 이미지 넣고 받은 값을 check_from_text까지 처리하는데 실제론 이 두 개를 따로따로할 거임
-    # todo: 안쓰일 거 같으니 최종본 때 확인 후 삭제
-    def check_from_image_bytes(
-        self,
-        market: str,
-        image_bytes: bytes,
-        ocr_lang: str = "korean",
-    ) -> Tuple[str, LlmResult]:
-        ocr = get_ocr_service(lang=ocr_lang)
-        ocr_text, _lines = ocr.extract(image_bytes)
-        normalized = _normalize_text(ocr_text)
-
-        llm_result = self.check_from_text(
-            market=market,
-            text=normalized,
-            domain="labeling",
-        )
-        return normalized, llm_result
-
 
 _compliance_service: ComplianceService | None = None
 
