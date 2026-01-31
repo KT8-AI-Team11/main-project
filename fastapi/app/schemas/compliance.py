@@ -3,6 +3,13 @@ from dataclasses import dataclass
 from pydantic import BaseModel, Field
 from typing import List, Optional, Literal
 
+#---------------------------------------------------------#
+# 문구용
+#---------------------------------------------------------#
+
+class LabelingCheckRequest(BaseModel):
+    market: str = Field(default="US", description="국가 코드 (US, JP 등)")
+    text: str = Field(..., description="문구 텍스트")
 
 class Finding(BaseModel):
     snippet: str
@@ -10,16 +17,14 @@ class Finding(BaseModel):
     reason: str
     suggested_rewrite: Optional[str] = None
 
-
-
 @dataclass
-class LlmResult:
+class LabelingLlmResult:
     overall_risk: str
     findings: List[Finding]
     notes: List[str]
     formatted_text: str | None = None
 
-class ComplianceCheckResponse(BaseModel):
+class LabelingCheckResponse(BaseModel):
     market: str
     overall_risk: str
     findings: List[Finding]
