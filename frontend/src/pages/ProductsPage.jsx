@@ -1,167 +1,211 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Image, X, CheckCircle, Camera } from "lucide-react";
 import axios from "axios";
+import { useProducts } from "../store/ProductsContext"; // ✅ 추가
 
 const api = axios.create({
-    baseURL: "http://localhost:8080/api",
+  baseURL: "http://localhost:8080/api",
 });
 
 api.interceptors.request.use((config) => {
-    // 로그인 시 저장한 키값 (JWT Token)
-    const token = localStorage.getItem("cosy_token");
-    if (token) config.headers.Authorization = `Bearer ${token}`;
-    return config;
+  const token = localStorage.getItem("cosy_token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
 });
 
 export default function ProductsPage() {
-    // 상태 관리
-    const [products, setProducts] = useState([]);
-    const [selectedProductId, setSelectedProductId] = useState(null);
-    const [searchQuery, setSearchQuery] = useState("");
-    const [isAnalyzing, setIsAnalyzing] = useState(false);
-    const [selectedIds, setSelectedIds] = useState([]);
+  // ✅ products, setProducts를 Context에서 가져옴
+  const { products, setProducts } = useProducts();
 
-    // 모달 상태
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [selectedIds, setSelectedIds] = useState([]);
 
-    // 입력 필드 상태
-    const [newProductName, setNewProductName] = useState("");
-    const [newProductCategory, setNewProductCategory] = useState("SKINCARE");
-    const [newProductImage, setNewProductImage] = useState(null);
-    const [newProductIngredients, setNewProductIngredients] = useState("");
-    const [newProductStatus, setNewProductStatus] = useState("STEP_1");
+  // 모달 상태
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
-    // 전 제품 조회
-    const fetchProducts = async () => {
-        try {
-            const response = await api.get('/products');
-            setProducts(response.data);
-        } catch (error) { console.error("데이터 로딩 실패", error); }
+  // 입력 필드 상태
+  const [newProductName, setNewProductName] = useState("");
+  const [newProductCategory, setNewProductCategory] = useState("SKINCARE");
+  const [newProductImage, setNewProductImage] = useState(null);
+  const [newProductIngredients, setNewProductIngredients] = useState("");
+  const [newProductStatus, setNewProductStatus] = useState("STEP_1");
+
+  // ✅ 전 제품 조회 (Context의 setProducts에 저장)
+  const fetchProducts = async () => {
+    try {
+      const response = await api.get("/products");
+      console.log("products response.data =", response.data);
+      setProducts(response.data);
+    } catch (error) {
+      console.error("데이터 로딩 실패", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  // 이미지 업로드 처리
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => setNewProductImage(reader.result);
+    reader.readAsDataURL(file);
+  };
+
+  // 제품 생성 및 등록
+  const confirmAddProduct = async () => {
+    if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
+    const payload = {
+      name: newProductName,
+      type: newProductCategory,
+      image: newProductImage || "",
+      fullIngredient: newProductIngredients || "",
+      status: newProductStatus,
+    };
+    try {
+      const res = await api.post("/products", payload);
+
+      // ✅ 서버가 생성된 product를 반환한다면: 바로 Context에 반영
+      // (반환 안 하면 fetchProducts()만 호출해도 됨)
+      await fetchProducts();
+      setIsAddModalOpen(false);
+      resetInputFields();
+    } catch (error) {
+      alert("제품 등록 중 오류가 발생했습니다.");
+    }
+  };
+
+  // 제품 수정
+  const confirmEditProduct = async () => {
+    if (!selectedProductId) return alert("수정할 제품을 선택해주세요.");
+    if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
+
+    const payload = {
+      name: newProductName,
+      type: newProductCategory,
+      image: newProductImage || "",
+      fullIngredient: newProductIngredients || "",
+      status: newProductStatus,
     };
 
-    useEffect(() => { fetchProducts(); }, []);
+    try {
+      const res = await api.patch(`/products/${selectedProductId}`, payload);
 
-    // TODO: 이미지 업로드 처리
-    const handleImageUpload = (e) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onloadend = () => setNewProductImage(reader.result);
-        reader.readAsDataURL(file);
-    };
-
-    // 제품 생성 및 등록
-    const confirmAddProduct = async () => {
-        if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
-        const payload = {
-            name: newProductName,
-            type: newProductCategory,
-            image: newProductImage || "",
-            fullIngredient: newProductIngredients || "",
-            status: newProductStatus
-        };
-        try {
-            await api.post("/products", payload);
-            setIsAddModalOpen(false); resetInputFields(); fetchProducts();
-        } catch (error) { alert("제품 등록 중 오류가 발생했습니다."); }
-    };
-
-    // 제품 수정
-    const confirmEditProduct = async () => {
-        if (!selectedProductId) return alert("수정할 제품을 선택해주세요.");
-        if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
-
-        const payload = {
-            name: newProductName,
-            type: newProductCategory,
-            image: newProductImage || "",
-            fullIngredient: newProductIngredients || "",
-            status: newProductStatus
-        };
-        try {
-            await api.patch(`/products/${selectedProductId}`, payload);
-            alert("제품 정보가 성공적으로 수정되었습니다.");
-            setIsEditModalOpen(false); fetchProducts();
-        } catch (error) { alert("수정 중 오류가 발생했습니다."); }
-    };
-
-    // 제품 삭제
-    const handleDelete = async () => {
-        const ids = selectedIds.length > 0 ? selectedIds : (selectedProductId ? [selectedProductId] : []);
-
-        if (ids.length === 0) return alert("삭제할 제품을 선택해주세요.");
-        if (!window.confirm(`정말 ${ids.length}개의 제품을 삭제하시겠습니까?`)) return;
-
-        try {
-            if (ids.length === 1) {
-                await api.delete(`/products/${ids[0]}`);
-            } else {
-                await api.delete("/products/batch", { data: ids });
-            }
-
-            alert("제품이 삭제되었습니다.");
-            setSelectedIds([]);
-            setSelectedProductId(null);
-            setIsDetailModalOpen(false);
-            fetchProducts(); // 목록 새로고침
-        } catch (error) {
-            console.error(error);
-            alert("삭제 중 오류가 발생했습니다.");
-        }
-    };
-
-    // 분석
-    const runAnalysis = () => {
-        // 1. 체크박스로 선택된 ID들이 있는지 확인
-        // 2. 체크박스 선택이 없다면, 현재 상세 모달 등으로 선택된 단일 ID 확인
-        const targetIds = selectedIds.length > 0 ? selectedIds : (selectedProductId ? [selectedProductId] : []);
-
-        // 아무것도 선택되지 않았을 경우 함수 종료
-        if (targetIds.length === 0) {
-            alert("검토할 제품을 최소 하나 이상 선택해주세요.");
-            return;
-        }
-
-        // 분석 대상 명칭 설정 (알림용)
-        const targetName = selectedIds.length > 0
-            ? `${selectedIds.length}건의 제품`
-            : (selectedProduct?.name || "선택된 제품");
-
-        setIsAnalyzing(true);
-
-        // 분석 시뮬레이션 (1.2초 후 종료)
-        setTimeout(() => {
-            setIsAnalyzing(false);
-            alert(`${targetName}에 대한 글로벌 규제 검토가 완료되었습니다. (적합)`);
-        }, 1200);
-    };
-
-    const resetInputFields = () => {
-        setNewProductName(""); setNewProductCategory("SKINCARE"); setNewProductImage(null);
-        setNewProductIngredients(""); setNewProductStatus("STEP_1");
-    };
-
-    const openEditModal = () => {
-        const p = products.find(i => i.id === selectedProductId);
-        if (!p) return;
-        setNewProductName(p.name); setNewProductCategory(p.type); setNewProductImage(p.image);
-        setNewProductIngredients(p.fullIngredient); setNewProductStatus(p.status);
-        setIsEditModalOpen(true);
-    };
-
-    const filteredProducts = useMemo(() => {
-        return products.filter((p) =>
-            p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            (p.type && p.type.toLowerCase().includes(searchQuery.toLowerCase()))
+      // ✅ Context 업데이트 (서버가 수정된 product를 반환한다고 가정)
+      if (res?.data) {
+        setProducts((prev) =>
+          prev.map((p) => (p.id === selectedProductId ? res.data : p))
         );
-    }, [products, searchQuery]);
+      } else {
+        await fetchProducts();
+      }
 
-    const selectedProduct = useMemo(() => {
-        return products.find((p) => p.id === selectedProductId);
-    }, [products, selectedProductId]);
+      alert("제품 정보가 성공적으로 수정되었습니다.");
+      setIsEditModalOpen(false);
+    } catch (error) {
+      alert("수정 중 오류가 발생했습니다.");
+    }
+  };
 
+  // 제품 삭제
+  const handleDelete = async () => {
+    const ids =
+      selectedIds.length > 0
+        ? selectedIds
+        : selectedProductId
+        ? [selectedProductId]
+        : [];
+
+    if (ids.length === 0) return alert("삭제할 제품을 선택해주세요.");
+    if (!window.confirm(`정말 ${ids.length}개의 제품을 삭제하시겠습니까?`)) return;
+
+    try {
+      if (ids.length === 1) {
+        await api.delete(`/products/${ids[0]}`);
+      } else {
+        await api.delete("/products/batch", { data: ids });
+      }
+
+      // ✅ Context에서 제거
+      setProducts((prev) => prev.filter((p) => !ids.includes(p.id)));
+
+      alert("제품이 삭제되었습니다.");
+      setSelectedIds([]);
+      setSelectedProductId(null);
+      setIsDetailModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      alert("삭제 중 오류가 발생했습니다.");
+    }
+  };
+
+  // 분석
+  const runAnalysis = () => {
+    const targetIds =
+      selectedIds.length > 0
+        ? selectedIds
+        : selectedProductId
+        ? [selectedProductId]
+        : [];
+
+    if (targetIds.length === 0) {
+      alert("검토할 제품을 최소 하나 이상 선택해주세요.");
+      return;
+    }
+
+    const targetName =
+      selectedIds.length > 0
+        ? `${selectedIds.length}건의 제품`
+        : selectedProduct?.name || "선택된 제품";
+
+    setIsAnalyzing(true);
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      alert(`${targetName}에 대한 글로벌 규제 검토가 완료되었습니다. (적합)`);
+    }, 1200);
+  };
+
+  const resetInputFields = () => {
+    setNewProductName("");
+    setNewProductCategory("SKINCARE");
+    setNewProductImage(null);
+    setNewProductIngredients("");
+    setNewProductStatus("STEP_1");
+  };
+
+  const openEditModal = () => {
+    const p = products.find((i) => i.id === selectedProductId);
+    if (!p) return;
+    setNewProductName(p.name);
+    setNewProductCategory(p.type);
+    setNewProductImage(p.image);
+    setNewProductIngredients(p.fullIngredient);
+    setNewProductStatus(p.status);
+    setIsEditModalOpen(true);
+  };
+
+const filteredProducts = useMemo(() => {
+  const q = (searchQuery ?? "").toLowerCase();
+
+  return (Array.isArray(products) ? products : [])
+    .filter(Boolean) // null/undefined 제거
+    .filter((p) => {
+      const name = (p?.name ?? "").toString().toLowerCase();
+      const type = (p?.type ?? "").toString().toLowerCase();
+      return name.includes(q) || type.includes(q);
+    });
+}, [products, searchQuery]);
+
+
+  const selectedProduct = useMemo(() => {
+    return products.find((p) => p.id === selectedProductId);
+  }, [products, selectedProductId]);
     return (
         <div style={{ flex: 1, backgroundColor: "#f3f4f6", minHeight: "100vh", position: "relative", paddingBottom: "120px" }}>
             {/* 상단 헤더 및 그리드 영역 */}
