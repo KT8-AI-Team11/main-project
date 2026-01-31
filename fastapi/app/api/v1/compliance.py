@@ -1,13 +1,14 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Query
 from starlette.concurrency import run_in_threadpool
-from app.schemas.compliance import ComplianceCheckResponse, Finding, LlmResult, IngredientsCheckResponse, Detail
+from app.schemas.compliance import ComplianceCheckResponse, Finding, LlmResult, IngredientsCheckResponse, Detail, \
+    IngredientsCheckRequest
 from app.services.compliance_service import get_compliance_service
 
 router = APIRouter()
 
 
 # 텍스트 받으면 규제 확인
-@router.post("/check-regulation", response_model=ComplianceCheckResponse)
+@router.post("/labeling", response_model=ComplianceCheckResponse)
 async def check_from_image(
     market: str = "US",
     text: str = "",
@@ -42,18 +43,15 @@ async def check_from_image(
 
 # 성분규제용
 @router.post("/ingredients", response_model=IngredientsCheckResponse)
-async def check_ingredients(
-    market: str = "US",
-    ing: str = "",
-):
-    if ing == "":
+async def check_ingredients(req: IngredientsCheckRequest):
+    if not req.ingredients.strip():
         raise HTTPException(status_code=400, detail="Empty Ingredients")
 
     svc = get_compliance_service()
 
     llm_result = svc.check_ingredients(
-        market=market,
-        text=ing,
+        market=req.market,
+        text=req.ingredients,
     )
 
     return IngredientsCheckResponse(

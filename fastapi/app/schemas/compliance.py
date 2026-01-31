@@ -30,6 +30,10 @@ class ComplianceCheckResponse(BaseModel):
 # 전성분용
 #---------------------------------------------------------#
 
+class IngredientsCheckRequest(BaseModel):
+    market: str = Field(default="US", description="국가 코드 (US, JP 등)")
+    ingredients: str = Field(..., description="전성분 텍스트")
+
 class Detail(BaseModel):
     ingredient: str
     regulation: str
