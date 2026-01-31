@@ -10,6 +10,8 @@ class Finding(BaseModel):
     reason: str
     suggested_rewrite: Optional[str] = None
 
+
+
 @dataclass
 class LlmResult:
     overall_risk: str
@@ -23,3 +25,23 @@ class ComplianceCheckResponse(BaseModel):
     findings: List[Finding]
     notes: List[str]
     formatted_text: str | None = None
+
+#---------------------------------------------------------#
+# 전성분용
+#---------------------------------------------------------#
+
+class Detail(BaseModel):
+    ingredient: str
+    regulation: str
+    content: str
+    action: str
+    severity: str
+
+@dataclass
+class IngLlmResult:
+    overall_risk: str
+    details: List[Detail]
+
+class IngredientsCheckResponse(BaseModel):
+    overall_risk: str
+    details: List[Detail]

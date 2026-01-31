@@ -87,6 +87,34 @@ class ComplianceService:
         )
         return llm_result
 
+    def check_ingredients(
+        self,
+        market: str,
+        text: str,
+    ):
+
+        normalized = _normalize_text(text)
+        if not normalized:
+            return LlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
+
+        # 1) RAG
+        # 1-1. 벡터db에게 무엇을 물어볼지 쿼리 생성
+        rag_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
+        # 1-2. 벡터db retriever 생성 (벡터db에서 관련 문서 찾아주는 탐색기)
+        retriever = get_retriever(market=market, domain="ingredients", k=6, fetch_k=20)
+        # 1-3. 문서 검색 실행
+        docs = retriever.invoke(rag_query)
+        # 1-4. LLM에게 전달할 문자열 context 생성
+        context = _format_docs_for_context(docs)
+
+        # 2) LLM 호출
+        llm_result = self.llm.analyze_ingredients(
+            market=market,
+            ingredients=normalized,
+            context=context,
+        )
+        return llm_result
+
 _compliance_service: ComplianceService | None = None
 
 
