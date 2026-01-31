@@ -6,4 +6,5 @@ __pycache__/
 **/__pycache__/
 
 # IDE
-.idea/
+.idea/fastapi/app/data/chroma/
+fastapi/app/data/chroma/
