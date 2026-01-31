@@ -41,7 +41,7 @@ async def check_from_image(
     )
 
 # 성분규제용
-@router.post("/check/ingredients", response_model=IngredientsCheckResponse)
+@router.post("/ingredients", response_model=IngredientsCheckResponse)
 async def check_ingredients(
     market: str = "US",
     ing: str = "",
