@@ -12,9 +12,10 @@ import CountryMultiSelect from "../components/CountryMultiSelect";
 import { ocrExtract } from "../api/ocr"; 
 import { checkRegulation } from "../api/compliance"; 
 
-// 백엔드가 현재 US/JP만 지원이면 유지(원하면 EU/CN 추가 or 가드 제거)
-const SUPPORTED_MARKETS = new Set(["US", "JP"]);
+
 const COUNTRY_CODES = ["US", "EU", "CN", "JP"];
+const SUPPORTED_MARKETS = new Set(COUNTRY_CODES);
+
 
 function mapOverallRiskToStatus(risk) {
   const r = String(risk || "").toUpperCase();
@@ -295,7 +296,6 @@ export default function ClaimCheckPage() {
           const apiJson = await checkRegulation({
             market: c,
             text: ocrText,
-            domain: "labeling",
           });
 
           const normalized = normalizeInspectionResult(apiJson, c);
