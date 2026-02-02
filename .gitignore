@@ -9,3 +9,6 @@ __pycache__/
 .idea/
 **/.idea/
 fastapi/app/data/chroma/
+
+backend/src/main/resources/application.yaml
+**/application.yaml
