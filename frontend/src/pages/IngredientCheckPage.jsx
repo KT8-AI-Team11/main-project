@@ -1,20 +1,34 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Clock, Minus } from "lucide-react";
 import CountryMultiSelect from "../components/CountryMultiSelect";
+import { useProducts } from "../store/ProductsContext";
+import { checkIngredients } from "../api/compliance";
 
 export default function IngredientCheckPage() {
+  const { products, fetchProducts } = useProducts(); // ✅ Context에서 가져오기
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCountryCodes, setSelectedCountryCodes] = useState([]);
   const [phase, setPhase] = useState("idle"); // idle | loading | done
   const [analysisResults, setAnalysisResults] = useState(null);
 
-  const products = [
-    { id: 1, name: "제품 A", ingredients: "Water, Glycerin, Alcohol" },
-    { id: 2, name: "제품 B", ingredients: "Aqua, Propylene Glycol, Fragrance" },
-    { id: 3, name: "제품 C", ingredients: "Water, Niacinamide, Hyaluronic Acid" },
-    { id: 4, name: "제품 D", ingredients: "Aqua, Retinol, Vitamin E" },
-    { id: 5, name: "제품 E", ingredients: "Water, Collagen, Peptides" },
-  ];
+  const isLoading = phase === "loading";
+
+  useEffect(() => {
+    if (!products || products.length === 0) {
+      fetchProducts?.(); // Context에 fetchProducts를 넣어둔 경우
+    }
+  }, [products, fetchProducts]);
+
+  const uiProducts = useMemo(() => {
+    return (Array.isArray(products) ? products : [])
+      .filter(Boolean)
+      .map((p) => ({
+        id: p.id,
+        name: p.name ?? "(이름 없음)",
+        ingredients: p.fullIngredient ?? "", // ✅ 여기 매핑!
+        raw: p,
+      }));
+  }, [products]);
 
   // ✅ 국가: 미국 / 유럽연합 / 중국 / 일본
   const countryOptions = useMemo(
@@ -32,62 +46,7 @@ export default function IngredientCheckPage() {
     return (code) => m.get(code) || code;
   }, [countryOptions]);
 
-  // 데모용 규제 이슈 (나중에 백엔드/RAG/DB로 교체)
-  const mockDetails = useMemo(
-    () => [
-      {
-        product: "제품 A",
-        country: "유럽연합",
-        ingredient: "Alcohol (Denat.)",
-        regulation: "EU Annex III",
-        content: "변성 알코올 최대 허용 농도 초과",
-        action: "농도 조정 필요",
-        severity: "mid",
-      },
-      {
-        product: "제품 B",
-        country: "미국",
-        ingredient: "Fragrance",
-        regulation: "FDA GRAS",
-        content: "알레르기 유발 성분 표기 미비",
-        action: "라벨 표기 추가",
-        severity: "mid",
-      },
-      {
-        product: "제품 D",
-        country: "중국",
-        ingredient: "Retinol",
-        regulation: "NMPA 2021",
-        content: "특수화장품 신고 필요 성분",
-        action: "신고 절차 진행",
-        severity: "high",
-      },
-    ],
-    []
-  );
-
   const isReady = !!selectedProduct && selectedCountryCodes.length > 0;
-
-  const buildResult = () => {
-    const selectedCountryNames = selectedCountryCodes.map(codeToName);
-
-    const details = mockDetails.filter((d) => {
-      const okProduct = selectedProduct ? d.product === selectedProduct.name : true;
-      const okCountry = selectedCountryNames.includes(d.country);
-      return okProduct && okCountry;
-    });
-
-    const totalIssues = details.length;
-    const highRisk = details.filter((d) => d.severity === "high").length;
-    const mediumRisk = details.filter((d) => d.severity === "mid").length;
-
-    const status = totalIssues > 0 ? "부적합" : "적합";
-
-    return {
-      summary: { totalIssues, highRisk, mediumRisk, status },
-      details,
-    };
-  };
 
   const resetResults = () => {
     if (phase === "done") {
@@ -96,17 +55,65 @@ export default function IngredientCheckPage() {
     }
   };
 
-  const handleSubmit = () => {
+  const mapSeverity = (s) => {
+    const v = String(s || "").toUpperCase();
+    return v === "HIGH" ? "high" : "mid";
+  };
+
+  // ✅ 이제 진짜 API 호출로 결과 생성
+  const handleSubmit = async () => {
     if (!selectedProduct) return alert("제품을 선택해주세요");
     if (selectedCountryCodes.length === 0) return alert("최소 1개 이상의 국가를 선택해주세요");
 
-    setPhase("loading");
-    setAnalysisResults(null);
+    const ingredientsText = String(selectedProduct.ingredients || "").trim();
+    if (!ingredientsText) {
+      return alert("선택한 제품의 전성분 정보가 비어있습니다.(fullIngredient 확인 필요)");
+    }
 
-    setTimeout(() => {
-      setAnalysisResults(buildResult());
+    try {
+      setPhase("loading");
+      setAnalysisResults(null);
+
+      const rows = [];
+
+      // 안전하게 순차 호출(백엔드 부하/레이트 이슈 방지)
+      for (const market of selectedCountryCodes) {
+        const apiRes = await checkIngredients({
+          market,
+          ingredients: ingredientsText,
+        });
+
+        const details = Array.isArray(apiRes?.details) ? apiRes.details : [];
+
+        for (const d of details) {
+          rows.push({
+            product: selectedProduct.name,
+            country: codeToName(market),
+            ingredient: d.ingredient,
+            regulation: d.regulation,
+            content: d.content,
+            action: d.action,
+            severity: mapSeverity(d.severity),
+          });
+        }
+      }
+
+      const totalIssues = rows.length;
+      const highRisk = rows.filter((r) => r.severity === "high").length;
+      const mediumRisk = totalIssues - highRisk;
+      const status = totalIssues > 0 ? "부적합" : "적합";
+
+      setAnalysisResults({
+        summary: { totalIssues, highRisk, mediumRisk, status },
+        details: rows,
+      });
+
       setPhase("done");
-    }, 900);
+    } catch (e) {
+      console.error(e);
+      alert(e?.message || "성분 규제 검사 중 오류가 발생했습니다.");
+      setPhase("idle");
+    }
   };
 
   const handleResetAll = () => {
@@ -130,7 +137,7 @@ export default function IngredientCheckPage() {
           <div className="cosy-panel__title">제품 리스트</div>
 
           <div className="cosy-product-list">
-            {products.map((product) => {
+            {uiProducts.map((product) => {
               const active = selectedProduct?.id === product.id;
               return (
                 <button
@@ -138,9 +145,11 @@ export default function IngredientCheckPage() {
                   type="button"
                   className={`cosy-product-item ${active ? "is-active" : ""}`}
                   onClick={() => {
+                    if (isLoading) return;
                     setSelectedProduct(product);
                     resetResults();
                   }}
+                  disabled={isLoading}
                 >
                   <div className="cosy-product-item__name">{product.name}</div>
                   <div className="cosy-product-item__desc">
@@ -161,6 +170,7 @@ export default function IngredientCheckPage() {
             options={countryOptions}
             value={selectedCountryCodes}
             onChange={(next) => {
+              if (isLoading) return;
               setSelectedCountryCodes(next);
               resetResults();
             }}
@@ -172,9 +182,11 @@ export default function IngredientCheckPage() {
               type="button"
               className="cosy-btn"
               onClick={() => {
+                if (isLoading) return;
                 setSelectedCountryCodes(countryOptions.map((c) => c.code));
                 resetResults();
               }}
+              disabled={isLoading}
             >
               전체 선택
             </button>
@@ -183,9 +195,11 @@ export default function IngredientCheckPage() {
               type="button"
               className="cosy-btn"
               onClick={() => {
+                if (isLoading) return;
                 setSelectedCountryCodes([]);
                 resetResults();
               }}
+              disabled={isLoading}
             >
               해제
             </button>
@@ -236,9 +250,7 @@ export default function IngredientCheckPage() {
             {phase === "done" && analysisResults && (
               <div style={{ width: "100%" }}>
                 <div className={statusClass}>
-                  <div className="cosy-status-card__title">
-                    {analysisResults.summary.status}
-                  </div>
+                  <div className="cosy-status-card__title">{analysisResults.summary.status}</div>
                   <div className="cosy-status-card__meta">
                     총 {analysisResults.summary.totalIssues}건의 이슈 발견
                   </div>
@@ -312,7 +324,7 @@ export default function IngredientCheckPage() {
                   <tr>
                     <td colSpan={6} style={{ padding: "26px 14px" }}>
                       <div className="cosy-subtext" style={{ fontWeight: 800 }}>
-                        선택한 제품/국가 기준으로 이슈가 발견되지 않았습니다. (데모)
+                        선택한 제품/국가 기준으로 이슈가 발견되지 않았습니다.
                       </div>
                     </td>
                   </tr>
