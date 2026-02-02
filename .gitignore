@@ -8,7 +8,3 @@ __pycache__/
 # IDE
 .idea/
 **/.idea/
-fastapi/app/data/chroma/
-
-backend/src/main/resources/application.yaml
-**/application.yaml
