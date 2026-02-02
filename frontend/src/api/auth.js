@@ -60,3 +60,16 @@ export const getMe = (accessToken) =>
         method: "GET",
         token: accessToken,
     })
+
+export const changePassword = (accessToken, currentPassword, newPassword) =>
+    apiFetch("/api/users/me/password", {
+        method: "PATCH",
+        token: accessToken,
+        body: { currentPassword, newPassword },
+    })
+
+export const deleteAccount = (accessToken) =>
+    apiFetch("/api/users/me", {
+        method: "DELETE",
+        token: accessToken,
+    })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Building, Phone, Bell, Lock, Trash2, Save, Edit2, X, Eye, EyeOff } from 'lucide-react';
-import { getMe } from '../api/auth';
+import { getMe, changePassword, deleteAccount } from '../api/auth';
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
@@ -127,7 +127,7 @@ export default function ProfilePage() {
   };
 
   // 비밀번호 변경 핸들러
-  const handlePasswordChange = () => {
+  const handlePasswordChange = async () => {
     // 유효성 검사
     if (!passwordData.currentPassword || !passwordData.newPassword || !passwordData.confirmPassword) {
       alert('모든 필드를 입력해주세요.');
@@ -144,30 +144,27 @@ export default function ProfilePage() {
       return;
     }
 
-    // TODO: 실제 API 호출
-    // try {
-    //   const response = await fetch('/api/change-password', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //       email: profileData.email,
-    //       currentPassword: passwordData.currentPassword,
-    //       newPassword: passwordData.newPassword
-    //     })
-    //   });
-    //   if (!response.ok) throw new Error('비밀번호 변경 실패');
-    // } catch (error) {
-    //   alert('비밀번호 변경에 실패했습니다: ' + error.message);
-    //   return;
-    // }
+    const accessToken = localStorage.getItem('cosy_access_token');
+    if (!accessToken) {
+      alert('로그인이 필요합니다.');
+      return;
+    }
 
-    alert('비밀번호가 성공적으로 변경되었습니다.');
-    setShowPasswordModal(false);
-    setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    try {
+      await changePassword(accessToken, passwordData.currentPassword, passwordData.newPassword);
+      alert('비밀번호가 성공적으로 변경되었습니다. 다시 로그인해주세요.');
+      // 비밀번호 변경 시 보안상 로그아웃 처리
+      localStorage.removeItem('cosy_access_token');
+      localStorage.removeItem('cosy_logged_in');
+      localStorage.removeItem('cosy_user_email');
+      window.location.reload();
+    } catch (error) {
+      alert('비밀번호 변경에 실패했습니다: ' + (error.message || '알 수 없는 오류'));
+    }
   };
 
   // 계정 삭제 핸들러
-  const handleDeleteAccount = () => {
+  const handleDeleteAccount = async () => {
     if (deleteConfirmText !== '삭제') {
       alert('"삭제"를 정확히 입력해주세요.');
       return;
@@ -178,28 +175,22 @@ export default function ProfilePage() {
     );
 
     if (confirmed) {
-      // TODO: 실제 API 호출
-      // try {
-      //   await fetch('/api/delete-account', {
-      //     method: 'DELETE',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ email: profileData.email })
-      //   });
-      // } catch (error) {
-      //   alert('계정 삭제에 실패했습니다: ' + error.message);
-      //   return;
-      // }
+      const accessToken = localStorage.getItem('cosy_access_token');
+      if (!accessToken) {
+        alert('로그인이 필요합니다.');
+        return;
+      }
 
-      alert('계정이 삭제되었습니다.');
-
-      // 로그아웃 처리
-      localStorage.removeItem("cosy_logged_in");
-      localStorage.removeItem("cosy_login_type");
-      localStorage.removeItem("cosy_user_email");
-      localStorage.removeItem("cosy_demo_user");
-
-      // 페이지 새로고침으로 로그인 페이지로 이동
-      window.location.reload();
+      try {
+        await deleteAccount(accessToken);
+        alert('계정이 삭제되었습니다.');
+        localStorage.removeItem('cosy_access_token');
+        localStorage.removeItem('cosy_logged_in');
+        localStorage.removeItem('cosy_user_email');
+        window.location.reload();
+      } catch (error) {
+        alert('계정 삭제에 실패했습니다: ' + (error.message || '알 수 없는 오류'));
+      }
     }
   };
 
