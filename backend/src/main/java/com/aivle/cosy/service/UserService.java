@@ -3,6 +3,7 @@ package com.aivle.cosy.service;
 
 import com.aivle.cosy.domain.Company;
 import com.aivle.cosy.domain.User;
+import com.aivle.cosy.dto.ChangePasswordRequest;
 import com.aivle.cosy.dto.LoginRequest;
 import com.aivle.cosy.dto.LoginResponse;
 import com.aivle.cosy.dto.RefreshResponse;
@@ -12,6 +13,7 @@ import com.aivle.cosy.dto.Message;
 import com.aivle.cosy.dto.UserInfoResponse;
 import com.aivle.cosy.exception.AuthErrorCode;
 import com.aivle.cosy.exception.BusinessException;
+import com.aivle.cosy.exception.ChangePasswordErrorCode;
 import com.aivle.cosy.exception.LoginErrorCode;
 import com.aivle.cosy.exception.UserErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
@@ -133,13 +135,63 @@ public class UserService {
     }
 
     /**
-     *
+     * 로그아웃, 현재 유저의 access token과 refresh token이 유효할 경우, 블랙리스트에 저장.
      */
     public void logout(String accessToken, String refreshToken){
-        tokenBlacklistService.addToBlacklist(accessToken,tokenProvider.getRemainingExpiration(accessToken));
-        tokenBlacklistService.addToBlacklist(refreshToken,tokenProvider.getRemainingExpiration(refreshToken));
+       tokenBlacklistService.invalidateSession(accessToken, refreshToken);
     }
 
+
+    /**
+     * 유저 삭제, access token에서 현재 유저의 이메일을 추출한다음 삭제
+     * @param accessToken
+     */
+    @Transactional
+    public void deleteUser(String accessToken, String refreshToken){
+        String email = tokenProvider.extractEmail(accessToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
+
+        tokenBlacklistService.invalidateSession(accessToken,refreshToken);
+        userRepository.delete(user);
+    }
+
+    @Transactional
+    public void changePassword(String accessToken, String refreshToken, ChangePasswordRequest request){
+        String email = tokenProvider.extractEmail(accessToken);
+        String currentPassword = request.currentPassword();
+        String newPassword = request.newPassword();
+
+        // 먼저 유저가 존재 하는지 확인
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
+
+        // 현재 패스워드가 db에 저장한거랑 똑같은지 확인(확인 절차)
+        if(!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            throw new BusinessException(ChangePasswordErrorCode.CURRENT_PASSWORD_MISMATCH);
+        }
+
+        //다음 변경할 패스워드가 유효한지 확인
+        if(currentPassword.equals(newPassword)) {
+            throw new BusinessException(ChangePasswordErrorCode.SAME_AS_OLD_PASSWORD);
+        }
+
+        if (!isValidFormat(newPassword, PASSWORD_REGEX))
+            throw new BusinessException(ChangePasswordErrorCode.INVALID_PASSWORD_FORMAT);
+
+
+        // 확인 절차를 모두 통과했다면 주어진 password 인코딩해서 저장
+        try{
+            user.updatePassword(passwordEncoder.encode(newPassword));
+        }catch(Exception e){
+            log.error(e.getMessage(),e);
+            throw new BusinessException(ChangePasswordErrorCode.CHANGE_PASSWORD_FAILED, e.getMessage());
+        }
+
+        // 그 후, 세션 만료
+       tokenBlacklistService.invalidateSession(accessToken,refreshToken);
+
+    }
 
 
     /**

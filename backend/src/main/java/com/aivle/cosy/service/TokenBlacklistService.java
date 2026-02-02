@@ -38,4 +38,9 @@ public class TokenBlacklistService {
         String key = BLACKLIST_PREFIX + jti;
         return Boolean.TRUE.equals(redisTemplate.hasKey(key));
     }
+
+    public void invalidateSession(String accessToken, String refreshToken) {
+        addToBlacklist(accessToken, jwtTokenProvider.getRemainingExpiration(accessToken));
+        addToBlacklist(refreshToken, jwtTokenProvider.getRemainingExpiration(refreshToken));
+    }
 }
