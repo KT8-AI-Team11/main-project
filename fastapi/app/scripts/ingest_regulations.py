@@ -75,3 +75,5 @@ if __name__ == "__main__":
     ingest(country="JP", domain="labeling")
     ingest(country="US", domain="ingredients")
     ingest(country="US", domain="labeling")
+    ingest(country="EU", domain="ingredients")
+    ingest(country="EU", domain="labeling")
