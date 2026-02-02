@@ -85,13 +85,18 @@ public class ProductService {
     public ProductResponse.MessageResponse deleteMultipleProducts(List<Long> ids, Long companyId) {
         List<Product> products = productRepository.findAllById(ids);
 
+        // 요청한 개수와 찾은 개수가 다르면 예외 처리 (선택 사항)
+        if (products.size() != ids.size()) {
+            throw new BusinessException(ProductErrorCode.PRODUCT_NOT_FOUND);
+        }
+
         for (Product p : products) {
             if (!p.getCompany().getId().equals(companyId)) {
                 throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
             }
         }
 
-        productRepository.deleteAllInBatch(products); // 대량 삭제 최적화 메서드
-        return new ProductResponse.MessageResponse(ids.size() + "개의 제품이 삭제되었습니다.");
+        productRepository.deleteAllInBatch(products);
+        return new ProductResponse.MessageResponse(products.size() + "개의 제품이 삭제되었습니다.");
     }
 }

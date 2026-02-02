@@ -24,8 +24,8 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse.DetailResponse>> getMyCompanyProducts(
             @RequestHeader("Authorization") String bearerToken) {
 
-        String token = bearerToken.substring(7); // "Bearer " 제거
-        Long companyId = tokenProvider.getCompanyId(token); // 토큰에서 회사 ID 추출
+        String token = bearerToken.substring(7);
+        Long companyId = tokenProvider.getCompanyId(token);
 
         return ResponseEntity.ok(productService.getProducts(companyId));
     }
@@ -54,6 +54,18 @@ public class ProductController {
         return ResponseEntity.ok(productService.updateProduct(id, companyId, request));
     }
 
+    // 여러 제품 삭제
+    @DeleteMapping("/batch")
+    public ResponseEntity<ProductResponse.MessageResponse> deleteMultipleProducts(
+            @RequestHeader("Authorization") String bearerToken,
+            @RequestBody List<Long> ids) { // 삭제할 ID 리스트를 Body로 받음
+
+        String token = bearerToken.substring(7);
+        Long companyId = tokenProvider.getCompanyId(token);
+
+        return ResponseEntity.ok(productService.deleteMultipleProducts(ids, companyId));
+    }
+
 
     // 제품 삭제
     @DeleteMapping("/{id}")
@@ -67,14 +79,4 @@ public class ProductController {
         return ResponseEntity.ok(productService.deleteProduct(id, companyId));
     }
 
-    @DeleteMapping("/batch")
-    public ResponseEntity<ProductResponse.MessageResponse> deleteMultipleProducts(
-            @RequestHeader("Authorization") String bearerToken,
-            @RequestBody List<Long> ids) { // 삭제할 ID 리스트를 Body로 받음
-
-        String token = bearerToken.substring(7);
-        Long companyId = tokenProvider.getCompanyId(token);
-
-        return ResponseEntity.ok(productService.deleteMultipleProducts(ids, companyId));
-    }
 }
