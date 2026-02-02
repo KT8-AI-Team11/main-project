@@ -3,7 +3,7 @@ from typing import List
 import json
 from openai import OpenAI
 from app.core.config import OPENAI_API_KEY, OPENAI_MODEL
-from app.schemas.compliance import LlmResult, Finding, IngLlmResult, Detail
+from app.schemas.compliance import LabelingLlmResult, Finding, IngLlmResult, Detail
 
 
 class LlmService:
@@ -46,13 +46,11 @@ class LlmService:
 
         return "\n".join(lines)
 
-    # todo: 성분규제와 문구규제를 나누기?
-    def analyze_with_context(self, market: str, domain: str, text: str, context: str) -> LlmResult:
-        domain_desc = "전성분(성분) 규제" if domain == "ingredients" else "라벨/문구(표시·광고) 규제"
-        input_desc = "화장품에 들어가는 전성분을 나열한 것" if domain == "ingredients" else "제품의 판매에 쓰일 라벨/문구"
+    # 문구 규제 분석
+    def analyze_labeling(self, market: str, text: str, context: str) -> LabelingLlmResult:
         prompt = f"""
 너는 {market} 화장품 규제 검토를 도와주는 컴플라이언스 전문가다.
-검토 범위는 "{domain_desc}"이다.
+검토 범위는 라벨/문구(표시·광고) 규제이다.
 
 아래 [CONTEXT]는 검색된 공식 규정/가이드 원문 발췌이다.
 반드시 CONTEXT에 기반해서만 판단하고, 모르면 모른다고 말해라.
@@ -60,7 +58,7 @@ class LlmService:
 [CONTEXT]
 {context}
 
-아래 [INPUT]은 {input_desc}이다.
+아래 [INPUT]은 제품의 판매에 쓰일 라벨/문구이다.
 [INPUT]
 {text}
 
@@ -92,7 +90,7 @@ class LlmService:
             data = json.loads(cleaned)
         except Exception:
             # 파싱 실패해도 서비스가 안 죽게 방어
-            return LlmResult(
+            return LabelingLlmResult(
                 overall_risk="MEDIUM",
                 findings=[],
                 notes=[f"Failed to parse LLM JSON. Raw: {raw[:300]}"],
@@ -117,7 +115,7 @@ class LlmService:
 
         formatted_text = self._format_for_ui(data)
 
-        return LlmResult(
+        return LabelingLlmResult(
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
             findings=findings,
             notes=notes,

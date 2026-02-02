@@ -1,20 +1,31 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Clock, Minus } from "lucide-react";
 import CountryMultiSelect from "../components/CountryMultiSelect";
+import { useProducts } from "../store/ProductsContext"; // ✅ 추
 
 export default function IngredientCheckPage() {
+  const { products, fetchProducts } = useProducts(); // ✅ Context에서 가져오기
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCountryCodes, setSelectedCountryCodes] = useState([]);
   const [phase, setPhase] = useState("idle"); // idle | loading | done
   const [analysisResults, setAnalysisResults] = useState(null);
 
-  const products = [
-    { id: 1, name: "제품 A", ingredients: "Water, Glycerin, Alcohol" },
-    { id: 2, name: "제품 B", ingredients: "Aqua, Propylene Glycol, Fragrance" },
-    { id: 3, name: "제품 C", ingredients: "Water, Niacinamide, Hyaluronic Acid" },
-    { id: 4, name: "제품 D", ingredients: "Aqua, Retinol, Vitamin E" },
-    { id: 5, name: "제품 E", ingredients: "Water, Collagen, Peptides" },
-  ];
+  useEffect(() => {
+    if (!products || products.length === 0) {
+      fetchProducts?.(); // Context에 fetchProducts를 넣어둔 경우
+    }
+  }, [products, fetchProducts]);
+
+  const uiProducts = useMemo(() => {
+    return (Array.isArray(products) ? products : [])
+      .filter(Boolean)
+      .map((p) => ({
+        id: p.id,
+        name: p.name ?? "(이름 없음)",
+        ingredients: p.fullIngredient ?? "", // ✅ 여기 매핑!
+        raw: p, // 원본 필요하면 쓰라고 보관
+      }));
+  }, [products]);
 
   // ✅ 국가: 미국 / 유럽연합 / 중국 / 일본
   const countryOptions = useMemo(
@@ -130,7 +141,7 @@ export default function IngredientCheckPage() {
           <div className="cosy-panel__title">제품 리스트</div>
 
           <div className="cosy-product-list">
-            {products.map((product) => {
+            {uiProducts.map((product) => {
               const active = selectedProduct?.id === product.id;
               return (
                 <button

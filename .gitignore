@@ -6,5 +6,6 @@ __pycache__/
 **/__pycache__/
 
 # IDE
-.idea/fastapi/app/data/chroma/
+.idea/
+**/.idea/
 fastapi/app/data/chroma/
