@@ -2,6 +2,7 @@ package com.aivle.cosy.controller;
 
 import com.aivle.cosy.dto.ChangePasswordRequest;
 import com.aivle.cosy.dto.UserInfoResponse;
+import com.aivle.cosy.service.AuthService;
 import com.aivle.cosy.service.UserService;
 import com.aivle.cosy.util.CookieUtils;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/users/me")
 public class UserProfileController {
     private final UserService userService;
+    private final AuthService authService;
 
     @GetMapping("")
     public ResponseEntity<UserInfoResponse> me(@RequestHeader("Authorization") String token) {
@@ -62,7 +64,7 @@ public class UserProfileController {
 
         String accessToken = token.substring(7);
 
-        userService.changePassword(accessToken, refreshToken, request);
+        authService.changePassword(accessToken, refreshToken, request);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, CookieUtils.clearRefreshTokenCookie().toString())

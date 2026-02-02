@@ -5,6 +5,7 @@ import com.aivle.cosy.dto.LoginResponse;
 import com.aivle.cosy.dto.RefreshResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
+import com.aivle.cosy.service.AuthService;
 import com.aivle.cosy.service.UserService;
 import com.aivle.cosy.util.CookieUtils;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class AuthController {
+    private final AuthService authService;
     private final UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        LoginResponse loginResponse = userService.login(request);
+        LoginResponse loginResponse = authService.login(request);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, CookieUtils.createRefreshTokenCookie(loginResponse.getRefreshToken()).toString())
@@ -48,7 +50,7 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        return new ResponseEntity<>(userService.refresh(refreshToken), HttpStatus.OK);
+        return new ResponseEntity<>(authService.refresh(refreshToken), HttpStatus.OK);
     }
 
     @PostMapping("/logout")
@@ -61,7 +63,7 @@ public class AuthController {
 
         String accessToken = token.substring(7);
 
-        userService.logout(accessToken, refreshToken);
+        authService.logout(accessToken, refreshToken);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, CookieUtils.clearRefreshTokenCookie().toString())
