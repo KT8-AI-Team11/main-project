@@ -324,4 +324,187 @@
     .cosy-chip.is-pass{ background:#ECFDF5; border-color:#6EE7B7; color:#065F46; }
 
 
-    
+    /* =========================
+   IngredientCheckPage UI 보강
+   ========================= */
+
+/* 툴바(검색/선택옵션) 카드 분리감 */
+.cosy-product-toolbar {
+  padding: 14px;
+}
+
+/* 툴바 안 구분선 */
+.cosy-toolbar-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 12px 0;
+  border-radius: 999px;
+}
+
+/* 선택 개수 배지 */
+.cosy-count-badge {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #111827;
+  font-weight: 1000;
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* 네이티브 체크박스(선택한 제품만 보기) 예쁘게 */
+.cosy-native-check {
+  width: 16px;
+  height: 16px;
+  accent-color: #2563eb;
+}
+
+/* 제품 선택 체크(동그란 파란 체크) */
+.cosy-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 2px solid #cbd5e1;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: all 0.15s ease;
+}
+.cosy-check svg {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.15s ease;
+}
+.cosy-check.is-checked {
+  border-color: #2563eb;
+  background: #2563eb;
+}
+.cosy-check.is-checked svg {
+  opacity: 1;
+  transform: scale(1);
+  color: #fff;
+}
+
+/* 제품 우측 선택/미선택 배지 */
+.cosy-selected-pill {
+  font-size: 12px;
+  font-weight: 1000;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  white-space: nowrap;
+}
+.cosy-selected-pill.is-off {
+  border-color: #e5e7eb;
+  background: #f9fafb;
+  color: #9ca3af;
+}
+
+/* 진행 상태 pill (ClaimCheck 느낌) */
+.cosy-status-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 1000;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  background: #f9fafb;
+  white-space: nowrap;
+}
+.cosy-status-pill.is-running {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+.cosy-status-pill.is-done {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+/* 진행 칩(국가별/제품별) */
+.cosy-progress-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.cosy-progress-label {
+  font-size: 12px;
+  font-weight: 1000;
+  color: #6b7280;
+  width: 52px;
+  flex: 0 0 auto;
+  padding-top: 2px;
+}
+.cosy-progress-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cosy-progress-chip {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #111827;
+}
+.cosy-progress-chip.is-muted {
+  color: #6b7280;
+}
+
+/* KPI */
+.cosy-kpi-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cosy-kpi {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 10px 12px;
+  min-width: 110px;
+  text-align: center;
+}
+.cosy-kpi__label {
+  font-size: 11px;
+  font-weight: 1000;
+  color: #6b7280;
+}
+.cosy-kpi__value {
+  font-size: 16px;
+  font-weight: 1000;
+  color: #111827;
+  margin-top: 2px;
+}
+
+/* 결과 테이블 화이트 카드 */
+.cosy-table-card {
+  background: #fff;
+  padding: 0;
+}
+
+/* 상세 규제 내용 줄바꿈/가독성 */
+.cosy-cell-wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #111827;
+}
+
+/* 혹시 <pre>로 들어오는 경우가 있으면 검은 배경 제거 */
+.cosy-table td pre {
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  white-space: pre-wrap;
+}
