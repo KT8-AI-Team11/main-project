@@ -63,7 +63,7 @@ function normalizeInspectionResult(apiJson, countryCode) {
   };
 }
 
-export default function ClaimCheckPage() {
+export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
   // =========================
   // 1) 국가 옵션
   // =========================
@@ -442,8 +442,33 @@ export default function ClaimCheckPage() {
   // =========================
   // 7) Render
   // =========================
+  const storedSelectedProducts = useMemo(() => {
+    try {
+      const arr = JSON.parse(localStorage.getItem("cosy_selected_products") || "[]");
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) {
+      return [];
+    }
+  }, []);
+
+  const effectiveSelectedProducts =
+    (initialSelectedProducts || []).length > 0 ? initialSelectedProducts : storedSelectedProducts;
+
+  const selectedProductLabel = (effectiveSelectedProducts || [])
+    .map((p) => p?.name)
+    .filter(Boolean)
+    .join(", ");
+
   return (
     <div className="cosy-page">
+      {selectedProductLabel ? (
+        <div className="cosy-card" style={{ padding: 12, marginBottom: 12 }}>
+          <div style={{ fontSize: 12, fontWeight: 900, color: "#6b7280" }}>선택 제품</div>
+          <div style={{ fontSize: 14, fontWeight: 900, color: "#111827", marginTop: 4 }}>
+            {selectedProductLabel}
+          </div>
+        </div>
+      ) : null}
       <div className="cosy-grid-3 claim-top-grid">
         {/* 1) 라벨 이미지 업로드 */}
         <div className="cosy-panel">
