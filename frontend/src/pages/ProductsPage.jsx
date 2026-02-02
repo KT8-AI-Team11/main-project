@@ -307,7 +307,7 @@ const filteredProducts = useMemo(() => {
     return products.find((p) => p.id === selectedProductId);
   }, [products, selectedProductId]);
     return (
-        <div style={{ flex: 1, backgroundColor: "#f3f4f6", minHeight: "100vh", position: "relative", paddingBottom: "120px" }}>
+        <div style={{ flex: 1, backgroundColor: "#f3f4f6", minHeight: "100vh", position: "relative", paddingBottom: "120px", overflowY: "auto", maxHeight: "100vh" }}>
             {/* 상단 헤더 및 그리드 영역 */}
             <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px" }}>
                 <h2 style={{ marginBottom: "24px", fontSize: "22px", fontWeight: "bold", color: "#1f2937" }}>
@@ -390,7 +390,7 @@ const filteredProducts = useMemo(() => {
             {/* 상세 모달 */}
             {isDetailModalOpen && selectedProduct && (
                 <div style={overlayStyle} onClick={() => setIsDetailModalOpen(false)}>
-                    <div style={{ ...modalStyle, width: "900px", position: "relative", padding: "40px" }} onClick={e => e.stopPropagation()}>
+                    <div style={{ ...modalStyle, width: "900px", position: "relative", padding: "40px", maxHeight: "90vh", overflowY: "auto" }} onClick={e => e.stopPropagation()}>
                         <X size={28} style={{ position: "absolute", top: "24px", right: "24px", cursor: "pointer", color: "#9ca3af" }} onClick={() => setIsDetailModalOpen(false)} />
 
                         <div style={{ display: "flex", gap: "48px" }}>
