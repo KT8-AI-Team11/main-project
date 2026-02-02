@@ -6,10 +6,9 @@ from typing import List, Optional, Tuple
 from langchain_core.documents import Document
 
 from app.repositories.vectorstore_repo import get_retriever
-from app.services.ocr_service import get_ocr_service
 from app.services.llm_service import LlmService
 
-from app.schemas.compliance import LlmResult, Finding
+from app.schemas.compliance import LabelingLlmResult, Finding
 
 def _normalize_text(text: str) -> str:
     return "\n".join([line.strip() for line in (text or "").splitlines() if line.strip()])
@@ -57,58 +56,62 @@ class ComplianceService:
     def __init__(self):
         self.llm = LlmService()
 
-    # 규제 체크용. domain에 따라 라벨 규제와 성분 규제 다르게
-    def check_from_text(
+    # 문구 규제용
+    def check_labeling(
         self,
         market: str,
         text: str,
-        domain: str = "labeling",
-        # k: int = 6,
-        # fetch_k: int = 20,
     ):
 
         normalized = _normalize_text(text)
         if not normalized:
-            return LlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
+            return LabelingLlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
 
         # 1) RAG
         # 1-1. 벡터db에게 무엇을 물어볼지 쿼리 생성
-        rag_query = _build_rag_query(market=market, domain=domain, text=normalized)
+        rag_query = _build_rag_query(market=market, domain="labeling", text=normalized)
         # 1-2. 벡터db retriever 생성 (벡터db에서 관련 문서 찾아주는 탐색기)
-        retriever = get_retriever(market=market, domain=domain, k=6, fetch_k=20)
+        retriever = get_retriever(market=market, domain="labeling", k=6, fetch_k=20)
         # 1-3. 문서 검색 실행
         docs = retriever.invoke(rag_query)
         # 1-4. LLM에게 전달할 문자열 context 생성
         context = _format_docs_for_context(docs)
 
         # 2) LLM 호출
-        llm_result = self.llm.analyze_with_context(
+        llm_result = self.llm.analyze_labeling(
             market=market,
-            domain=domain,
             text=normalized,
             context=context,
         )
         return llm_result
 
-    # 내부 로직은 ocr에 이미지 넣고 받은 값을 check_from_text까지 처리하는데 실제론 이 두 개를 따로따로할 거임
-    # todo: 안쓰일 거 같으니 최종본 때 확인 후 삭제
-    def check_from_image_bytes(
+    def check_ingredients(
         self,
         market: str,
-        image_bytes: bytes,
-        ocr_lang: str = "korean",
-    ) -> Tuple[str, LlmResult]:
-        ocr = get_ocr_service(lang=ocr_lang)
-        ocr_text, _lines = ocr.extract(image_bytes)
-        normalized = _normalize_text(ocr_text)
+        text: str,
+    ):
 
-        llm_result = self.check_from_text(
+        normalized = _normalize_text(text)
+        if not normalized:
+            return LabelingLlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
+
+        # 1) RAG
+        # 1-1. 벡터db에게 무엇을 물어볼지 쿼리 생성
+        rag_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
+        # 1-2. 벡터db retriever 생성 (벡터db에서 관련 문서 찾아주는 탐색기)
+        retriever = get_retriever(market=market, domain="ingredients", k=6, fetch_k=20)
+        # 1-3. 문서 검색 실행
+        docs = retriever.invoke(rag_query)
+        # 1-4. LLM에게 전달할 문자열 context 생성
+        context = _format_docs_for_context(docs)
+
+        # 2) LLM 호출
+        llm_result = self.llm.analyze_ingredients(
             market=market,
-            text=normalized,
-            domain="labeling",
+            ingredients=normalized,
+            context=context,
         )
-        return normalized, llm_result
-
+        return llm_result
 
 _compliance_service: ComplianceService | None = None
 
