@@ -8,13 +8,14 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DB_URL:jdbc:mysql://localhost:3306/your_db}
-    username: ${DB_USERNAME:your_id}
-    password: ${DB_PASSWORD:your_password}
+    url: ${DB_URL:jdbc:mysql://localhost:3306/spring_db}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
 
   jpa:
     hibernate:
       ddl-auto: update
+    defer-datasource-initialization: true
     show-sql: true
     properties:
       hibernate:
