@@ -442,33 +442,10 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
   // =========================
   // 7) Render
   // =========================
-  const storedSelectedProducts = useMemo(() => {
-    try {
-      const arr = JSON.parse(localStorage.getItem("cosy_selected_products") || "[]");
-      return Array.isArray(arr) ? arr : [];
-    } catch (e) {
-      return [];
-    }
-  }, []);
-
-  const effectiveSelectedProducts =
-    (initialSelectedProducts || []).length > 0 ? initialSelectedProducts : storedSelectedProducts;
-
-  const selectedProductLabel = (effectiveSelectedProducts || [])
-    .map((p) => p?.name)
-    .filter(Boolean)
-    .join(", ");
+  
 
   return (
     <div className="cosy-page">
-      {selectedProductLabel ? (
-        <div className="cosy-card" style={{ padding: 12, marginBottom: 12 }}>
-          <div style={{ fontSize: 12, fontWeight: 900, color: "#6b7280" }}>선택 제품</div>
-          <div style={{ fontSize: 14, fontWeight: 900, color: "#111827", marginTop: 4 }}>
-            {selectedProductLabel}
-          </div>
-        </div>
-      ) : null}
       <div className="cosy-grid-3 claim-top-grid">
         {/* 1) 라벨 이미지 업로드 */}
         <div className="cosy-panel">
@@ -1085,10 +1062,7 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
             )}
           </div>
 
-          <div style={{ height: 8 }} />
-          <div className="cosy-subtext">
-            * 멀티국가 결과는 country별 반복 호출 → resultsByCountry 저장 → 탭에서 출력하는 구조입니다.
-          </div>
+          <div style={{ height: 8 }} />  
         </div>
       </div>
     </div>

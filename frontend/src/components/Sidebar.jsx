@@ -65,12 +65,20 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn }) {
 
         {/* 규제 확인 */}
         <SidebarItem
-          active={currentPage === "ingredient-check"}
-          onClick={() => onNavigate("ingredient-check")}
-          label="성분 규제 확인"
-          requiresLogin={true}
-          isLoggedIn={isLoggedIn}
-        />
+        active={currentPage === "ingredient-check"}
+        onClick={() => {
+    // ✅ 사이드바로 들어올 땐 이전 제품 선택 흔적 제거
+        localStorage.removeItem("cosy_selected_product_ids");
+        localStorage.removeItem("cosy_selected_products");
+
+    // ✅ 이동 (명시적으로 빈 값 전달해도 좋음)
+        onNavigate("ingredient-check", { selectedProducts: [], selectedProductIds: [] });
+  }}
+        label="성분 규제 확인"
+        requiresLogin={true}
+        isLoggedIn={isLoggedIn}
+/>
+
 
         <SidebarItem
           active={currentPage === "claim-check"}

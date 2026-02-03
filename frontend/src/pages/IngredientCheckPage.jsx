@@ -16,6 +16,50 @@ const countryNameOf = (code) =>
 
 const normStr = (v) => (v == null ? "" : String(v)).trim();
 
+// ✅ 검색 보강: 공백 무시 + (선택) 초성 검색
+const stripWSLower = (v) => String(v || "").toLowerCase().replace(/\s+/g, "");
+
+// 한글 초성(19개)
+const CHOSEONG = [
+  "ㄱ",
+  "ㄲ",
+  "ㄴ",
+  "ㄷ",
+  "ㄸ",
+  "ㄹ",
+  "ㅁ",
+  "ㅂ",
+  "ㅃ",
+  "ㅅ",
+  "ㅆ",
+  "ㅇ",
+  "ㅈ",
+  "ㅉ",
+  "ㅊ",
+  "ㅋ",
+  "ㅌ",
+  "ㅍ",
+  "ㅎ",
+];
+
+const toChoseong = (v) => {
+  const s = String(v || "");
+  let out = "";
+  for (let i = 0; i < s.length; i++) {
+    const code = s.charCodeAt(i);
+    // 가(0xAC00) ~ 힣(0xD7A3)
+    if (code >= 0xac00 && code <= 0xd7a3) {
+      const idx = Math.floor((code - 0xac00) / 588);
+      out += CHOSEONG[idx] || "";
+    } else {
+      out += s[i];
+    }
+  }
+  return out;
+};
+
+const isChoseongQuery = (q) => /^[ㄱ-ㅎ]+$/.test(String(q || ""));
+
 const riskRank = (r) => {
   const v = String(r || "").toUpperCase();
   if (v === "HIGH") return 3;
@@ -154,21 +198,30 @@ export default function IngredientCheckPage({
       return;
     }
 
-    // 아무 것도 없으면 1개 기본 선택(있을 때)
-    if (mergedProducts.length > 0) {
-      setSelectedProductIds((prev) => (prev.length ? prev : [String(mergedProducts[0].id)]));
-    }
-  }, [initialSelectedProductIds, mergedProducts]);
+    // ✅ 아무 것도 선택되지 않은 상태를 허용 (자동으로 첫 제품 선택하지 않음)
+    //    - ProductsPage에서 넘어온 경우: initialSelectedProductIds/localStorage로 복원됨
+    //    - 사이드바로 직접 진입한 경우: 선택 0개 상태로 시작
+}, [initialSelectedProductIds, mergedProducts]);
 
   // ---------- derived lists ----------
   const filteredProducts = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = stripWSLower(query);
     const base = mergedProducts.filter((p) => {
       if (!q) return true;
-      return (
-        (p.name || "").toLowerCase().includes(q) ||
-        (p.ingredients || "").toLowerCase().includes(q)
-      );
+
+      const name = stripWSLower(p.name);
+      const ing = stripWSLower(p.ingredients);
+
+      // 1) 기본: 공백 제거 후 포함 검색
+      if (name.includes(q) || ing.includes(q)) return true;
+
+      // 2) 초성 검색: 예) "ㄱㅁㅅ" → "가면수" 형태의 제품명 매칭
+      if (isChoseongQuery(q)) {
+        const nameCho = toChoseong(name);
+        if (nameCho.includes(q)) return true;
+      }
+
+      return false;
     });
     if (!showSelectedOnly) return base;
     const set = new Set(selectedProductIds);
@@ -396,23 +449,14 @@ export default function IngredientCheckPage({
 
   return (
     <div className="cosy-page">
-      {/* 상단 선택 요약 */}
-      {selectedProductLabel ? (
-        <div className="cosy-card" style={{ padding: 12, marginBottom: 12 }}>
-          <div style={{ fontSize: 12, fontWeight: 900, color: "#6b7280" }}>선택 제품</div>
-          <div style={{ fontSize: 14, fontWeight: 900, color: "#111827", marginTop: 4 }}>
-            {selectedProductLabel}
-          </div>
-        </div>
-      ) : null}
 
       {/* 상단 3패널 */}
       <div className="cosy-grid-3">
         {/* 1) 제품 리스트 */}
         <div className="cosy-panel">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-            <div className="cosy-panel__title">제품 선택</div>
-            <span className={`cosy-status-pill ${status.cls}`}>{status.text}</span>
+            <div className="cosy-panel__title">제품 리스트</div>
+            <span className="cosy-count-badge">선택 {selectedCount}개</span>
           </div>
 
           <div className="cosy-card cosy-product-toolbar" style={{ padding: 14 }}>
@@ -461,8 +505,7 @@ export default function IngredientCheckPage({
                 <span style={{ fontSize: 13, color: "#111827" }}>선택된 제품만 보기</span>
               </label>
 
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-                <span className="cosy-count-badge">선택 {selectedCount}개</span>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 10 }}>
                 <div className="cosy-mini-actions" style={{ marginTop: 0 }}>
                   <button
                     className="cosy-btn"
@@ -580,19 +623,12 @@ export default function IngredientCheckPage({
             </button>
           </div>
 
-          <div className="cosy-card" style={{ padding: 14, marginTop: 8 }}>
-            <div className="cosy-progress-row">
-              <div className="cosy-progress-label">선택</div>
-              <div className="cosy-progress-chips">
-                <span className="cosy-progress-chip">{selectedProductIds.length}개 제품</span>
-                <span className="cosy-progress-chip">{selectedCountries.length}개 국가</span>
-                <span className={`cosy-progress-chip ${totalTasks ? "" : "is-muted"}`}>
-                  {totalTasks ? `총 ${totalTasks}개 조합` : "조합 없음"}
-                </span>
-              </div>
+          {/* ✅ 실행 버튼(진행률/진행바는 오른쪽 '진행/요약' 패널로만 노출) */}
+          <div className="cosy-card" style={{ padding: 14, marginTop: 10, display: "flex", flexDirection: "column", gap: 12 }}>
+            <div className="cosy-subtext" style={{ fontWeight: 900 }}>
+              선택: {selectedProductIds.length}개 제품 · {selectedCountries.length}개 국가 ·{" "}
+              {totalTasks ? `총 ${totalTasks}개 조합` : "조합 없음"}
             </div>
-
-            <div className="cosy-toolbar-divider" style={{ margin: "12px 0" }} />
 
             <button
               type="button"
@@ -614,43 +650,6 @@ export default function IngredientCheckPage({
               {inspecting ? "검사 중..." : hasRun ? "다시 검사" : "검사 실행"}
             </button>
           </div>
-
-          {/* 진행 상태 */}
-          <div style={{ marginTop: 12 }}>
-            <div className="cosy-card" style={{ padding: 14 }}>
-              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 10 }}>
-                <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>진행률</div>
-                <div style={{ fontWeight: 1000, fontSize: 18, color: "#111827" }}>{progressPct}%</div>
-              </div>
-
-              <div
-                style={{
-                  height: 8,
-                  background: "#E5E7EB",
-                  borderRadius: 999,
-                  overflow: "hidden",
-                  marginTop: 10,
-                }}
-              >
-                <div
-                  style={{
-                    height: "100%",
-                    width: `${progressPct}%`,
-                    background: "#1D4ED8",
-                    transition: "width 180ms ease",
-                  }}
-                />
-              </div>
-
-              <div className="cosy-subtext" style={{ marginTop: 8, fontWeight: 900, textAlign: "center" }}>
-                {inspecting
-                  ? `처리 중: ${progressText || "…"}`
-                  : hasRun && totalTasks
-                  ? `완료: ${doneTasks}/${totalTasks} · 마지막: ${progressText || "—"}`
-                  : "대기 중"}
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* 3) 진행/요약 */}
@@ -660,8 +659,8 @@ export default function IngredientCheckPage({
           {/* 진행 카드 (오른쪽 고정 느낌) */}
           <div className="cosy-card" style={{ padding: 14 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-              <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>현재 상태</div>
-              <span className={`cosy-status-pill ${status.cls}`}>{status.text}</span>
+              <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>진행 상황</div>
+              <div className="cosy-subtext" style={{ fontWeight: 1000 }}>{status.text}</div>
             </div>
 
             <div className="cosy-toolbar-divider" style={{ margin: "12px 0" }} />
@@ -789,19 +788,19 @@ export default function IngredientCheckPage({
 
       {/* 하단 결과 패널 */}
       <div className="cosy-panel is-tall" ref={resultsRef} style={{ marginTop: 14 }}>
-        <div className="cosy-panel__title">제품별 상세 규제 부적합 요소</div>
+        <div className="cosy-panel__title">성분 규제 검사 결과</div>
 
         {!hasRun ? (
           <div className="cosy-center-box">
             <div className="cosy-circle">–</div>
-            <div className="cosy-strong">분석을 실행하면 상세 결과가 표시됩니다</div>
-            <div className="cosy-subtext">선택한 제품/국가 조합별 부적합 요소를 표로 보여줍니다.</div>
+            <div className="cosy-strong">검사를 실행하면 상세 결과가 표시됩니다</div>
+            <div className="cosy-subtext">선택한 제품/국가 조합별 검사 결과를 표로 보여줍니다.</div>
           </div>
         ) : showNoIssue ? (
           <div className="cosy-center-box">
             <div className="cosy-circle">✓</div>
-            <div className="cosy-strong">부적합 요소가 발견되지 않았습니다</div>
-            <div className="cosy-subtext">선택한 조합에서 규제 이슈가 없거나 결과가 비어있습니다.</div>
+            <div className="cosy-strong">규제 이슈가 발견되지 않았습니다</div>
+            <div className="cosy-subtext">선택한 조합에서 결과가 비어있거나, 규제상 문제로 판단된 항목이 없습니다.</div>
           </div>
         ) : (
           <div className="cosy-card cosy-table-card">
@@ -813,9 +812,9 @@ export default function IngredientCheckPage({
                     <th style={{ width: 120 }}>국가명</th>
                     {/* ✅ 추가 컬럼 */}
                     <th style={{ width: 110, textAlign: "center" }}>위험도</th>
-                    <th style={{ width: 190 }}>부적합한 성분명</th>
-                    <th style={{ width: 200 }}>규제 위치</th>
-                    <th>상세 규제 내용</th>
+                    <th style={{ width: 190 }}>성분명</th>
+                    <th style={{ width: 200 }}>관련 규정</th>
+                    <th>상세 내용</th>
                     <th style={{ width: 160 }}>필요한 작업</th>
                   </tr>
                 </thead>
