@@ -191,16 +191,7 @@ export default function ProductsPage({ onNavigate }) {
 
     try {
       const res = await api.patch(`/products/${selectedProductId}`, payload);
-
-      // Context 업데이트
-      if (res?.data) {
-        setProducts((prev) =>
-          prev.map((p) => (p.id === selectedProductId ? res.data : p))
-        );
-      } else {
-        await fetchProducts();
-      }
-
+      await fetchProducts();
       alert("제품 정보가 성공적으로 수정되었습니다.");
       setIsEditModalOpen(false);
     } catch (error) {
