@@ -33,11 +33,6 @@ export default function CosyUI() {
   const [pageParams, setPageParams] = useState({});
   const [pendingNav, setPendingNav] = useState(null);
 
-  // 페이지 이동 시 전달할 파라미터(선택 제품 등)
-  const [pageParams, setPageParams] = useState({});
-  // 로그인 가드에 막혔을 때 원래 가려던 페이지 저장
-  const [pendingNav, setPendingNav] = useState(null);
-
   // localStorage 기반 로그인 상태
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("cosy_logged_in") === "true"
