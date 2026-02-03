@@ -11,7 +11,7 @@ const BASE = import.meta.env.VITE_API_BASE_URL || "";
  * - 토큰 자동 첨부 및 갱신 로직 포함
  */
 const api = axios.create({
-  baseURL: "http://localhost:8080/api",
+    baseURL: "http://localhost:8080/api",
 });
 
 /**
@@ -189,8 +189,10 @@ export default function ProductsPage({ onNavigate }) {
       status: newProductStatus,
     };
 
-    try {
-      const res = await api.patch(`/products/${selectedProductId}`, payload);
+    const resetInputFields = () => {
+        setNewProductName(""); setNewProductCategory("SKINCARE"); setNewProductImage(null);
+        setNewProductIngredients(""); setNewProductStatus("STEP_1");
+    };
 
       // Context 업데이트
       if (res?.data) {

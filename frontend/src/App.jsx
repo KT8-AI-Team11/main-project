@@ -29,6 +29,9 @@ export default function CosyUI() {
     return "home";
   });
   const [isChatOpen, setIsChatOpen] = useState(false);
+  // ✅ 페이지 이동 시 전달할 파라미터(선택 제품 등)
+  const [pageParams, setPageParams] = useState({});
+  const [pendingNav, setPendingNav] = useState(null);
 
   // 페이지 이동 시 전달할 파라미터(선택 제품 등)
   const [pageParams, setPageParams] = useState({});

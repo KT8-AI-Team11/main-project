@@ -99,7 +99,7 @@ class ComplianceService:
         # 1-1. 벡터db에게 무엇을 물어볼지 쿼리 생성
         rag_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
         # 1-2. 벡터db retriever 생성 (벡터db에서 관련 문서 찾아주는 탐색기)
-        retriever = get_retriever(market=market, domain="ingredients", k=6, fetch_k=20)
+        retriever = get_retriever(market=market, domain="ingredients", k=15, fetch_k=60, bm25_weight=0.6, vector_weight=0.4,)
         # 1-3. 문서 검색 실행
         docs = retriever.invoke(rag_query)
         # 1-4. LLM에게 전달할 문자열 context 생성
