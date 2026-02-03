@@ -3,20 +3,19 @@ package com.aivle.cosy.service;
 
 import com.aivle.cosy.domain.Company;
 import com.aivle.cosy.domain.User;
-import com.aivle.cosy.dto.LoginRequest;
-import com.aivle.cosy.dto.LoginResponse;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
 import com.aivle.cosy.dto.Message;
+import com.aivle.cosy.dto.UserInfoResponse;
 import com.aivle.cosy.exception.BusinessException;
-import com.aivle.cosy.exception.LoginErrorCode;
+import com.aivle.cosy.exception.UserErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.UserRepository;
 import com.aivle.cosy.util.JwtTokenProvider;
+import com.aivle.cosy.util.ValidationUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,44 +27,23 @@ public class UserService {
     private final UserRepository userRepository;
     private final CompanyRepository companyRepository;
     private final JwtTokenProvider tokenProvider;
+    private final TokenBlacklistService tokenBlacklistService;
     private final PasswordEncoder passwordEncoder;
-    private final static String EMAIL_REGEX = "^(?=.{5,254}$)[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-    private final static String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{10,72}$";
 
-
-
-    @Transactional(readOnly = true)
-    public LoginResponse login(LoginRequest loginInfo) {
-        String email = loginInfo.getEmail();
-        String password = loginInfo.getPassword();
-
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED));
-
-        if(!passwordEncoder.matches(password, user.getPassword())) {
-            throw new BusinessException(LoginErrorCode.AUTHENTICATION_FAILED);
-        }
-
-        // token 추가
-        String token = tokenProvider.createToken(user.getEmail(), user.getCompany().getId());
-
-        LoginResponse response = new LoginResponse();
-        response.setEmail(email);
-        response.setMessage(Message.LOGIN_SUCCESS);
-        // token 추가
-        response.setToken(token);
-        return response;
-    }
-
+    /**
+     * 회원 가입 서비스
+     * @param userInfo
+     * @return
+     */
     @Transactional
     public SignUpResponse signUp(SignUpRequest userInfo){
         String email = userInfo.getEmail();
         String password = userInfo.getPassword();
 
         // 1. 이메일 형식 검증 (정규식)
-        if (!isValidFormat(email, EMAIL_REGEX))
+        if (!ValidationUtils.isValidEmail(email))
             throw new BusinessException(SignUpErrorCode.INVALID_EMAIL_FORMAT);
-        if (!isValidFormat(password, PASSWORD_REGEX))
+        if (!ValidationUtils.isValidPassword(password))
             throw new BusinessException(SignUpErrorCode.INVALID_PASSWORD_FORMAT);
         // 2. 이메일 중복 확인 (userRepository)
         validateDuplicatedEmail(email);
@@ -89,7 +67,37 @@ public class UserService {
     }
 
     /**
+     * 마이페이지 정보 조회
      *
+     * @param accessToken : 조회에 필요한 토큰
+     * @return 아이디에 해당하는 정보
+     */
+    @Transactional(readOnly = true)
+    public UserInfoResponse getUserInfo(String accessToken){
+        String email = tokenProvider.extractEmail(accessToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
+
+        return new UserInfoResponse(user.getEmail(), user.getCompany().getCompanyName());
+
+    }
+
+    /**
+     * 유저 삭제, access token에서 현재 유저의 이메일을 추출한다음 삭제
+     * @param accessToken
+     */
+    @Transactional
+    public void deleteUser(String accessToken, String refreshToken){
+        String email = tokenProvider.extractEmail(accessToken);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
+
+        tokenBlacklistService.invalidateSession(accessToken,refreshToken);
+        userRepository.delete(user);
+    }
+
+    /**
+     * 로그인시 중복된 이메일인지 확인하는 helper function
      * @param email
      */
     private void validateDuplicatedEmail(String email){
@@ -99,7 +107,7 @@ public class UserService {
     }
 
     /**
-     *
+     * 등록된 회사 도메인인지 확인하는 helper function
      * @param email
      * @return
      */
@@ -109,10 +117,4 @@ public class UserService {
         return companyRepository.findByDomain(domain)
                 .orElseThrow(()-> new BusinessException(SignUpErrorCode.COMPANY_NOT_FOUND));
     }
-
-    public boolean isValidFormat(String userInput, String regex){
-        return userInput!=null && !userInput.isEmpty() && userInput.matches(regex);
-    }
-
-
 }
