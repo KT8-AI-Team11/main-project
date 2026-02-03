@@ -189,10 +189,8 @@ export default function ProductsPage({ onNavigate }) {
       status: newProductStatus,
     };
 
-    const resetInputFields = () => {
-        setNewProductName(""); setNewProductCategory("SKINCARE"); setNewProductImage(null);
-        setNewProductIngredients(""); setNewProductStatus("STEP_1");
-    };
+    try {
+      const res = await api.patch(`/products/${selectedProductId}`, payload);
 
       // Context 업데이트
       if (res?.data) {

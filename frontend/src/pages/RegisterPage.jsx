@@ -19,7 +19,7 @@ export default function RegisterPage({ onRegisterSuccess, onBackToLogin }) {
     setLoading(true);
 
     try {
-      const response = await signup(email, pw);
+      await signup(email, pw);
       alert("회원가입이 완료되었습니다.");
       onRegisterSuccess();
     } catch (error) {

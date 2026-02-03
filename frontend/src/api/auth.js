@@ -50,7 +50,7 @@ export const logout = (accessToken) =>
         token: accessToken,
     })
 
-export const refresh = (accessToken) =>
+export const refresh = () =>
     apiFetch("/api/auth/refresh", {
         method: "POST",
     })
