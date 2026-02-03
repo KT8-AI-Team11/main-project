@@ -5,6 +5,24 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+  sql:
+    init:
+      mode: always
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/spring_db}
+    username: ${DB_USERNAME:your_db}
+    password: ${DB_PASSWORD:your_db}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
 jwt:
   secret: ${JWT_SECRET:1RUb2tlbkdlbmVyYXRpb25BbmRWYWxpZGF0aW9u} # 바꿔야함 아무거나 집어넣은거라

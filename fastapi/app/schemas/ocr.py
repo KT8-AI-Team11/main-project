@@ -11,4 +11,5 @@ class OcrLine(BaseModel):
 class OcrExtractResponse(BaseModel):
     language: str
     text: str               # 전체 OCR 텍스트
+    normalized_text: str    # text를 한 문장처럼 처리
     lines: List[OcrLine]    # 줄 단위 결과

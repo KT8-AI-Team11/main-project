@@ -35,7 +35,8 @@ public class JwtTokenProvider {
         secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String createToken(String email) {
+//    public String createToken(String email) {
+    public String createToken(String email, Long companyId) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expiration);
         //Map<String, Object> claims = new HashMap<>();
@@ -45,6 +46,7 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .subject(email)
                 //.claims(claims) // 나중에 필요시 확장, 변경
+                .claim("companyId", companyId) // 회사 ID 추가
                 .issuedAt(now)
                 .issuer(issuer)
                 .expiration(expiryDate)
@@ -82,6 +84,12 @@ public class JwtTokenProvider {
             log.debug("토큰이 비어있음: {}", e.getMessage());
         }
         return false;
+    }
+
+    // 회사 ID만 가져오는 메서드
+    public Long getCompanyId(String token) {
+        Claims claims = extractClaims(token); // 위 메서드 재사용
+        return claims.get("companyId", Long.class); // 필요한 데이터만 타입 변환해서 반환
     }
 
 }

@@ -2,8 +2,8 @@
 .venv/
 .env
 
+__pycache__/
+**/__pycache__/
+
 # IDE
 .idea/
-__pycache__/
-*.pyc
-.venv/

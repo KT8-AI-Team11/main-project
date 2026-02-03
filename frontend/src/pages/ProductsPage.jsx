@@ -1,289 +1,435 @@
-import React, { useMemo, useState } from "react";
-import { Image, X, ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useEffect, useMemo, useState } from "react";
+import { Image, X, CheckCircle, Camera } from "lucide-react";
+import axios from "axios";
 
-export default function ProductsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProductId, setSelectedProductId] = useState(null);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+const api = axios.create({
+    baseURL: "http://localhost:8080/api",
+});
 
-  const [newProductName, setNewProductName] = useState("");
-  const [newProductCategory, setNewProductCategory] = useState("");
-  const [newProductImage, setNewProductImage] = useState(null);
+api.interceptors.request.use((config) => {
+    // 로그인 시 저장한 키값 (JWT Token)
+    const token = localStorage.getItem("cosy_token");
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+});
 
-  const [products, setProducts] = useState([
-    { id: 1, name: "수분 크림 A", subtitle: "기초화장품", feature: "2024-01-10", image: null },
-    { id: 2, name: "선스크린 B", subtitle: "자외선차단", feature: "2024-01-12", image: null },
-    { id: 3, name: "클렌징 폼 C", subtitle: "세안제", feature: "2024-01-15", image: null },
-    { id: 4, name: "비타민 세럼 D", subtitle: "에센스", feature: "2024-01-20", image: null },
-  ]);
+export default function ProductsPage({ onNavigate }) {
+    // 상태 관리
+    const [products, setProducts] = useState([]);
+    const [selectedProductId, setSelectedProductId] = useState(null);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isAnalyzing, setIsAnalyzing] = useState(false);
+    const [selectedIds, setSelectedIds] = useState([]);
+    const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
-  const filteredProducts = useMemo(() => {
-    return products.filter((p) => p.name.includes(searchQuery) || p.subtitle.includes(searchQuery));
-  }, [products, searchQuery]);
+    // 모달 상태
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
-  const selectedProduct = useMemo(() => {
-    return products.find((p) => p.id === selectedProductId);
-  }, [products, selectedProductId]);
+    // 입력 필드 상태
+    const [newProductName, setNewProductName] = useState("");
+    const [newProductCategory, setNewProductCategory] = useState("SKINCARE");
+    const [newProductImage, setNewProductImage] = useState(null);
+    const [newProductIngredients, setNewProductIngredients] = useState("");
+    const [newProductStatus, setNewProductStatus] = useState("STEP_1");
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onloadend = () => setNewProductImage(reader.result);
-    reader.readAsDataURL(file);
-  };
+    // 전 제품 조회
+    const fetchProducts = async () => {
+        try {
+            const response = await api.get('/products');
+            setProducts(response.data);
+        } catch (error) { console.error("데이터 로딩 실패", error); }
+    };
 
-  const openAddModal = () => {
-    setNewProductImage(null);
-    setIsAddModalOpen(true);
-  };
+    useEffect(() => { fetchProducts(); }, []);
 
-  const confirmAddProduct = () => {
-    if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
-    const newId = products.length > 0 ? Math.max(...products.map((p) => p.id)) + 1 : 1;
+    // TODO: 이미지 업로드 처리
+    const handleImageUpload = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onloadend = () => setNewProductImage(reader.result);
+        reader.readAsDataURL(file);
+    };
 
-    setProducts([
-      ...products,
-      {
-        id: newId,
-        name: newProductName,
-        subtitle: newProductCategory || "미분류",
-        feature: new Date().toISOString().split("T")[0],
-        image: newProductImage,
-      },
-    ]);
+    // 제품 생성 및 등록
+    const confirmAddProduct = async () => {
+        if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
+        const payload = {
+            name: newProductName,
+            type: newProductCategory,
+            image: newProductImage || "",
+            fullIngredient: newProductIngredients || "",
+            status: newProductStatus
+        };
+        try {
+            await api.post("/products", payload);
+            setIsAddModalOpen(false); resetInputFields(); fetchProducts();
+        } catch (error) { alert("제품 등록 중 오류가 발생했습니다."); }
+    };
 
-    setIsAddModalOpen(false);
-    setNewProductName("");
-    setNewProductCategory("");
-    setNewProductImage(null);
-  };
+    // 제품 수정
+    const confirmEditProduct = async () => {
+        if (!selectedProductId) return alert("수정할 제품을 선택해주세요.");
+        if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
 
-  const openEditModal = () => {
-    if (!selectedProductId) return alert("수정할 제품을 선택해주세요.");
-    const p = products.find((x) => x.id === selectedProductId);
-    setNewProductName(p.name);
-    setNewProductCategory(p.subtitle);
-    setNewProductImage(p.image);
-    setIsEditModalOpen(true);
-  };
+        const payload = {
+            name: newProductName,
+            type: newProductCategory,
+            image: newProductImage || "",
+            fullIngredient: newProductIngredients || "",
+            status: newProductStatus
+        };
+        try {
+            await api.patch(`/products/${selectedProductId}`, payload);
+            alert("제품 정보가 성공적으로 수정되었습니다.");
+            setIsEditModalOpen(false); fetchProducts();
+        } catch (error) { alert("수정 중 오류가 발생했습니다."); }
+    };
 
-  const confirmEditProduct = () => {
-    if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
-    setProducts(
-      products.map((p) =>
-        p.id === selectedProductId ? { ...p, name: newProductName, subtitle: newProductCategory || "미분류", image: newProductImage } : p
-      )
-    );
-    setIsEditModalOpen(false);
-  };
+    // 제품 삭제
+    const handleDelete = async () => {
+        const ids = selectedIds.length > 0 ? selectedIds : (selectedProductId ? [selectedProductId] : []);
 
-  const deleteProduct = () => {
-    if (!selectedProductId) return alert("삭제할 제품을 선택해주세요.");
-    setProducts(products.filter((p) => p.id !== selectedProductId));
-    setSelectedProductId(null);
-    setIsDetailModalOpen(false);
-  };
+        if (ids.length === 0) return alert("삭제할 제품을 선택해주세요.");
+        if (!window.confirm(`정말 ${ids.length}개의 제품을 삭제하시겠습니까?`)) return;
 
-  const runAnalysis = () => {
-    if (!selectedProductId) return alert("분석할 제품을 선택해주세요.");
-    setIsAnalyzing(true);
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      alert(`${products.find((p) => p.id === selectedProductId).name}의 글로벌 규제 검토가 완료되었습니다. (적합)`);
-    }, 1200);
-  };
+        try {
+            if (ids.length === 1) {
+                await api.delete(`/products/${ids[0]}`);
+            } else {
+                await api.delete("/products/batch", { data: ids });
+            }
 
-  const handleProductClick = (id) => {
-    setSelectedProductId(id);
-    setIsDetailModalOpen(true);
-  };
+            alert("제품이 삭제되었습니다.");
+            setSelectedIds([]);
+            setSelectedProductId(null);
+            setIsDetailModalOpen(false);
+            fetchProducts(); // 목록 새로고침
+        } catch (error) {
+            console.error(error);
+            alert("삭제 중 오류가 발생했습니다.");
+        }
+    };
 
-  return (
-    <div style={{ flex: 1, padding: "40px", backgroundColor: "#f3f4f6", overflowY: "auto", display: "flex", flexDirection: "column" }}>
-      <div style={{ maxWidth: "1000px", margin: "0 auto", width: "100%", flex: 1, display: "flex", flexDirection: "column" }}>
-        <h2 style={{ marginBottom: "24px", fontSize: "20px", fontWeight: "bold" }}>
-          내 제품 리스트 ({filteredProducts.length})
-        </h2>
+    // 분석(=규제 검토 진입)
+    const runAnalysis = () => {
+        const targetIds = reviewTargetIds;
+        if (targetIds.length === 0) {
+            alert("검토할 제품을 최소 하나 이상 선택해주세요.");
+            return;
+        }
+        setIsReviewModalOpen(true);
+    };
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "20px", marginBottom: "40px", flex: 1 }}>
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              onClick={() => handleProductClick(product.id)}
-              style={{
-                backgroundColor: "white",
-                borderRadius: "12px",
-                padding: "20px",
-                boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-                cursor: "pointer",
-                border: selectedProductId === product.id ? "2px solid #3b82f6" : "2px solid transparent",
-                transition: "all 0.2s",
-                height: "fit-content",
-              }}
-            >
-              <div style={{ backgroundColor: "#f3f4f6", height: "100px", borderRadius: "8px", marginBottom: "12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                {product.image ? <img src={product.image} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Image color="#9ca3af" />}
-              </div>
-              <h3 style={{ fontSize: "16px", fontWeight: "bold", marginBottom: "4px" }}>{product.name}</h3>
-              <p style={{ fontSize: "13px", color: "#6b7280" }}>{product.subtitle}</p>
-              <p style={{ fontSize: "12px", color: "#9ca3af", marginTop: "8px" }}>등록: {product.feature}</p>
+    const resetInputFields = () => {
+        setNewProductName(""); setNewProductCategory("SKINCARE"); setNewProductImage(null);
+        setNewProductIngredients(""); setNewProductStatus("STEP_1");
+    };
+
+    const openEditModal = () => {
+        const p = products.find(i => i.id === selectedProductId);
+        if (!p) return;
+        setNewProductName(p.name); setNewProductCategory(p.type); setNewProductImage(p.image);
+        setNewProductIngredients(p.fullIngredient); setNewProductStatus(p.status);
+        setIsEditModalOpen(true);
+    };
+
+    const filteredProducts = useMemo(() => {
+        return products.filter((p) =>
+            p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (p.type && p.type.toLowerCase().includes(searchQuery.toLowerCase()))
+        );
+    }, [products, searchQuery]);
+
+    const selectedProduct = useMemo(() => {
+        return products.find((p) => p.id === selectedProductId);
+    }, [products, selectedProductId]);
+
+    // ✅ 규제 검토 대상(체크박스 우선, 없으면 상세 선택 1개)
+    const reviewTargetIds = useMemo(() => {
+        return selectedIds.length > 0
+            ? selectedIds
+            : (selectedProductId ? [selectedProductId] : []);
+    }, [selectedIds, selectedProductId]);
+
+    const reviewTargetProducts = useMemo(() => {
+        return products.filter((p) => reviewTargetIds.includes(p.id));
+    }, [products, reviewTargetIds]);
+
+    const reviewPayloadProducts = useMemo(() => {
+        return reviewTargetProducts.map((p) => ({
+            id: p.id,
+            name: p.name,
+            type: p.type,
+            status: p.status,
+            image: p.image || "",
+            fullIngredient: p.fullIngredient || "",
+        }));
+    }, [reviewTargetProducts]);
+
+    return (
+        <div style={{ flex: 1, backgroundColor: "#f3f4f6", minHeight: "100vh", position: "relative", paddingBottom: "120px" }}>
+            {/* 상단 헤더 및 그리드 영역 */}
+            <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px" }}>
+                <h2 style={{ marginBottom: "24px", fontSize: "22px", fontWeight: "bold", color: "#1f2937" }}>
+                    내 제품 리스트 ({filteredProducts.length}) {selectedIds.length > 0 && <span style={{color:'#3b82f6', fontSize: '16px'}}> | {selectedIds.length}개 선택됨</span>}
+                </h2>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "24px" }}>
+                    {filteredProducts.map((p) => (
+                        <div key={p.id} onClick={() => { setSelectedProductId(p.id); setIsDetailModalOpen(true); }}
+                             style={{
+                                 position: "relative", backgroundColor: "white", borderRadius: "16px", padding: "20px", cursor: "pointer",
+                                 border: selectedIds.includes(p.id) ? "2px solid #3b82f6" : "2px solid transparent",
+                                 boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", transition: "0.2s"
+                             }}>
+                            {/* 선택 체크박스 */}
+                            <div onClick={(e) => { e.stopPropagation(); setSelectedIds(prev => prev.includes(p.id) ? prev.filter(id => id !== p.id) : [...prev, p.id]); }}
+                                 // #d1d5db
+                                 style={{ position: "absolute", top: "12px", right: "12px", zIndex: 10, backgroundColor: selectedIds.includes(p.id) ? "#3b82f6" : "white", borderRadius: "50%", border: "1.5px solid #3B82F6", width: "24px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                {selectedIds.includes(p.id) && <CheckCircle size={16} color="white" />}
+                            </div>
+
+                            <div style={{ backgroundColor: "#f9fafb", height: "140px", borderRadius: "12px", marginBottom: "16px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                                {p.image ? <img src={p.image} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Image size={40} color="#d1d5db" />}
+                            </div>
+                            <h3 style={{ fontSize: "17px", fontWeight: "700", marginBottom: "4px" }}>{p.name}</h3>
+                            <p style={{ fontSize: "14px", color: "#6b7280" }}>{p.type}</p>
+                            <p style={{ fontSize: "14px", color: "#6b7280" }}>{p.status}</p>
+                            <p style={{ fontSize: "14px", color: "#6b7280" }}>수정 일자 : {p.upDate ? p.upDate.split('T')[0] : "-"}</p>
+                        </div>
+                    ))}
+                    {/* 추가 카드 */}
+                    <div onClick={() => { resetInputFields(); setIsAddModalOpen(true); }}
+                         style={{ backgroundColor: "#fff", borderRadius: "16px", border: "2px dashed #d1d5db", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", minHeight: "240px", transition: "0.2s" }}>
+                        <X size={48} color="#9ca3af" style={{ transform: "rotate(45deg)" }} />
+                    </div>
+                </div>
             </div>
-          ))}
 
-          <div onClick={openAddModal} style={{ backgroundColor: "#fff", borderRadius: "12px", border: "2px dashed #d1d5db", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", minHeight: "210px", height: "fit-content" }}>
-            <span style={{ fontSize: "40px", color: "#9ca3af" }}>+</span>
-          </div>
+            {/*// 하단 컨트롤 바*/}
+            <div style={{
+                position: "fixed",
+                bottom: "30px",
+                left: "calc(260px + 2%)",
+                right: "8%",
+                height: "80px",
+                backgroundColor: "white",
+                padding: "0 24px",
+                borderRadius: "16px",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                gap: "16px",
+                zIndex: 100,
+                border: "1px solid #e5e7eb"
+            }}>
+                <div style={{ flex: 1 }}>
+                    <input type="text" placeholder="리스트 내 검색" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+                           style={{ width: "100%", padding: "12px 16px", border: "1px solid #e5e7eb", borderRadius: "10px", outline: "none", fontSize: "15px" }} />
+                </div>
+                <button onClick={() => { resetInputFields(); setIsAddModalOpen(true); }} style={btnStyle}>추가</button>
+                <button onClick={handleDelete} style={{ ...btnStyle, backgroundColor: "#f3f4f6", color: "#ef4444" }}>삭제{selectedIds.length > 0 ? ` (${selectedIds.length})` : ""}</button>
+                <button
+                    onClick={() => {
+                        runAnalysis();
+                    }}
+                    disabled={isAnalyzing}
+                    style={{
+                        ...btnStyle,
+                        backgroundColor: "#111827",
+                        color: "white",
+                        padding: "0 30px",
+                        opacity: (selectedIds.length === 0 && !selectedProductId) || isAnalyzing ? 0.5 : 1, // 선택 안되면 흐리게
+                        cursor: isAnalyzing ? "not-allowed" : "pointer"
+                    }}
+                >
+                    규제 검토
+                </button>
+            </div>
+
+            {/* 상세 모달 */}
+            {isDetailModalOpen && selectedProduct && (
+                <div style={overlayStyle} onClick={() => setIsDetailModalOpen(false)}>
+                    <div style={{ ...modalStyle, width: "900px", position: "relative", padding: "40px" }} onClick={e => e.stopPropagation()}>
+                        <X size={28} style={{ position: "absolute", top: "24px", right: "24px", cursor: "pointer", color: "#9ca3af" }} onClick={() => setIsDetailModalOpen(false)} />
+
+                        <div style={{ display: "flex", gap: "48px" }}>
+                            <div style={{ width: "350px", height: "450px", backgroundColor: "#f9fafb", borderRadius: "16px", overflow: "hidden", border: "1px solid #f3f4f6" }}>
+                                {selectedProduct.image ? <img src={selectedProduct.image} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Image size={60} color="#d1d5db" />}
+                            </div>
+
+                            <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                                <div style={{ marginBottom: "30px" }}>
+                                    <h2 style={{ fontSize: "28px", fontWeight: "800", marginBottom: "8px" }}>{selectedProduct.name}</h2>
+                                    <span style={{ padding: "6px 14px", backgroundColor: "#eff6ff", color: "#3b82f6", borderRadius: "20px", fontSize: "14px", fontWeight: "600" }}>{selectedProduct.type}</span>
+                                </div>
+
+                                <div style={{ display: "grid", gap: "20px", marginBottom: "auto" }}>
+                                    <div style={detailRow}><span style={detailLabel}>등록 일자</span><span>{selectedProduct.regDate?.split('T')[0] || "-"}</span></div>
+                                    <div style={detailRow}><span style={detailLabel}>진행 단계</span><span>{selectedProduct.status}</span></div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                        <span style={detailLabel}>전성분 정보</span>
+                                        <div style={{ padding: "16px", backgroundColor: "#f9fafb", borderRadius: "12px", fontSize: "14px", lineHeight: "1.6", height: "140px", overflowY: "auto", border: "1px solid #f3f4f6" }}>
+                                            {selectedProduct.fullIngredient || "등록된 성분 정보가 없습니다."}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px", marginTop: "30px" }}>
+                                    <button onClick={() => { setIsDetailModalOpen(false); openEditModal(); }} style={{ ...btnStyle, backgroundColor: "#f3f4f6" }}>수정하기</button>
+                                    <button onClick={handleDelete} style={{ ...btnStyle, color: "#ef4444", backgroundColor: "#fef2f2" }}>삭제하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* 등록/수정 모달 */}
+            {(isAddModalOpen || isEditModalOpen) && (
+                <div style={overlayStyle} onClick={() => { setIsAddModalOpen(false); setIsEditModalOpen(false); }}>
+                    <div style={{ ...modalStyle, width: "650px", padding: "32px" }} onClick={e => e.stopPropagation()}>
+                        <h3 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "24px" }}>{isAddModalOpen ? "새 제품 등록" : "제품 정보 수정"}</h3>
+                        <div style={{ display: "flex", gap: "24px", marginBottom: "24px" }}>
+                            <div style={{ textAlign: "center" }}>
+                                <div style={{ width: "160px", height: "200px", backgroundColor: "#f9fafb", borderRadius: "12px", marginBottom: "12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", border: "1px solid #e5e7eb" }}>
+                                    {newProductImage ? <img src={newProductImage} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Camera size={40} color="#9ca3af" />}
+                                </div>
+                                <label htmlFor="file-up" style={{ fontSize: "14px", color: "#3b82f6", cursor: "pointer", fontWeight: "600" }}>이미지 업로드</label>
+                                <input id="file-up" type="file" accept="image/*" hidden onChange={handleImageUpload} />
+                            </div>
+                            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "12px" }}>
+                                <input placeholder="제품명" value={newProductName} onChange={e => setNewProductName(e.target.value)} style={inputStyle} />
+                                <select value={newProductCategory} onChange={e => setNewProductCategory(e.target.value)} style={inputStyle}>
+                                    <option value="SKINCARE">SKINCARE</option><option value="MAKEUP">MAKEUP</option>
+                                    <option value="SUNSCREEN">SUNSCREEN</option><option value="BODYCARE">BODYCARE</option>
+                                </select>
+                                <select value={newProductStatus} onChange={e => setNewProductStatus(e.target.value)} style={inputStyle}>
+                                    {["STEP_1", "STEP_2", "STEP_3", "STEP_4", "STEP_5"].map(s => <option key={s} value={s}>{s}</option>)}
+                                </select>
+                            </div>
+                        </div>
+                        <textarea placeholder="전성분을 입력하세요" value={newProductIngredients} onChange={e => setNewProductIngredients(e.target.value)} style={{ ...inputStyle, height: "120px", marginBottom: "24px" }} />
+                        <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px" }}>
+                            <button onClick={() => { setIsAddModalOpen(false); setIsEditModalOpen(false); }} style={{ ...btnStyle, backgroundColor: "#f3f4f6" }}>취소</button>
+                            <button onClick={isAddModalOpen ? confirmAddProduct : confirmEditProduct} style={{ ...btnStyle, backgroundColor: "#111827", color: "white" }}>저장하기</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* ✅ 규제 검토 선택 모달 (기존 카드/등록 UI는 그대로 유지) */}
+            {isReviewModalOpen && (
+                <div style={overlayStyle} onClick={() => setIsReviewModalOpen(false)}>
+                    <div
+                        style={{ ...modalStyle, width: "460px", padding: "28px", position: "relative" }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <X
+                            size={22}
+                            style={{ position: "absolute", top: "16px", right: "16px", cursor: "pointer", color: "#9ca3af" }}
+                            onClick={() => setIsReviewModalOpen(false)}
+                        />
+
+                        <div style={{ fontSize: "18px", fontWeight: 800, marginBottom: "8px", color: "#111827" }}>
+                            규제 검토 선택
+                        </div>
+                        <div style={{ fontSize: "14px", color: "#6b7280", marginBottom: "18px", lineHeight: 1.5 }}>
+                            선택된 제품: <b>{reviewTargetProducts.length}</b>개
+                            {reviewTargetProducts.length > 0 && (
+                                <div style={{ marginTop: "8px", maxHeight: "90px", overflowY: "auto", paddingRight: "6px" }}>
+                                    {reviewTargetProducts.map((p) => (
+                                        <div key={p.id} style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "6px" }}>
+                                            <span style={{ fontWeight: 700 }}>{p.name}</span>
+                                            <span style={{ color: "#9ca3af", fontSize: "12px" }}>#{p.id}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        <div style={{ display: "grid", gap: "10px" }}>
+                            <button
+                                type="button"
+                                style={{
+                                    ...btnStyle,
+                                    width: "100%",
+                                    backgroundColor: "#111827",
+                                    color: "white",
+                                    justifyContent: "center",
+                                }}
+                                onClick={() => {
+                                    // 선택 제품을 페이지 이동 시 유지 (props 전달 + localStorage 백업)
+                                    try {
+                                        localStorage.setItem("cosy_selected_product_ids", JSON.stringify(reviewTargetIds));
+                                        localStorage.setItem("cosy_selected_products", JSON.stringify(reviewPayloadProducts));
+                                    } catch (e) {}
+
+                                    setIsReviewModalOpen(false);
+                                    onNavigate?.("ingredient-check", {
+                                        selectedProductIds: reviewTargetIds,
+                                        selectedProducts: reviewPayloadProducts,
+                                    });
+                                }}
+                            >
+                                성분 규제 확인 (복수 제품 가능)
+                            </button>
+
+                            <button
+                                type="button"
+                                style={{
+                                    ...btnStyle,
+                                    width: "100%",
+                                    backgroundColor: "#f3f4f6",
+                                    color: "#111827",
+                                    justifyContent: "center",
+                                    border: "1px solid #e5e7eb",
+                                }}
+                                onClick={() => {
+                                    if (reviewTargetIds.length !== 1) {
+                                        alert("문구 규제 확인은 제품을 하나만 선택해주세요.");
+                                        return;
+                                    }
+                                    try {
+                                        localStorage.setItem("cosy_selected_product_ids", JSON.stringify(reviewTargetIds));
+                                        localStorage.setItem("cosy_selected_products", JSON.stringify(reviewPayloadProducts));
+                                    } catch (e) {}
+
+                                    setIsReviewModalOpen(false);
+                                    onNavigate?.("claim-check", {
+                                        selectedProductIds: reviewTargetIds,
+                                        selectedProducts: reviewPayloadProducts,
+                                    });
+                                }}
+                            >
+                                문구 규제 확인 (단일 제품)
+                            </button>
+                        </div>
+
+                        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "16px" }}>
+                            <button
+                                type="button"
+                                onClick={() => setIsReviewModalOpen(false)}
+                                style={{ ...btnStyle, backgroundColor: "#ffffff", border: "1px solid #e5e7eb" }}
+                            >
+                                취소
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
-
-        <div style={{ position: "sticky", bottom: "0", display: "flex", alignItems: "center", gap: "12px", backgroundColor: "white", padding: "16px", borderRadius: "12px", boxShadow: "0 -4px 6px -1px rgba(0,0,0,0.05)", marginTop: "auto" }}>
-          <div style={{ flex: 1, position: "relative" }}>
-            <input
-              type="text"
-              placeholder="리스트 내 검색"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{ width: "100%", maxWidth: "500px", padding: "10px 3px", border: "1px solid #d1d5db", borderRadius: "8px", outline: "none" }}
-            />
-          </div>
-          <button onClick={openAddModal} style={actionButtonStyle}>추가</button>
-          <button onClick={openEditModal} style={actionButtonStyle}>수정</button>
-          <button onClick={deleteProduct} style={{ ...actionButtonStyle, color: "#ef4444" }}>삭제</button>
-          <button onClick={runAnalysis} disabled={isAnalyzing} style={{ ...actionButtonStyle, backgroundColor: "#111827", color: "white" }}>
-            {isAnalyzing ? "분석 중..." : "규제 검토"}
-          </button>
-        </div>
-      </div>
-
-      {isDetailModalOpen && selectedProduct && (
-        <DetailModalComponent product={selectedProduct} onClose={() => setIsDetailModalOpen(false)} />
-      )}
-
-      {isAddModalOpen && (
-        <ModalComponent
-          title="제품 등록"
-          onClose={() => setIsAddModalOpen(false)}
-          onSave={confirmAddProduct}
-          name={newProductName}
-          setName={setNewProductName}
-          category={newProductCategory}
-          setCategory={setNewProductCategory}
-          image={newProductImage}
-          onImageUpload={handleImageUpload}
-        />
-      )}
-
-      {isEditModalOpen && (
-        <ModalComponent
-          title="제품 수정"
-          onClose={() => setIsEditModalOpen(false)}
-          onSave={confirmEditProduct}
-          name={newProductName}
-          setName={setNewProductName}
-          category={newProductCategory}
-          setCategory={setNewProductCategory}
-          image={newProductImage}
-          onImageUpload={handleImageUpload}
-        />
-      )}
-    </div>
-  );
+    );
 }
 
-const DetailModalComponent = ({ product, onClose }) => (
-  <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.4)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 3000 }} onClick={onClose}>
-    <div style={{ backgroundColor: "white", width: "900px", maxWidth: "95%", borderRadius: "8px", position: "relative", boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
-      <X size={24} style={{ position: "absolute", top: "24px", right: "24px", cursor: "pointer", color: "#6b7280" }} onClick={onClose} />
-
-      <div style={{ padding: "60px 40px", display: "flex", gap: "40px" }}>
-        <div style={{ width: "320px", height: "420px", backgroundColor: "#e5e7eb", borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-          {product.image ? <img src={product.image} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "20px", fontWeight: "bold", color: "#4b5563" }}>제품 이미지</span>}
-        </div>
-
-        <div style={{ flex: 1, border: "1px solid #111827", minHeight: "420px", display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", borderBottom: "1px solid #e5e7eb", backgroundColor: "white" }}>
-            <div style={{ width: "140px", padding: "12px 16px", fontWeight: "bold", borderRight: "1px solid #e5e7eb" }}>항목</div>
-            <div style={{ flex: 1, padding: "12px 16px", fontWeight: "bold" }}>내용</div>
-          </div>
-
-          <div style={{ display: "flex", borderBottom: "1px solid #e5e7eb", backgroundColor: "#f9fafb" }}>
-            <div style={{ width: "140px", padding: "12px 16px", fontWeight: "bold", borderRight: "1px solid #e5e7eb" }}>제품명</div>
-            <div style={{ flex: 1, padding: "12px 16px" }}>{product.name}</div>
-          </div>
-
-          <div style={{ display: "flex", borderBottom: "1px solid #e5e7eb" }}>
-            <div style={{ width: "140px", padding: "12px 16px", fontWeight: "bold", borderRight: "1px solid #e5e7eb" }}>카테고리</div>
-            <div style={{ flex: 1, padding: "12px 16px" }}>{product.subtitle}</div>
-          </div>
-
-          <div style={{ display: "flex", borderBottom: "1px solid #e5e7eb", backgroundColor: "#f9fafb" }}>
-            <div style={{ width: "140px", padding: "12px 16px", fontWeight: "bold", borderRight: "1px solid #e5e7eb" }}>등록일</div>
-            <div style={{ flex: 1, padding: "12px 16px" }}>{product.feature}</div>
-          </div>
-
-          <div style={{ display: "flex", backgroundColor: "#f9fafb", flex: 1 }}>
-            <div style={{ width: "140px", padding: "12px 16px", fontWeight: "bold", borderRight: "1px solid #e5e7eb" }}>규제 수수 여부</div>
-            <div style={{ flex: 1, padding: "12px 16px" }} />
-          </div>
-        </div>
-      </div>
-
-      <div style={{ padding: "0 40px 30px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <ArrowLeft size={24} style={{ color: "#d1d5db", cursor: "not-allowed" }} />
-        <div style={{ width: "40px", height: "40px", borderRadius: "50%", backgroundColor: "#3b82f6", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: "bold", fontSize: "18px", boxShadow: "0 4px 6px rgba(0,0,0,0.1)" }}>
-          M
-        </div>
-        <ArrowRight size={24} style={{ color: "#111827", cursor: "pointer" }} />
-      </div>
-    </div>
-  </div>
-);
-
-const ModalComponent = ({ title, onClose, onSave, name, setName, category, setCategory, image, onImageUpload }) => (
-  <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2000 }} onClick={onClose}>
-    <div style={{ backgroundColor: "white", borderRadius: "16px", width: "500px", maxWidth: "90%", boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2)" }} onClick={(e) => e.stopPropagation()}>
-      <div style={{ padding: "24px", borderBottom: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h3 style={{ fontSize: "18px", fontWeight: "bold", margin: 0 }}>{title}</h3>
-        <X size={20} color="#6b7280" cursor="pointer" onClick={onClose} />
-      </div>
-
-      <div style={{ padding: "50px", display: "flex", gap: "24px" }}>
-        <div style={{ width: "120px", height: "160px", backgroundColor: "#f3f4f6", borderRadius: "8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px", flexShrink: 0 }}>
-          <div style={{ width: "80px", height: "80px", backgroundColor: "#e5e7eb", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-            {image ? <img src={image} alt="미리보기" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Image color="#9ca3af" size={32} />}
-          </div>
-          <label htmlFor="image-input" style={{ padding: "6px 12px", fontSize: "12px", backgroundColor: "#fff", border: "1px solid #d1d5db", borderRadius: "6px", cursor: "pointer" }}>
-            사진 업로드
-          </label>
-          <input id="image-input" type="file" accept="image/*" onChange={onImageUpload} style={{ display: "none" }} />
-        </div>
-
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151", display: "block", marginBottom: "8px" }}>제품명</label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="제품명을 입력하세요" style={{ width: "100%", padding: "10px 12px", border: "1px solid #d1d5db", borderRadius: "8px", fontSize: "14px", outline: "none" }} />
-          </div>
-
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151", display: "block", marginBottom: "8px" }}>카테고리</label>
-            <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="카테고리를 입력하세요" style={{ width: "100%", padding: "10px 12px", border: "1px solid #d1d5db", borderRadius: "8px", fontSize: "14px", outline: "none" }} />
-          </div>
-        </div>
-      </div>
-
-      <div style={{ padding: "16px 24px", borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "flex-end", gap: "8px" }}>
-        <button onClick={onClose} style={{ padding: "8px 16px", fontSize: "14px", backgroundColor: "#f3f4f6", color: "#374151", border: "none", borderRadius: "8px", cursor: "pointer" }}>
-          취소
-        </button>
-        <button onClick={onSave} style={{ padding: "8px 16px", fontSize: "14px", backgroundColor: "#111827", color: "white", border: "none", borderRadius: "8px", cursor: "pointer" }}>
-          저장
-        </button>
-      </div>
-    </div>
-  </div>
-);
-
-const actionButtonStyle = { padding: "10px 20px", backgroundColor: "#f3f4f6", border: "none", borderRadius: "8px", fontSize: "14px", fontWeight: "500", cursor: "pointer", whiteSpace: "nowrap" };
+// 스타일 변수
+const btnStyle = { height: "48px", padding: "0 24px", borderRadius: "10px", border: "none", fontWeight: "700", cursor: "pointer", transition: "0.2s", fontSize: "15px" };
+const inputStyle = { width: "100%", padding: "12px", border: "1px solid #e5e7eb", borderRadius: "10px", outline: "none" };
+const overlayStyle = { position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, backdropFilter: "blur(4px)" };
+const modalStyle = { backgroundColor: "white", borderRadius: "24px", boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1)" };
+const detailRow = { display: "flex", justifyContent: "space-between", paddingBottom: "12px", borderBottom: "1px solid #f3f4f6", fontSize: "16px" };
+const detailLabel = { color: "#6b7280", fontWeight: "600" };

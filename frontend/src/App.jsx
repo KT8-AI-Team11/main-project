@@ -14,6 +14,9 @@ import ProfilePage from "./pages/ProfilePage"; // ✅ 추가
 export default function CosyUI() {
   const [currentPage, setCurrentPage] = useState("home");
   const [isChatOpen, setIsChatOpen] = useState(false);
+  // ✅ 페이지 이동 시 전달할 파라미터(선택 제품 등)
+  const [pageParams, setPageParams] = useState({});
+  const [pendingNav, setPendingNav] = useState(null);
 
   // ✅ localStorage 기반 로그인 상태
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -32,6 +35,15 @@ export default function CosyUI() {
   // ✅ 로그인 성공(일반/데모) 처리
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+
+    // 로그인 가드에 막혀서 login으로 왔던 경우, 원래 가려던 페이지로 복귀
+    if (pendingNav?.targetPage) {
+      setPageParams(pendingNav.params || {});
+      setCurrentPage(pendingNav.targetPage);
+      setPendingNav(null);
+      return;
+    }
+
     setCurrentPage("home");
   };
 
@@ -41,10 +53,15 @@ export default function CosyUI() {
     localStorage.removeItem("cosy_login_type");
     localStorage.removeItem("cosy_user_email");
     localStorage.removeItem("cosy_demo_user");
+    // 선택 제품 전달용 임시값
+    localStorage.removeItem("cosy_selected_product_ids");
+    localStorage.removeItem("cosy_selected_products");
 
     setIsLoggedIn(false);
     setCurrentPage("home");
     setIsChatOpen(false);
+    setPageParams({});
+    setPendingNav(null);
   };
 
   // ✅ 코치 임의 로그인(홈 버튼용)
@@ -58,16 +75,19 @@ export default function CosyUI() {
   };
 
   // ✅ 로그인 필요 페이지 가드
-  const requireAuth = (targetPage) => {
+  const requireAuth = (targetPage, params = {}) => {
     // ✅ profile 추가
     const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
 
     if (!isLoggedIn && protectedPages.includes(targetPage)) {
       alert("해당 기능은 로그인 후 이용할 수 있어요.");
+      // 로그인 후 원래 가려던 곳으로 복귀할 수 있게 저장
+      setPendingNav({ targetPage, params });
       setCurrentPage("login");
       return;
     }
 
+    setPageParams(params || {});
     setCurrentPage(targetPage);
   };
 
@@ -120,9 +140,19 @@ export default function CosyUI() {
           />
         )}
 
-        {currentPage === "products" && <ProductsPage />}
-        {currentPage === "ingredient-check" && <IngredientCheckPage />}
-        {currentPage === "claim-check" && <ClaimCheckPage />}
+        {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
+        {currentPage === "ingredient-check" && (
+          <IngredientCheckPage
+            initialSelectedProducts={pageParams?.selectedProducts || []}
+            initialSelectedProductIds={pageParams?.selectedProductIds || []}
+          />
+        )}
+        {currentPage === "claim-check" && (
+          <ClaimCheckPage
+            initialSelectedProducts={pageParams?.selectedProducts || []}
+            initialSelectedProductIds={pageParams?.selectedProductIds || []}
+          />
+        )}
 
         {/* ✅ profile 페이지 분기 추가 */}
         {currentPage === "profile" && <ProfilePage />}
