@@ -23,14 +23,19 @@ export default function CosyUI() {
   const [currentPage, setCurrentPage] = useState(() => {
     const redirectToLogin = sessionStorage.getItem("redirect_to_login");
     if (redirectToLogin) {
-      sessionStorage.removeItem("redirect_to_login");  // 플래그 제거 (일회성)
+      sessionStorage.removeItem("redirect_to_login");
       return "login";
     }
     return "home";
   });
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  // ✅ localStorage 기반 로그인 상태
+  // 페이지 이동 시 전달할 파라미터(선택 제품 등)
+  const [pageParams, setPageParams] = useState({});
+  // 로그인 가드에 막혔을 때 원래 가려던 페이지 저장
+  const [pendingNav, setPendingNav] = useState(null);
+
+  // localStorage 기반 로그인 상태
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("cosy_logged_in") === "true"
   );
@@ -44,13 +49,22 @@ export default function CosyUI() {
     [isLoggedIn]
   );
 
-  // ✅ 로그인 성공(일반/데모) 처리
+  // 로그인 성공(일반/데모) 처리
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+
+    // 로그인 가드에 막혀서 login으로 왔던 경우, 원래 가려던 페이지로 복귀
+    if (pendingNav?.targetPage) {
+      setPageParams(pendingNav.params || {});
+      setCurrentPage(pendingNav.targetPage);
+      setPendingNav(null);
+      return;
+    }
+
     setCurrentPage("home");
   };
 
-  // ✅ 로그아웃
+  // 로그아웃 (서버 API 호출 포함)
   const handleLogout = async () => {
     const token = localStorage.getItem("cosy_access_token");
 
@@ -66,14 +80,19 @@ export default function CosyUI() {
       localStorage.removeItem("cosy_login_type");
       localStorage.removeItem("cosy_user_email");
       localStorage.removeItem("cosy_demo_user");
+      // 선택 제품 전달용 임시값
+      localStorage.removeItem("cosy_selected_product_ids");
+      localStorage.removeItem("cosy_selected_products");
 
       setIsLoggedIn(false);
       setCurrentPage("home");
       setIsChatOpen(false);
+      setPageParams({});
+      setPendingNav(null);
     }
   };
 
-  // ✅ 코치 임의 로그인(홈 버튼용)
+  // 코치 임의 로그인(홈 버튼용) - 실제 API 호출
   const handleCoachDemoLogin = async () => {
     const DEMO_EMAIL = "aivle@test.com";
     const DEMO_PASSWORD = "*Aivle0611!";
@@ -98,22 +117,16 @@ export default function CosyUI() {
    * - 보호된 페이지 접근 시 토큰 유효성을 미리 검사
    * - API 호출 전에 만료된 토큰을 감지하여 불필요한 요청 방지
    *
-   * 동작 흐름:
-   * 1. 보호된 페이지인지 확인
-   * 2. localStorage에서 access token 가져옴
-   * 3. 토큰이 없거나 만료됐으면:
-   *    - 로그인 상태였으면 → "세션 만료" 알림
-   *    - 비로그인 상태였으면 → "로그인 필요" 알림
-   *    - 로그인 페이지로 이동
-   * 4. 토큰이 유효하면 → 페이지 이동
+   * @param {string} targetPage - 이동할 페이지
+   * @param {object} params - 페이지에 전달할 파라미터 (선택 제품 등)
    */
-  const requireAuth = (targetPage) => {
+  const requireAuth = (targetPage, params = {}) => {
     const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
 
     if (protectedPages.includes(targetPage)) {
       const token = localStorage.getItem("cosy_access_token");
 
-      // 토큰이 없거나 만료된 경우 (isTokenExpired: JWT의 exp 클레임 체크)
+      // 토큰이 없거나 만료된 경우
       if (!token || isTokenExpired(token)) {
         // 로그인 상태였다면 세션 만료 처리
         if (isLoggedIn) {
@@ -125,15 +138,18 @@ export default function CosyUI() {
         } else {
           alert("해당 기능은 로그인 후 이용할 수 있어요.");
         }
+        // 로그인 후 원래 가려던 곳으로 복귀할 수 있게 저장
+        setPendingNav({ targetPage, params });
         setCurrentPage("login");
         return;
       }
     }
 
+    setPageParams(params || {});
     setCurrentPage(targetPage);
   };
 
-  // ✅ 로그인 페이지는 레이아웃 숨김
+  // 로그인 페이지는 레이아웃 숨김
   if (currentPage === "login") {
     return (
       <LoginPage
@@ -143,7 +159,7 @@ export default function CosyUI() {
     );
   }
 
-  // ✅ 회원가입 페이지
+  // 회원가입 페이지
   if (currentPage === "register") {
     return (
       <RegisterPage
@@ -197,11 +213,20 @@ export default function CosyUI() {
           />
         )}
 
-        {currentPage === "products" && <ProductsPage />}
-        {currentPage === "ingredient-check" && <IngredientCheckPage />}
-        {currentPage === "claim-check" && <ClaimCheckPage />}
+        {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
+        {currentPage === "ingredient-check" && (
+          <IngredientCheckPage
+            initialSelectedProducts={pageParams?.selectedProducts || []}
+            initialSelectedProductIds={pageParams?.selectedProductIds || []}
+          />
+        )}
+        {currentPage === "claim-check" && (
+          <ClaimCheckPage
+            initialSelectedProducts={pageParams?.selectedProducts || []}
+            initialSelectedProductIds={pageParams?.selectedProductIds || []}
+          />
+        )}
 
-        {/* ✅ profile 페이지 분기 추가 */}
         {currentPage === "profile" && <ProfilePage />}
       </div>
 
