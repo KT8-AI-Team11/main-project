@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-
+import axios from "axios";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChatWidget from "./components/Chatwidget";
@@ -13,7 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { login, logout, isTokenExpired } from "./api/auth";
 import CountryRegulationsPage from "./pages/CountryRegulationsPage";
-
+import { useProducts } from "./store/ProductsContext";
 
 export default function CosyUI() {
   /**
@@ -52,8 +52,29 @@ export default function CosyUI() {
     [isLoggedIn]
   );
 
-  // 로그인 성공(일반/데모) 처리
-  const handleLoginSuccess = () => {
+  const { products, setProducts } = useProducts();
+
+  const api = axios.create({
+      baseURL: "http://localhost:8080/api",
+  });
+
+  api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("cosy_access_token");
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  });
+  
+  const fetchProducts = async () => {
+    try {
+      const response = await api.get("/products");
+      console.log("products response.data =", response.data);
+      setProducts(response.data);
+    } catch (error) {
+      console.error("데이터 로딩 실패", error);
+    }
+  };
+
+  const handleLoginSuccess = async() => {
     setIsLoggedIn(true);
 
     // 로그인 가드에 막혀서 login으로 왔던 경우, 원래 가려던 페이지로 복귀
@@ -64,9 +85,9 @@ export default function CosyUI() {
       return;
     }
 
+    await fetchProducts();
     setCurrentPage("home");
   };
-
   // 로그아웃 (서버 API 호출 포함)
   const handleLogout = async () => {
     const token = localStorage.getItem("cosy_access_token");
