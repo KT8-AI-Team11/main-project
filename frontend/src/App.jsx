@@ -12,6 +12,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import { login, logout, isTokenExpired } from "./api/auth";
+import CountryRegulationsPage from "./pages/CountryRegulationsPage";
+
 
 export default function CosyUI() {
   /**
@@ -28,7 +30,9 @@ export default function CosyUI() {
     }
     return "home";
   });
+
   const [isChatOpen, setIsChatOpen] = useState(false);
+
   // ✅ 페이지 이동 시 전달할 파라미터(선택 제품 등)
   const [pageParams, setPageParams] = useState({});
   const [pendingNav, setPendingNav] = useState(null);
@@ -42,6 +46,7 @@ export default function CosyUI() {
     () => localStorage.getItem("cosy_user_email") || "",
     [isLoggedIn]
   );
+
   const loginType = useMemo(
     () => localStorage.getItem("cosy_login_type") || "",
     [isLoggedIn]
@@ -119,6 +124,8 @@ export default function CosyUI() {
    * @param {object} params - 페이지에 전달할 파라미터 (선택 제품 등)
    */
   const requireAuth = (targetPage, params = {}) => {
+    // ✅ 로그인 필요한 페이지만 여기에 넣기
+    // (국가별 규제 정보는 정보성 페이지라면 굳이 로그인 강제 안 해도 됨)
     const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
 
     if (protectedPages.includes(targetPage)) {
@@ -136,6 +143,7 @@ export default function CosyUI() {
         } else {
           alert("해당 기능은 로그인 후 이용할 수 있어요.");
         }
+
         // 로그인 후 원래 가려던 곳으로 복귀할 수 있게 저장
         setPendingNav({ targetPage, params });
         setCurrentPage("login");
@@ -212,12 +220,14 @@ export default function CosyUI() {
         )}
 
         {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
+
         {currentPage === "ingredient-check" && (
           <IngredientCheckPage
             initialSelectedProducts={pageParams?.selectedProducts || []}
             initialSelectedProductIds={pageParams?.selectedProductIds || []}
           />
         )}
+
         {currentPage === "claim-check" && (
           <ClaimCheckPage
             initialSelectedProducts={pageParams?.selectedProducts || []}
@@ -226,6 +236,10 @@ export default function CosyUI() {
         )}
 
         {currentPage === "profile" && <ProfilePage />}
+
+        {/* ✅ 여기 추가가 핵심 */}
+        {currentPage === "country-regulations" && <CountryRegulationsPage />}
+        
       </div>
 
       {/* Chat */}
