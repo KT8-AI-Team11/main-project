@@ -104,6 +104,7 @@ export default function Sidebar({currentPage, onNavigate, isLoggedIn}) {
                     label="국가별 규제 정보"
                     isLoggedIn={isLoggedIn}
                 />
+                
                 {/* 개인 정보 약관  */}
                 <div
                     onClick={() => {
