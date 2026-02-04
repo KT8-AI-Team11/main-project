@@ -29,6 +29,7 @@ public class Log {
     private Company company;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "approval_status", length = 20)
     private ApprovalStatus approvalStatus;
 
     @Column(columnDefinition = "TEXT")
@@ -44,11 +45,11 @@ public class Log {
     private LocalDateTime updDate;
 
     public enum Country {
-        US, JAPAN, CHINA, VIETNAM
+        US, JAPAN, CHINA, EU
     }
 
     public enum ApprovalStatus {
-        PASS, WARN, FAIL
+        HIGH, MEDIUM, LOW
     }
 
     @Builder

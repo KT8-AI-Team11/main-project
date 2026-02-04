@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/log")
 @RequiredArgsConstructor
@@ -17,9 +18,9 @@ public class LogController {
     private final LogService logService;
     private final JwtTokenProvider tokenProvider;
 
-    @PostMapping("/upsert")
+    @PostMapping
     public ResponseEntity<String> saveOrUpdate(
-            @RequestHeader("Authorization") String bearerToken,
+            @RequestHeader(value = "Authorization") String bearerToken,
             @RequestBody LogRequest request) {
 
         String token = bearerToken.substring(7);
