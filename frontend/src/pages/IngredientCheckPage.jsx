@@ -125,6 +125,9 @@ export default function IngredientCheckPage({
   const { products: ctxProducts = [] } = useProducts();
   const resultsRef = useRef(null);
 
+  // 제품 리스트: 4개까지만 보이도록 높이 계산(이후 스크롤)
+  const firstProductItemRef = useRef(null);
+
   // ---------- products source (context + localStorage fallback) ----------
   const storageProducts = useMemo(() => {
     try {
@@ -165,6 +168,9 @@ export default function IngredientCheckPage({
   const [query, setQuery] = useState("");
   const [showSelectedOnly, setShowSelectedOnly] = useState(false);
 
+
+  const [productItemHeight, setProductItemHeight] = useState(0);
+
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [inspecting, setInspecting] = useState(false);
 
@@ -172,6 +178,9 @@ export default function IngredientCheckPage({
   const [progressPct, setProgressPct] = useState(0);
   const [progressText, setProgressText] = useState("");
 
+
+  // progress/summary panel UI
+  const [showSummaryDetails, setShowSummaryDetails] = useState(false);
   // results map: key = `${productId}__${countryCode}`
   const [comboResults, setComboResults] = useState({}); // { key: { ok, data, error } }
   const [hasRun, setHasRun] = useState(false);
@@ -228,6 +237,28 @@ export default function IngredientCheckPage({
     return base.filter((p) => set.has(String(p.id)));
   }, [mergedProducts, query, showSelectedOnly, selectedProductIds]);
 
+
+  // ✅ 제품 리스트 영역: 실제 아이템 1개의 높이를 측정해서 "4개까지만" 보이도록 maxHeight 설정
+  useEffect(() => {
+    const el = firstProductItemRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const node = firstProductItemRef.current;
+      if (!node) return;
+      const rect = node.getBoundingClientRect();
+      const cs = window.getComputedStyle(node);
+      const mt = parseFloat(cs.marginTop) || 0;
+      const mb = parseFloat(cs.marginBottom) || 0;
+      const h = rect.height + mt + mb;
+      setProductItemHeight((prev) => (h && Math.abs(h - prev) > 1 ? h : prev));
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [filteredProducts.length]);
+
   const selectedProducts = useMemo(() => {
     const set = new Set(selectedProductIds);
     return mergedProducts.filter((p) => set.has(String(p.id)));
@@ -247,6 +278,11 @@ export default function IngredientCheckPage({
     return { text: "대기", cls: "" };
   }, [hasRun, inspecting]);
 
+
+  // ✅ 진행/요약 패널은 기본적으로 "간단 보기" (검사 시작 시 자동으로 상세 닫기)
+  useEffect(() => {
+    if (inspecting) setShowSummaryDetails(false);
+  }, [inspecting]);
   // ---------- table rows ----------
   const tableRows = useMemo(() => {
     const rows = [];
@@ -534,7 +570,7 @@ export default function IngredientCheckPage({
             style={{
               marginTop: 14,
               overflowY: "auto",
-              maxHeight: 430,
+              maxHeight: productItemHeight ? Math.round(productItemHeight * 4) : 320,
               paddingRight: 6,
               opacity: inspecting ? 0.7 : 1,
             }}
@@ -546,11 +582,12 @@ export default function IngredientCheckPage({
                 <div className="cosy-subtext">검색 조건을 변경해보세요.</div>
               </div>
             ) : (
-              filteredProducts.map((p) => {
+              filteredProducts.map((p, idx) => {
                 const active = selectedProductIds.includes(String(p.id));
                 return (
                   <button
                     key={p.id}
+                    ref={idx === 0 ? firstProductItemRef : null}
                     type="button"
                     className={`cosy-product-item ${active ? "is-active" : ""}`}
                     onClick={() => toggleProduct(p.id)}
@@ -654,135 +691,128 @@ export default function IngredientCheckPage({
 
         {/* 3) 진행/요약 */}
         <div className="cosy-panel">
-          <div className="cosy-panel__title">진행 / 요약</div>
-
-          {/* 진행 카드 (오른쪽 고정 느낌) */}
-          <div className="cosy-card" style={{ padding: 14 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-              <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>진행 상황</div>
-              <div className="cosy-subtext" style={{ fontWeight: 1000 }}>{status.text}</div>
-            </div>
-
-            <div className="cosy-toolbar-divider" style={{ margin: "12px 0" }} />
-
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-              <div className="cosy-subtext" style={{ fontWeight: 1000 }}>
-                {totalTasks ? `완료 ${doneTasks}/${totalTasks}` : "조합을 선택해주세요"}
-              </div>
-              <div style={{ fontWeight: 1000, fontSize: 22 }}>{progressPct}%</div>
-            </div>
-
-            <div
-              style={{
-                height: 8,
-                background: "#E5E7EB",
-                borderRadius: 999,
-                overflow: "hidden",
-                marginTop: 10,
-              }}
-            >
-              <div
-                style={{
-                  height: "100%",
-                  width: `${progressPct}%`,
-                  background: "#1D4ED8",
-                  transition: "width 180ms ease",
-                }}
-              />
-            </div>
-
-            <div className="cosy-subtext" style={{ marginTop: 8, fontWeight: 900 }}>
-              {inspecting ? `처리 중: ${progressText || "…"}` : progressText ? `마지막 처리: ${progressText}` : "—"}
-            </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <div className="cosy-panel__title">진행 / 요약</div>
+            <span className={`cosy-status-pill ${status.cls}`}>{status.text}</span>
           </div>
 
-          {/* 전체 위험도 */}
-          <div
-            className={`cosy-status-card ${overallUI.tone === "ok" ? "is-pass" : "is-fail"}`}
-            style={{ marginTop: 12 }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-              <div className="cosy-status-card__title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                {overallUI.tone === "ok" ? null : <AlertTriangle size={18} />}
-                전체 위험도: {overallRiskText}
-              </div>
-              <span className="cosy-chip">{overallUI.pill}</span>
-            </div>
-            <div className="cosy-status-card__meta">
-              {hasRun
-                ? `선택 국가: ${selectedCountryLabel || "없음"} · 선택 제품: ${selectedProductLabel || "없음"}`
-                : "제품/국가를 선택한 뒤 검사를 실행하세요."}
-            </div>
+          {/* ✅ 핵심 카드: 상태별로 꼭 필요한 정보만 */}
+          <div className="cosy-card" style={{ padding: 14, marginTop: 10 }}>
+            {!hasRun && !inspecting ? (
+              <>
+                <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>검사 준비</div>
+                <div className="cosy-subtext" style={{ marginTop: 8, fontWeight: 900 }}>
+                  선택: {selectedCount}개 제품 · {selectedCountries.length}개 국가
+                </div>
+                <div className="cosy-subtext" style={{ marginTop: 6 }}>
+                  제품/국가를 선택한 뒤 <b>검사 실행</b>을 눌러주세요.
+                </div>
+              </>
+            ) : inspecting ? (
+              <>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
+                  <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>진행률</div>
+                  <div style={{ fontWeight: 1000, fontSize: 22 }}>{progressPct}%</div>
+                </div>
+
+                <div
+                  style={{
+                    height: 8,
+                    background: "#E5E7EB",
+                    borderRadius: 999,
+                    overflow: "hidden",
+                    marginTop: 10,
+                  }}
+                >
+                  <div
+                    style={{
+                      height: "100%",
+                      width: `${progressPct}%`,
+                      background: "#1D4ED8",
+                      transition: "width 180ms ease",
+                    }}
+                  />
+                </div>
+
+                <div className="cosy-subtext" style={{ marginTop: 10, fontWeight: 900 }}>
+                  {totalTasks ? `${doneTasks}/${totalTasks} 완료` : "조합을 선택해주세요"}
+                </div>
+
+                <div className="cosy-subtext" style={{ marginTop: 6 }}>
+                  현재 처리: {progressText || "…"}
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                  <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>전체 위험도</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontWeight: 1000 }}>{overallRiskText}</span>
+                    <span className="cosy-chip">{overallUI.pill}</span>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, marginTop: 12 }}>
+                  <div style={{ fontWeight: 1000, fontSize: 13, color: "#111827" }}>총 이슈</div>
+                  <div style={{ fontWeight: 1000, fontSize: 22 }}>{tableRows.length}건</div>
+                </div>
+
+                <div className="cosy-subtext" style={{ marginTop: 8, fontWeight: 900 }}>
+                  HIGH {summary.high} · MEDIUM {summary.mid} · LOW {summary.low}
+                </div>
+
+                <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}>
+                  <button type="button" className="cosy-btn" onClick={() => setShowSummaryDetails((v) => !v)}>
+                    {showSummaryDetails ? "상세 닫기" : "상세 보기"}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
 
-          {/* ✅ 통계: 신호등(빨/노/초) */}
-          <div className="cosy-stats">
-            <div
-              className="cosy-stat"
-              style={{
-                background: SEVERITY_META.HIGH.bg,
-                color: SEVERITY_META.HIGH.fg,
-                border: `1px solid ${SEVERITY_META.HIGH.bd}`,
-              }}
-            >
-              <div className="cosy-stat__label">HIGH</div>
-              <div className="cosy-stat__value">{summary.high}</div>
-            </div>
+          {/* ✅ 상세(필요할 때만): 통계/부가정보는 숨겼다가 펼치기 */}
+          {hasRun && !inspecting && showSummaryDetails ? (
+            <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 12 }}>
+              {/* 통계: 신호등(빨/노/초) */}
+              <div className="cosy-stats" style={{ marginTop: 0 }}>
+                <div
+                  className="cosy-stat"
+                  style={{
+                    background: SEVERITY_META.HIGH.bg,
+                    color: SEVERITY_META.HIGH.fg,
+                    border: `1px solid ${SEVERITY_META.HIGH.bd}`,
+                  }}
+                >
+                  <div className="cosy-stat__label">HIGH</div>
+                  <div className="cosy-stat__value">{summary.high}</div>
+                </div>
 
-            <div
-              className="cosy-stat"
-              style={{
-                background: SEVERITY_META.MEDIUM.bg,
-                color: SEVERITY_META.MEDIUM.fg,
-                border: `1px solid ${SEVERITY_META.MEDIUM.bd}`,
-              }}
-            >
-              <div className="cosy-stat__label">MEDIUM</div>
-              <div className="cosy-stat__value">{summary.mid}</div>
-            </div>
+                <div
+                  className="cosy-stat"
+                  style={{
+                    background: SEVERITY_META.MEDIUM.bg,
+                    color: SEVERITY_META.MEDIUM.fg,
+                    border: `1px solid ${SEVERITY_META.MEDIUM.bd}`,
+                  }}
+                >
+                  <div className="cosy-stat__label">MEDIUM</div>
+                  <div className="cosy-stat__value">{summary.mid}</div>
+                </div>
 
-            <div
-              className="cosy-stat"
-              style={{
-                background: SEVERITY_META.LOW.bg,
-                color: SEVERITY_META.LOW.fg,
-                border: `1px solid ${SEVERITY_META.LOW.bd}`,
-              }}
-            >
-              <div className="cosy-stat__label">LOW</div>
-              <div className="cosy-stat__value">{summary.low}</div>
-            </div>
-          </div>
-
-          {/* 선택 국가/제품 요약 */}
-          <div className="cosy-card" style={{ padding: 14 }}>
-            <div className="cosy-progress-row">
-              <div className="cosy-progress-label">국가</div>
-              <div className="cosy-progress-chips">
-                {selectedCountries.length === 0 ? (
-                  <span className="cosy-progress-chip is-muted">선택 필요</span>
-                ) : (
-                  selectedCountries.map((c) => (
-                    <span key={c} className="cosy-progress-chip">
-                      {countryNameOf(c)}
-                    </span>
-                  ))
-                )}
+                <div
+                  className="cosy-stat"
+                  style={{
+                    background: SEVERITY_META.LOW.bg,
+                    color: SEVERITY_META.LOW.fg,
+                    border: `1px solid ${SEVERITY_META.LOW.bd}`,
+                  }}
+                >
+                  <div className="cosy-stat__label">LOW</div>
+                  <div className="cosy-stat__value">{summary.low}</div>
+                </div>
               </div>
             </div>
-
-            <div className="cosy-toolbar-divider" style={{ margin: "12px 0" }} />
-
-            <div className="cosy-progress-row">
-              <div className="cosy-progress-label">제품</div>
-              <div className="cosy-progress-chips">
-                <span className="cosy-progress-chip">{selectedCount}개 선택</span>
-                <span className={`cosy-progress-chip ${hasRun ? "" : "is-muted"}`}>
-                  {hasRun ? (showNoIssue ? "이슈 없음" : `이슈 ${tableRows.length}건`) : "결과 대기"}
-                </span>
-              </div>
-            </div>
-          </div>
+          ) : null}
         </div>
       </div>
 

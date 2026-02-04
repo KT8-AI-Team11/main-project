@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {Eye, EyeOff} from "lucide-react";
-import {login} from "../api/auth.js";
+import React, { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { login } from "../api/auth.js";
 
-export default function LoginPage({onLoginSuccess, onGoToRegister}) {
+export default function LoginPage({ onLoginSuccess, onGoToRegister }) {
 
     // WARNING: SHOULD BE ALREADY STORED IN THE ACTUAL DB!!!
     const DEMO_EMAIL = "aivle@test.com";
@@ -14,12 +14,25 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
     const [loading, setLoading] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
 
+    /**
+     * UX 개선: 입력 시 실시간으로 공백 제거
+     */
+    const handleNoSpaceChange = (setter) => (e) => {
+        const value = e.target.value.replace(/\s/g, ""); // 모든 공백 제거
+        setter(value);
+    };
+
     const onSubmit = async (e) => {
         e.preventDefault();
         setErrorMsg("");
 
         if (!email.trim()) return setErrorMsg("이메일을 입력해주세요.");
         if (!pw.trim()) return setErrorMsg("비밀번호를 입력해주세요.");
+
+        // 프론트엔드 1차 유효성 검사 (10자 이상 정책 반영)
+        if (pw.length < 10) {
+            return setErrorMsg("비밀번호는 최소 10자 이상이어야 합니다.");
+        }
 
         setLoading(true);
 
@@ -41,13 +54,10 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
         setLoading(true);
 
         try {
-            // 반드시 DB에 데모 계정이 있어야함!!!
             const response = await login(DEMO_EMAIL, DEMO_PASSWORD);
-
             localStorage.setItem("cosy_access_token", response.accessToken);
             localStorage.setItem("cosy_logged_in", "true");
             localStorage.setItem("cosy_user_email", response.email);
-
             onLoginSuccess();
         } catch (error) {
             setErrorMsg(error.data?.message || "데모 로그인에 실패했습니다.");
@@ -56,13 +66,10 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
         }
     };
 
-    // 2) 회원가입
     const onSignup = () => {
-        // alert("회원가입 기능은 준비 중입니다.");
         onGoToRegister();
     };
 
-    // 3) 아이디/비밀번호 찾기 (준비중)
     const onFindAccount = () => {
         alert("아이디/비밀번호 찾기 기능은 준비 중입니다.");
     };
@@ -91,11 +98,11 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                     overflow: "hidden",
                 }}
             >
-                <div style={{marginBottom: "18px"}}>
-                    <div style={{fontSize: "24px", fontWeight: 800, color: "#111827"}}>
+                <div style={{ marginBottom: "18px" }}>
+                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#111827" }}>
                         COSY 로그인
                     </div>
-                    <div style={{marginTop: "6px", fontSize: "13px", color: "#6b7280"}}>
+                    <div style={{ marginTop: "6px", fontSize: "13px", color: "#6b7280" }}>
                         계정으로 로그인해 서비스를 이용하세요.
                     </div>
                 </div>
@@ -118,7 +125,7 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
 
                 <form
                     onSubmit={onSubmit}
-                    style={{display: "flex", flexDirection: "column", gap: "10px"}}
+                    style={{ display: "flex", flexDirection: "column", gap: "10px" }}
                 >
                     <label
                         style={{
@@ -132,8 +139,8 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                     </label>
                     <input
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="aivle@school.com"
+                        onChange={handleNoSpaceChange(setEmail)} // 공백 차단 적용
+                        placeholder="이메일을 입력하세요."
                         autoComplete="email"
                         style={{
                             height: "44px",
@@ -156,15 +163,15 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                             marginTop: "6px",
                         }}
                     >
-                        비밀번호
+                        비밀번호 (10자 이상)
                     </label>
 
-                    <div style={{position: "relative", width: "100%"}}>
+                    <div style={{ position: "relative", width: "100%" }}>
                         <input
                             type={showPw ? "text" : "password"}
                             value={pw}
-                            onChange={(e) => setPw(e.target.value)}
-                            placeholder="aivle0611"
+                            onChange={handleNoSpaceChange(setPw)} // 공백 차단 적용
+                            placeholder="비밀번호를 입력하세요."
                             autoComplete="current-password"
                             style={{
                                 width: "100%",
@@ -194,14 +201,13 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                             aria-label="비밀번호 보기 토글"
                         >
                             {showPw ? (
-                                <EyeOff size={18} color="#6b7280"/>
+                                <EyeOff size={18} color="#6b7280" />
                             ) : (
-                                <Eye size={18} color="#6b7280"/>
+                                <Eye size={18} color="#6b7280" />
                             )}
                         </button>
                     </div>
 
-                    {/* 일반 로그인 */}
                     <button
                         type="submit"
                         disabled={loading}
@@ -220,7 +226,6 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                         {loading ? "로그인 중..." : "로그인"}
                     </button>
 
-                    {/* 1) 임의 로그인 */}
                     <button
                         type="button"
                         onClick={onDemoLogin}
@@ -238,7 +243,6 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                         임의 로그인(코치 확인용)
                     </button>
 
-                    {/* 2) 회원가입 / 3) 아이디·비번 찾기 */}
                     <div
                         style={{
                             marginTop: "8px",
@@ -263,7 +267,7 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                             회원가입
                         </button>
 
-                        <span style={{color: "#d1d5db"}}>|</span>
+                        <span style={{ color: "#d1d5db" }}>|</span>
 
                         <button
                             type="button"
@@ -279,7 +283,6 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
                             아이디/비밀번호 찾기
                         </button>
                     </div>
-
                 </form>
             </div>
         </div>
