@@ -92,7 +92,7 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn }) {
         <SidebarItem
           active={currentPage === "profile"}
           onClick={() => onNavigate("profile")}
-          label="프로필 설정"
+          label="마이 페이지"
           requiresLogin={true}
           isLoggedIn={isLoggedIn}
         />
