@@ -46,6 +46,7 @@ public class AuthService {
 
         LoginResponse response = new LoginResponse();
         response.setEmail(email);
+        response.setCompanyName(user.getCompany().getCompanyName());
         response.setAccessToken(tokenProvider.createAccessToken(email, user.getCompany().getId()));
         response.setRefreshToken(tokenProvider.createRefreshToken(email));
         response.setMessage(Message.LOGIN_SUCCESS);

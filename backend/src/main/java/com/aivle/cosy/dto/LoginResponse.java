@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 public class LoginResponse {
     private String email;
+    private String companyName;
     private Message message;
     private String accessToken;
     @JsonIgnore

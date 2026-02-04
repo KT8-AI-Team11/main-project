@@ -28,6 +28,7 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
             localStorage.setItem("cosy_access_token", response.accessToken);
             localStorage.setItem("cosy_logged_in", "true");
             localStorage.setItem("cosy_user_email", response.email);
+            localStorage.setItem("cosy_company_name", response.companyName);
             onLoginSuccess();
         } catch (error) {
             setErrorMsg(error.data?.message || "로그인 중 오류가 발생했습니다.");
@@ -47,6 +48,7 @@ export default function LoginPage({onLoginSuccess, onGoToRegister}) {
             localStorage.setItem("cosy_access_token", response.accessToken);
             localStorage.setItem("cosy_logged_in", "true");
             localStorage.setItem("cosy_user_email", response.email);
+            localStorage.setItem("cosy_company_name", response.companyName);
 
             onLoginSuccess();
         } catch (error) {
