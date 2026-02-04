@@ -1,10 +1,10 @@
 package com.aivle.cosy.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 
 
 @NoArgsConstructor
@@ -12,8 +12,9 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 public class LoginResponse {
-
     private String email;
     private Message message;
-    private String token;
+    private String accessToken;
+    @JsonIgnore
+    private String refreshToken;
 }

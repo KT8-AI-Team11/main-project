@@ -12,9 +12,10 @@ import CountryMultiSelect from "../components/CountryMultiSelect";
 import { ocrExtract } from "../api/ocr"; 
 import { checkRegulation } from "../api/compliance"; 
 
-// 백엔드가 현재 US/JP만 지원이면 유지(원하면 EU/CN 추가 or 가드 제거)
-const SUPPORTED_MARKETS = new Set(["US", "JP"]);
+
 const COUNTRY_CODES = ["US", "EU", "CN", "JP"];
+const SUPPORTED_MARKETS = new Set(COUNTRY_CODES);
+
 
 function mapOverallRiskToStatus(risk) {
   const r = String(risk || "").toUpperCase();
@@ -62,7 +63,7 @@ function normalizeInspectionResult(apiJson, countryCode) {
   };
 }
 
-export default function ClaimCheckPage() {
+export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
   // =========================
   // 1) 국가 옵션
   // =========================
@@ -295,7 +296,6 @@ export default function ClaimCheckPage() {
           const apiJson = await checkRegulation({
             market: c,
             text: ocrText,
-            domain: "labeling",
           });
 
           const normalized = normalizeInspectionResult(apiJson, c);
@@ -442,6 +442,8 @@ export default function ClaimCheckPage() {
   // =========================
   // 7) Render
   // =========================
+  
+
   return (
     <div className="cosy-page">
       <div className="cosy-grid-3 claim-top-grid">
@@ -1060,10 +1062,7 @@ export default function ClaimCheckPage() {
             )}
           </div>
 
-          <div style={{ height: 8 }} />
-          <div className="cosy-subtext">
-            * 멀티국가 결과는 country별 반복 호출 → resultsByCountry 저장 → 탭에서 출력하는 구조입니다.
-          </div>
+          <div style={{ height: 8 }} />  
         </div>
       </div>
     </div>

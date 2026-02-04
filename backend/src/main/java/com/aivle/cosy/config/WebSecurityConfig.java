@@ -1,5 +1,6 @@
 package com.aivle.cosy.config;
 
+import com.aivle.cosy.service.TokenBlacklistService;
 import com.aivle.cosy.util.JwtFilter;
 import com.aivle.cosy.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -20,17 +21,17 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @RequiredArgsConstructor
 public class WebSecurityConfig {
     private final JwtTokenProvider jwtProvider;
+    private final TokenBlacklistService tokenBlacklistService;
 
      @Bean
      public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
        http.addFilterBefore(
-         new JwtFilter(jwtProvider),
+         new JwtFilter(jwtProvider,tokenBlacklistService),
          UsernamePasswordAuthenticationFilter.class
        );
 
-       //
        http.authorizeHttpRequests(auth -> auth
-         .requestMatchers("/api/auth/login", "/login", "/api/data","/api/auth/signup").permitAll()
+         .requestMatchers("/api/auth/login", "/login", "/api/data","/api/auth/signup","/api/auth/refresh","/api/auth/logout").permitAll()
          .anyRequest().authenticated()
        );
 
@@ -53,6 +54,7 @@ public class WebSecurityConfig {
        // 1. 허용할 출처 (우리 프론트엔드 주소)
        config.addAllowedOrigin("http://localhost:5173");
        config.addAllowedOrigin("http://127.0.0.1:5500");
+       config.addAllowedOrigin("http://localhost:5173");
 
        // 2. 허용할 HTTP 메서드 (GET, POST, PUT, DELETE 등)
        config.addAllowedMethod("*");

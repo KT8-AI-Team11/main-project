@@ -72,3 +72,10 @@ def ingest(country: str, domain: str):
 if __name__ == "__main__":
     # 예: JP ingredients
     ingest(country="JP", domain="ingredients")
+    ingest(country="JP", domain="labeling")
+    ingest(country="US", domain="ingredients")
+    ingest(country="US", domain="labeling")
+    ingest(country="EU", domain="ingredients")
+    ingest(country="EU", domain="labeling")
+    ingest(country="CN", domain="ingredients")
+    ingest(country="CN", domain="labeling")

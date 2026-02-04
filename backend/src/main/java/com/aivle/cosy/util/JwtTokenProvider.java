@@ -9,6 +9,7 @@ import io.jsonwebtoken.security.SignatureException;
 import jakarta.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.UUID;
 import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,25 +29,33 @@ public class JwtTokenProvider {
     private String issuer;
 
     @Value("${jwt.access-token-expiration}")
-    private Long expiration;
+    private Long accessExpiration;
+
+    @Value("${jwt.refresh-token-expiration}")
+    private Long refreshExpiration;
+
+    private final static String ACCESS = "access";
+
+    private final static String REFRESH = "refresh";
 
     @PostConstruct
-    public void initKey(){
+    public void initKey() {
         secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-//    public String createToken(String email) {
-    public String createToken(String email, Long companyId) {
+    public String createAccessToken(String email, Long companyId) {
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + expiration);
-        //Map<String, Object> claims = new HashMap<>();
-        //claims.put("email",email); // 나중에 필요시 확장, 변경
+        Date expiryDate = new Date(now.getTime() + accessExpiration);
 
+        //Map<String, Object> claims = new HashMap<>();
+        //claims.put("companyId",companyId); // 나중에 필요시 확장, 변경
 
         return Jwts.builder()
+                .id(UUID.randomUUID().toString())
                 .subject(email)
-                //.claims(claims) // 나중에 필요시 확장, 변경
-                .claim("companyId", companyId) // 회사 ID 추가
+                //.claims(claims)
+                .claim("companyId", companyId)
+                .claim("type", ACCESS)
                 .issuedAt(now)
                 .issuer(issuer)
                 .expiration(expiryDate)
@@ -54,8 +63,55 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    //TODO: refresh token 발급
+    public String createRefreshToken(String email) {
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + refreshExpiration);
+
+        return Jwts.builder()
+                .subject(email)
+                .id(UUID.randomUUID().toString())
+                .claim("type", REFRESH)
+                .issuedAt(now)
+                .issuer(issuer)
+                .expiration(expiryDate)
+                .signWith(secretKey)
+                .compact();
+
+    }
+
+    public long getRemainingExpiration(String token) {
+        if (token == null || token.isEmpty()) return -1;
+
+        try {
+            return extractClaims(token)
+                    .getExpiration()
+                    .toInstant()
+                    .toEpochMilli() - System.currentTimeMillis();
+        } catch (ExpiredJwtException e) {
+            return e.getClaims()
+                    .getExpiration()
+                    .toInstant()
+                    .toEpochMilli() - System.currentTimeMillis();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public String extractJti(String token){
+        if (token == null || token.isEmpty()) return null;
+
+        try {
+            return extractClaims(token).getId();
+        } catch (ExpiredJwtException e) {
+            return e.getClaims().getId();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     //TODO:필요시 protected나 private으로 변경
-    public Claims extractClaims(String token){
+    public Claims extractClaims(String token) {
         return Jwts.parser()
                 .verifyWith(secretKey)
                 .requireIssuer(issuer)
@@ -64,32 +120,80 @@ public class JwtTokenProvider {
                 .getPayload();
     }
 
-    public String extractEmail(String token){
-        return extractClaims(token).getSubject();
-    }
+    public boolean validateAccessToken(String token) {
+        try {
+            return isAccessToken(token);
 
-    public boolean validateToken(String token){
-        try{
-            extractClaims(token);
-            return true;
-        }catch(ExpiredJwtException e){
+        } catch (ExpiredJwtException e) {
             log.debug("토큰 만료: {}", e.getMessage());
-        }catch(MalformedJwtException e){
+        } catch (MalformedJwtException e) {
             log.debug("토큰 형식 오류: {}", e.getMessage());
-        }catch(SignatureException e){
+        } catch (SignatureException e) {
             log.debug("서명 불일치: {}", e.getMessage());
-        }catch(UnsupportedJwtException e){
+        } catch (UnsupportedJwtException e) {
             log.debug("지원하지 않는 토큰: {}", e.getMessage());
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             log.debug("토큰이 비어있음: {}", e.getMessage());
         }
         return false;
     }
 
-    // 회사 ID만 가져오는 메서드
+    public boolean validateRefreshToken(String token) {
+        try {
+            return isRefreshToken(token);
+
+        } catch (ExpiredJwtException e) {
+            log.debug("토큰 만료: {}", e.getMessage());
+        } catch (MalformedJwtException e) {
+            log.debug("토큰 형식 오류: {}", e.getMessage());
+        } catch (SignatureException e) {
+            log.debug("서명 불일치: {}", e.getMessage());
+        } catch (UnsupportedJwtException e) {
+            log.debug("지원하지 않는 토큰: {}", e.getMessage());
+        } catch (IllegalArgumentException e) {
+            log.debug("토큰이 비어있음: {}", e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            extractClaims(token);
+            return true;
+        } catch (ExpiredJwtException e) {
+            log.debug("토큰 만료: {}", e.getMessage());
+        } catch (MalformedJwtException e) {
+            log.debug("토큰 형식 오류: {}", e.getMessage());
+        } catch (SignatureException e) {
+            log.debug("서명 불일치: {}", e.getMessage());
+        } catch (UnsupportedJwtException e) {
+            log.debug("지원하지 않는 토큰: {}", e.getMessage());
+        } catch (IllegalArgumentException e) {
+            log.debug("토큰이 비어있음: {}", e.getMessage());
+        }
+        return false;
+    }
+
+
+    public String extractEmail(String token) {
+        return extractClaims(token).getSubject();
+    }
+
     public Long getCompanyId(String token) {
-        Claims claims = extractClaims(token); // 위 메서드 재사용
-        return claims.get("companyId", Long.class); // 필요한 데이터만 타입 변환해서 반환
+        return extractClaims(token).get("companyId", Long.class);
+    }
+
+    private String extractTokenType(String token) {
+        return extractClaims(token).get("type", String.class);
+    }
+
+
+    private boolean isAccessToken(String token) {
+        return ACCESS.equals(extractTokenType(token));
+    }
+
+    private boolean isRefreshToken(String token) {
+        return REFRESH.equals(extractTokenType(token));
     }
 
 }
