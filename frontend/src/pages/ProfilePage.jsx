@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Building, Lock, Trash2, Save, Eye, EyeOff, Bell } from 'lucide-react';
-import { changePassword } from '../api/auth.js';  // ← 추가
+import { changePassword, deleteAccount } from '../api/auth.js';
 
 export default function ProfilePage() {
   // 프로필 데이터 상태
@@ -29,21 +29,24 @@ export default function ProfilePage() {
     new: false,
     confirm: false
   });
-  const [passwordLoading, setPasswordLoading] = useState(false);   // ← 추가: 모달 로딩
-  const [passwordError, setPasswordError] = useState('');           // ← 추가: 모달 에러
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
 
   // 계정 삭제 모달 상태
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   // 로그인 정보에서 프로필 데이터 로드
   useEffect(() => {
     const loadProfileFromLogin = () => {
       const userEmail = localStorage.getItem('cosy_user_email') || '';
+      const userCompanyName = localStorage.getItem('cosy_company_name') || '';
       const initialProfile = {
         username: userEmail.split('@')[0] || 'user',
         email: userEmail,
-        company: ''
+        company: userCompanyName
       };
       setProfileData(initialProfile);
     };
@@ -67,7 +70,6 @@ export default function ProfilePage() {
       ...passwordData,
       [`${field}Password`]: cleanValue
     });
-    // 입력 중 에러 메시지 소거
     if (passwordError) setPasswordError('');
   };
 
@@ -89,7 +91,6 @@ export default function ProfilePage() {
   const handlePasswordChange = async () => {
     const { currentPassword, newPassword, confirmPassword } = passwordData;
 
-    // 1) 프론트 유효성 검사
     if (!currentPassword || !newPassword || !confirmPassword) {
       setPasswordError('모든 필드를 입력해주세요.');
       return;
@@ -103,7 +104,6 @@ export default function ProfilePage() {
       return;
     }
 
-    // 2) API 호출
     setPasswordLoading(true);
     setPasswordError('');
 
@@ -111,12 +111,11 @@ export default function ProfilePage() {
       const token = localStorage.getItem('cosy_access_token');
       await changePassword(token, currentPassword, newPassword);
 
-      // 성공
-      alert('비밀번호가 성공적으로 변경되었습니다.');
-      setShowPasswordModal(false);
-      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      // 성공 → 알림 후 자동 로그아웃
+      alert('비밀번호가 성공적으로 변경되었습니다. 다시 로그인해주세요.');
+      localStorage.clear();
+      window.location.reload();
     } catch (error) {
-      // 백엔드 에러 메시지 우선, 없으면 기본문구
       setPasswordError(error.data?.message || '비밀번호 변경에 실패했습니다.');
     } finally {
       setPasswordLoading(false);
@@ -124,18 +123,28 @@ export default function ProfilePage() {
   };
   // ─────────────────────────────────────────────────────────────
 
-  // 계정 삭제 핸들러
-  const handleDeleteAccount = () => {
-    if (deleteConfirmText !== '삭제') {
-      alert('"삭제"를 정확히 입력해주세요.');
-      return;
-    }
-    if (window.confirm('정말로 계정을 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+  // ─── 계정 삭제 핸들러 (API 호출) ────────────────────────────
+  const handleDeleteAccount = async () => {
+    if (deleteConfirmText !== '삭제') return;
+
+    setDeleteLoading(true);
+    setDeleteError('');
+
+    try {
+      const token = localStorage.getItem('cosy_access_token');
+      await deleteAccount(token);
+
+      // 성공 → 알림 후 세션 정리 및 리로드
       alert('계정이 삭제되었습니다.');
       localStorage.clear();
       window.location.reload();
+    } catch (error) {
+      setDeleteError(error.data?.message || '계정 삭제에 실패했습니다.');
+    } finally {
+      setDeleteLoading(false);
     }
   };
+  // ─────────────────────────────────────────────────────────────
 
   // 토글 스위치 컴포넌트
   const ToggleSwitch = ({ checked, onChange }) => (
@@ -206,7 +215,6 @@ export default function ProfilePage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {/* 사용자 이름 */}
             <div style={{ backgroundColor: 'white', padding: '16px', borderRadius: '6px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                 <User size={20} color="#6b7280" />
@@ -220,7 +228,6 @@ export default function ProfilePage() {
                 style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }}
               />
             </div>
-            {/* 이메일 */}
             <div style={{ backgroundColor: 'white', padding: '16px', borderRadius: '6px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                 <Mail size={20} color="#6b7280" />
@@ -233,7 +240,6 @@ export default function ProfilePage() {
                 style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }}
               />
             </div>
-            {/* 회사명 */}
             <div style={{ backgroundColor: 'white', padding: '16px', borderRadius: '6px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                 <Building size={20} color="#6b7280" />
@@ -250,7 +256,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Right Column - 알림 설정 및 계정 관리 */}
+        {/* Right Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div style={{ backgroundColor: '#d1d5db', padding: '24px', borderRadius: '8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
@@ -290,7 +296,6 @@ export default function ProfilePage() {
           <div style={{ backgroundColor: 'white', borderRadius: '8px', padding: '32px', width: '90%', maxWidth: '500px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937', marginBottom: '24px' }}>비밀번호 변경</h2>
 
-            {/* 에러 메시지 — LoginPage와 동일한 스타일 */}
             {passwordError && (
               <div style={{
                 backgroundColor: '#FEF2F2',
@@ -354,16 +359,45 @@ export default function ProfilePage() {
           <div style={{ backgroundColor: 'white', borderRadius: '8px', padding: '32px', width: '90%', maxWidth: '500px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937', marginBottom: '16px' }}>계정 삭제</h2>
             <p style={{ color: '#4b5563', marginBottom: '24px' }}>정말로 계정을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.</p>
+
+            {/* 에러 메시지 */}
+            {deleteError && (
+              <div style={{
+                backgroundColor: '#FEF2F2',
+                border: '1px solid #FCA5A5',
+                color: '#991B1B',
+                borderRadius: '8px',
+                padding: '10px 12px',
+                fontSize: '13px',
+                marginBottom: '16px'
+              }}>
+                {deleteError}
+              </div>
+            )}
+
             <input
               type="text"
               value={deleteConfirmText}
-              onChange={(e) => setDeleteConfirmText(e.target.value.replace(/\s/g, ""))}
+              onChange={(e) => { setDeleteConfirmText(e.target.value.replace(/\s/g, "")); if (deleteError) setDeleteError(''); }}
               placeholder='"삭제"를 입력하세요'
-              style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '4px', boxSizing: 'border-box', marginBottom: '24px' }}
+              disabled={deleteLoading}
+              style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '4px', boxSizing: 'border-box', marginBottom: '24px', opacity: deleteLoading ? 0.6 : 1 }}
             />
             <div style={{ display: 'flex', gap: '12px' }}>
-              <button onClick={() => { setShowDeleteModal(false); setDeleteConfirmText(''); }} style={{ flex: 1, padding: '12px', backgroundColor: 'white', border: '1px solid #d1d5db', borderRadius: '6px', cursor: 'pointer' }}>취소</button>
-              <button onClick={handleDeleteAccount} disabled={deleteConfirmText !== '삭제'} style={{ flex: 1, padding: '12px', backgroundColor: deleteConfirmText === '삭제' ? '#dc2626' : '#9ca3af', color: 'white', border: 'none', borderRadius: '6px', cursor: deleteConfirmText === '삭제' ? 'pointer' : 'not-allowed' }}>삭제하기</button>
+              <button
+                onClick={() => { setShowDeleteModal(false); setDeleteConfirmText(''); setDeleteError(''); }}
+                disabled={deleteLoading}
+                style={{ flex: 1, padding: '12px', backgroundColor: 'white', border: '1px solid #d1d5db', borderRadius: '6px', cursor: deleteLoading ? 'not-allowed' : 'pointer', opacity: deleteLoading ? 0.6 : 1 }}
+              >
+                취소
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                disabled={deleteConfirmText !== '삭제' || deleteLoading}
+                style={{ flex: 1, padding: '12px', backgroundColor: (deleteConfirmText === '삭제' && !deleteLoading) ? '#dc2626' : '#9ca3af', color: 'white', border: 'none', borderRadius: '6px', cursor: (deleteConfirmText === '삭제' && !deleteLoading) ? 'pointer' : 'not-allowed' }}
+              >
+                {deleteLoading ? '삭제 중...' : '삭제하기'}
+              </button>
             </div>
           </div>
         </div>
