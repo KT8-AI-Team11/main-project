@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:8080/api" });
+const api = axios.create({ baseURL: `${import.meta.env.VITE_API_BASE_URL}/api` });
 
 // ✅ ProductsPage처럼 토큰 자동 첨부 (중요!)
 api.interceptors.request.use((config) => {
