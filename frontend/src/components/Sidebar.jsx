@@ -100,11 +100,11 @@ export default function Sidebar({currentPage, onNavigate, isLoggedIn}) {
                 {/* 국가별 규제 정보 */}
                 <SidebarItem
                     active={currentPage === "country-regulations"}
-                    onClick={() => window.open()}
+                    onClick={() => onNavigate("country-regulations")}
                     label="국가별 규제 정보"
                     isLoggedIn={isLoggedIn}
                 />
-                
+
                 {/* 개인 정보 약관  */}
                 <div
                     onClick={() => {
