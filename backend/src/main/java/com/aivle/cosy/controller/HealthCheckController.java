@@ -1,0 +1,22 @@
+package com.aivle.cosy.controller;
+
+import java.util.Map;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * 서버 살아있는지 확인용
+ */
+@RestController
+@RequestMapping("/api/health")
+public class HealthCheckController {
+    @GetMapping
+    public ResponseEntity<Map<String, String>> healthCheck(){
+        return ResponseEntity.ok(Map.of(
+                "status", "ok",
+                "service","spring-boot"
+        ));
+    }
+}
