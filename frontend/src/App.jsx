@@ -254,6 +254,7 @@ export default function CosyUI() {
           <ClaimCheckPage
             initialSelectedProducts={pageParams?.selectedProducts || []}
             initialSelectedProductIds={pageParams?.selectedProductIds || []}
+            navData={pageParams}
           />
         )}
 

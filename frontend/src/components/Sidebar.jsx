@@ -82,7 +82,7 @@ export default function Sidebar({currentPage, onNavigate, isLoggedIn}) {
 
                 <SidebarItem
                     active={currentPage === "claim-check"}
-                    onClick={() => onNavigate("claim-check")}
+                    onClick={() => {onNavigate("claim-check",null);}}
                     label="문구 규제 확인"
                     requiresLogin={true}
                     isLoggedIn={isLoggedIn}
