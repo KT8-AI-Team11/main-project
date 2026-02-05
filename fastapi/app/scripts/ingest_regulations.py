@@ -28,14 +28,14 @@ def load_pdfs(pdf_paths: List[Path]) -> List:
     return docs
 
 
-def add_metadata(docs: List, country: str, domain: str, source: str) -> List:
+def add_metadata(docs: List, country: str, domain: str) -> List:
     for d in docs:
-        d.metadata = {
-            **(d.metadata or {}),
+        source = d.metadata.get("source", "")
+        d.metadata.update({
             "country": country,
             "domain": domain,
-            "source": source,
-        }
+            "title": Path(source).stem if source else "",
+        })
     return docs
 
 
@@ -47,7 +47,7 @@ def ingest(country: str, domain: str):
         raise RuntimeError(f"No PDF found in: {target_dir}")
 
     raw_docs = load_pdfs(pdfs)
-    raw_docs = add_metadata(raw_docs, country=country, domain=domain, source=str(target_dir))
+    raw_docs = add_metadata(raw_docs, country=country, domain=domain)
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,

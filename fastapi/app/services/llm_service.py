@@ -62,6 +62,9 @@ class LlmService:
 [INPUT]
 {text}
 
+[NOTE]
+추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
+
 [OUTPUT JSON]
 다음 JSON 형태로만 답하라.
 {{
@@ -70,12 +73,14 @@ class LlmService:
     {{
       "snippet": "문제되는 성분/문구 일부",
       "risk": "LOW|MEDIUM|HIGH",
-      "reason": "규제 문서명",
+      "reason": "규제 문서명과 해당하는 법적 근거 표시",
       "suggested_rewrite": "대체 문구/수정안(가능하면)"
     }}
   ],
   "notes": ["추가 참고/한계/확인이 필요한 사항"]
 }}
+
+
 """.strip()
 
         raw = self.generate(prompt)
@@ -139,6 +144,9 @@ class LlmService:
 [INPUT]
 아래는 화장품 전성분(성분) 목록이다. (쉼표/줄바꿈으로 구분될 수 있음)
 {ingredients}
+
+[NOTE]
+추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
 
 [OUTPUT JSON]
 반드시 아래 JSON 형식으로만 답하라. 다른 텍스트를 절대 출력하지 마라.
