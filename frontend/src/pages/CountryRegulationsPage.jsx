@@ -16,114 +16,96 @@ export default function ImprovedCountryRegulations() {
             color: '#3B82F6',
             fullName: 'United States of America',
             authority: 'FDA (Food and Drug Administration)',
-            marketSize: '$90.6B',
+            marketSize: '$93.7B',
             marketGrowth: '+4.2% YoY',
-            overview: '미국은 세계 최대의 화장품 시장으로, FDA의 규제를 받습니다. 2022년 MoCRA 법안 통과로 규제가 강화되었으며, 시설 등록과 제품 목록 제출이 의무화되었습니다.',
+            overview: '미국은 세계 최대의 화장품 시장으로, FDA의 MoCRA 법안에 따라 규제가 강화되었습니다. 2026년부터는 단순 등록을 넘어 안전성 실증(Safety Substantiation) 자료의 상시 비치와 실사와 같은 사후 관리가 핵심입니다.',
             keyFeatures: [
-                '자발적 등록에서 의무 등록으로 전환',
-                '중대한 부작용 보고 의무화',
-                '특정 성분 라벨 표기 강화',
-                'GMP 가이드라인 준수 권장'
+                '안전성 실증 의무화',
+                '중대한 부작용 보고',
+                '알레르기 유발 성분 표기',
+                '강제 회수 권한'
             ],
             regulations: [
                 {
                     id: 1,
-                    title: 'MoCRA 시설 등록',
+                    title: 'MoCRA 시설 등록 및 제품 목록 제출',
                     category: '필수',
                     priority: 'high',
-                    description: '2022년 제정된 MoCRA에 따라 모든 화장품 제조시설은 FDA에 등록해야 합니다.',
+                    description: '2024년 7월 1일부터 본격적인 집행이 시작되었습니다. 신규 제품은 시장 출시 후 120일 이내에 등록을 마쳐야 합니다.',
                     timeline: '즉시',
                     cost: '무료',
                     requirements: [
-                        'FDA 온라인 시스템 계정 생성',
-                        '시설 정보 등록 (주소, 연락처 등)',
+                        'FDA 온라인 시스템(Cosmetics Direct) 계정 생성',
+                        '시설 정보 등록 (주소, 연락처, 미국 내 대리인 정보 등)',
                         '제조 활동 유형 선택',
-                        '연간 갱신 필수'
+                        '연간 갱신 및 정보 변경 시 업데이트 필수'
                     ],
-                    documents: ['시설 정보', '제조업 허가증', '책임자 정보'],
-                    links: ['https://www.fda.gov/cosmetics/cosmetics-laws-regulations/modernization-cosmetics-regulation-act-2022-mocra']
+                    documents: ['시설 정보 (영문 주소 및 FEU 번호 등)', '제조업 허가증', '책임자(Responsible Person) 정보 및 연락처'],
+                    links: ['https://www.fda.gov/cosmetics/registration-listing-cosmetic-product-facilities-and-products']
                 },
                 {
                     id: 2,
-                    title: 'FDA 제품 목록 제출',
+                    title: 'VCRP 자발적 등록 (시스템 종료 및 통합)',
                     category: '필수',
                     priority: 'high',
-                    description: '제조하거나 수입하는 모든 화장품 제품을 FDA에 신고해야 합니다.',
+                    description: '기존의 VCRP는 2023년 3월에 공식 종료되었습니다. 현재는 MoCRA 시스템(Cosmetics Direct)을 통한 등록이 법적 의무가 되면서 일원화되었습니다.',
                     timeline: '제품 출시 전',
                     cost: '무료',
                     requirements: [
                         '제품명 및 브랜드 정보',
-                        '전성분 목록 (INCI 명칭)',
-                        '제품 카테고리 분류',
+                        '전성분 목록 (INCI 명칭 준수)',
+                        '제품 카테고리 분류 (FDA 분류 코드 기준)',
                         '제조사 및 판매자 정보'
                     ],
-                    documents: ['제품 포뮬라', '전성분 리스트', '제품 라벨'],
-                    links: ['https://www.fda.gov/cosmetics']
+                    documents: ['제품 포뮬라 (성분 배합비)', '전성분 리스트', '제품 라벨 (Labeling) 견본'],
+                    links: ['https://www.fda.gov/cosmetics/registration-listing-cosmetic-product-facilities-and-products/cosmetics-direct']
                 },
                 {
                     id: 3,
-                    title: 'FTC 광고 규제 준수',
+                    title: '화장품 GMP 준수',
                     category: '권장',
                     priority: 'medium',
-                    description: '연방거래위원회(FTC)는 화장품 광고가 진실되고 입증 가능해야 한다고 규정합니다.',
+                    description: '현재 FDA가 구체적인 화장품 GMP 기준을 수립 중이며, 2026년 중에 최종안이 발표될 예정입니다. 현재는 권장 사항이나, 향후 의무화될 가능성이 매우 높습니다.',
                     timeline: '지속적',
                     cost: '$2,000 - $10,000 (법률 자문)',
                     requirements: [
-                        '과학적 근거가 있는 효능 주장',
-                        '오해의 소지가 없는 표현',
-                        '전후 사진의 정확한 표현',
-                        '추천사의 진정성 보장'
+                        '과학적 근거가 있는 효능 주장 (Claims)',
+                        '소비자가 오해할 소지가 없는 표현 사용',
+                        '비포/애프터 사진 사용 시 정확한 연출 및 표현',
+                        '추천사(Testimonials)의 진정성 보장'
                     ],
-                    documents: ['효능 입증 자료', '임상 시험 결과', '광고 검토 의견서'],
-                    links: ['https://www.ftc.gov']
-                },
-                {
-                    id: 4,
-                    title: 'VCRP 자발적 등록',
-                    category: '권장',
-                    priority: 'low',
-                    description: 'Voluntary Cosmetic Registration Program - 제품의 신뢰도를 높이는 자발적 프로그램입니다.',
-                    timeline: '2-4주',
-                    cost: '무료',
-                    requirements: [
-                        '제조시설 등록',
-                        '제품 성분 정보 제출',
-                        '원료 안전성 데이터',
-                        'GMP 준수 여부'
-                    ],
-                    documents: ['GMP 인증서', '안전성 평가서', '품질 관리 문서'],
-                    links: ['https://www.fda.gov/cosmetics/voluntary-cosmetic-registration-program']
+                    documents: ['효능 입증 자료 (Clinical Studies 등)', '임상 시험 결과 보고서', '광고 검토 의견서 (Compliance Review)'],
+                    links: ['https://www.ftc.gov/business-guidance/resources/advertising-faqs-guide-small-business']
                 }
             ],
             roadmap: [
-                { step: 1, title: 'FDA 시설 등록', duration: '1주', status: 'start' },
-                { step: 2, title: '제품 목록 작성', duration: '2주', status: 'process' },
-                { step: 3, title: '라벨 검토 및 승인', duration: '2주', status: 'process' },
-                { step: 4, title: 'VCRP 등록 (선택)', duration: '2주', status: 'optional' },
-                { step: 5, title: '최종 검증', duration: '1주', status: 'verify' },
+                { step: 1, title: 'FEI 번호 확보', duration: '1주', status: 'start' },
+                { step: 2, title: '시설 등록 (Facility Registration)', duration: '1주', status: 'process' },
+                { step: 3, title: '제품 목록 제출 (Product Listing)', duration: '1주', status: 'process' },
+                { step: 4, title: '안전성 실증 서류(Dossier) 작성', duration: '2-3주', status: 'optional' },
+                { step: 5, title: '라벨 검토 및 부작용 연락처 기재', duration: '1주', status: 'verify' },
                 { step: 6, title: '수출 개시', duration: '-', status: 'complete' }
             ],
-            estimatedTime: '6-8주',
+            estimatedTime: '2-4주',
             estimatedCost: '$3,000 - $8,000',
             requiredDocuments: [
-                '제품 포뮬라 정보',
-                '라벨 샘플 (영문)',
-                '제조시설 정보',
-                'GMP 준수 증명',
-                '안전성 평가서',
-                'SPF 테스트 결과 (해당시)'
+                '제품 목록 (Product Listing)',
+                '안전성 실증 자료 (Safety Substantiation Dossier)',
+                '라벨 시안 (영문)',
+                '시설 등록 증명서 (FEI 번호)',
+                '부작용 보고 기록 관리 대장'
             ],
             alerts: [
                 {
                     type: 'warning',
-                    title: 'MoCRA 완전 시행 임박',
-                    content: '2026년 말까지 모든 기존 제품도 등록을 완료해야 합니다.',
+                    title: 'MoCRA 사후 관리 및 실사 강화',
+                    content: 'FDA는 2026년부터 안전성 실증 자료 및 부작용 기록에 대한 현장 실사와 모니터링을 강화한다고 발표했습니다.',
                     date: '2026-01-15'
                 },
                 {
                     type: 'info',
-                    title: 'SPF 테스트 기준 변경',
-                    content: '새로운 SPF 테스트 프로토콜이 2026년 6월부터 적용됩니다.',
+                    title: '향료 알레르기 성분 공시 임박',
+                    content: 'FDA는 2026년 5월까지 라벨에 표기해야 할 알레르기 유발 성분 리스트를 확정할 예정입니다.',
                     date: '2026-01-20'
                 }
             ]
@@ -133,134 +115,103 @@ export default function ImprovedCountryRegulations() {
             color: '#8B5CF6',
             fullName: 'European Union',
             authority: 'European Commission',
-            marketSize: '€78.6B',
-            marketGrowth: '+3.8% YoY',
-            overview: 'EU는 세계에서 가장 엄격한 화장품 규제를 시행하고 있습니다. Regulation (EC) No 1223/2009에 따라 1,300개 이상의 성분이 금지되며, CPSR(안전성 평가 보고서)가 필수입니다.',
+            marketSize: '€119.1B',
+            marketGrowth: '+4.0% YoY',
+            overview: 'EU는 세계에서 가장 엄격한 화장품 규제를 시행하며, Regulation (EC) No 1223/2009에 따라 관리됩니다. 2026년부터는 마이크로플라스틱 금지와 PFAS 단계적 퇴출 등 환경 규제가 제품 설계 단계부터 필수적으로 고려되어야 합니다.',
             keyFeatures: [
-                '세계에서 가장 엄격한 성분 규제',
-                'EU 내 책임자(RP) 지정 필수',
-                'CPNP 포털 등록 의무',
-                'PIF(제품 정보 파일) 10년간 보관'
+                '안전성 평가 보고서(CPSR) 강화',
+                '동물 실험 전면 금지',
+                '나노물질 통지 의무',
+                '라벨링 규정 준수'
             ],
             regulations: [
                 {
                     id: 1,
-                    title: 'EU 책임자(RP) 지정',
+                    title: 'Annex II 금지 성분 검토 및 RP 지정',
                     category: '필수',
                     priority: 'high',
-                    description: 'EU 내에서 제품에 대한 책임을 지는 법인 또는 개인을 지정해야 합니다.',
+                    description: 'EU 내에서 제품에 대한 법적 책임을 지는 법인 또는 개인을 지정하는 것이 필수적입니다.',
                     timeline: '수출 전 필수',
                     cost: '€2,000 - €5,000/년',
                     requirements: [
-                        'EU 소재 법인 또는 개인',
-                        '화장품 안전성 평가 능력',
-                        'PIF 관리 책임',
-                        '제품 리콜 권한'
+                        'EU 소재 법인 또는 개인 지정',
+                        '화장품 안전성 평가 능력 보유',
+                        'PIF(제품 정보 파일) 관리 책임',
+                        '제품 리콜 권한 보유'
                     ],
                     documents: ['RP 계약서', '사업자 등록증', '책임보험 증명'],
-                    links: ['https://ec.europa.eu/growth/sectors/cosmetics']
+                    links: ['https://single-market-economy.ec.europa.eu/sectors/cosmetics/legislation_en']
                 },
                 {
                     id: 2,
-                    title: 'CPSR 안전성 평가 보고서',
+                    title: 'CPSR 및 PIF 보관',
                     category: '필수',
                     priority: 'high',
-                    description: 'Cosmetic Product Safety Report는 EU 진출을 위한 필수 문서로, 전문가가 작성해야 합니다.',
+                    description: 'Cosmetic Product Safety Report(CPSR)는 필수 문서로, 반드시 독성학자 등 전문가가 작성해야 합니다.',
                     timeline: '4-8주',
                     cost: '€1,500 - €5,000',
                     requirements: [
-                        '제품 설명 및 의도된 용도',
-                        '안전성 평가 결론',
-                        '라벨 표시 및 경고문',
-                        '독성학자 또는 의사의 서명'
+                        '제품 설명 및 의도된 용도 명시',
+                        '안전성 평가 결론 포함',
+                        '라벨 표시 사항 및 경고문 확인',
+                        '독성학자 또는 의사의 서명 필수'
                     ],
-                    documents: ['제품 포뮬라', '원료 MSDS', '안정성 시험 자료', 'CoA'],
-                    links: ['https://ec.europa.eu/growth/sectors/cosmetics/cpsr']
+                    documents: ['제품 포뮬라 (성분 배합비)', '원료 MSDS (물질안전보건자료)', '안정성 시험 자료', 'CoA (시험성적서)'],
+                    links: ['https://health.ec.europa.eu/scientific-committees/scientific-committee-consumer-safety-sccs_en']
                 },
                 {
                     id: 3,
-                    title: 'PIF 제품 정보 파일 작성',
+                    title: '환경 규제(PPWR) 및 PIF 유지',
                     category: '필수',
                     priority: 'high',
-                    description: 'Product Information File - 제품에 대한 모든 정보를 담은 문서로 10년간 보관해야 합니다.',
+                    description: 'Product Information File(PIF)은 제품의 모든 정보를 담은 문서로, 마지막 배치 출시 후 10년간 보관해야 합니다.',
                     timeline: '3-6주',
                     cost: '€500 - €2,000',
                     requirements: [
-                        '제품 설명 및 안전성 평가',
-                        '제조 방법 및 GMP 적합성',
-                        '효능 입증 자료',
-                        '동물실험 데이터 (있는 경우)'
+                        '제품 설명 및 안전성 평가 데이터',
+                        '제조 방법 및 GMP(우수제조관리기준) 적합성',
+                        '효능 입증 자료 (Claims)',
+                        '동물실험 데이터 (있는 경우 포함)'
                     ],
-                    documents: ['CPSR', 'GMP 인증서', '효능 입증 자료', '공정 흐름도'],
-                    links: ['https://ec.europa.eu/growth/sectors/cosmetics/pif']
+                    documents: ['CPSR (화장품 안전성 보고서)', 'GMP 인증서', '효능 입증 자료', '공정 흐름도'],
+                    links: ['https://single-market-economy.ec.europa.eu/sectors/cosmetics/legislation_en']
                 },
-                {
-                    id: 4,
-                    title: 'CPNP 포털 등록',
-                    category: '필수',
-                    priority: 'high',
-                    description: 'Cosmetic Products Notification Portal - EU 시장에 출시되는 모든 화장품을 등록하는 시스템입니다.',
-                    timeline: '제품 출시 전',
-                    cost: '무료',
-                    requirements: [
-                        'RP 정보',
-                        '제품 카테고리 및 명칭',
-                        '전성분 목록',
-                        '라벨 이미지 업로드'
-                    ],
-                    documents: ['제품 포뮬라', '라벨 파일', 'CPSR 요약'],
-                    links: ['https://ec.europa.eu/growth/sectors/cosmetics/cpnp']
-                },
-                {
-                    id: 5,
-                    title: 'Annex II 금지 성분 검토',
-                    category: '필수',
-                    priority: 'high',
-                    description: 'EU에서 금지된 1,300개 이상의 성분과 제품 포뮬라를 대조 분석합니다.',
-                    timeline: '3-6주',
-                    cost: '€500 - €2,000',
-                    requirements: [
-                        'Annex II 금지 성분 확인',
-                        'Annex III 제한 성분 확인',
-                        'CMR 물질 검토',
-                        '나노물질 사용 여부'
-                    ],
-                    documents: ['전성분 리스트', '원료 CoA', 'MSDS'],
-                    links: ['https://ec.europa.eu/growth/sectors/cosmetics/legislation']
-                }
             ],
             roadmap: [
-                { step: 1, title: 'RP 지정', duration: '1주', status: 'start' },
-                { step: 2, title: '성분 검토 (Annex II)', duration: '3주', status: 'process' },
-                { step: 3, title: 'PIF 작성', duration: '4주', status: 'process' },
+                { step: 1, title: 'RP(Responsible Person) 지정', duration: '1주', status: 'start' },
+                { step: 2, title: '성분 검토 (Annex II-VI)', duration: '3주', status: 'process' },
+                { step: 3, title: 'PIF(제품 정보 파일) 작성', duration: '4주', status: 'process' },
                 { step: 4, title: 'CPSR 평가', duration: '4주', status: 'process' },
-                { step: 5, title: 'CPNP 등록', duration: '1주', status: 'process' },
-                { step: 6, title: '라벨 검토', duration: '2주', status: 'verify' },
+                { step: 5, title: 'CPNP 포털 등록', duration: '1주', status: 'process' },
+                { step: 6, title: '라벨 검토 및 최종 승인', duration: '2주', status: 'verify' },
                 { step: 7, title: '수출 개시', duration: '-', status: 'complete' }
             ],
             estimatedTime: '12-16주',
             estimatedCost: '€8,000 - €15,000',
             requiredDocuments: [
-                'CPSR (안전성 평가 보고서)',
-                '성분 분석표 (CoA)',
-                'GMP 인증서',
-                'MSDS 데이터',
+                'CPSR (화장품 안전성 보고서)',
                 'PIF (제품 정보 파일)',
-                '안정성 테스트 결과',
-                '공정 흐름도',
-                '효능 입증 자료'
+                '성분 분석표 (CoA)',
+                '나노물질 통지서',
+                'MSDS (물질안전보건자료)'
             ],
             alerts: [
                 {
                     type: 'alert',
-                    title: '특정 보존제 사용 금지 예고',
-                    content: '2026년 6월부터 프로필/부틸 파라벤의 사용이 추가 제한됩니다.',
+                    title: 'PFAS 성분 사용 전면 금지',
+                    content: 'EU REACH 규정에 따라 화장품 내 모든 PFAS(과불화화합물) 성분의 시장 출시가 금지될 예정이므로 즉각적인 성분 교체가 필요합니다.',
                     date: '2026-01-28'
                 },
                 {
                     type: 'warning',
-                    title: 'Microplastics 규제 시행',
-                    content: '2026년부터 특정 마이크로플라스틱 성분의 사용이 단계적으로 금지됩니다.',
+                    title: '실리콘계 물질(D4, D5, D6) 제한 강화',
+                    content: '린스 오프(세정형) 제품 내 D6 농도가 0.1%로 제한되며, 관련 과도기가 종료됩니다.',
+                    date: '2026-01-22'
+                },
+                {
+                    type: 'info',
+                    title: '마이크로플라스틱 규제 단계적 확대',
+                    content: '의도적으로 첨가된 미세플라스틱에 대한 제한이 본격화되며, 특정 제품군별 유예기간을 준수해야 합니다.',
                     date: '2026-01-22'
                 }
             ]
@@ -270,14 +221,14 @@ export default function ImprovedCountryRegulations() {
             color: '#EF4444',
             fullName: 'People\'s Republic of China',
             authority: 'NMPA (National Medical Products Administration)',
-            marketSize: '$77.1B',
-            marketGrowth: '+8.6% YoY',
-            overview: '중국은 빠르게 성장하는 화장품 시장으로, NMPA의 엄격한 규제를 받습니다. 2021년부터 일반 화장품은 신고제로 전환되었으나, 여전히 복잡한 절차와 중국어 서류가 필요합니다.',
+            marketSize: '$82.1B',
+            marketGrowth: '+7.4% YoY',
+            overview: '중국은 세계 2위의 화장품 시장으로, NMPA의 CSAR(화장품감독관리조례)에 따라 엄격한 규제를 받습니다. 2026년부터 전자라벨 시범사업이 본격화되었으며, 단순 신고제를 넘어 제품의 안전성 평가 보고서(전성분) 제출이 필수화되었습니다.',
             keyFeatures: [
-                '일반 화장품 신고제 전환',
-                '동물실험 일부 면제 가능',
-                '중국어 라벨 필수',
-                '중국 내 책임자 지정 필요'
+                '전자라벨(QR코드) 시범 운영',
+                '특수 화장품 범위 축소',
+                '동물실험 면제 확대',
+                '원료 안전 정보 제출'
             ],
             regulations: [
                 {
@@ -285,119 +236,124 @@ export default function ImprovedCountryRegulations() {
                     title: '수입업자 및 책임자 지정',
                     category: '필수',
                     priority: 'high',
-                    description: '중국 내 공식 수입 대행사 및 제품에 대한 책임을 지는 중국 법인을 지정해야 합니다.',
+                    description: '중국 내 수입업 허가를 보유한 법인을 경내책임자로 선임해야 하며, 이 책임자는 제품의 품질, 안전 및 온라인 신고 시스템 관리에 대한 책임을 집니다.',
                     timeline: '수출 전 필수',
                     cost: 'RMB 30,000 - 50,000/년',
                     requirements: [
-                        '중국 내 수입업 허가를 보유한 법인',
-                        '화장품 수입 경험',
-                        '창고 및 품질관리 시설',
-                        '제품 리콜 능력'
+                        '중국 내 수입업 허가를 보유한 법인 선임',
+                        '화장품 수입 및 유통 경험 보유',
+                        '창고 및 품질관리 시설 확보 여부 확인',
+                        '제품 리콜 및 안전 이슈 발생 시 대응 능력'
                     ],
-                    documents: ['수입업 허가증', '사업자 등록증', '창고 계약서'],
-                    links: ['http://www.nmpa.gov.cn']
+                    documents: ['수입업 허가증 (중국 법인)', '사업자 등록증 (영문 및 중문)', '창고 계약서 또는 관리 증명', '경내책임자 위탁 수권서 (공증 필수)'],
+                    links: ['https://english.nmpa.gov.cn/cosmetics.html']
                 },
                 {
                     id: 2,
-                    title: 'NMPA 성분 검토',
+                    title: 'NMPA 성분 검토 (CSAR)',
                     category: '필수',
                     priority: 'high',
-                    description: 'NMPA 승인 성분 리스트와 제품 포뮬라를 대조하고, 필요시 포뮬라를 조정합니다.',
+                    description: 'NMPA가 승인한 성분 리스트(IECIC)를 기준으로 사용 제한 또는 금지 성분 여부를 사전에 철저히 검토해야 합니다.',
                     timeline: '4-6주',
                     cost: 'RMB 10,000 - 20,000',
                     requirements: [
-                        'NMPA 승인 성분 목록 확인',
-                        '사용 제한 성분 검토',
-                        '금지 성분 확인',
-                        '신원료 등록 필요 여부'
+                        'NMPA 기사용 화장품 원료 목록(IECIC) 확인',
+                        '사용 제한 성분의 함량 준수 여부 검토',
+                        '금지 성분 포함 여부 확인',
+                        '안전성 모니터링이 필요한 신원료 등록 여부 판단'
                     ],
-                    documents: ['전성분 리스트 (중문)', '원료 MSDS', 'CoA'],
-                    links: ['http://www.nmpa.gov.cn/directory/web/nmpa/xxgk/fgwj/gzwj/gzwjhzp']
+                    documents: ['전성분 리스트 (중문 표준 명칭 및 함량 포함)', '원료 MSDS (물질안전보건자료)', 'CoA (원료 시험성적서)'],
+                    links: ['https://hzpsys.nifdc.org.cn/hzpGS/ysyhzpylml#']
                 },
                 {
                     id: 3,
-                    title: '비특수 화장품 신고',
+                    title: '일반(비특수) 화장품 신고',
                     category: '필수',
                     priority: 'high',
-                    description: '2021년부터 일반(비특수) 화장품은 온라인 신고제로 전환되었습니다.',
+                    description: '세정, 보습 등 일반적인 용도의 화장품은 온라인 시스템을 통해 제품 정보를 등록하고 바로 수입이 가능하나, 사후 심사가 엄격합니다.',
                     timeline: '3-6개월',
                     cost: 'RMB 50,000 - 100,000',
                     requirements: [
-                        '제품 안전 평가 자료',
-                        '생산국 생산판매 증명',
-                        '온라인 신고 시스템 제출',
-                        '중국 내 책임자 지정'
+                        '제품 안전성 평가 자료 제출',
+                        '생산국(한국 등)의 생산판매 증명서 확보',
+                        '온라인 신고 시스템을 통한 서류 제출',
+                        '중국 내 경내책임자 지정 및 ID 발급'
                     ],
-                    documents: ['안전성 평가 자료', 'ISO 22716', '생산판매 증명', '포뮬라 정보'],
-                    links: ['http://www.nmpa.gov.cn/hzhp']
+                    documents: ['안전성 평가 보고서', 'ISO 22716 또는 GMP 인증서', '자유 판매 증명서 (Certificate of Free Sale)', '제품 포뮬라 및 제조 공정도'],
+                    links: ['https://zwfw.nmpa.gov.cn/web/user/login']
                 },
                 {
                     id: 4,
                     title: '동물실험 면제 신청',
                     category: '권장',
                     priority: 'medium',
-                    description: '특정 조건을 만족하면 동물실험을 면제받을 수 있습니다.',
+                    description: '정부가 인증한 GMP(ISO 22716 등) 체계 하에서 생산되고 안전성이 입증된 경우 동물실험 보고서 제출을 면제해 줍니다.',
                     timeline: '2-4주',
                     cost: 'RMB 20,000 - 40,000',
                     requirements: [
-                        'GMP 인증서 (ISO 22716)',
-                        '원료 안전성 자료',
-                        '생산국 생산판매 증명',
-                        '제품 안전성 평가 보고서'
+                        '정부 기관 발행 GMP 인증서(ISO 22716 등) 보유',
+                        '원료 및 완제품의 안전성 입증 자료 구비',
+                        '영유아/어린이용 제품이 아닐 것 (면제 제외 대상)',
+                        '제품 안전성 평가 보고서의 "전체 평점" 확보'
                     ],
-                    documents: ['ISO 22716', '안전성 평가서', 'MSDS', '생산판매 증명'],
+                    documents: ['ISO 22716 인증서', '안전성 평가서', '원료 안전성 관련 자료 (MSDS 등)', '생산판매 증명서'],
                     links: ['http://www.nmpa.gov.cn']
                 },
                 {
                     id: 5,
-                    title: '중국어 라벨 제작',
+                    title: '전자 라벨(QR코드) 활용',
                     category: '필수',
                     priority: 'high',
-                    description: 'NMPA 규정에 맞는 중국어 라벨을 제작하고 승인받아야 합니다.',
+                    description: '제품 포장 공간의 제약을 해결하기 위해 QR코드를 스캔하면 전성분, 주의사항 등 상세 정보를 중문으로 확인할 수 있어야 합니다.',
                     timeline: '4-8주',
                     cost: 'RMB 5,000 - 15,000',
                     requirements: [
-                        '제품명 (중문 + 원어)',
-                        '전성분 표시 (INCI + 중문)',
-                        '제조일자 및 유통기한',
-                        '사용 방법 및 주의사항',
-                        '허가 받은 효능만 표기'
+                        '중문 제품명 및 원어 제품명 병기',
+                        '전성분 표시 (INCI 및 중문 표준 명칭)',
+                        '제조일자, 유통기한 및 제조번호 명시',
+                        '사용 방법 및 주의사항 중문 번역',
+                        'NMPA 허가/신고된 효능만 표기 가능'
                     ],
-                    documents: ['라벨 디자인', '전성분 번역본', '효능 표현 검토서'],
-                    links: ['http://www.nmpa.gov.cn']
+                    documents: ['라벨 디자인(안) 및 포장 이미지', '전성분 중문 번역본 및 명명 근거', '효능 표현 검토서 (Claims Substantiation)'],
+                    links: ['https://www.zmuni.com/ko/news/2026/']
                 }
             ],
             roadmap: [
-                { step: 1, title: '수입사 선정', duration: '2주', status: 'start' },
-                { step: 2, title: '성분 검토', duration: '4주', status: 'process' },
-                { step: 3, title: '동물실험 면제 신청', duration: '4주', status: 'optional' },
-                { step: 4, title: '제품 신고', duration: '12주', status: 'process' },
-                { step: 5, title: '라벨 승인', duration: '6주', status: 'process' },
-                { step: 6, title: '통관 준비', duration: '2주', status: 'verify' },
+                { step: 1, title: '경내책임자 지정', duration: '2주', status: 'start' },
+                { step: 2, title: '성분 검토 및 원료 코드 확보', duration: '4주', status: 'process' },
+                { step: 3, title: '동물실험 면제 신청 및 안전성 평가', duration: '4주', status: 'optional' },
+                { step: 4, title: '제품 신고 및 기술 심사', duration: '12주', status: 'process' },
+                { step: 5, title: '전자라벨 제작 및 승인', duration: '6주', status: 'process' },
+                { step: 6, title: '통관 및 검역', duration: '2주', status: 'verify' },
                 { step: 7, title: '수출 개시', duration: '-', status: 'complete' }
             ],
-            estimatedTime: '6-9개월',
+            estimatedTime: '4-7개월',
             estimatedCost: 'RMB 80,000 - 150,000',
             requiredDocuments: [
-                '제품 포뮬라 및 생산공정',
-                'ISO 22716 인증서',
-                '포장 및 라벨 정보',
-                '생산국 생산판매 증명',
-                '제품 안전성 평가 자료',
-                '제품 효능 입증 자료',
-                '중국 내 책임자 지정 서류'
+                '제품 포뮬러 및 생산공정 (원료별 코드 포함)',
+                'ISO 22716 또는 CGMP 인증서 (원본)',
+                '제품 안전성 평가 보고서 (Full Version 필수)',
+                '전자라벨 및 패키지 디자인 시안',
+                '경내책임자 수권서 및 사업자등록증',
+                '효능 입증 자료 (미백, 자외선 차단 등 특수 효능 시)'
             ],
             alerts: [
                 {
-                    type: 'alert',
-                    title: '특정 방부제 사용 금지',
-                    content: '2026년 7월부터 특정 파라벤류의 사용이 전면 금지됩니다.',
+                    type: 'warning',
+                    title: '전자라벨링 제도 시행',
+                    content: 'NMPA 지침에 따라 제품 포장에 QR코드를 부착하여 성분 및 효능 정보를 대체할 수 있는 시범 사업이 시작되었습니다.',
                     date: '2026-01-25'
+                },
+                {
+                     type: 'alert',
+                     title: '특정 성분 사용 제한 업데이트',
+                     content: '"화장품 안전 기술 규범" 개정으로 다이옥산(Dioxane) 및 특정 보존제의 배합 한도가 강화되었습니다.',
+                     date: '2026-01-18'
                 },
                 {
                     type: 'info',
                     title: '동물실험 면제 절차 간소화',
-                    content: 'NMPA가 면제 신청 절차를 간소화하여 처리 기간이 단축되었습니다.',
+                    content: '해외 제조사의 GMP 인증서 인정 범위가 확대되어, 국내 식약처 발행 인증서로도 면제 신청이 용이해졌습니다.',
                     date: '2026-01-18'
                 }
             ]
@@ -407,132 +363,100 @@ export default function ImprovedCountryRegulations() {
             color: '#F59E0B',
             fullName: 'Japan',
             authority: 'MHLW (Ministry of Health, Labour and Welfare)',
-            marketSize: '¥2.7T',
-            marketGrowth: '+2.1% YoY',
-            overview: '일본은 아시아 최대 선진 화장품 시장 중 하나로, 후생노동성(MHLW)의 규제를 받습니다. 의약부외품과 일반 화장품으로 구분되며, 비교적 명확한 규제 체계를 가지고 있습니다.',
+            marketSize: '¥2.75T',
+            marketGrowth: '+2.7% YoY',
+            overview: '일본은 아시아 최대 선진 시장 중 하나로, 후생노동성(MHLW)의 규제를 받습니다. 2026년부터는 PFAS(PFHxS 등) 금지 물질 확대와 같은 환경 안전 규제가 대폭 강화되어 성분 검토의 정확성이 더욱 중요해졌습니다.',
             keyFeatures: [
                 '의약부외품 vs 일반화장품 구분',
-                '제조판매업 허가 필요',
-                '일본어 전성분 표시 필수',
-                '신속한 심사 프로세스'
+                '특정 화학물질 금지 목록 확대',
+                '전성분 일본어 표기 의무',
+                '제조판매업 허가(임포터)'
             ],
             regulations: [
                 {
                     id: 1,
-                    title: '수입업자 및 제조판매업자 선정',
+                    title: '일본 화심법(CSCL) 개정',
                     category: '필수',
                     priority: 'high',
-                    description: '일본 내에서 화장품을 판매하기 위해서는 제조판매업 허가를 보유한 업체를 지정해야 합니다.',
+                    description: '일본 내 제조 또는 수입되는 신규 화학물질의 안전성을 관리하는 법률로, 최근 소량 신규 물질 신고 제도가 전면 개편되었습니다.',
                     timeline: '수출 전 필수',
                     cost: '¥300,000 - ¥500,000/년',
                     requirements: [
                         '제조판매업 허가 보유',
                         '책임기술자 배치',
-                        '품질관리 체계',
-                        '제품 리콜 능력'
+                        '신규 물질 사전 심사',
+                        '품질관리 및 리콜 체계'
                     ],
-                    documents: ['제조판매업 허가증', '책임기술자 증명', '사업자 등록증'],
-                    links: ['https://www.mhlw.go.jp']
+                    documents: ['제조판매업 허가증 (일본 수입자 보유 분)', '책임기술자 자격 증명 서류', '사업자 등록증 및 고용 계약서'],
+                    links: ['https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/index.html']
                 },
                 {
                     id: 2,
-                    title: '일본 화장품 기준 성분 검토',
+                    title: '의약부외품 광고 지침',
                     category: '필수',
                     priority: 'high',
-                    description: '후생노동성이 정한 화장품 기준에 따라 성분을 검토하고, 필요시 포뮬라를 조정합니다.',
+                    description: '효능을 보장하거나 "노화 방지"와 같이 직접적인 효과를 시사하는 표현은 금지되며, 승인된 범위 내의 표현만 가능합니다.',
                     timeline: '3-4주',
                     cost: '¥100,000 - ¥300,000',
                     requirements: [
                         '네거티브 리스트 확인',
-                        '포지티브 리스트 확인 (방부제, 자외선차단제 등)',
-                        '배합 한도 준수',
-                        '금지 성분 확인'
+                        '포지티브 리스트 준수',
+                        '금지 표현 배제'
                     ],
-                    documents: ['전성분 리스트 (일문)', '원료 규격서', 'CoA'],
+                    documents: ['전성분 리스트 (일문 번역본)', '원료 규격서 및 안전성 데이터 (MSDS)', '시험성적서 (CoA) 및 분석 증명서'],
                     links: ['https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/keshouhin/index.html']
                 },
                 {
                     id: 3,
-                    title: '제조판매 신고',
+                    title: '안전성 실증 자료 보관',
                     category: '필수',
                     priority: 'high',
-                    description: '일반 화장품의 경우 제조판매 신고서를 제출해야 합니다.',
+                    description: '일본 내 유통되는 모든 화장품은 품질 관리와 사후 안전성 보고를 위한 문서 체계를 갖추어야 합니다.',
                     timeline: '2-4주',
                     cost: '¥50,000 - ¥150,000',
                     requirements: [
-                        '제품 표준서',
-                        '전성분 목록',
-                        '제조방법 개요',
-                        '품질관리 방법'
+                        '제품 표준서 작성',
+                        '전성분 목록 관리',
+                        '제조방법 개요 및 품질관리'
                     ],
-                    documents: ['제품 표준서', '제조방법서', '시험성적서'],
-                    links: ['https://www.mhlw.go.jp']
+                    documents: ['제품 표준서 (Product Specification)', '제조방법서 및 공정 흐름도', '시험성적서 및 안전성 평가 보고서'],
+                    links: ['https://www.pmda.go.jp/review-services/drug-reviews/0001.html']
                 },
-                {
-                    id: 4,
-                    title: '일본어 라벨 작성',
-                    category: '필수',
-                    priority: 'high',
-                    description: '약기법에 따른 일본어 표시를 작성하고 검토받아야 합니다.',
-                    timeline: '2-3주',
-                    cost: '¥80,000 - ¥200,000',
-                    requirements: [
-                        '제품명 (일문)',
-                        '제조판매업자 명칭 및 주소',
-                        '전성분 표시 (일문)',
-                        '내용량, 사용기한',
-                        '사용상 주의사항'
-                    ],
-                    documents: ['라벨 디자인', '전성분 번역본', '표시 검토서'],
-                    links: ['https://www.mhlw.go.jp']
-                },
-                {
-                    id: 5,
-                    title: 'GMP 인증 (권장)',
-                    category: '권장',
-                    priority: 'medium',
-                    description: 'ISO 22716 등 GMP 인증은 필수는 아니지만, 품질 신뢰도를 높이는 데 유용합니다.',
-                    timeline: '4-8주',
-                    cost: '¥200,000 - ¥500,000',
-                    requirements: [
-                        '제조시설 적격성 평가',
-                        '품질관리 시스템 구축',
-                        '작업 표준서 작성',
-                        '정기 내부 감사'
-                    ],
-                    documents: ['GMP 인증서', '품질 매뉴얼', '제조 기록'],
-                    links: ['https://www.mhlw.go.jp']
-                }
             ],
             roadmap: [
-                { step: 1, title: '수입업자 선정', duration: '2주', status: 'start' },
-                { step: 2, title: '성분 검토', duration: '3주', status: 'process' },
-                { step: 3, title: '제품 신고', duration: '4주', status: 'process' },
-                { step: 4, title: '일문 라벨 작성', duration: '3주', status: 'process' },
-                { step: 5, title: 'GMP 인증 (선택)', duration: '6주', status: 'optional' },
+                { step: 1, title: '수입업자(제조판매업자) 선정', duration: '2주', status: 'start' },
+                { step: 2, title: '성분 및 금지 물질 검토', duration: '3주', status: 'process' },
+                { step: 3, title: '외국 제조업체 인정 신청', duration: '6-8주', status: 'process' },
+                { step: 4, title: '화장품 제조판매 신고', duration: '1주', status: 'process' },
+                { step: 5, title: '일본어 라벨 및 패키지 제작', duration: '2주', status: 'process' },
                 { step: 6, title: '수출 개시', duration: '-', status: 'complete' }
             ],
             estimatedTime: '3-5개월',
             estimatedCost: '¥800,000 - ¥1,500,000',
             requiredDocuments: [
-                '제조판매업 허가증',
+                '외국 제조업자 인정 서류',
                 '전성분 리스트 (일문)',
                 '제품 표준서',
-                'GMP 인증서',
                 '제조방법서',
                 '시험성적서'
             ],
             alerts: [
                 {
-                    type: 'info',
-                    title: '화장품 기준 개정',
-                    content: '2026년부터 새로운 방부제 기준이 적용됩니다.',
+                    type: 'warning',
+                    title: 'PFAS 관련 물질 수입 금지',
+                    content: '장관령 발표에 따라 117종의 PFHxS 관련 물질을 함유한 제품의 수입이 원칙적으로 금지됩니다. 성분 분석표 재검토가 시급합니다.',
                     date: '2026-01-20'
                 },
                 {
+                    type: 'alert',
+                    title: '향료 알레르기 성분 공시 권고 확대',
+                    content: 'EU 규정과 유사하게 특정 알레르기 유발 성분에 대한 상세 표기가 권장되며, 투명한 정보 공개가 중요해졌습니다.',
+                    date: '2026-01-12'
+                },
+                {
                     type: 'info',
-                    title: '전성분 표시 의무화 강화',
-                    content: '2026년 4월부터 향료 성분도 상세 표시가 권장됩니다.',
+                    title: '화장품 전공 학과 신설 및 인재 공급',
+                    content: '국립대학(사가대 등)에 화장품 전문 교육 과정이 신설되어, 향후 현지 기업과의 기술 협력 기회가 확대될 전망입니다.',
                     date: '2026-01-12'
                 }
             ]
@@ -750,9 +674,15 @@ export default function ImprovedCountryRegulations() {
                 boxSizing: 'border-box'
             }}>
                 <style>{`
-                    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap');
-                    * { font-family: 'DM Sans', sans-serif; }
-                    .serif-font { font-family: 'Instrument Serif', serif; }
+                    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+                    * { font-family: 'Pretendard Variable', Pretendard, sans-serif;
+                     letter-spacing: -0.02em;
+                    }
+                    .serif-font {
+                        font-family: 'Pretendard Variable', Pretendard, sans-serif !important;
+                        font-weight: 700;
+                        letter-spacing: -0.03em;
+                    }
                 `}</style>
 
                 {/* Header */}
@@ -940,9 +870,11 @@ export default function ImprovedCountryRegulations() {
             boxSizing: 'border-box'
         }}>
             <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap');
-                * { font-family: 'DM Sans', sans-serif; }
-                .serif-font { font-family: 'Instrument Serif', serif; }
+                @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+                * { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif; }
+                letter-spacing: -0.02em;}
+                .serif-font { font-family: 'Pretendard Variable', Pretendard, sans-serif;
+                font-weight: 700;}
             `}</style>
 
             {selectedRegulation && <RegulationDetailModal />}
