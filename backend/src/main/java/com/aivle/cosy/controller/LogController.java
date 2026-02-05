@@ -44,10 +44,15 @@ public class LogController {
     }
 
     @GetMapping("/{country}")
-    public ResponseEntity<List<Log>> getByCountry(
+    public ResponseEntity<List<LogResponse>> getByCountry(
             @RequestHeader("Authorization") String token,
             @PathVariable String country) {
         Long companyId = tokenProvider.getCompanyId(token.substring(7));
-        return ResponseEntity.ok(logService.getLogsByCountry(companyId, country));
+        List<Log> logs = logService.getLogsByCountry(companyId, country);
+
+        List<LogResponse> response = logs.stream()
+                .map(LogResponse::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(response);
     }
 }

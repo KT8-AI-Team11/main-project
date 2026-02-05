@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -57,8 +58,16 @@ public class LogService {
     }
 
     public List<Log> getLogsByCountry(Long companyId, String country_name){
-        Log.Country country = Log.Country.valueOf(country_name.toUpperCase());
-        return logRepository.findByCompanyIdAndCountry(companyId, country);
+//        Log.Country country = Log.Country.valueOf(country_name.toUpperCase());
+//        return logRepository.findByCompanyIdAndCountry(companyId, country);
+        try {
+            // 프론트에서 온 문자열을 대문자로 바꾸어 Enum으로 변환
+            Log.Country country = Log.Country.valueOf(country_name.toUpperCase());
+            return logRepository.findByCompanyIdAndCountry(companyId, country);
+        } catch (IllegalArgumentException e) {
+            // 잘못된 국가 코드가 들어올 경우 빈 리스트 반환
+            return Collections.emptyList();
+        }
     }
 
 }
