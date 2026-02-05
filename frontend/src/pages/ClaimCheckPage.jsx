@@ -683,7 +683,15 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
             </button>
           </div>
 
-          <div style={{ display: "flex", gap: 12, marginTop: 14, alignItems: "stretch" }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 12,
+              marginTop: 14,
+              alignItems: "stretch",
+            }}
+          >
             {/* 왼쪽: 요약 박스 */}
             <div
               className="cosy-card"
@@ -840,7 +848,9 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
             <div
               className="cosy-card"
               style={{
-                width: 170,
+                flex: "0 0 170px",
+                minWidth: 150,
+                maxWidth: "100%",
                 padding: 14,
                 display: "flex",
                 flexDirection: "column",
@@ -896,12 +906,21 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
                 disabled={!canRunInspection || isInspecting}
                 style={{
                   width: "100%",
+                  minHeight: 36,
+                  height: "36",
+                  padding: "0px 12px",
                   opacity: !canRunInspection || isInspecting ? 0.65 : 1,
                   cursor: !canRunInspection || isInspecting ? "not-allowed" : "pointer",
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
                   gap: 8,
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                  lineHeight: 1,
+                  fontSize: 12,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 }}
                 title={
                   !canRunInspection
