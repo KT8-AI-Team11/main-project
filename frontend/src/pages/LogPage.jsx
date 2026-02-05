@@ -59,40 +59,50 @@ export default function LogPage() {
     const [logs, setLogs] = useState([]); // 반드시 빈 배열로 초기화
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedCountry, setSelectedCountry] = useState("ALL");
+
+
+    useEffect(() => {
+        loadData();
+    }, [selectedCountry]);
+
 
     const loadData = async () => {
         try {
             setLoading(true);
             const token = localStorage.getItem("cosy_access_token");
-            if (!token) throw new Error("토큰이 없습니다.");
+            if (!token) return;
 
-            const response = await fetch(API_BASE_URL, {
+            const url = selectedCountry === "ALL"
+                ? API_BASE_URL
+                : `${API_BASE_URL}/${selectedCountry}`;
+
+            const response = await fetch(url, {
                 method: "GET",
                 headers: getAuthHeader()
             });
 
-            if (!response.ok) throw new Error("데이터 요청 실패");
+            if (!response.ok) throw new Error(`HTTP 에러! 상태코드: ${response.status}`);
 
             const data = await response.json();
 
-            // 데이터가 배열인지 확인 후 정렬
             if (Array.isArray(data)) {
-                const sorted = data.sort((a, b) => new Date(b.updDate || 0) - new Date(a.updDate || 0));
+                const sorted = data.sort((a, b) => {
+                    const dateA = a.updDate ? new Date(a.updDate) : 0;
+                    const dateB = b.updDate ? new Date(b.updDate) : 0;
+                    return dateB - dateA;
+                });
                 setLogs(sorted);
             } else {
-                setLogs([]); // 배열이 아니면 빈 배열로 세팅하여 에러 방지
+                setLogs([]);
             }
         } catch (err) {
-            console.error("Log loading error:", err);
+            console.error("데이터 로드 중 오류 발생:", err);
             setLogs([]);
         } finally {
             setLoading(false);
         }
     };
-
-    useEffect(() => {
-        loadData();
-    }, []);
 
     // 🛡️ 필터링 시 null 세이프티 강화
     const filteredLogs = useMemo(() => {
@@ -111,7 +121,7 @@ export default function LogPage() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
                     <div>
                         <h2 style={{ margin: 0, fontSize: "20px", fontWeight: 1000 }}>검사 이력 조회</h2>
-                        <p style={{ margin: 0, fontSize: "13px", color: "#6B7280" }}>우리 회사가 수행한 모든 성분 검사 기록입니다.</p>
+                        <p style={{ margin: 0, fontSize: "13px", color: "#6B7280" }}>회사 내 수행된 모든 성분 검사 기록입니다.</p>
                     </div>
                     <button className="cosy-btn" onClick={loadData} disabled={loading} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                         <RefreshCw size={16} className={loading ? "cosy-spin" : ""} />
@@ -128,6 +138,28 @@ export default function LogPage() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         style={{ border: "none", outline: "none", width: "100%", fontSize: "14px" }}
                     />
+                </div>
+
+                {/* 국가 필터 버튼 그룹 */}
+                <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+                    {["ALL", "US", "JP", "CN", "EU"].map((country) => (
+                        <button
+                            key={country}
+                            onClick={() => setSelectedCountry(country)}
+                            className={`cosy-filter-btn ${selectedCountry === country ? "active" : ""}`}
+                            style={{
+                                padding: "8px 16px",
+                                borderRadius: "20px",
+                                border: "1px solid #E5E7EB",
+                                backgroundColor: selectedCountry === country ? "#1D4ED8" : "#FFFFFF",
+                                color: selectedCountry === country ? "#FFFFFF" : "#4B5563",
+                                fontWeight: "bold",
+                                cursor: "pointer"
+                            }}
+                        >
+                            {country === "ALL" ? "전체" : country}
+                        </button>
+                    ))}
                 </div>
 
                 {loading ? (
