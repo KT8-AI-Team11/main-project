@@ -29,8 +29,12 @@ public class Log {
     private Company company;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "approval_status", length = 20)
-    private ApprovalStatus approvalStatus;
+    @Column(name = "ingredient_status", length = 20)
+    private ApprovalStatus ingredientStatus;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "marketing_status", length = 20)
+    private ApprovalStatus marketingStatus;
 
     @Column(columnDefinition = "TEXT")
     private String cautiousIngredient;
@@ -53,23 +57,27 @@ public class Log {
     }
 
     @Builder
-    public Log(Country country, Product product, Company company, ApprovalStatus approvalStatus,
+    public Log(Country country, Product product, Company company, ApprovalStatus ingredientStatus, ApprovalStatus marketingStatus,
                String cautiousIngredient, String ingredientLaw, String marketingLaw) {
         this.country = country;
         this.product = product;
         this.company = company;
-        this.approvalStatus = approvalStatus;
+        this.ingredientStatus = ingredientStatus;
+        this.marketingStatus = marketingStatus;
         this.cautiousIngredient = cautiousIngredient;
         this.ingredientLaw = ingredientLaw;
         this.marketingLaw = marketingLaw;
     }
 
-    // update를 위한 메소드
-    public void updateAnalysis(ApprovalStatus approvalStatus, String cautiousIngredient, String ingredientLaw, String marketingLaw){
-        this.approvalStatus = approvalStatus;
+    public void updateIngredientAnalysis(ApprovalStatus ingredientStatus, String cautiousIngredient, String ingredientLaw){
+        this.ingredientStatus = ingredientStatus;
         this.cautiousIngredient = cautiousIngredient;
         this.ingredientLaw = ingredientLaw;
-        this.marketingLaw = marketingLaw;
+    }
+
+    public void updateMarketingAnalysis(ApprovalStatus status, String law) {
+        this.marketingStatus = status;
+        this.marketingLaw = law;
     }
 
 }

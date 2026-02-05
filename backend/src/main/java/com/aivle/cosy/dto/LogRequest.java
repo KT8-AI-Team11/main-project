@@ -8,8 +8,14 @@ import lombok.NoArgsConstructor;
 public class LogRequest {
     private Long productId;
     private String country;
-    private String approvalStatus;
+
+    // 업데이트 구분 (ingredient/marketing)
+    private String updateType;
+
+    private String ingredientStatus;
     private String cautiousIngredient;
     private String ingredientLaw;
+
+    private String marketingStatus;
     private String marketingLaw;
 }

@@ -23,5 +23,6 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     long countByCompanyIdAndUpdDateAfter(Long companyId, LocalDateTime date);
 
     // 위험도 MEDIUM 또는 HIGH인 로그 개수
-    long countByCompanyIdAndApprovalStatusIn(Long companyId, List<Log.ApprovalStatus> statuses);
+    long countByCompanyIdAndIngredientStatusIn(Long companyId, List<Log.ApprovalStatus> statuses);
+    long countByCompanyIdAndMarketingStatusIn(Long companyId, List<Log.ApprovalStatus> statuses);
 }

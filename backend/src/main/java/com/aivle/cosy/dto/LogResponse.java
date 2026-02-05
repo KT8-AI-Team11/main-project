@@ -10,10 +10,14 @@ public class LogResponse {
     private String country;
     private Long productId;
     private String productName;
-    private String approvalStatus;
+
+    private String ingredientStatus;
     private String cautiousIngredient;
     private String ingredientLaw;
+
+    private String marketingStatus;
     private String marketingLaw;
+
     private LocalDateTime updDate;
 
     public LogResponse(Log log) {
@@ -21,10 +25,14 @@ public class LogResponse {
         this.country = log.getCountry().name();
         this.productId = log.getProduct().getId();
         this.productName = log.getProduct().getName();
-        this.approvalStatus = log.getApprovalStatus() != null ? log.getApprovalStatus().name() : "UNKNOWN";
+
+        this.ingredientStatus = log.getIngredientStatus() != null ? log.getIngredientStatus().name() : "UNKNOWN";
         this.cautiousIngredient = log.getCautiousIngredient();
         this.ingredientLaw = log.getIngredientLaw();
+
+        this.marketingStatus = log.getMarketingStatus() != null ? log.getMarketingStatus().name() : "UNKNOWN";
         this.marketingLaw = log.getMarketingLaw();
+
         this.updDate = log.getUpdDate();
     }
 }

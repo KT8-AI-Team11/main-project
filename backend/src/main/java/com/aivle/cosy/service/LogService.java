@@ -20,53 +20,54 @@ public class LogService {
     private final LogRepository logRepository;
     private final ProductRepository productRepository;
 
+    // --- 성분(Ingredient) 탭 전용 조회 ---
+    public List<Log> getIngredientLogsByCompany(Long companyId) {
+        return logRepository.findByCompanyId(companyId); //
+    }
+
+    public List<Log> getIngredientLogsByCountry(Long companyId, String countryName) {
+        Log.Country country = Log.Country.valueOf(countryName.toUpperCase());
+        return logRepository.findByCompanyIdAndCountry(companyId, country); //
+    }
+
+    // --- 문구(Marketing) 탭 전용 조회 ---
+    public List<Log> getMarketingLogsByCompany(Long companyId) {
+        return logRepository.findByCompanyId(companyId); //
+    }
+
+    public List<Log> getMarketingLogsByCountry(Long companyId, String countryName) {
+        Log.Country country = Log.Country.valueOf(countryName.toUpperCase());
+        return logRepository.findByCompanyIdAndCountry(companyId, country); //
+    }
+
     public void upsertLog(Long companyId, LogRequest request) {
         // 국가를 Enum으로 변경
         Log.Country country = Log.Country.valueOf(request.getCountry().toUpperCase());
 
         // 기존 로그 조회
-        logRepository.findByProductIdAndCountry(request.getProductId(), country)
-                .ifPresentOrElse(
-                        // 로그 update
-                        existingLog -> {
-                            existingLog.updateAnalysis(
-                                    Log.ApprovalStatus.valueOf(request.getApprovalStatus()),
-                                    request.getCautiousIngredient(),
-                                    request.getIngredientLaw(),
-                                    request.getMarketingLaw()
-                            );
-                        },
+        Log log = logRepository.findByProductIdAndCountry(request.getProductId(), country)
+                .orElseGet(
                         // 로그 create
                         () -> {
                             Product product = productRepository.findById(request.getProductId()).orElseThrow();
-                            Log newLog = Log.builder()
+                            return logRepository.save(Log.builder()
                                     .company(product.getCompany())
                                     .product(product)
                                     .country(country)
-                                    .approvalStatus(Log.ApprovalStatus.valueOf(request.getApprovalStatus()))
-                                    .cautiousIngredient(request.getCautiousIngredient())
-                                    .ingredientLaw(request.getIngredientLaw())
-                                    .marketingLaw(request.getMarketingLaw())
-                                    .build();
-                            logRepository.save(newLog);
-                        }
-                );
-    }
+                                    .build());
+                        });
 
-    public List<Log> getAllLogsByCompany(Long companyId){
-        return logRepository.findByCompanyId(companyId);
-    }
-
-    public List<Log> getLogsByCountry(Long companyId, String country_name){
-//        Log.Country country = Log.Country.valueOf(country_name.toUpperCase());
-//        return logRepository.findByCompanyIdAndCountry(companyId, country);
-        try {
-            // 프론트에서 온 문자열을 대문자로 바꾸어 Enum으로 변환
-            Log.Country country = Log.Country.valueOf(country_name.toUpperCase());
-            return logRepository.findByCompanyIdAndCountry(companyId, country);
-        } catch (IllegalArgumentException e) {
-            // 잘못된 국가 코드가 들어올 경우 빈 리스트 반환
-            return Collections.emptyList();
+        if ("INGREDIENT".equalsIgnoreCase(request.getUpdateType())) {
+            log.updateIngredientAnalysis(
+                    Log.ApprovalStatus.valueOf(request.getIngredientStatus()),
+                    request.getIngredientLaw(),
+                    request.getCautiousIngredient()
+            );
+        } else if ("MARKETING".equalsIgnoreCase(request.getUpdateType())) {
+            log.updateMarketingAnalysis(
+                    Log.ApprovalStatus.valueOf(request.getMarketingStatus()),
+                    request.getMarketingLaw()
+            );
         }
     }
 
