@@ -10,7 +10,8 @@ import {
 
 import CountryMultiSelect from "../components/CountryMultiSelect";
 import { ocrExtract } from "../api/ocr"; 
-import { checkRegulation } from "../api/compliance"; 
+import { checkRegulation } from "../api/compliance";
+import { saveInspectionLog } from "../api/log";
 
 
 const COUNTRY_CODES = ["US", "EU", "CN", "JP"];
@@ -63,7 +64,7 @@ function normalizeInspectionResult(apiJson, countryCode) {
   };
 }
 
-export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
+export default function ClaimCheckPage({ initialSelectedProducts, initialSelectedProductIds, navData = [] }) {
   // =========================
   // 1) 국가 옵션
   // =========================
@@ -300,6 +301,21 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
 
           const normalized = normalizeInspectionResult(apiJson, c);
           setResultsByCountry((prev) => ({ ...prev, [c]: normalized }));
+
+          // 데이터 Backend로 전송
+          const productId = initialSelectedProductIds?.[0];
+          if (productId) {
+              const logRequest = {
+                  productId: Number(productId),
+                  country: c,
+                  updateType: "MARKETING",
+                  marketingStatus: apiJson.overall_risk || "MEDIUM",
+                  // 상세 사유들을 하나로 합쳐서 저장
+                  marketingLaw: apiJson.findings?.map(f => `[${f.finding}] ${f.reason}`).join("\n") || "규제 근거 정보 없음",
+              };
+              await saveInspectionLog(logRequest);
+              console.log(`[Log Saved] ${c} 결과가 DB에 기록되었습니다.`);
+          }
         } catch (err) {
           setResultsByCountry((prev) => ({
             ...prev,

@@ -12,6 +12,7 @@ import ClaimCheckPage from "./pages/ClaimCheckPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import LogPage from "./pages/LogPage";
 import { login, logout, isTokenExpired } from "./api/auth";
 import CountryRegulationsPage from "./pages/CountryRegulationsPage";
 import { useProducts } from "./store/ProductsContext";
@@ -222,6 +223,7 @@ export default function CosyUI() {
         display: "flex",
         backgroundColor: "#f9fafb",
         fontFamily: "sans-serif",
+        overflow: "hidden",
       }}
     >
       {/* Sidebar */}
@@ -230,8 +232,8 @@ export default function CosyUI() {
         onNavigate={requireAuth}
         isLoggedIn={isLoggedIn}
         userEmail={userEmail}
-        collapsed={sidebarCollapsed}                 
-        onToggleCollapsed={toggleSidebarCollapsed}   
+        collapsed={sidebarCollapsed}
+        onToggleCollapsed={toggleSidebarCollapsed}
       />
 
       {/* Main */}
@@ -278,10 +280,14 @@ export default function CosyUI() {
               <ClaimCheckPage
                 initialSelectedProducts={pageParams?.selectedProducts || []}
                 initialSelectedProductIds={pageParams?.selectedProductIds || []}
+                navData={pageParams}
               />
             )}
 
-            {currentPage === "profile" && <ProfilePage />}
+            {currentPage === "log-history" && <LogPage onNavigate={requireAuth} />}
+
+
+              {currentPage === "profile" && <ProfilePage />}
 
             {/* ✅ 여기 추가가 핵심 */}
             {currentPage === "country-regulations" && <CountryRegulationsPage />}

@@ -3,6 +3,7 @@ import {
   Lock,
   Home,
   Package,
+  Database,
   FlaskConical,
   Megaphone,
   Globe,
@@ -170,6 +171,16 @@ export default function Sidebar({
     requiresLogin={true}
     isLoggedIn={isLoggedIn}
     collapsed={collapsed}
+  />
+
+  <SidebarItem
+      active={currentPage === "log-history"}
+      onClick={() => onNavigate("log-history")}
+      label="제품 규제 목록"
+      icon={Database}
+      requiresLogin={true}
+      isLoggedIn={isLoggedIn}
+      collapsed={collapsed}
   />
 
   {/* 섹션 2: 규제 확인 */}

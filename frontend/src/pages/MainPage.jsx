@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Search,
   X,
@@ -21,11 +22,32 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
     }
   };
 
+  const getAuthHeader = () => ({
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("cosy_access_token")}`
+  });
+
+  // 데이터 초기화
+  const [stats, setStats] = useState({
+      productCount: 0,
+      recentChecks: 0,
+      warningCount: 0
+  });
+
   const userEmail = localStorage.getItem("cosy_user_email") || "";
   const productsLS = safeJson(localStorage.getItem("cosy_products"), []);
-  const productCount = Array.isArray(productsLS) ? productsLS.length : 0;
-  const recentChecks = Number(localStorage.getItem("cosy_recent_checks") || 0);
-  const warningCount = Number(localStorage.getItem("cosy_warning_count") || 0);
+  useEffect(() => {
+      if (isLoggedIn) {
+          axios.get("/api/dashboard/stats", {headers: getAuthHeader()})
+              .then(response => {
+                  setStats(response.data);
+              })
+              .catch(error => {
+                  console.error("대시보드 데이터를 가져오는데 실패했습니다:", error);
+              });
+      }
+  }, [isLoggedIn]);
+
 
   // ✅ (홈 4번) 로그인 전/후 행동 차이
   const requireLogin = (actionName) => {
@@ -137,19 +159,19 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "12px" }}>
                 <div style={summaryCardStyle}>
                   <div style={summaryLabelStyle}>등록 제품</div>
-                  <div style={summaryValueStyle}>{productCount}</div>
+                  <div style={summaryValueStyle}>{stats.productCount}</div>
                   <div style={summaryHintStyle}>내 제품 관리에서 추가</div>
                 </div>
 
                 <div style={summaryCardStyle}>
                   <div style={summaryLabelStyle}>최근 규제 검토</div>
-                  <div style={summaryValueStyle}>{recentChecks}</div>
+                  <div style={summaryValueStyle}>{stats.recentChecks}</div>
                   <div style={summaryHintStyle}>추후 자동 집계</div>
                 </div>
 
                 <div style={summaryCardStyle}>
                   <div style={summaryLabelStyle}>경고 항목</div>
-                  <div style={summaryValueStyle}>{warningCount}</div>
+                  <div style={summaryValueStyle}>{stats.warningCount}</div>
                   <div style={summaryHintStyle}>추후 자동 집계</div>
                 </div>
               </div>
