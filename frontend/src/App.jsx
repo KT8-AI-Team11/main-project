@@ -12,6 +12,7 @@ import ClaimCheckPage from "./pages/ClaimCheckPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import LogPage from "./pages/LogPage";
 import { login, logout, isTokenExpired } from "./api/auth";
 import CountryRegulationsPage from "./pages/CountryRegulationsPage";
 import { useProducts } from "./store/ProductsContext";

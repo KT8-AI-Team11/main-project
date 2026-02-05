@@ -217,7 +217,7 @@ export default function LogPage() {
                                     </td>
                                     {activeTab === "INGREDIENT" ? (
                                         <>
-                                            <td style={{ padding: "14px", fontSize: "13px", color: "#EF4444", fontWeight: 600 }}>
+                                            <td style={{ padding: "14px", fontSize: "13px", color: "#334155", fontWeight: 600 }}>
                                                 {log.cautiousIngredient || "-"}
                                             </td>
                                             <td style={{ padding: "14px", fontSize: "13px", color: "#334155", whiteSpace: "pre-wrap" }}>
