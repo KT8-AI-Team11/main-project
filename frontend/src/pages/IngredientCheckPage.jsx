@@ -456,8 +456,6 @@ export default function IngredientCheckPage({
                     );
                     const finalStatus = hasHigh ? "HIGH" : (hasMedium ? "MEDIUM" : "LOW");
 
-                    // const countryMap = { US: "US", JP: "JAPAN", CN: "CHINA", EU: "EU" };
-
                     const logRequest = {
                         productId: Number(p.id),
                         country: market || "US",
