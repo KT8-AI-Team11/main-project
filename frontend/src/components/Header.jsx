@@ -21,6 +21,7 @@ const HeaderButton = ({ label, onClick }) => (
 export default function Header({
   onGoHome,
   onGoLogin,
+  onGoProfile,
   isLoggedIn,
   userEmail,
   loginType,
@@ -49,10 +50,16 @@ export default function Header({
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-
         {isLoggedIn ? (
           <>
+            {/* ✅ 여기: 프로필 배너 클릭 시 마이페이지로 */}
             <div
+              onClick={onGoProfile}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") onGoProfile?.();
+              }}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -64,13 +71,23 @@ export default function Header({
                 color: "#111827",
                 fontSize: 12,
                 fontWeight: 800,
+                cursor: "pointer",
+                userSelect: "none",
               }}
-              title={userEmail || ""}
+              title="마이페이지 열기"
             >
               <User size={16} color="#6b7280" />
-              <span style={{ maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <span
+                style={{
+                  maxWidth: 180,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 {userEmail || "로그인됨"}
               </span>
+
               {loginType?.startsWith("demo") && (
                 <span
                   style={{

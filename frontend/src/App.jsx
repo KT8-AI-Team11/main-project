@@ -244,6 +244,7 @@ const toggleSidebarCollapsed = () => {
         {/* Header */}
         <Header
           onGoHome={() => setCurrentPage("home")}
+          onGoProfile={() => requireAuth("profile")}   // ✅ 추가 (로그인 필요 처리까지 자동)
           onGoLogin={() => setCurrentPage("login")}
           isLoggedIn={isLoggedIn}
           userEmail={userEmail}
