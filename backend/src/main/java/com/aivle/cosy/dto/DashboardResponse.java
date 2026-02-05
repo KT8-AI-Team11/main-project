@@ -1,15 +1,16 @@
 package com.aivle.cosy.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class DashboardReponse {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class DashboardResponse {
     private long productCount;
     private long recentChecks;
     private long warningCount;
-    
-    public DashboardReponse(long productCount, long recentChecks, long warningCount){
-        this.productCount = productCount;
-        this.recentChecks = recentChecks;
-        this.warningCount = warningCount;
-    }
 }

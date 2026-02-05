@@ -72,7 +72,4 @@ public class Log {
         this.marketingLaw = marketingLaw;
     }
 
-//    public String getProductName(){
-//        return this.product != null ? this.product.getName() : null;
-//    }
 }
