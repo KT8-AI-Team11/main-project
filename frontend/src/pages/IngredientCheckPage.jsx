@@ -462,7 +462,7 @@ export default function IngredientCheckPage({
                         approvalStatus: finalStatus,
                         // 성분명이 있을 때만 합치기
                         cautiousIngredient: details.map(d => d.ingredient).join(", ").slice(0, 255) || "없음",
-                        ingredientLaw: details.map(d => `${d.ingredient}: ${d.regulation}`).join("\n").slice(0, 500) || "규제 없음",
+                        ingredientLaw: details.map(d => `${d.ingredient}: ${d.regulation}`).join("\n").slice(0, 500) || "제한 규제 없음",
                         marketingLaw: ""
                     };
 

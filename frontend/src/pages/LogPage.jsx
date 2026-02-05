@@ -27,6 +27,34 @@ const SeverityPill = ({ value }) => {
     );
 };
 
+const COUNTRY_META = {
+    US: { bg: "#EFF6FF", fg: "#1E40AF", bd: "#DBEAFE" },
+    JP: { bg: "#EFF6FF", fg: "#BE123C", bd: "#FDA4AF" },
+    CN: { bg: "#EFF6FF", fg: "#B91C1C", bd: "#FECACA" },
+    EU: { bg: "#EFF6FF", fg: "#16A34A", bd: "#D1FAE5" },
+};
+
+const CountryPill = ({ value }) => {
+    const sev = String(value || "").toUpperCase();
+    const meta = COUNTRY_META[sev] || { bg: "#F3F4F6", fg: "#374151", bd: "#E5E7EB" };
+
+    return (
+        <span className="country-pill" style={{
+            background: meta.bg,
+            color: meta.fg,
+            border: `1px solid ${meta.bd}`,
+            fontSize: "12px",
+            fontWeight: 700,
+            padding: "2px 6px",
+            borderRadius: "4px",
+            display: "inline-block",
+            lineHeight: "1"
+        }}>
+            {sev || "UNKNOWN"}
+        </span>
+    );
+};
+
 export default function LogPage() {
     const [logs, setLogs] = useState([]); // 반드시 빈 배열로 초기화
     const [loading, setLoading] = useState(false);
@@ -118,7 +146,7 @@ export default function LogPage() {
                             <thead style={{ background: "#F3F4F6" }}>
                             <tr>
                                 <th style={{ padding: "12px", textAlign: "left", width: "160px" }}>날짜</th>
-                                <th style={{ padding: "12px", textAlign: "left", width: "100px" }}>제품 ID</th>
+                                <th style={{ padding: "12px", textAlign: "left", width: "100px" }}>제품명</th>
                                 <th style={{ padding: "12px", textAlign: "left", width: "80px" }}>국가</th>
                                 <th style={{ padding: "12px", textAlign: "center", width: "100px" }}>위험도</th>
                                 <th style={{ padding: "12px", textAlign: "left" }}>주의 성분</th>
@@ -139,8 +167,8 @@ export default function LogPage() {
                                     </td>
                                     <td style={{ padding: "12px", fontWeight: 800, verticalAlign: "top" }}>{log?.productName || "-"}</td>
                                     <td style={{ padding: "12px", verticalAlign: "top" }}>
-                                        <span style={{ fontSize: "12px", fontWeight: 700, padding: "2px 6px", background: "#EFF6FF", color: "#1E40AF", borderRadius: "4px" }}>
-                                            {log?.country || "-"}
+                                        <span style={{ padding: "12px", textAlign: "center", verticalAlign: "top" }}>
+                                            <CountryPill value={log?.country || "-"} />
                                         </span>
                                     </td>
                                     <td style={{ padding: "12px", textAlign: "center", verticalAlign: "top" }}>
