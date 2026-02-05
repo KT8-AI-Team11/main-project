@@ -97,6 +97,14 @@ export default function Sidebar({currentPage, onNavigate, isLoggedIn}) {
                     isLoggedIn={isLoggedIn}
                 />
 
+                <SidebarItem
+                    active={currentPage === "log-history"}
+                    onClick={() => onNavigate("log-history")}
+                    label="제품 규제 기록함"
+                    requiresLogin={true}
+                    isLoggedIn={isLoggedIn}
+                />
+
                 {/* 국가별 규제 정보 */}
                 <SidebarItem
                     active={currentPage === "country-regulations"}

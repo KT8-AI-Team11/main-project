@@ -45,7 +45,7 @@ public class Log {
     private LocalDateTime updDate;
 
     public enum Country {
-        US, JAPAN, CHINA, EU
+        US, JP, CN, EU
     }
 
     public enum ApprovalStatus {
@@ -71,4 +71,8 @@ public class Log {
         this.ingredientLaw = ingredientLaw;
         this.marketingLaw = marketingLaw;
     }
+
+//    public String getProductName(){
+//        return this.product != null ? this.product.getName() : null;
+//    }
 }

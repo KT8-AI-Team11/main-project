@@ -2,6 +2,7 @@ package com.aivle.cosy.controller;
 
 import com.aivle.cosy.domain.Log;
 import com.aivle.cosy.dto.LogRequest;
+import com.aivle.cosy.dto.LogResponse;
 import com.aivle.cosy.service.LogService;
 import com.aivle.cosy.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -31,10 +33,14 @@ public class LogController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Log>> getAll(
+    public ResponseEntity<List<LogResponse>> getAll(
             @RequestHeader("Authorization") String token) {
         Long companyId = tokenProvider.getCompanyId(token.substring(7));
-        return ResponseEntity.ok(logService.getAllLogsByCompany(companyId));
+        List<Log> logs = logService.getAllLogsByCompany(companyId);
+        List<LogResponse> response = logs.stream()
+                .map(LogResponse::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{country}")

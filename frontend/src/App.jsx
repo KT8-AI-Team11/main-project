@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import { login, logout, isTokenExpired } from "./api/auth";
 import CountryRegulationsPage from "./pages/CountryRegulationsPage";
 import { useProducts } from "./store/ProductsContext";
+import LogPage from "./pages/LogPage"
 
 export default function CosyUI() {
   /**
@@ -147,7 +148,7 @@ export default function CosyUI() {
   const requireAuth = (targetPage, params = {}) => {
     // ✅ 로그인 필요한 페이지만 여기에 넣기
     // (국가별 규제 정보는 정보성 페이지라면 굳이 로그인 강제 안 해도 됨)
-    const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
+    const protectedPages = ["products", "ingredient-check", "claim-check", "profile","log-history"];
 
     if (protectedPages.includes(targetPage)) {
       const token = localStorage.getItem("cosy_access_token");
@@ -260,6 +261,8 @@ export default function CosyUI() {
 
         {/* ✅ 여기 추가가 핵심 */}
         {currentPage === "country-regulations" && <CountryRegulationsPage />}
+
+        {currentPage === "log-history" && <LogPage/>}
         
       </div>
 

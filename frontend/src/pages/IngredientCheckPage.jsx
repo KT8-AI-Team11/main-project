@@ -456,11 +456,11 @@ export default function IngredientCheckPage({
                     );
                     const finalStatus = hasHigh ? "HIGH" : (hasMedium ? "MEDIUM" : "LOW");
 
-                    const countryMap = { US: "US", JP: "JAPAN", CN: "CHINA", EU: "EU" };
+                    // const countryMap = { US: "US", JP: "JAPAN", CN: "CHINA", EU: "EU" };
 
                     const logRequest = {
                         productId: Number(p.id),
-                        country: countryMap[market] || "US",
+                        country: market || "US",
                         approvalStatus: finalStatus,
                         // 성분명이 있을 때만 합치기
                         cautiousIngredient: details.map(d => d.ingredient).join(", ").slice(0, 255) || "없음",
