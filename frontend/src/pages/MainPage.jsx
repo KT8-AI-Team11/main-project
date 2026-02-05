@@ -154,9 +154,7 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
                 </div>
               </div>
 
-              <div style={{ marginTop: "8px", fontSize: "12px", color: "#9ca3af" }}>
-                * 현재는 데모 단계라 수치가 임시 값(0)일 수 있어요.
-              </div>
+              
             </div>
           ) : (
             <div style={{ marginBottom: "22px" }}>
