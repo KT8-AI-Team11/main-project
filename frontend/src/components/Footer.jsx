@@ -21,7 +21,7 @@ export default function Footer() {
         borderTop: "1px solid #e5e7eb",
         padding: "16px 24px",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         backgroundColor: "#f9fafb",
       }}
     >
