@@ -675,11 +675,12 @@ export default function ImprovedCountryRegulations() {
             }}>
                 <style>{`
                     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
-                    * { font-family: 'Pretendard Variable', Pretendard, sans-serif;
-                     letter-spacing: -0.02em;
+                    .country-regulations-container * {
+                        font-family: 'Pretendard Variable', Pretendard, sans-serif;
+                        letter-spacing: -0.02em;
                     }
-                    .serif-font {
-                        font-family: 'Pretendard Variable', Pretendard, sans-serif !important;
+                    .country-regulations-container .serif-font {
+                        font-family: 'Pretendard Variable', Pretendard, sans-serif;
                         font-weight: 700;
                         letter-spacing: -0.03em;
                     }
@@ -871,10 +872,15 @@ export default function ImprovedCountryRegulations() {
         }}>
             <style>{`
                 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
-                * { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif; }
-                letter-spacing: -0.02em;}
-                .serif-font { font-family: 'Pretendard Variable', Pretendard, sans-serif;
-                font-weight: 700;}
+                .country-regulations-container * {
+                    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+                    letter-spacing: -0.02em;
+                }
+                .country-regulations-container .serif-font {
+                    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+                    font-weight: 700;
+                    letter-spacing: -0.03em;
+                }
             `}</style>
 
             {selectedRegulation && <RegulationDetailModal />}
