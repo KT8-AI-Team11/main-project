@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChatWidget from "./components/Chatwidget";
+import Footer from "./components/Footer";
 
 import MainPage from "./pages/MainPage";
 import ProductsPage from "./pages/ProductsPage";
@@ -34,23 +35,22 @@ export default function CosyUI() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   // ✅ Sidebar 접기/펼치기 상태 (localStorage에 저장)
-const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
-  try {
-    return localStorage.getItem("cosy_sidebar_collapsed") === "1";
-  } catch {
-    return false;
-  }
-});
-
-const toggleSidebarCollapsed = () => {
-  setSidebarCollapsed((prev) => {
-    const next = !prev;
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
     try {
-      localStorage.setItem("cosy_sidebar_collapsed", next ? "1" : "0");
-    } catch {}
-    return next;
+      return localStorage.getItem("cosy_sidebar_collapsed") === "1";
+    } catch {
+      return false;
+    }
   });
-};
+ const toggleSidebarCollapsed = () => {
+    setSidebarCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("cosy_sidebar_collapsed", next ? "1" : "0");
+      } catch {}
+      return next;
+    });
+  };
 
   // ✅ 페이지 이동 시 전달할 파라미터(선택 제품 등)
   const [pageParams, setPageParams] = useState({});
@@ -252,37 +252,52 @@ const toggleSidebarCollapsed = () => {
           onLogout={handleLogout}
         />
 
-        {/* Pages */}
-        {currentPage === "home" && (
-          <MainPage
-            isLoggedIn={isLoggedIn}
-            onGoLogin={() => setCurrentPage("login")}
-            onGoProducts={() => requireAuth("products")}
-            onDemoLogin={handleCoachDemoLogin}
-          />
-        )}
+         <div
+          style={{
+            flex: 1,
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100%",
+          }}
+        >
+          <div style={{ flex: "1 0 auto", display: "flex", flexDirection: "column" }}>
+            {/* Pages */}
+            {currentPage === "home" && (
+              <MainPage
+                isLoggedIn={isLoggedIn}
+                onGoLogin={() => setCurrentPage("login")}
+                onGoProducts={() => requireAuth("products")}
+                onDemoLogin={handleCoachDemoLogin}
+              />
+            )}
 
-        {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
+            {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
 
-        {currentPage === "ingredient-check" && (
-          <IngredientCheckPage
-            initialSelectedProducts={pageParams?.selectedProducts || []}
-            initialSelectedProductIds={pageParams?.selectedProductIds || []}
-          />
-        )}
+            {currentPage === "ingredient-check" && (
+              <IngredientCheckPage
+                initialSelectedProducts={pageParams?.selectedProducts || []}
+                initialSelectedProductIds={pageParams?.selectedProductIds || []}
+              />
+            )}
 
-        {currentPage === "claim-check" && (
-          <ClaimCheckPage
-            initialSelectedProducts={pageParams?.selectedProducts || []}
-            initialSelectedProductIds={pageParams?.selectedProductIds || []}
-          />
-        )}
+            {currentPage === "claim-check" && (
+              <ClaimCheckPage
+                initialSelectedProducts={pageParams?.selectedProducts || []}
+                initialSelectedProductIds={pageParams?.selectedProductIds || []}
+              />
+            )}
 
-        {currentPage === "profile" && <ProfilePage />}
+            {currentPage === "profile" && <ProfilePage />}
 
-        {/* ✅ 여기 추가가 핵심 */}
-        {currentPage === "country-regulations" && <CountryRegulationsPage />}
-        
+            {/* ✅ 여기 추가가 핵심 */}
+            {currentPage === "country-regulations" && <CountryRegulationsPage />}
+          </div>
+
+          <div style={{ marginTop: "auto" }}>
+            <Footer />
+          </div>
+        </div>
       </div>
 
       {/* Chat */}
@@ -290,3 +305,4 @@ const toggleSidebarCollapsed = () => {
     </div>
   );
 }
+
