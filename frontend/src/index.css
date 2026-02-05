@@ -53,19 +53,38 @@
     -------------------------------- */
 
     .cosy-page{
-      flex: 1;
-      padding: var(--cosy-pad-page) var(--cosy-pad-page) 40px;
-      background: var(--cosy-page-bg);
-      overflow-y: auto;
-    }
+  flex: 1;
+  min-width: 0;               /* ✅ flex 환경에서 가로 스크롤/overflow 안정화 */
+  padding: var(--cosy-pad-page) var(--cosy-pad-page) 40px;
+  background: var(--cosy-page-bg);
+  overflow: auto;             /* ✅ 세로/가로 둘 다 스크롤 가능 */
+}
 
-    .cosy-grid-3{
-      display:grid;
-      grid-template-columns: 1.25fr 1fr 1fr;
-      gap: var(--cosy-gap);
-      align-items: stretch;
-      margin-bottom: 18px;
-    }
+   .cosy-grid-3{
+  display: grid;
+  gap: var(--cosy-gap);
+  align-items: stretch;
+  margin-bottom: 18px;
+
+  /* ✅ 줌/폭 변화에도 패널이 찌그러지지 않게 최소 폭을 보장 */
+  grid-template-columns:
+    minmax(260px, 1.25fr)
+    minmax(420px, 1fr)
+    minmax(360px, 1fr);
+
+    /* ✅ ClaimCheckPage(문구 규제 확인) 상단 3패널은 조금 더 넉넉한 최소폭 */
+.cosy-grid-3.claim-top-grid{
+  grid-template-columns:
+    minmax(240px, 1fr)     /* 업로드 */
+    minmax(520px, 1.35fr)  /* OCR 텍스트 */
+    minmax(420px, 1fr);    /* 검사 */
+  min-width: 1220px;
+}
+
+
+  /* ✅ 이 이하로는 억지로 줄이지 말고 가로 스크롤로 */
+  min-width: 1080px;
+}
 
     .cosy-panel{
       background: var(--cosy-panel-bg);
