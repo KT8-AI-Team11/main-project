@@ -6,8 +6,10 @@ import com.aivle.cosy.service.ProductService;
 import com.aivle.cosy.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -31,27 +33,29 @@ public class ProductController {
     }
 
     // 제품 생성
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ProductResponse.CreateResponse> createProduct(
             @RequestHeader("Authorization") String bearerToken,
-            @RequestBody ProductRequest.SaveRequest request) {
+            @RequestPart("data") ProductRequest.SaveRequest request,
+            @RequestPart(value = "image", required = false) MultipartFile imageFile) {
 
         Long companyId = tokenProvider.getCompanyId(bearerToken.substring(7));
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(productService.createProduct(companyId, request));
+                .body(productService.createProduct(companyId, request, imageFile));
     }
 
     // 제품 수정
-    @PatchMapping("/{id}")
+    @PatchMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ProductResponse.MessageResponse> patchProduct(
             @PathVariable Long id,
             @RequestHeader("Authorization") String bearerToken,
-            @RequestBody ProductRequest.SaveRequest request) {
+            @RequestPart("data") ProductRequest.SaveRequest request,
+            @RequestPart(value = "image", required = false) MultipartFile imageFile) {
 
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 
-        return ResponseEntity.ok(productService.updateProduct(id, companyId, request));
+        return ResponseEntity.ok(productService.updateProduct(id, companyId, request, imageFile));
     }
 
 
