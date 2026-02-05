@@ -452,7 +452,7 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
           <div className="cosy-panel__title">라벨 이미지 업로드</div>
 
           <div
-            className="cosy-card"
+            className="cosy-card claim-upload-card"
             style={{ padding: 14, display: "flex", flexDirection: "column", gap: 10 }}
           >
             <div
@@ -478,12 +478,11 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
             </div>
 
             <div
-              className="cosy-card"
+              className="cosy-card claim-upload-dropzone"
               style={{
                 border: "1px dashed #d1d5db",
                 borderRadius: 12,
                 background: "#f9fafb",
-                height: 260,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -534,13 +533,12 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
           <div className="cosy-panel__title">OCR 결과 텍스트</div>
 
           <div
-            className="cosy-card"
+            className="cosy-card claim-ocr-card"
             style={{
               padding: 14,
               display: "flex",
               flexDirection: "column",
               gap: 10,
-              flex: 1,
             }}
           >
             {/* ✅ OCR 헤더 줄바꿈 방지 */}
@@ -618,9 +616,9 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
                 resetAllResults();
               }}
               placeholder="OCR 추출 결과가 여기 표시됩니다. (원하면 직접 수정 가능)"
+              className="claim-ocr-textarea"
               style={{
                 width: "100%",
-                flex: 1,
                 borderRadius: 12,
                 border: "1px solid #e5e7eb",
                 padding: 12,
@@ -683,21 +681,11 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
             </button>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 12,
-              marginTop: 14,
-              alignItems: "stretch",
-            }}
-          >
+          <div className="claim-inspection-grid" style={{ marginTop: 14 }}>
             {/* 왼쪽: 요약 박스 */}
             <div
-              className="cosy-card"
+              className="cosy-card claim-inspection-summary"
               style={{
-                flex: 1,
-                minHeight: 220,
                 padding: 18,
                 display: "flex",
                 flexDirection: "column",
@@ -846,11 +834,8 @@ export default function ClaimCheckPage({ initialSelectedProducts = [] }) {
 
             {/* 오른쪽: 실행 버튼 */}
             <div
-              className="cosy-card"
+              className="cosy-card claim-inspection-action"
               style={{
-                flex: "0 0 170px",
-                minWidth: 150,
-                maxWidth: "100%",
                 padding: 14,
                 display: "flex",
                 flexDirection: "column",
