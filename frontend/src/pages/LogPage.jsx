@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Search, Globe, Calendar, FileText, RefreshCw, Loader2 } from "lucide-react";
+import { Search, FileText, RefreshCw, Loader2 } from "lucide-react";
 
 const API_BASE_URL = "http://localhost:8080/api/log";
 
@@ -22,33 +22,25 @@ const SeverityPill = ({ value }) => {
             background: meta.bg, color: meta.fg, border: `1px solid ${meta.bd}`,
             fontWeight: 800, padding: "2px 8px", borderRadius: "6px", fontSize: "11px"
         }}>
-      {sev || "UNKNOWN"}
-    </span>
+            {sev || "UNKNOWN"}
+        </span>
     );
 };
 
 const COUNTRY_META = {
     US: { bg: "#EFF6FF", fg: "#1E40AF", bd: "#DBEAFE" },
-    JP: { bg: "#EFF6FF", fg: "#BE123C", bd: "#FDA4AF" },
-    CN: { bg: "#EFF6FF", fg: "#B91C1C", bd: "#FECACA" },
-    EU: { bg: "#EFF6FF", fg: "#16A34A", bd: "#D1FAE5" },
+    JP: { bg: "#FDF2F8", fg: "#BE123C", bd: "#FDA4AF" },
+    CN: { bg: "#FEF2F2", fg: "#B91C1C", bd: "#FECACA" },
+    EU: { bg: "#F0FDF4", fg: "#16A34A", bd: "#D1FAE5" },
 };
 
 const CountryPill = ({ value }) => {
     const sev = String(value || "").toUpperCase();
     const meta = COUNTRY_META[sev] || { bg: "#F3F4F6", fg: "#374151", bd: "#E5E7EB" };
-
     return (
-        <span className="country-pill" style={{
-            background: meta.bg,
-            color: meta.fg,
-            border: `1px solid ${meta.bd}`,
-            fontSize: "12px",
-            fontWeight: 700,
-            padding: "2px 6px",
-            borderRadius: "4px",
-            display: "inline-block",
-            lineHeight: "1"
+        <span style={{
+            background: meta.bg, color: meta.fg, border: `1px solid ${meta.bd}`,
+            fontSize: "12px", fontWeight: 700, padding: "2px 6px", borderRadius: "4px"
         }}>
             {sev || "UNKNOWN"}
         </span>
@@ -56,16 +48,15 @@ const CountryPill = ({ value }) => {
 };
 
 export default function LogPage() {
-    const [logs, setLogs] = useState([]); // 반드시 빈 배열로 초기화
+    const [logs, setLogs] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCountry, setSelectedCountry] = useState("ALL");
-
+    const [activeTab, setActiveTab] = useState("INGREDIENT"); // ✅ 탭 상태 추가
 
     useEffect(() => {
         loadData();
-    }, [selectedCountry]);
-
+    }, [selectedCountry, activeTab]); // ✅ 탭 변경 시에도 데이터 재로드
 
     const loadData = async () => {
         try {
@@ -73,9 +64,13 @@ export default function LogPage() {
             const token = localStorage.getItem("cosy_access_token");
             if (!token) return;
 
+            // ✅ 분야(탭)에 따른 베이스 URL 결정
+            const categoryPath = activeTab === "INGREDIENT" ? "ingredient" : "marketing";
+
+            // ✅ 국가 필터에 따른 최종 URL 결정
             const url = selectedCountry === "ALL"
-                ? API_BASE_URL
-                : `${API_BASE_URL}/${selectedCountry}`;
+                ? `${API_BASE_URL}/${categoryPath}`
+                : `${API_BASE_URL}/${categoryPath}/${selectedCountry}`;
 
             const response = await fetch(url, {
                 method: "GET",
@@ -87,154 +82,153 @@ export default function LogPage() {
             const data = await response.json();
 
             if (Array.isArray(data)) {
-                const sorted = data.sort((a, b) => {
-                    const dateA = a.updDate ? new Date(a.updDate) : 0;
-                    const dateB = b.updDate ? new Date(b.updDate) : 0;
-                    return dateB - dateA;
-                });
+                const sorted = data.sort((a, b) => new Date(b.updDate || 0) - new Date(a.updDate || 0));
                 setLogs(sorted);
             } else {
                 setLogs([]);
             }
         } catch (err) {
-            console.error("데이터 로드 중 오류 발생:", err);
+            console.error("데이터 로드 오류:", err);
             setLogs([]);
         } finally {
             setLoading(false);
         }
     };
 
-    // 🛡️ 필터링 시 null 세이프티 강화
     const filteredLogs = useMemo(() => {
         if (!Array.isArray(logs)) return [];
         return logs.filter(log => {
-            const pId = String(log?.productId || "");
-            const ing = (log?.cautiousIngredient || "").toLowerCase();
+            const productName = (log?.productName || "").toLowerCase();
             const search = searchTerm.toLowerCase();
-            return pId.includes(search) || ing.includes(search);
+            return productName.includes(search);
         });
     }, [logs, searchTerm]);
 
     return (
         <div className="cosy-page" style={{ padding: "20px", height: "100%", overflowY: "auto" }}>
             <div className="cosy-panel is-tall">
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+
+                {/* 헤더 및 탭 메뉴 */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "20px" }}>
                     <div>
-                        <h2 style={{ margin: 0, fontSize: "20px", fontWeight: 1000 }}>검사 이력 조회</h2>
-                        <p style={{ margin: 0, fontSize: "13px", color: "#6B7280" }}>회사 내 수행된 모든 성분 검사 기록입니다.</p>
+                        <h2 style={{ margin: 0, fontSize: "22px", fontWeight: 1000 }}>검사 이력 조회</h2>
+                        <div style={{ display: "flex", gap: "20px", marginTop: "15px" }}>
+                            <button
+                                onClick={() => setActiveTab("INGREDIENT")}
+                                style={{
+                                    padding: "8px 4px", fontSize: "16px", fontWeight: 800, cursor: "pointer",
+                                    border: "none", background: "none",
+                                    color: activeTab === "INGREDIENT" ? "#1D4ED8" : "#9CA3AF",
+                                    borderBottom: activeTab === "INGREDIENT" ? "3px solid #1D4ED8" : "3px solid transparent"
+                                }}
+                            >
+                                성분 분석 이력
+                            </button>
+                            <button
+                                onClick={() => setActiveTab("MARKETING")}
+                                style={{
+                                    padding: "8px 4px", fontSize: "16px", fontWeight: 800, cursor: "pointer",
+                                    border: "none", background: "none",
+                                    color: activeTab === "MARKETING" ? "#1D4ED8" : "#9CA3AF",
+                                    borderBottom: activeTab === "MARKETING" ? "3px solid #1D4ED8" : "3px solid transparent"
+                                }}
+                            >
+                                문구 분석 이력
+                            </button>
+                        </div>
                     </div>
-                    <button className="cosy-btn" onClick={loadData} disabled={loading} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <button className="cosy-btn" onClick={loadData} disabled={loading} style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "5px" }}>
                         <RefreshCw size={16} className={loading ? "cosy-spin" : ""} />
                         새로고침
                     </button>
                 </div>
 
-                <div className="cosy-card" style={{ padding: "12px", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px", border: "1px solid #E5E7EB", borderRadius: "10px" }}>
-                    <Search size={18} color="#9CA3AF" />
-                    <input
-                        type="text"
-                        placeholder="제품 ID 또는 주의 성분으로 검색..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        style={{ border: "none", outline: "none", width: "100%", fontSize: "14px" }}
-                    />
+                {/* 필터 섹션 */}
+                <div style={{ display: "flex", gap: "10px", marginBottom: "20px", alignItems: "center" }}>
+                    <div className="cosy-card" style={{ flex: 1, padding: "10px 14px", display: "flex", alignItems: "center", gap: "10px", border: "1px solid #E5E7EB", borderRadius: "10px" }}>
+                        <Search size={18} color="#9CA3AF" />
+                        <input
+                            type="text"
+                            placeholder="제품명으로 검색..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            style={{ border: "none", outline: "none", width: "100%", fontSize: "14px", fontWeight: 600 }}
+                        />
+                    </div>
+                    <div style={{ display: "flex", gap: "6px" }}>
+                        {["ALL", "US", "JP", "CN", "EU"].map((country) => (
+                            <button
+                                key={country}
+                                onClick={() => setSelectedCountry(country)}
+                                style={{
+                                    padding: "8px 14px", borderRadius: "8px", border: "1px solid #E5E7EB",
+                                    backgroundColor: selectedCountry === country ? "#1D4ED8" : "#FFFFFF",
+                                    color: selectedCountry === country ? "#FFFFFF" : "#4B5563",
+                                    fontWeight: 700, cursor: "pointer", fontSize: "13px"
+                                }}
+                            >
+                                {country === "ALL" ? "전체" : country}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                {/* 국가 필터 버튼 그룹 */}
-                <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-                    {["ALL", "US", "JP", "CN", "EU"].map((country) => (
-                        <button
-                            key={country}
-                            onClick={() => setSelectedCountry(country)}
-                            className={`cosy-filter-btn ${selectedCountry === country ? "active" : ""}`}
-                            style={{
-                                padding: "8px 16px",
-                                borderRadius: "20px",
-                                border: "1px solid #E5E7EB",
-                                backgroundColor: selectedCountry === country ? "#1D4ED8" : "#FFFFFF",
-                                color: selectedCountry === country ? "#FFFFFF" : "#4B5563",
-                                fontWeight: "bold",
-                                cursor: "pointer"
-                            }}
-                        >
-                            {country === "ALL" ? "전체" : country}
-                        </button>
-                    ))}
-                </div>
-
+                {/* 테이블 영역 */}
                 {loading ? (
                     <div className="cosy-center-box" style={{ padding: "100px 0" }}>
                         <Loader2 size={40} className="cosy-spin" color="#1D4ED8" />
-                        <p>데이터를 가져오는 중입니다...</p>
                     </div>
                 ) : filteredLogs.length === 0 ? (
-                    <div className="cosy-center-box" style={{ padding: "100px 0", textAlign: "center", background: "#F9FAFB", borderRadius: "12px" }}>
+                    <div className="cosy-center-box" style={{ padding: "80px 0", textAlign: "center", background: "#F9FAFB", borderRadius: "12px" }}>
                         <FileText size={48} color="#D1D5DB" style={{ marginBottom: "10px" }} />
                         <p style={{ fontWeight: 600, color: "#4B5563" }}>검사 기록이 없습니다.</p>
                     </div>
                 ) : (
-                    <div className="cosy-table-wrap" style={{ border: "1px solid #E5E7EB", borderRadius: "8px", overflowX: "auto", backgroundColor: "#FFFFFF" }}>
-                        <table className="cosy-table" style={{ width: "100%", borderCollapse: "collapse" }}>
-                            <thead style={{ background: "#F3F4F6" }}>
+                    <div className="cosy-table-wrap" style={{ border: "1px solid #E5E7EB", borderRadius: "12px", overflow: "hidden", backgroundColor: "#FFFFFF" }}>
+                        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                            <thead style={{ background: "#F8FAFC", borderBottom: "2px solid #EDF2F7" }}>
                             <tr>
-                                <th style={{ padding: "12px", textAlign: "left", width: "160px" }}>날짜</th>
-                                <th style={{ padding: "12px", textAlign: "left", width: "100px" }}>제품명</th>
-                                <th style={{ padding: "12px", textAlign: "left", width: "80px" }}>국가</th>
-                                <th style={{ padding: "12px", textAlign: "center", width: "100px" }}>위험도</th>
-                                <th style={{ padding: "12px", textAlign: "left" }}>주의 성분</th>
-                                <th style={{ padding: "12px", textAlign: "left" }}>관련 규정 요약</th>
+                                <th style={{ padding: "14px", textAlign: "left", width: "150px" }}>날짜</th>
+                                <th style={{ padding: "14px", textAlign: "left", width: "180px" }}>제품명</th>
+                                <th style={{ padding: "14px", textAlign: "center", width: "80px" }}>국가</th>
+                                <th style={{ padding: "14px", textAlign: "center", width: "100px" }}>결과</th>
+                                {activeTab === "INGREDIENT" ? (
+                                    <>
+                                        <th style={{ padding: "14px", textAlign: "left", width: "150px" }}>주의 성분</th>
+                                        <th style={{ padding: "14px", textAlign: "left" }}>성분 규제 근거</th>
+                                    </>
+                                ) : (
+                                    <th style={{ padding: "14px", textAlign: "left" }}>마케팅 문구 규정</th>
+                                )}
                             </tr>
                             </thead>
                             <tbody>
                             {filteredLogs.map((log) => (
-                                <tr key={log?.logId || Math.random()} style={{ borderTop: "1px solid #E5E7EB", backgroundColor: "#FFFFFF" }}>
-                                    <td style={{ padding: "12px", fontSize: "13px", color: "#6B7280", verticalAlign: "top" }}>
-                                        {log?.updDate ? (
-                                            (() => {
-                                                const [date, time] = log.updDate.split('T');
-                                                const [hh, mm] = time.split(':');
-                                                return `${date} ${hh}시 ${mm}분`;
-                                            })()
-                                        ) : "-"}
+                                <tr key={log.logId} style={{ borderBottom: "1px solid #F1F5F9" }}>
+                                    <td style={{ padding: "14px", fontSize: "13px", color: "#64748B" }}>
+                                        {log.updDate?.replace('T', ' ').substring(0, 16)}
                                     </td>
-                                    <td style={{ padding: "12px", fontWeight: 800, verticalAlign: "top" }}>{log?.productName || "-"}</td>
-                                    <td style={{ padding: "12px", verticalAlign: "top" }}>
-                                        <span style={{ padding: "12px", textAlign: "center", verticalAlign: "top" }}>
-                                            <CountryPill value={log?.country || "-"} />
-                                        </span>
+                                    <td style={{ padding: "14px", fontWeight: 700 }}>{log.productName}</td>
+                                    <td style={{ padding: "14px", textAlign: "center" }}>
+                                        <CountryPill value={log.country} />
                                     </td>
-                                    <td style={{ padding: "12px", textAlign: "center", verticalAlign: "top" }}>
-                                        <SeverityPill value={log?.approvalStatus} />
+                                    <td style={{ padding: "14px", textAlign: "center" }}>
+                                        <SeverityPill value={activeTab === "INGREDIENT" ? log.ingredientStatus : log.marketingStatus} />
                                     </td>
-                                    {/* 주의 성분: 내용이 길 경우를 대비해 줄바꿈 허용 */}
-                                    <td style={{
-                                        padding: "12px",
-                                        fontSize: "13px",
-                                        whiteSpace: "normal",
-                                        wordBreak: "keep-all",
-                                        verticalAlign: "top",
-                                        minWidth: "150px"
-                                    }}>
-                                        {log?.cautiousIngredient || "-"}
-                                    </td>
-                                    {/* ✅ 관련 규정 요약: 잘림 방지 설정 적용 */}
-                                    <td style={{
-                                        padding: "12px",
-                                        fontSize: "12px",
-                                        color: "#4B5563",
-                                        verticalAlign: "top",
-                                        minWidth: "250px" // 너무 좁아지지 않게 설정
-                                    }}>
-                                        <div style={{
-                                            whiteSpace: "normal",    // 자동 줄바꿈
-                                            wordBreak: "break-all", // 긴 단어 줄바꿈
-                                            lineHeight: "1.5",       // 가독성을 위한 줄간격
-                                            overflow: "visible",     // 숨김 해제
-                                            maxHeight: "none"        // 높이 제한 해제
-                                        }}>
-                                            {log?.ingredientLaw || "-"}
-                                        </div>
-                                    </td>
+                                    {activeTab === "INGREDIENT" ? (
+                                        <>
+                                            <td style={{ padding: "14px", fontSize: "13px", color: "#EF4444", fontWeight: 600 }}>
+                                                {log.cautiousIngredient || "-"}
+                                            </td>
+                                            <td style={{ padding: "14px", fontSize: "13px", color: "#334155", whiteSpace: "pre-wrap" }}>
+                                                {log.ingredientLaw || "-"}
+                                            </td>
+                                        </>
+                                    ) : (
+                                        <td style={{ padding: "14px", fontSize: "13px", color: "#334155", whiteSpace: "pre-wrap" }}>
+                                            {log.marketingLaw || "-"}
+                                        </td>
+                                    )}
                                 </tr>
                             ))}
                             </tbody>
