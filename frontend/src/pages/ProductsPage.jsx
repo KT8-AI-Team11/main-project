@@ -129,6 +129,8 @@ export default function ProductsPage({ onNavigate }) {
   const [newProductName, setNewProductName] = useState("");
   const [newProductCategory, setNewProductCategory] = useState("SKINCARE");
   const [newProductImage, setNewProductImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [newPreviewUrl, setNewPreviewUrl] = useState("");
   const [newProductIngredients, setNewProductIngredients] = useState("");
   const [newProductStatus, setNewProductStatus] = useState("STEP_1");
 
@@ -151,23 +153,49 @@ export default function ProductsPage({ onNavigate }) {
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onloadend = () => setNewProductImage(reader.result);
-    reader.readAsDataURL(file);
+
+    setNewProductImage(file);                 // 서버로 보낼 File
+    setPreviewUrl(URL.createObjectURL(file)); // 화면 미리보기
   };
+
+  const buildProductFormData = ({ name, type, fullIngredient, status, imageFile }) => {
+    const formData = new FormData();
+
+    // 백엔드: @RequestPart("data") 로 받는 JSON 파트
+    const data = { name, type, fullIngredient, status };
+
+    formData.append(
+      "data",
+      new Blob([JSON.stringify(data)], { type: "application/json" })
+    );
+
+    // 백엔드: @RequestPart("image") MultipartFile
+    if (imageFile) {
+      formData.append("image", imageFile);
+    }
+
+    return formData;
+  };
+
+
 
   // 제품 생성 및 등록
   const confirmAddProduct = async () => {
     if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
-    const payload = {
+
+    const formData = buildProductFormData({
       name: newProductName,
       type: newProductCategory,
-      image: newProductImage || "",
       fullIngredient: newProductIngredients || "",
       status: newProductStatus,
-    };
+      imageFile: newProductImage, // File | null
+    });
+
     try {
-      await api.post("/products", payload);
+      await api.post("/products", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       await fetchProducts();
       setIsAddModalOpen(false);
       resetInputFields();
@@ -181,16 +209,19 @@ export default function ProductsPage({ onNavigate }) {
     if (!selectedProductId) return alert("수정할 제품을 선택해주세요.");
     if (!newProductName.trim()) return alert("제품명을 입력해주세요.");
 
-    const payload = {
+    const formData = buildProductFormData({
       name: newProductName,
       type: newProductCategory,
-      image: newProductImage || "",
       fullIngredient: newProductIngredients || "",
       status: newProductStatus,
-    };
+      imageFile: newProductImage, // 새 파일 선택했을 때만 넣으면 됨
+    });
 
     try {
-      const res = await api.patch(`/products/${selectedProductId}`, payload);
+      await api.patch(`/products/${selectedProductId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       await fetchProducts();
       alert("제품 정보가 성공적으로 수정되었습니다.");
       setIsEditModalOpen(false);
@@ -242,16 +273,24 @@ export default function ProductsPage({ onNavigate }) {
   };
 
   const resetInputFields = () => {
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    setNewPreviewUrl(null)
     setNewProductName("");
     setNewProductCategory("SKINCARE");
     setNewProductImage(null);
     setNewProductIngredients("");
     setNewProductStatus("STEP_1");
+
+    const fileInput = document.getElementById("file-up");
+    if (fileInput) fileInput.value = "";
   };
 
   const openEditModal = () => {
     const p = products.find((i) => i.id === selectedProductId);
     if (!p) return;
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    setPreviewUrl(null);
+    setNewProductImage(null);
     setNewProductName(p.name);
     setNewProductCategory(p.type);
     setNewProductImage(p.image);
@@ -424,7 +463,8 @@ export default function ProductsPage({ onNavigate }) {
             <div style={{ display: "flex", gap: "24px", marginBottom: "24px" }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ width: "160px", height: "200px", backgroundColor: "#f9fafb", borderRadius: "12px", marginBottom: "12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", border: "1px solid #e5e7eb" }}>
-                  {newProductImage ? <img src={newProductImage} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Camera size={40} color="#9ca3af" />}
+                  {previewUrl ? (  <img src={previewUrl} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover", }} />) : <Camera size={40} color="#9ca3af" />}
+                  {/* {newProductImage ? <img src={newProductImage} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Camera size={40} color="#9ca3af" />} */}
                 </div>
                 <label htmlFor="file-up" style={{ fontSize: "14px", color: "#3b82f6", cursor: "pointer", fontWeight: "600" }}>이미지 업로드</label>
                 <input id="file-up" type="file" accept="image/*" hidden onChange={handleImageUpload} />

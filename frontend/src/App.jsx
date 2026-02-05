@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChatWidget from "./components/Chatwidget";
+import Footer from "./components/Footer";
 
 import MainPage from "./pages/MainPage";
 import ProductsPage from "./pages/ProductsPage";
@@ -14,7 +15,6 @@ import ProfilePage from "./pages/ProfilePage";
 import { login, logout, isTokenExpired } from "./api/auth";
 import CountryRegulationsPage from "./pages/CountryRegulationsPage";
 import { useProducts } from "./store/ProductsContext";
-import LogPage from "./pages/LogPage"
 
 export default function CosyUI() {
   /**
@@ -33,6 +33,24 @@ export default function CosyUI() {
   });
 
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  // ✅ Sidebar 접기/펼치기 상태 (localStorage에 저장)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem("cosy_sidebar_collapsed") === "1";
+    } catch {
+      return false;
+    }
+  });
+ const toggleSidebarCollapsed = () => {
+    setSidebarCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("cosy_sidebar_collapsed", next ? "1" : "0");
+      } catch {}
+      return next;
+    });
+  };
 
   // ✅ 페이지 이동 시 전달할 파라미터(선택 제품 등)
   const [pageParams, setPageParams] = useState({});
@@ -148,7 +166,7 @@ export default function CosyUI() {
   const requireAuth = (targetPage, params = {}) => {
     // ✅ 로그인 필요한 페이지만 여기에 넣기
     // (국가별 규제 정보는 정보성 페이지라면 굳이 로그인 강제 안 해도 됨)
-    const protectedPages = ["products", "ingredient-check", "claim-check", "profile","log-history"];
+    const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
 
     if (protectedPages.includes(targetPage)) {
       const token = localStorage.getItem("cosy_access_token");
@@ -200,11 +218,7 @@ export default function CosyUI() {
   return (
     <div
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        minHeight: "100vh",
         display: "flex",
         backgroundColor: "#f9fafb",
         fontFamily: "sans-serif",
@@ -217,13 +231,16 @@ export default function CosyUI() {
         onNavigate={requireAuth}
         isLoggedIn={isLoggedIn}
         userEmail={userEmail}
+        collapsed={sidebarCollapsed}
+        onToggleCollapsed={toggleSidebarCollapsed}
       />
 
       {/* Main */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         {/* Header */}
         <Header
           onGoHome={() => setCurrentPage("home")}
+          onGoProfile={() => requireAuth("profile")}   // ✅ 추가 (로그인 필요 처리까지 자동)
           onGoLogin={() => setCurrentPage("login")}
           isLoggedIn={isLoggedIn}
           userEmail={userEmail}
@@ -231,40 +248,52 @@ export default function CosyUI() {
           onLogout={handleLogout}
         />
 
-        {/* Pages */}
-        {currentPage === "home" && (
-          <MainPage
-            isLoggedIn={isLoggedIn}
-            onGoLogin={() => setCurrentPage("login")}
-            onGoProducts={() => requireAuth("products")}
-            onDemoLogin={handleCoachDemoLogin}
-          />
-        )}
+         <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ flex: "1 0 auto", display: "flex", flexDirection: "column" }}>
+            {/* Pages */}
+            {currentPage === "home" && (
+              <MainPage
+                isLoggedIn={isLoggedIn}
+                onGoLogin={() => setCurrentPage("login")}
+                onGoProducts={() => requireAuth("products")}
+                onDemoLogin={handleCoachDemoLogin}
+              />
+            )}
 
-        {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
+            {currentPage === "products" && <ProductsPage onNavigate={requireAuth} />}
 
-        {currentPage === "ingredient-check" && (
-          <IngredientCheckPage
-            initialSelectedProducts={pageParams?.selectedProducts || []}
-            initialSelectedProductIds={pageParams?.selectedProductIds || []}
-          />
-        )}
+            {currentPage === "ingredient-check" && (
+              <IngredientCheckPage
+                initialSelectedProducts={pageParams?.selectedProducts || []}
+                initialSelectedProductIds={pageParams?.selectedProductIds || []}
+              />
+            )}
 
-        {currentPage === "claim-check" && (
-          <ClaimCheckPage
-            initialSelectedProducts={pageParams?.selectedProducts || []}
-            initialSelectedProductIds={pageParams?.selectedProductIds || []}
-            navData={pageParams}
-          />
-        )}
+            {currentPage === "claim-check" && (
+              <ClaimCheckPage
+                initialSelectedProducts={pageParams?.selectedProducts || []}
+                initialSelectedProductIds={pageParams?.selectedProductIds || []}
+                navData={pageParams}
+              />
+            )}
 
-        {currentPage === "profile" && <ProfilePage />}
+            {currentPage === "log-history" && <LogPage onNavigate={requireAuth} />}
 
-        {/* ✅ 여기 추가가 핵심 */}
-        {currentPage === "country-regulations" && <CountryRegulationsPage />}
 
-        {currentPage === "log-history" && <LogPage/>}
-        
+              {currentPage === "profile" && <ProfilePage />}
+
+            {/* ✅ 여기 추가가 핵심 */}
+            {currentPage === "country-regulations" && <CountryRegulationsPage />}
+          </div>
+
+          <Footer />
+        </div>
       </div>
 
       {/* Chat */}
