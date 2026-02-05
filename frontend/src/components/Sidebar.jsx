@@ -1,16 +1,25 @@
 import React from "react";
 import {
+  Lock,
   Home,
   Package,
   FlaskConical,
   Megaphone,
-  User,
   Globe,
   ShieldCheck,
-  Lock,
+  PanelLeftClose,
+  PanelLeftOpen,
 } from "lucide-react";
 
-const NavItem = ({ label, icon: Icon, active, onClick, requiresLogin, isLoggedIn }) => {
+const SidebarItem = ({
+  label,
+  icon: Icon,
+  active,
+  onClick,
+  requiresLogin,
+  isLoggedIn,
+  collapsed,
+}) => {
   const locked = Boolean(requiresLogin && !isLoggedIn);
 
   const handleClick = () => {
@@ -25,23 +34,44 @@ const NavItem = ({ label, icon: Icon, active, onClick, requiresLogin, isLoggedIn
     <button
       type="button"
       onClick={handleClick}
-      className={`cosy-nav-item ${locked ? "is-locked" : ""}`}
-      data-active={active ? "true" : "false"}
+      title={label}                 // ✅ 접힌 상태에서도 무엇인지 알 수 있게
+      aria-label={label}
       aria-current={active ? "page" : undefined}
+      style={{
+        width: "100%",
+        fontSize: "14px",
+        color: active ? "#111827" : "#4b5563",
+        padding: collapsed ? "10px 10px" : "10px 12px",
+        cursor: locked ? "not-allowed" : "pointer",
+        borderRadius: "10px",
+        backgroundColor: active ? "#ffffff" : "transparent",
+        fontWeight: active ? 800 : 500,
+        display: "flex",
+        justifyContent: collapsed ? "center" : "space-between",
+        alignItems: "center",
+        border: active ? "1px solid #d1d5db" : "1px solid transparent",
+        opacity: locked ? 0.7 : 1,
+      }}
     >
-      <span className="cosy-nav-item__left">
-        <Icon className="cosy-nav-item__icon" />
-        <span className="cosy-nav-item__label">{label}</span>
+      <span style={{ display: "flex", alignItems: "center", gap: collapsed ? 0 : 10 }}>
+        <Icon style={{ width: "18px", height: "18px", color: active ? "#111827" : "#6b7280" }} />
+        {!collapsed && <span>{label}</span>}
       </span>
 
-      <span className="cosy-nav-item__meta">
-        {locked ? <Lock className="cosy-nav-item__lock" /> : null}
-      </span>
+      {!collapsed && locked && (
+        <Lock style={{ width: "14px", height: "14px", color: "#9ca3af" }} />
+      )}
     </button>
   );
 };
 
-export default function Sidebar({ currentPage, onNavigate, isLoggedIn }) {
+export default function Sidebar({
+  currentPage,
+  onNavigate,
+  isLoggedIn,
+  collapsed = false,
+  onToggleCollapsed,
+}) {
   const openPrivacy = () => {
     const width = 600;
     const height = 700;
@@ -55,84 +85,181 @@ export default function Sidebar({ currentPage, onNavigate, isLoggedIn }) {
   };
 
   return (
-    <aside className="cosy-sidebar">
-      {/* Brand / Title */}
-      <div className="cosy-sidebar__brand">
-        <div className="cosy-sidebar__brand-title">COSY</div>
-        <div className="cosy-sidebar__brand-sub">Navigation</div>
-      </div>
-
-      <div className="cosy-sidebar__scroll">
-        
-
-        {/* 섹션 2 */}
-        <div className="cosy-sidebar__section">
-          <div className="cosy-sidebar__section-title">서비스</div>
-          <div className="cosy-nav">
-            <NavItem
-              label="AI 성분 분석기"
-              icon={Home}
-              active={currentPage === "home"}
-              onClick={() => onNavigate("home")}
-              isLoggedIn={isLoggedIn}
-            />
-            <NavItem
-              label="내 제품 관리"
-              icon={Package}
-              active={currentPage === "products"}
-              onClick={() => onNavigate("products")}
-              requiresLogin
-              isLoggedIn={isLoggedIn}
-            />
-            
+    <div
+      style={{
+        width: collapsed ? "72px" : "224px",
+        backgroundColor: "#e5e7eb",
+        padding: collapsed ? "14px 10px" : "24px",
+        borderRight: "1px solid #d1d5db",
+        height: "100vh",
+        position: "sticky",
+        top: 0,
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+        transition: "width 180ms ease, padding 180ms ease",
+      }}
+    >
+      {/* 상단: 타이틀 + 접기 버튼 */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: collapsed ? "center" : "space-between",
+          gap: 10,
+          marginBottom: 14,
+        }}
+      >
+        {!collapsed && (
+          <div style={{ fontWeight: 1000, color: "#111827", fontSize: 14 }}>
+            COSY
           </div>
-        </div>
+        )}
 
-        {/* 섹션 3 */}
-        <div className="cosy-sidebar__section">
-          <div className="cosy-sidebar__section-title">규제 확인</div>
-          <div className="cosy-nav">
-            <NavItem
-              label="성분 규제 확인"
-              icon={FlaskConical}
-              active={currentPage === "ingredient-check"}
-              onClick={() => {
-                // ✅ 사이드바로 들어올 땐 이전 제품 선택 흔적 제거 (기존 로직 유지)
-                localStorage.removeItem("cosy_selected_product_ids");
-                localStorage.removeItem("cosy_selected_products");
-                onNavigate("ingredient-check", { selectedProducts: [], selectedProductIds: [] });
-              }}
-              requiresLogin
-              isLoggedIn={isLoggedIn}
-            />
-            <NavItem
-              label="문구 규제 확인"
-              icon={Megaphone}
-              active={currentPage === "claim-check"}
-              onClick={() => onNavigate("claim-check")}
-              requiresLogin
-              isLoggedIn={isLoggedIn}
-            />
-            <NavItem
-              label="국가별 규제 정보"
-              icon={Globe}
-              active={currentPage === "country-regulations"}
-              onClick={() => onNavigate("country-regulations")}
-              isLoggedIn={isLoggedIn}
-            />
-          </div>
-        </div>
-
-       
-      </div>
-
-      {/* Footer */}
-      <div className="cosy-sidebar__footer">
-        <button type="button" className="cosy-footer-link" onClick={openPrivacy}>
-          <ShieldCheck className="cosy-footer-link__icon" />
-          개인정보 처리 방침
+        <button
+          type="button"
+          onClick={onToggleCollapsed}
+          title={collapsed ? "사이드바 펼치기" : "사이드바 접기"}
+          aria-label={collapsed ? "사이드바 펼치기" : "사이드바 접기"}
+          style={{
+            border: "1px solid #e5e7eb",
+            background: "rgba(255,255,255,0.7)",
+            borderRadius: 10,
+            width: 36,
+            height: 32,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+        >
+          {collapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
         </button>
       </div>
-    </aside>
+
+      {/* 메뉴(스크롤) */}
+      {/* 메뉴(스크롤) */}
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
+    overflowY: "auto",
+    paddingRight: 2,
+  }}
+>
+  {/* 섹션 1: 서비스 */}
+  {!collapsed && (
+    <div
+      style={{
+        fontSize: 11,
+        fontWeight: 900,
+        color: "#6b7280",
+        padding: "0 6px",
+        marginTop: 6,
+        marginBottom: 2,
+      }}
+    >
+      서비스
+    </div>
+  )}
+
+  <SidebarItem
+    active={currentPage === "home"}
+    onClick={() => onNavigate("home")}
+    label="AI 성분 분석기"
+    icon={Home}
+    isLoggedIn={isLoggedIn}
+    collapsed={collapsed}
+  />
+
+  <SidebarItem
+    active={currentPage === "products"}
+    onClick={() => onNavigate("products")}
+    label="내 제품 관리"
+    icon={Package}
+    requiresLogin={true}
+    isLoggedIn={isLoggedIn}
+    collapsed={collapsed}
+  />
+
+  {/* 섹션 2: 규제 확인 */}
+  {!collapsed && (
+    <div
+      style={{
+        fontSize: 11,
+        fontWeight: 900,
+        color: "#6b7280",
+        padding: "0 6px",
+        marginTop: 10,
+        marginBottom: 2,
+      }}
+    >
+      규제 확인
+    </div>
+  )}
+
+  <SidebarItem
+    active={currentPage === "ingredient-check"}
+    onClick={() => {
+      localStorage.removeItem("cosy_selected_product_ids");
+      localStorage.removeItem("cosy_selected_products");
+      onNavigate("ingredient-check", { selectedProducts: [], selectedProductIds: [] });
+    }}
+    label="성분 규제 확인"
+    icon={FlaskConical}
+    requiresLogin={true}
+    isLoggedIn={isLoggedIn}
+    collapsed={collapsed}
+  />
+
+  <SidebarItem
+    active={currentPage === "claim-check"}
+    onClick={() => onNavigate("claim-check")}
+    label="문구 규제 확인"
+    icon={Megaphone}
+    requiresLogin={true}
+    isLoggedIn={isLoggedIn}
+    collapsed={collapsed}
+  />
+
+  <SidebarItem
+    active={currentPage === "country-regulations"}
+    onClick={() => onNavigate("country-regulations")}
+    label="국가별 규제 정보"
+    icon={Globe}
+    isLoggedIn={isLoggedIn}
+    collapsed={collapsed}
+  />
+</div>
+
+      {/* 하단: 개인정보 처리 방침 */}
+      <div style={{ marginTop: "auto", paddingTop: 12, borderTop: "1px solid #d1d5db" }}>
+        <button
+          type="button"
+          onClick={openPrivacy}
+          title="개인정보 처리 방침"
+          aria-label="개인정보 처리 방침"
+          style={{
+            width: "100%",
+            border: "none",
+            background: "transparent",
+            padding: collapsed ? "10px 8px" : "10px 12px",
+            borderRadius: 10,
+            cursor: "pointer",
+            color: "#6b7280",
+            fontWeight: 800,
+            fontSize: 12,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: collapsed ? "center" : "flex-start",
+            gap: 10,
+          }}
+        >
+          <ShieldCheck style={{ width: 16, height: 16 }} />
+          {!collapsed && <span>개인정보 처리 방침</span>}
+        </button>
+      </div>
+    </div>
   );
 }

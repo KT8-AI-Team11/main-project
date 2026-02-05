@@ -33,6 +33,25 @@ export default function CosyUI() {
 
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  // ✅ Sidebar 접기/펼치기 상태 (localStorage에 저장)
+const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+  try {
+    return localStorage.getItem("cosy_sidebar_collapsed") === "1";
+  } catch {
+    return false;
+  }
+});
+
+const toggleSidebarCollapsed = () => {
+  setSidebarCollapsed((prev) => {
+    const next = !prev;
+    try {
+      localStorage.setItem("cosy_sidebar_collapsed", next ? "1" : "0");
+    } catch {}
+    return next;
+  });
+};
+
   // ✅ 페이지 이동 시 전달할 파라미터(선택 제품 등)
   const [pageParams, setPageParams] = useState({});
   const [pendingNav, setPendingNav] = useState(null);
@@ -216,6 +235,8 @@ export default function CosyUI() {
         onNavigate={requireAuth}
         isLoggedIn={isLoggedIn}
         userEmail={userEmail}
+        collapsed={sidebarCollapsed}                 
+        onToggleCollapsed={toggleSidebarCollapsed}   
       />
 
       {/* Main */}
