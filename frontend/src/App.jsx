@@ -218,15 +218,10 @@ export default function CosyUI() {
   return (
     <div
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        minHeight: "100vh",
         display: "flex",
         backgroundColor: "#f9fafb",
         fontFamily: "sans-serif",
-        overflow: "hidden",
       }}
     >
       {/* Sidebar */}
@@ -240,7 +235,7 @@ export default function CosyUI() {
       />
 
       {/* Main */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         {/* Header */}
         <Header
           onGoHome={() => setCurrentPage("home")}
@@ -255,10 +250,8 @@ export default function CosyUI() {
          <div
           style={{
             flex: 1,
-            overflowY: "auto",
             display: "flex",
             flexDirection: "column",
-            minHeight: "100%",
           }}
         >
           <div style={{ flex: "1 0 auto", display: "flex", flexDirection: "column" }}>
@@ -294,9 +287,7 @@ export default function CosyUI() {
             {currentPage === "country-regulations" && <CountryRegulationsPage />}
           </div>
 
-          <div style={{ marginTop: "auto" }}>
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </div>
 
@@ -305,4 +296,3 @@ export default function CosyUI() {
     </div>
   );
 }
-
