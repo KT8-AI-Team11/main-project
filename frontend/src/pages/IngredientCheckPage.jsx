@@ -727,47 +727,6 @@ export default function IngredientCheckPage({
                   }
               })
           );
-        // jobs.push(
-        //   limit(async () => {
-        //     try {
-        //       if (!ingredients) throw new Error("전성분(ingredients)이 비어있습니다.");
-        //
-        //       if (mountedRef.current) setProgressText(`${p.name} · ${market}`);
-        //
-        //       const cached = readCache(cacheKey);
-        //       if (cached) {
-        //         if (mountedRef.current) {
-        //           setComboResults((prev) => ({
-        //             ...prev,
-        //             [comboKey]: { ok: true, data: cached },
-        //           }));
-        //         }
-        //         return;
-        //       }
-        //
-        //       const data = await checkIngredients({ market, ingredients });
-        //       writeCache(cacheKey, data);
-        //
-        //       if (mountedRef.current) {
-        //         setComboResults((prev) => ({
-        //           ...prev,
-        //           [comboKey]: { ok: true, data },
-        //         }));
-        //       }
-        //     } catch (e) {
-        //       if (mountedRef.current) {
-        //         setComboResults((prev) => ({
-        //           ...prev,
-        //           [comboKey]: { ok: false, error: e?.message || "요청 실패" },
-        //         }));
-        //       }
-        //     } finally {
-        //       done += 1;
-        //       const pct = Math.round((done / total) * 100);
-        //       if (mountedRef.current) setProgressPct(pct);
-        //     }
-        //   })
-        // );
       }
     }
 

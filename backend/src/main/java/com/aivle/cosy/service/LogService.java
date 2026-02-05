@@ -20,7 +20,7 @@ public class LogService {
     private final LogRepository logRepository;
     private final ProductRepository productRepository;
 
-    // --- 성분(Ingredient) 탭 전용 조회 ---
+    // 성분(Ingredient) 탭 전용 조회
     public List<Log> getIngredientLogsByCompany(Long companyId) {
         return logRepository.findByCompanyId(companyId); //
     }
@@ -30,7 +30,7 @@ public class LogService {
         return logRepository.findByCompanyIdAndCountry(companyId, country); //
     }
 
-    // --- 문구(Marketing) 탭 전용 조회 ---
+    // 문구(Marketing) 탭 전용 조회
     public List<Log> getMarketingLogsByCompany(Long companyId) {
         return logRepository.findByCompanyId(companyId); //
     }
@@ -60,8 +60,8 @@ public class LogService {
         if ("INGREDIENT".equalsIgnoreCase(request.getUpdateType())) {
             log.updateIngredientAnalysis(
                     Log.ApprovalStatus.valueOf(request.getIngredientStatus()),
-                    request.getIngredientLaw(),
-                    request.getCautiousIngredient()
+                    request.getCautiousIngredient(),
+                    request.getIngredientLaw()
             );
         } else if ("MARKETING".equalsIgnoreCase(request.getUpdateType())) {
             log.updateMarketingAnalysis(
