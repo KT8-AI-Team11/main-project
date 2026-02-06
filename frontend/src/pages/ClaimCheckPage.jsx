@@ -13,8 +13,10 @@ import { ocrExtract } from "../api/ocr";
 import { checkRegulation } from "../api/compliance";
 import { saveInspectionLog } from "../api/log";
 
+
 const COUNTRY_CODES = ["US", "EU", "CN", "JP"];
 const SUPPORTED_MARKETS = new Set(COUNTRY_CODES);
+
 
 function mapOverallRiskToStatus(risk) {
   const r = String(risk || "").toUpperCase();
@@ -297,16 +299,15 @@ export default function ClaimCheckPage({
 
           const productId = initialSelectedProductIds?.[0];
           if (productId) {
-            const logRequest = {
-              productId: Number(productId),
-              country: c,
-              updateType: "MARKETING",
-              marketingStatus: apiJson.overall_risk || "MEDIUM",
-              marketingLaw:
-                apiJson.findings?.map((f) => `[${f.finding}] ${f.reason}`).join("\n") ||
-                "규제 근거 정보 없음",
-            };
-            await saveInspectionLog(logRequest);
+              const logRequest = {
+                  productId: Number(productId),
+                  country: c,
+                  updateType: "MARKETING",
+                  marketingStatus: apiJson.overall_risk || "MEDIUM",
+                  marketingLaw: apiJson.findings?.map(f => `[${f.snippet}] ${f.reason}`).join("\n") || "규제 근거 정보 없음",
+              };
+              await saveInspectionLog(logRequest);
+              console.log(`[Log Saved] ${c} 결과가 DB에 기록되었습니다.`);
           }
         } catch (err) {
           setResultsByCountry((prev) => ({
@@ -440,7 +441,7 @@ export default function ClaimCheckPage({
           ) : (
             <>
               <Minus size={16} color="#9ca3af" />
-              <div className="cosy-subtext" style={statusTextStyle("#9ca3af")}>
+              <div className="cosy-subtext" style={{ color: "#9ca3af", fontWeight: 900 }}>
                 대기
               </div>
             </>
@@ -845,7 +846,7 @@ export default function ClaimCheckPage({
                     {getCountryName(activeTab)}({activeTab}) 결과: {activeResult.status}
                   </div>
                   <div className="cosy-subtext" style={{ marginLeft: "auto" }}>
-                  
+
                   </div>
                 </div>
 

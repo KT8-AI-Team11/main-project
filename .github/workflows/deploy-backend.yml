@@ -3,6 +3,10 @@ name: Deploy Backend (ECR -> EC2)
 on:
   push:
     branches: ["main"]
+    paths:
+      - "backend/**"
+      - "fastapi/**"
+      - ".github/workflows/deploy-backend.yml"
 
 env:
   AWS_REGION: ap-northeast-2

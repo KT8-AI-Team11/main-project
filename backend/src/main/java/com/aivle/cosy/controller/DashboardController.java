@@ -42,8 +42,9 @@ public class DashboardController {
                 Log.ApprovalStatus.MEDIUM,
                 Log.ApprovalStatus.HIGH
         );
-        long warningCount = logRepository.countByCompanyIdAndIngredientStatusIn(companyId, warningLevels);
+        long ingredientCount = logRepository.countByCompanyIdAndIngredientStatusIn(companyId, warningLevels);
+        long marketingCount = logRepository.countByCompanyIdAndMarketingStatusIn(companyId, warningLevels);
 
-        return ResponseEntity.ok(new DashboardResponse(productCount, recentChecks, warningCount));
+        return ResponseEntity.ok(new DashboardResponse(productCount, recentChecks, ingredientCount, marketingCount));
     }
 }
