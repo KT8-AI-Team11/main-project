@@ -1,15 +1,21 @@
 from __future__ import annotations
 from typing import List
 import json
+import logging
 from openai import OpenAI
-from app.core.config import OPENAI_API_KEY, OPENAI_MODEL
+from app.core.config import OPENAI_API_KEY, OPENAI_MODEL, REFLECTION_MODEL
 from app.schemas.compliance import LabelingLlmResult, Finding, IngLlmResult, Detail
+
+logger = logging.getLogger(__name__)
+
+REFLECTION_THRESHOLD = 7  # 이 점수 미만이면 재생성
 
 
 class LlmService:
     def __init__(self):
         self.client = OpenAI(api_key=OPENAI_API_KEY)
         self.model = OPENAI_MODEL
+        self.reflection_model = REFLECTION_MODEL  # .env의 REFLECTION_MODEL로 변경 가능
 
     # 문구규제 페이지에서 바로 쓸 수 있는 텍스트 생성 함수
     def _format_for_ui(self, data: dict) -> str:
@@ -83,7 +89,7 @@ class LlmService:
 
 """.strip()
 
-        raw = self.generate(prompt)
+        raw = self._generate_with_reflection(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
 
         # ```json ... ``` 제거 대응
         cleaned = raw.strip()
@@ -168,7 +174,7 @@ class LlmService:
 }}
 """.strip()
 
-        raw = self.generate(prompt)
+        raw = self._generate_with_reflection(prompt, context) # reflection 제거시 여기 수정
 
         # ```json ... ``` 형태 제거
         cleaned = raw.strip()
@@ -201,9 +207,9 @@ class LlmService:
             details=details,
         )
 
-    def generate(self, prompt: str) -> str:
+    def _call_llm(self, prompt: str, model: str | None = None) -> str:
         resp = self.client.chat.completions.create(
-            model=self.model,
+            model=model or self.model,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt},
@@ -211,6 +217,96 @@ class LlmService:
             temperature=0,
         )
         return resp.choices[0].message.content or ""
+
+    def generate(self, prompt: str) -> str:
+        return self._call_llm(prompt, model=self.model)
+
+    # ── Reflection ──────────────────────────────────────────
+
+    def _reflect(self, original_prompt: str, response: str, context: str) -> dict:
+        """
+        LLM 응답을 평가하여 score(1~10)와 feedback을 반환한다.
+        """
+        reflect_prompt = f"""
+너는 화장품 규제 분석 결과를 평가하는 품질 검증 전문가다.
+
+아래 [CONTEXT]는 RAG로 검색된 규제 원문이고,
+[PROMPT]는 분석 요청, [RESPONSE]는 LLM이 생성한 답변이다.
+
+다음 기준으로 답변 품질을 1~10점으로 평가하라:
+1. CONTEXT 근거: CONTEXT에 없는 내용을 지어내지 않았는가? (hallucination 체크)
+2. JSON 형식: 요청된 JSON 스키마를 정확히 따르는가?
+3. 구체성: findings/details의 reason, regulation 등이 구체적인가?
+4. 완전성: INPUT에서 검토해야 할 항목을 빠뜨리지 않았는가?
+5. 일관성: overall_risk와 개별 항목의 risk/severity가 논리적으로 일관되는가?
+ 
+[CONTEXT]
+{context}
+
+[PROMPT]
+{original_prompt}
+
+[RESPONSE]
+{response}
+
+반드시 아래 JSON 형식으로만 답하라:
+{{
+  "score": 1~10 사이 정수,
+  "feedback": "개선이 필요한 구체적 사항. 점수가 7 이상이면 빈 문자열."
+}}
+""".strip()
+
+        raw = self._call_llm(reflect_prompt, model=self.reflection_model)
+
+        cleaned = raw.strip()
+        if cleaned.startswith("```"):
+            cleaned = cleaned.strip("`")
+            cleaned = cleaned.replace("json\n", "", 1).strip()
+
+        try:
+            result = json.loads(cleaned)
+            score = int(result.get("score", 5))
+            feedback = str(result.get("feedback", ""))
+        except Exception:
+            logger.warning("Reflection JSON 파싱 실패, 기본값(score=5) 사용. Raw: %s", raw[:200])
+            score = 5
+            feedback = "Reflection 파싱 실패 — 재생성 권장"
+
+        logger.info("Reflection score=%d, feedback=%s", score, feedback[:100])
+        return {"score": score, "feedback": feedback}
+
+    def _generate_with_reflection(self, prompt: str, context: str) -> str:
+        """
+        1차 생성 → reflection 평가 → 점수 미달 시 피드백 포함 재생성 (최대 1회).
+        """
+        # 1차 생성
+        first_response = self.generate(prompt)
+
+        # 평가
+        reflection = self._reflect(
+            original_prompt=prompt,
+            response=first_response,
+            context=context,
+        )
+
+        if reflection["score"] >= REFLECTION_THRESHOLD:
+            logger.info("Reflection PASS (score=%d) — 1차 응답 사용", reflection["score"])
+            return first_response
+
+        # 재생성: 피드백을 포함한 보강 프롬프트
+        logger.info("Reflection FAIL (score=%d) — 피드백 포함 재생성", reflection["score"])
+        retry_prompt = f"""
+{prompt}
+
+[이전 답변에 대한 품질 피드백]
+아래는 이전 답변에 대한 검증 결과이다. 이 피드백을 반영하여 개선된 답변을 생성하라.
+- 점수: {reflection["score"]}/10
+- 피드백: {reflection["feedback"]}
+
+위 피드백을 반영하여, 동일한 JSON 형식으로 개선된 답변을 다시 작성하라.
+""".strip()
+
+        return self.generate(retry_prompt)
 
 
 _llm: LlmService | None = None
