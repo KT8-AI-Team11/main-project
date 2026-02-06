@@ -6,7 +6,6 @@ import com.aivle.cosy.domain.User;
 import com.aivle.cosy.dto.SignUpRequest;
 import com.aivle.cosy.dto.SignUpResponse;
 import com.aivle.cosy.dto.Message;
-import com.aivle.cosy.dto.UserInfoResponse;
 import com.aivle.cosy.exception.BusinessException;
 import com.aivle.cosy.exception.UserErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
@@ -66,21 +65,6 @@ public class UserService {
         return response;
     }
 
-    /**
-     * 마이페이지 정보 조회
-     *
-     * @param accessToken : 조회에 필요한 토큰
-     * @return 아이디에 해당하는 정보
-     */
-    @Transactional(readOnly = true)
-    public UserInfoResponse getUserInfo(String accessToken){
-        String email = tokenProvider.extractEmail(accessToken);
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new BusinessException(UserErrorCode.USER_NOT_FOUND));
-
-        return new UserInfoResponse(user.getEmail(), user.getCompany().getCompanyName());
-
-    }
 
     /**
      * 유저 삭제, access token에서 현재 유저의 이메일을 추출한다음 삭제

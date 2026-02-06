@@ -55,12 +55,6 @@ export const refresh = () =>
         method: "POST",
     })
 
-export const getMe = (accessToken) =>
-    apiFetch("/api/users/me", {
-        method: "GET",
-        token: accessToken,
-    })
-
 export const changePassword = (accessToken, currentPassword, newPassword) =>
     apiFetch("/api/users/me/password", {
         method: "PATCH",
