@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class DashboardResponse {
     private long productCount;
     private long recentChecks;
-    private long warningCount;
+    private long ingredientCount;
+    private long marketingCount;
 }

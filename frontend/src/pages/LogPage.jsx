@@ -26,10 +26,10 @@ const SeverityPill = ({ value }) => {
 };
 
 const COUNTRY_META = {
-    US: { bg: "#EFF6FF", fg: "#1E40AF", bd: "#DBEAFE" },
-    JP: { bg: "#FDF2F8", fg: "#BE123C", bd: "#FDA4AF" },
-    CN: { bg: "#FEF2F2", fg: "#B91C1C", bd: "#FECACA" },
-    EU: { bg: "#F0FDF4", fg: "#16A34A", bd: "#D1FAE5" },
+    US: { bg: "#EFF6FF", fg: "#3B82F6", bd: "#8B5CF6" },
+    JP: { bg: "#FDF2F8", fg: "#F59E0B", bd: "#F59E0B" },
+    CN: { bg: "#FEF2F2", fg: "#EF4444", bd: "#EF4444" },
+    EU: { bg: "#edeaea", fg: "#8B5CF6", bd: "#8B5CF6" },
 };
 
 const CountryPill = ({ value }) => {
