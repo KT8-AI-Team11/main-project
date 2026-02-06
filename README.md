@@ -14,7 +14,7 @@
 7. python -m app.scripts.ingest_regulations → 해야 rag에 쓰일 벡터db 생성됨
 8. uvicorn app.main:app --host 127.0.0.1 --port 8000
 9. 인터넷 주소창에 http://127.0.0.1:8000/docs으로 접속하면 api 확인 가능
-10. .env는 gitignore에 명시된 파일로 직접 생성 → openapi api key, llm model, embedding model 등에 대한 정의가 포함되어 있는 민감정보이므로 필요 시 담당자에게 문의해주세요
+10. .env는 gitignore에 명시된 파일로 직접 생성 → 필요 시 담당자에게 문의해주세요
 
 ---
 ## redis를 로컬에 돌리기 위한 환경 세팅 (Docker 사용)
