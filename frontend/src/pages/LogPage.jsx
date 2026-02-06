@@ -135,15 +135,15 @@ export default function LogPage() {
 
                 {/* [핵심] 테이블 스크롤 영역 */}
                 <div style={{
-                    flex: 1,                // 남은 높이 전체 차지
-                    overflowY: "auto",      // 세로 스크롤 활성화
-                    minHeight: 0,           // 자식 요소가 부모 높이를 넘어가지 않게 고정
+                    flex: 1,
+                    overflowY: "auto",
+                    minHeight: 0,
                     border: "1px solid #E5E7EB",
                     borderRadius: "12px"
                 }}>
                     <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0, tableLayout: "fixed" }}>
                         <thead style={{
-                            position: "sticky",     // 스크롤 시 헤더 고정
+                            position: "sticky",
                             top: 0,
                             zIndex: 10,
                             backgroundColor: "#F8FAFC"
@@ -155,7 +155,6 @@ export default function LogPage() {
                             <th style={{ ...thStyle, width: "100px", textAlign: "center" }}>결과</th>
                             {activeTab === "INGREDIENT" ? (
                                 <>
-                                    {/* 주의 성분과 근거 열의 너비를 1:1로 맞춤 */}
                                     <th style={{ ...thStyle, width: "30%" }}>주의 성분</th>
                                     <th style={{ ...thStyle, width: "30%" }}>성분 규제 근거</th>
                                 </>
@@ -192,4 +191,4 @@ export default function LogPage() {
 }
 
 const thStyle = { padding: "14px", textAlign: "left", fontSize: "13px", fontWeight: "800", color: "#475569", borderBottom: "2px solid #EDF2F7", backgroundColor: "#F8FAFC" };
-const tdStyle = { padding: "14px", fontSize: "13px", color: "#334155", borderBottom: "1px solid #F1F5F9" };
+const tdStyle = { padding: "14px", fontSize: "13px", color: "#334155", borderBottom: "1px solid #F1F5F9", wordBreak: "break-all", overflowWrap: "break-word", verticalAlign: "top" };
