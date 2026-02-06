@@ -8,7 +8,6 @@ const getAuthHeader = () => ({
     "Authorization": `Bearer ${localStorage.getItem("cosy_access_token")}`
 });
 
-// --- 컴포넌트 생략 (SeverityPill, CountryPill은 기존과 동일) ---
 const SEVERITY_META = {
     HIGH: { bg: "#FEE2E2", fg: "#991B1B", bd: "#FCA5A5" },
     MEDIUM: { bg: "#FEF3C7", fg: "#92400E", bd: "#FCD34D" },
@@ -76,21 +75,21 @@ export default function LogPage() {
     return (
         <div style={{
             width: "100%",
-            height: "100vh",            // [중요] 전체 높이 고정
+            height: "100vh",
             display: "flex",
             flexDirection: "column",
-            overflow: "hidden",         // [중요] 페이지 전체 스크롤 방지
+            overflow: "hidden",
             backgroundColor: "#f3f4f6",
             padding: "20px"
         }}>
             <div className="cosy-panel" style={{
-                flex: 1,                // 남은 공간 꽉 채우기
+                flex: 1,
                 display: "flex",
                 flexDirection: "column",
                 backgroundColor: "white",
                 borderRadius: "16px",
                 padding: "24px",
-                overflow: "hidden"      // 패널 밖으로 나가는 것 방지
+                overflow: "hidden"
             }}>
 
                 {/* 상단 고정 영역 (헤더/필터) */}
@@ -135,15 +134,15 @@ export default function LogPage() {
 
                 {/* [핵심] 테이블 스크롤 영역 */}
                 <div style={{
-                    flex: 1,                // 남은 높이 전체 차지
-                    overflowY: "auto",      // 세로 스크롤 활성화
-                    minHeight: 0,           // 자식 요소가 부모 높이를 넘어가지 않게 고정
+                    flex: 1,
+                    overflowY: "auto",
+                    minHeight: 0,
                     border: "1px solid #E5E7EB",
                     borderRadius: "12px"
                 }}>
                     <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0, tableLayout: "fixed" }}>
                         <thead style={{
-                            position: "sticky",     // 스크롤 시 헤더 고정
+                            position: "sticky",
                             top: 0,
                             zIndex: 10,
                             backgroundColor: "#F8FAFC"
@@ -155,7 +154,6 @@ export default function LogPage() {
                             <th style={{ ...thStyle, width: "100px", textAlign: "center" }}>결과</th>
                             {activeTab === "INGREDIENT" ? (
                                 <>
-                                    {/* 주의 성분과 근거 열의 너비를 1:1로 맞춤 */}
                                     <th style={{ ...thStyle, width: "30%" }}>주의 성분</th>
                                     <th style={{ ...thStyle, width: "30%" }}>성분 규제 근거</th>
                                 </>
@@ -192,4 +190,4 @@ export default function LogPage() {
 }
 
 const thStyle = { padding: "14px", textAlign: "left", fontSize: "13px", fontWeight: "800", color: "#475569", borderBottom: "2px solid #EDF2F7", backgroundColor: "#F8FAFC" };
-const tdStyle = { padding: "14px", fontSize: "13px", color: "#334155", borderBottom: "1px solid #F1F5F9" };
+const tdStyle = { padding: "14px", fontSize: "13px", color: "#334155", borderBottom: "1px solid #F1F5F9", wordBreak: "break-all", overflowWrap: "break-word", verticalAlign: "top" };
