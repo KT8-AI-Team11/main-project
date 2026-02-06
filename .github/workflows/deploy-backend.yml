@@ -65,5 +65,4 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            export IMAGE_TAG=${{ env.IMAGE_TAG }}
             bash /opt/cosy/deploy.sh
