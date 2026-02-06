@@ -69,7 +69,9 @@ class LlmService:
 {text}
 
 [NOTE]
-추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
+추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다, 항목 중 하나라도 risk가 
+MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 입력받은 모든 항목에 대한 내용을 
+표시해라. 
 
 [OUTPUT JSON]
 다음 JSON 형태로만 답하라.
@@ -89,7 +91,7 @@ class LlmService:
 
 """.strip()
 
-        raw = self._generate_with_reflection(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
+        raw = self._generate(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
 
         # ```json ... ``` 제거 대응
         cleaned = raw.strip()
@@ -157,7 +159,7 @@ class LlmService:
 [OUTPUT JSON]
 반드시 아래 JSON 형식으로만 답하라. 다른 텍스트를 절대 출력하지 마라.
 - regulation: 규제 "문서명"을 작성 (가능하면 한글 문서명)
-- content: 해당 규정의 핵심 내용을 1~2문장으로 요약
+- content: 해당 규정의 핵심 내용을 1~2문장으로 요약한다. 반드시 한국어로 작성한다.
 - action: 권장 조치(예: "사용 금지/제거", "농도 기준 확인", "표기 변경", "추가 근거 확인")
 {{
   "overall_risk": "LOW|MEDIUM|HIGH",
@@ -174,7 +176,7 @@ class LlmService:
 }}
 """.strip()
 
-        raw = self._generate_with_reflection(prompt, context) # reflection 제거시 여기 수정
+        raw = self.generate(prompt) # reflection 추가시 여기 수정
 
         # ```json ... ``` 형태 제거
         cleaned = raw.strip()
@@ -221,7 +223,7 @@ class LlmService:
     def generate(self, prompt: str) -> str:
         return self._call_llm(prompt, model=self.model)
 
-    # ── Reflection ──────────────────────────────────────────
+    # for reflection
 
     def _reflect(self, original_prompt: str, response: str, context: str) -> dict:
         """
@@ -236,7 +238,7 @@ class LlmService:
 다음 기준으로 답변 품질을 1~10점으로 평가하라:
 1. CONTEXT 근거: CONTEXT에 없는 내용을 지어내지 않았는가? (hallucination 체크)
 2. JSON 형식: 요청된 JSON 스키마를 정확히 따르는가?
-3. 구체성: findings/details의 reason, regulation 등이 구체적인가?
+3. 구체성: findings/details의 reason, regulation 등이 구체적이고 한국어로 작성되어있는가?
 4. 완전성: INPUT에서 검토해야 할 항목을 빠뜨리지 않았는가?
 5. 일관성: overall_risk와 개별 항목의 risk/severity가 논리적으로 일관되는가?
  
