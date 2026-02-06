@@ -1,0 +1,1077 @@
+[레코드 190]
+  구분: 금지
+  표준명: 수은
+  영문명: Mercury
+  CASNO: 7439-97-6
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 414]
+  구분: 한도
+  표준명: 베타-카로틴
+  영문명: Beta-Carotene, CI 75130
+  CASNO: 0
+  이명: betacarotene (INN), Beta-Carotene, Cyclohexene, 1,1'-(3,7,12,16-Tetramethyl-1,3,5,7,9,11,13,15,17-Octadecanonaene-1,18-diyl)bis(2,6,6-Trimethyl-,(all-E), Natural Brown 5, Natural Yellow 26
+  배합제한국가: 미국
+  고시원료명: β-Carotene
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 462]
+  구분: 한도
+  표준명: 벤조페논-3
+  영문명: Benzophenone-3
+  CASNO: 131-57-7
+  이명: 2-Benzoyl-5-methoxyphenol, 2-Hydroxy-4-Methoxybenzophenone, (2-Hydroxy-4-Methoxyphenyl)Phenylmethanone, Methanone, (2-Hydroxy-4-Methoxyphenyl)Phenyl-, Oxybenzone (INN)
+  배합제한국가: 미국
+  고시원료명: Oxybenzone
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 6% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 481]
+  구분: 금지
+  표준명: 머큐리다이클로라이드
+  영문명: Mercury Dichloride
+  이명: mercuric chloride, Bichloride,Mercury, Chloride, Mercuric, Corrosive Sublimate, Dichloride,Mercury, HgCl2Mercuric Chloride, Mercuric Perchloride, Mercury Bichloride, Mercury Dichloride, Mercury Perchloride, Perchloride, Mercuric, Perchloride, Mercury, Sublimate, Sublimate, Corrosive
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 681]
+  구분: 한도
+  표준명: 구아닌
+  영문명: Guanine, CI 75170
+  CASNO: 0
+  이명: 2-Amino-1,7-Dihydro-6H-Purin-6-one, 2-Amino-6-Hydroxypurine, 2-Aminohypoxanthine, Guanine, 6H-Purin-6-one, 2-Amino-1,7-Dihydro-, Natural Pearl Essence, Natural White 1, Pearl Essence
+  배합제한국가: 미국
+  고시원료명: Guanine
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 700]
+  구분: 한도
+  표준명: 클로로필린-카퍼컴플렉스
+  영문명: Chlorophyllin-Copper Complex, CI 75810
+  CASNO: 11006-34-1, 8049-84-1
+  이명: Chlorophyllin-Copper Complex, chlorophyllinum cupreum (EP), Natural Green 3, Potassium Sodium Copper Chlorophyllin
+  배합제한국가: 미국
+  고시원료명: Potassium sodium copper chlorophyllin (chlorophyllin-copper complex)
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Dentifrices; ≤0.1% * 특별 제한조건 : 덴트리피스; ≤0.1%
+
+[레코드 783]
+  구분: 한도
+  표준명: 청동가루
+  영문명: Bronze Powder, CI 77400
+  CASNO: 7440-50-8
+  이명: Bronze Powder, Copper Powder, Pigment Metal 2
+  배합제한국가: 미국
+  고시원료명: Bronze powder
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 863]
+  구분: 한도
+  표준명: 녹색204호
+  영문명: Pyranine Conc, D&C Green No. 8, Midori204, CI 59040
+  CASNO: 0
+  이명: Green No. 204, 8-Hydroxy-1,3,6-Pyrenetrisulfonic Acid, Trisodium Salt, Japan Green 204, Pyranine, 1,3,6-Pyrenetrisulfonic Acid, 8-Hydroxy-, Trisodium Salt, Solvent Green 7
+  배합제한국가: 미국
+  고시원료명: D&C Green No. 8
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to Limitations * 외용 : 사용제한 * Specific Limitations  and Comments : ≤0.01% * 특별 제한조건 : ≤0.01%
+
+[레코드 931]
+  구분: 한도
+  표준명: 적색220호
+  영문명: Deep Maroon, D&C Red No. 34, Red 34 Lake, CI 15880:1
+  CASNO: 1103-39-5, 1248-18-6
+  이명: Calcium, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-1-Naphthalenesulfonate, CI 15630:2, Lithol Red, Ca, 1-Naphthalenesulfonic Acid, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]- Calcium Salt, Pigment Red 49:2, Red 11, Red No. 206
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 34
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 1014]
+  구분: 한도
+  표준명: 페닐벤즈이미다졸설포닉애씨드
+  영문명: Phenylbenzimidazole Sulfonic Acid
+  CASNO: 27503-81-7
+  이명: ensulizole (INN), 2-Phenylbenzimidazole-5-Sulfonic Acid, 2-Phenyl-5-Sulfobenzimidazole
+  배합제한국가: 미국
+  고시원료명: Ensulizole
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 4% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 1278]
+  구분: 한도/금지
+  표준명: 파바
+  영문명: PABA
+  CASNO: 150-13-0
+  이명: Aminobenzoic Acid, 4-Aminobenzoic Acid, p-Aminobenzoic Acid, Aniline-4-Carboxylic Acid, Benzoic Acid, 4-Amino-, p-Carboxyaniline, P-Carboxyphenylamine
+  배합제한국가: 미국
+  고시원료명: Aminobenzoic acid (PABA)
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 15% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 1636]
+  구분: 한도
+  표준명: 적색219호
+  영문명: Brilliant Lake Red R, D&C Red No. 31, Red 31 Lake, Aka219, PIGMENT RED 64, CI 15800
+  CASNO: 0
+  이명: CI 15800:1, 3-Hydroxy-4-(Phenylazo)-2-Naphthalenecarboxylic Acid, Calcium Salt(2:1), 2-Hydroxy-1-phenylazo-3-naphthoic Acid, Calcium Salt, 2-Naphthalenecarboxylic Acid, 3-Hydroxy-5-(Phenylazo)-, Calcium Salt (2:1), Pigment Red 64:1, Red No. 219
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 31
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 1678]
+  구분: 한도
+  표준명: 황색4호
+  영문명: Tartrazine, , FD&C Yellow No. 5, Acid Yellow 23 Aluminum Lake, Yellow 5 Lake, Ki4, FOOD YELLOW 4, CI 19140
+  CASNO: 1934-21-0
+  이명: , CI 19140 , 4,5-Dihydro-5-Oxo-ACID YELLOW 23, 1-(4-Sulfophenyl)-4-[(4-Sulfophenyl)Azo]-1H-Pyrazole-3-Carboxylic Acid, Trisodium Salt , 1H-Pyrazole-3-Carboxylic Acid, 4,5-Dihydro-5-Oxo-1-(4-Sulfophenyl)-4-[(4-Sulfophenyl)Azo]-, Trisodium Salt , Japan Yellow 4 , Tartrazin , Tartrazine , Yellow No. 4
+  배합제한국가: 미국
+  고시원료명: FD&C Yellow No. 5
+  제한사항: * Eye Area : Yes, also Al lake * 눈 주위 : 사용가능 (색소) * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 2002]
+  구분: 한도/금지
+  표준명: 카본블랙
+  영문명: Carbon Black, D&C Black No. 2, CI 77266
+  CASNO: 1333-86-4, 1333-86-4
+  이명: Channel Black, CI 77266, Pigment Black 6, Pigment Black 7
+  배합제한국가: 미국
+  고시원료명: D&C Black No. 2
+  제한사항: * Eye Area : Subject to Limitations * 눈 주위 : 사용제한 * Generally  (Includes  Lipsticks) : Subject to Limitations * 일반적인 사용 (립스틱 포함) : 사용제한 * External Use : Subject to Limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Eyeliner, brush-on-brow, eye shadow, mascara, lipstick, blushers & rouge, makeup & foundation, nail enamel * 특별 제한조건 : 아이라이너, 브러쉬, 아이새도우, 마스카라, 립스틱, 블러셔 & 루즈, 메이크업 & 파운데이션, 네일 에나멜
+
+[레코드 2040]
+  구분: 한도
+  표준명: 적색226호
+  영문명: Helindone Pink CN, D&C Red No. 30, Red 30 Lake, Aka226, VAT RED 1, CI 73360
+  CASNO: 0
+  이명: Benzo[b]Thiophen-3(2H)-one, 6-Chloro-2-(6-Chloro-4-Methyl-3-Oxobenzo[b]Thien-2(3H)-ylidene)-4-Methyl-, 6-Chloro-2-(6-Chloro-4-Methyl-3-Oxobenzo[b]Thien-2(3H)-ylidene)-4-Methylbenzo[b]Thiophen-3(2H)-one, 5,5'-Dichloro-3,3'-Dimethyl-Thioindigo, Japan Red 226, Pigment Red 181, Red No. 226, Vat Red 1
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 30
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 2408]
+  구분: 한도
+  표준명: 크로뮴옥사이드그린
+  영문명: Chromium Oxide Greens, CI 77288
+  CASNO: 1308-38-9
+  이명: Chromic Oxide, Chromium Oxide Greens, Dichromium Trioxide, Pigment Green 17
+  배합제한국가: 미국
+  고시원료명: Chromium oxide greens
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 2442]
+  구분: 금지
+  표준명: 클로로플루오로카본 추진제(완전하게 할로겐화 된 클로로플루오로알칸)
+  영문명: Chlorofluorocarbon Propellants (fully halogenated chlorofluoroalkanes)
+  배합제한국가: 미국
+  고시원료명: Chlorofluorocarbon propellants
+  단서조항: The use of chlorofluorocarbon propellants in cosmetic aerosol products intended for domestic consumption is prohibited
+
+[레코드 2692]
+  구분: 한도
+  표준명: 녹색202호
+  영문명: Quinizarine Green SS, D&C Green No. 6, Midori202, CI 61565
+  CASNO: 0
+  이명: 9,10-Anthracenedione, 1,4-Bis[(4-Methylphenyl)Amino]-, Anthraquinone, 1,4-Di-ψ-Toluidino-, 1,4-bis(4'-Methylanilino)Anthraquinone, 1,4-Bis[(4-Methylphenyl)Amino-9,10-Anthracenedione, Ceres Green BB, Green No. 202, Quinizarin Green SS, Solvent Green 3
+  배합제한국가: 미국
+  고시원료명: D&C Green No. 6
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 2950]
+  구분: 한도
+  표준명: 황색204호
+  영문명: Quinoline Yellow SS, D&C Yellow No. 11, Ki204, SOLVENT YELLOW 33, CI 47000
+  CASNO: 0
+  이명: 1H-Indene-1,3-(2H)-dione, 2-(2-Quinolinyl)-, Japan Yellow 204 , Quinoline Yellow SS, Quinolphthalone, 2-(2-Quinolyl)-1,3-Indandione, Solvent Yellow 33, Yellow No. 204
+  배합제한국가: 미국
+  고시원료명: D&C Yellow No. 11
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 3179]
+  구분: 금지
+  표준명: 지르코늄다이옥사이드
+  영문명: Zirconium Dioxide
+  CASNO: 1314-23-4
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 3182]
+  구분: 한도
+  표준명: 시녹세이트
+  영문명: Cinoxate
+  CASNO: 104-28-9
+  배합제한국가: 미국
+  고시원료명: Cinoxate
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 3% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 3338]
+  구분: 한도
+  표준명: 티타늄디옥사이드
+  영문명: Titanium dioxide, CI 77891
+  CASNO: 13463-67-7
+  이명: Amorphous Titanium Dioxide, CI 77891, Micro Particle Titanium Dioxide, Pigment White 6, titanii dioxidum (EP), Titanium Dioxide Sol, Titanium Oxide
+  배합제한국가: 미국
+  고시원료명: <자외선차단제>Titanium Dioxide<착색제>Titanium Dioxide
+  제한사항: <자외선차단제 : Titanium Dioxide>* 【Restrictions】Maximum Concentration (제한) : 25% * Specific Limitations  and Comments : Use of the term ""sunscreen"" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, ""Contains a sunscreen to protect product color."" If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : ""선스크린""의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, ""제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다."" 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.<착색제 : Titanium Dioxide>* Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 4880]
+  구분: 한도
+  표준명: 다이하이드록시아세톤
+  영문명: Dihydroxyacetone
+  CASNO: 96-26-4
+  이명: 1,3-Dihydroxydimethyl Ketone, 1,3-Dihydroxy-2-Propanone, 2-Propanone, 1,3-Dihydroxy
+  배합제한국가: 미국
+  고시원료명: Dihydroxyacetone
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : intended solely or in part to impart a color to the human body * 특별 제한조건 : 신체에 오로지 또는 부분적으로 색을 주는 목적으로
+
+[레코드 4925]
+  구분: 한도
+  표준명: 청색205호
+  영문명: Alphazurine FG, D&C Blue No. 4, Ao205, Acid Blue 9 Ammonium Salt, CI 42090
+  CASNO: 2650-18-2, 37307-56-5, 6371-85-3
+  이명: Acid Blue 9, Benzenemethanaminium, Blue No. 205, CI 42090, Japan Blue 205
+  배합제한국가: 미국
+  고시원료명: D&C Blue No. 4
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 5137]
+  구분: 한도/금지
+  표준명: 페닐머큐릭클로라이드
+  영문명: Phenyl Mercuric Chloride
+  CASNO: 100-56-1
+  이명: Chlorophenylmercury
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 5343]
+  구분: 한도
+  표준명: 헨나
+  영문명: Henna
+  CASNO: 84988-66-9
+  이명: CI 75480, Henna Leaves, Lawsonia Alba, Natural Orange 6
+  배합제한국가: 미국
+  고시원료명: Henna
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : coloring hair only * 특별 제한조건 : 오직 헤어 착색만
+
+[레코드 5345]
+  구분: 한도/금지
+  표준명: 페닐머큐릭보레이트
+  영문명: Phenyl Mercuric Borate
+  CASNO: 102-98-7, 6273-99-0
+  이명: Mercurate(2-), [Orthoboroato(3-)-O]Phenyl, Dihydrogen, [Orthoborato(3-)-O]Phenylmercurate(2-), Dihydrogen, phenylhydrargyri boras (EP), phenylmercuric borate (INN)
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 5638]
+  구분: 금지
+  표준명: 비티오놀
+  영문명: Bithionol
+  CASNO: 97-18-7
+  이명: Bitin
+  배합제한국가: 미국
+  고시원료명: Bithionol
+  단서조항: The use of bithionol is prohibited because it may cause photocontact sensitization
+
+[레코드 5837]
+  구분: 한도
+  표준명: 적색504호
+  영문명: Ponceau SX, FD&C Red No. 4, Red 4 Lake, Aka504, FOOD RED 1, CI 14700
+  CASNO: 0
+  이명: 3-[(2,4-Dimethyl-5-Sulfophenyl)Azo]-4-Hydroxy-1-Naphthalenesulfonic Acid, Disodium Salt, Food Red 1, 1-Naphthalenesulfonic Acid, 3-[(2,4-Dimethyl-5-Sulfophenyl)Azo]-4-Hydroxy-, Disodium Salt, Ponceau SX, Red No. 504
+  배합제한국가: 미국
+  고시원료명: FD&C Red No. 4
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 6112]
+  구분: 한도
+  표준명: 적색223호
+  영문명: Tetrabromofluorescein, D&C Red No. 21, Red 21 Lake, Aka223, CI 45380:2
+  CASNO: 15086-94-9
+  이명: Bromofluoresceic Acid, CI 45380:2, Eosin, Eosine G, Red No. 223, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxy-, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Tetrabromofluorescein
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 21
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 6226]
+  구분: 한도
+  표준명: 에칠헥실메톡시신나메이트
+  영문명: Ethylhexyl Methoxycinnamate
+  CASNO: 5466-77-3
+  이명: 2-Ethylhexyl Methoxycinnamate, 2-Ethylhexyl 4-Methoxycinnamate, p-Methoxycinnamic Acid, 2-Ethylhexyl Ester, 3-(4-Methoxyphenyl)-2-Propenoic Acid, 2-Ethylhexyl Ester, Octinoxate (INN), Octyl Methoxycinnamate, 2-Propenoic Acid, 3-(4-Methoxyphenyl)-, 2-Ethylhexyl Ester
+  배합제한국가: 미국
+  고시원료명: Octinoxate
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 7.5% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 6858]
+  구분: 한도
+  표준명: 멘틸안트라닐레이트
+  영문명: Menthyl Anthranilate
+  CASNO: 134-09-8
+  배합제한국가: 미국
+  고시원료명: Meradimate
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 5% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 7223]
+  구분: 한도
+  표준명: 본블랙, 본챠콜
+  영문명: Bone black, Bone Charcoal, CI 77267, D&C Black No. 3
+  CASNO: 8021-99-6
+  이명: Bone Black, Bone Charcoal, Charcoal, Bone, Pigment Black 9
+  배합제한국가: 미국
+  고시원료명: D&C Black No. 3
+  제한사항: * Eye Area : Subject to Limitations * 눈 주위 : 사용제한 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to Limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Eyeliner, eye shadow, mascara, face powder * 특별 제한조건 : 아이라이너, 아이새도우, 마스카라, 얼굴용 파우더
+
+[레코드 8046]
+  구분: 금지
+  표준명: 수은화합물
+  영문명: Mercury compounds
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 8283]
+  구분: 한도
+  표준명: 징크옥사이드
+  영문명: Zinc Oxide, CI 77947
+  CASNO: 1314-13-2
+  이명: CI 77947, Low Temperature Burned Zinc Oxide, Pigment White 4, zinci oxidum (EP), Zinc White
+  배합제한국가: 미국
+  고시원료명: Zinc Oxide
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 25% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 8923]
+  구분: 한도
+  표준명: 알루미늄가루
+  영문명: Aluminum powder, CI 77000
+  CASNO: 7429-90-5
+  이명: Aluminum Powder, LB Pigment 5, Pigment Metal 1
+  배합제한국가: 미국
+  고시원료명: Aluminum powder
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 9642]
+  구분: 한도
+  표준명: 자색401호
+  영문명: Alizurol Purple, Ext. D&C Violet No. 2, Murasaki401, ACID VIOLET 43, CI 60730
+  CASNO: 0
+  이명: Acid Violet 43, Benzenesulfonic Acid, 2-[(9,10-Dihydro-4-Hydroxy-9,10-Dioxo-1-Anthracenyl)Amino]-5-Methyl-, Monosodium Salt, 2-[(9,10-Dihydro-4-Hydroxy-9,10-Dioxo-1-Anthracenyl)Amino]-5-Methylbenzenesulfonic Acid, Monosodium Salt, Japan Violet 401, μ-Toluenesulfonic Acid, 6-((4-Hydroxy-1-Anthraquinonyl)Amino)-, Monosodium Salt, Violet No. 401
+  배합제한국가: 미국
+  고시원료명: Ext. D&C Violet No. 2
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 10009]
+  구분: 금지
+  표준명: BSE(Bovine Spongiform Encephalopathy) 감염조직 및 이를 함유하는 성분
+  영문명: Prohibited cattle materials. To protect against bovine spongiform encephalopathy (BSE), also known as mad cow disease
+  배합제한국가: 미국
+  고시원료명: Prohibited cattle materials
+  단서조항: To protect against bovine spongiform encephalopathy (BSE), also known as "mad cow disease," cosmetics may not be manufactured from, processed with, or otherwise contain, prohibited cattle materials. These materials include specified risk materials*, material from nonambulatory cattle, material from cattle not inspected and passed, or mechanically separated beef. Prohibited cattle materials do not include tallow that contains no more than 0.15 percent insoluble impurities, tallow derivatives, and hides and hide-derived products, and milk and milk products
+
+[레코드 10165]
+  구분: 금지
+  표준명: 머큐릭옥사이드
+  영문명: Mercuric Oxide
+  CASNO: 21908-53-2
+  이명: mercuric oxide, (197)mercury-labeled, mercuric oxide, (203)mercury-labeled
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 10364]
+  구분: 금지
+  표준명: 지르코늄클로로하이드레이트
+  영문명: Zirconium Chlorohydrate
+  CASNO: 18428-88-1
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 10834]
+  구분: 한도
+  표준명: 황색403호의(1)
+  영문명: Naphthol Yellow S, Ext. D&C Yellow No. 7, Ki403(1), CI 10316
+  CASNO: 0
+  이명: Acid Yellow 1, 2,4-Dinitro-1-Naphthol-7-Sulfonic Acid, Disodium Salt, Disodium Flavianate, Flavianic Acid, Disodium Salt, 8-Hydroxy-5,7-Dinitro-2-Naphthalenesulfonic Acid, Disodium Salt, 2-Naphthalenesulfonic Acid, 8-Hydroxy-5,7-Dinitro-, Disodium Salt, Naphthol Yellow S, Yellow No. 403(1)
+  배합제한국가: 미국
+  고시원료명: Ext. D&C Yellow No. 7
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 11250]
+  구분: 한도/금지
+  표준명: 녹색3호
+  영문명: Fast Green FCF, FD&C Green No. 3, Green 3 Lake, Midori3, CI 42053
+  CASNO: 2353-45-9
+  이명: Benzenemethanaminium, N-Ethyl-N-[4-[[4-[Ethyl[3-Sulfophenyl)Methyl]Amino]Phenyl](4-Hydroxy-2-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfo-, Hydroxide, Inner Salt, Disodium Salt, CI 42053, N-Ethyl-N-[4-[[4-[Ethyl[3-Sulfophenyl)Methyl]Amino]Phenyl](4-Hydroxy-2-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfobenzenemethanaminium Hydroxide, Inner Salt, Disodium Salt, Food Green 3, Green No. 3, Japan Green 3
+  배합제한국가: 미국
+  고시원료명: FD&C Green No. 3
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 11524]
+  구분: 한도
+  표준명: 벤조페논-8
+  영문명: Benzophenone-8
+  CASNO: 131-53-3
+  배합제한국가: 미국
+  고시원료명: Dioxybenzone
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 3% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 11718]
+  구분: 한도
+  표준명: 에칠헥실디메칠파바
+  영문명: Ethylhexyl Dimethyl PABA
+  CASNO: 21245-02-3 58817-05-3
+  이명: Benzoic Acid, 4-(Dimethylamino)-, 2-Ethylhexyl Ester, Benzoic Acid, 4-(Dimethylamino)-, Octyl Ester, 4-(Dimethylamino)Benzoic Acid, 2-Ethylhexyl Ester, 2-Ethylhexyl 4-Dimethyl-aminobenzoate, 2-Ethylhexyl Paradimethylamino Benzoate, Octyl Dimethyl PABA
+  배합제한국가: 미국
+  고시원료명: Padimate O
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 8% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 12109]
+  구분: 한도
+  표준명: 옥토크릴렌
+  영문명: Octocrylene
+  CASNO: 6197-30-4
+  이명: 2-Cyano-3,3-Diphenyl Acrylic Acid, 2-Ethylhexyl Ester, 2-Ethylhexyl 2-Cyano-3,3-Diphenylacrylate, 2-Ethylhexyl 2-Cyano-3,3-Diphenyl-2-Propenoate, 2-Ethylhexyl 2-Cyano-3-Phenylcinnamate, octocrilene (INN), 2-Propenoic Acid, 2-Cyano-3.3-Diphenyl-, 2-Ethylhexyl Ether, UV Absorber-3
+  배합제한국가: 미국
+  고시원료명: Octocrylene
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 10% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 12342]
+  구분: 한도
+  표준명: 페릭암모늄페로시아나이드
+  영문명: Ferric Ammonium Ferrocyanide, CI 77510
+  CASNO: 0
+  이명: Ferrate(4-), Hexakis(Cyano-κC)-, Iron(3+)(3:4), (OC-6-11)-, Ferric Ammonium, Ferrocyanide, Ferric Ferrocyanide, Iron Blue, Iron(3+) Ferrocyanide, Pigment Blue 27, Prussian Blue
+  배합제한국가: 미국
+  고시원료명: Ferric ammonium ferrocyanide
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 13014]
+  구분: 한도
+  표준명: 적색202호
+  영문명: Lithol Rubine BCA, D&C Red No. 7, , Red 7 Lake, Aka202, CI 15850:1
+  CASNO: 29092-56-6, 5281-04-9
+  이명: D&C Red No. 7
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 7
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 13324]
+  구분: 한도
+  표준명: 울트라마린
+  영문명: Ultramarines, CI 77007
+  CASNO: 12769-96-9, 1317-97-1, 57455-37-5
+  이명: Pigment Blue 29, Ultramarines
+  배합제한국가: 미국
+  고시원료명: Ultramarines
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 13474]
+  구분: 금지
+  표준명: 머큐릭클로라이드
+  영문명: Mercuric Chloride
+  CASNO: 7487-94-7
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 13583]
+  구분: 한도
+  표준명: 등색206호
+  영문명: Diiodofluorescein, D&C Orange No. 10, Daidai206, CI 45425:1
+  CASNO: 38577-97-8, 518-40-1
+  이명: D&C Orange No. 10
+  배합제한국가: 미국
+  고시원료명: D&C Orange No. 10
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 13687]
+  구분: 한도
+  표준명: 등색205호
+  영문명: Orange II, D&C Orange No. 4, Daidai205, CI 15510
+  CASNO: 0
+  이명: Acid Orange 7, Monosodium Salt, Benzenesulfonic Acid, 4-[(2-Hydroxy-1-Naphthalenyl)Azo]-, Monosodium Salt, 4-[(2-Hydroxy-1-Naphthalenyl)Azo]Benzenesulfonic Acid, Monosodium Salt, Naphthol Orange, Orange 2 Sodium Salt, Orange II, Orange No. 205
+  배합제한국가: 미국
+  고시원료명: D&C Orange No. 4
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 13938]
+  구분: 한도/금지
+  표준명: 페닐머큐릭벤조에이트
+  영문명: Phenyl Mercuric Benzoate
+  CASNO: 62-38-4,  94-43-9
+  이명: (Benzoato-o)PhenylmercuryMercury, (Benzoato-o)Phenyl-
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 14376]
+  구분: 한도/금지
+  표준명: 비스머트시트레이트
+  영문명: Bismuth Citrate
+  CASNO: 813-93-4
+  배합제한국가: 미국
+  고시원료명: Bismuth citrate
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Hair on the scalp≤2.0% * 특별 제한조건 : 헤어 두피 ≤2.0%
+
+[레코드 14386]
+  구분: 한도
+  표준명: 등색207호
+  영문명: Erythrosine Yellowish NA, D&C Orange No. 11, Daidai207, CI 45425
+  CASNO: 33239-19-9
+  이명: D&C Orange No. 11
+  배합제한국가: 미국
+  고시원료명: D&C Orange No. 11
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 14641]
+  구분: 금지
+  표준명: 지르코닐클로라이드
+  영문명: Zirconyl Chloride
+  CASNO: 7699-43-6
+  이명: Dichlorooxozirconium, Zirconium, Dichloroxo-, Zirconium Oxychloride
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 14706]
+  구분: 금지
+  표준명: 지르코늄실리케이트
+  영문명: Zirconium Silicate
+  CASNO: 10101-52-7, 1344-21-4
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 14712]
+  구분: 한도
+  표준명: 적색201호
+  영문명: Lithol Rubine B, D&C Red No. 6, Red 6 Lake, Aka201, PIGMENT RED 57, CI 15850
+  이명: CI 15850:1, 3-Hydroxy-4-[(4-Methyl-2-Sulfophenyl)Azo]-2-Naphthalenecarboxylic Acid, Disodium Salt, Lithol Rubin B, 2-Naphthalenecarboxylic Acid, 3-Hydroxy-4-[(4-Methyl-2-Sulfophenyl)Azo]-, Disodium Salt, Pigment Red 57, Disodium Salt, Red No. 201
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 6
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 14774]
+  구분: 한도
+  표준명: 디소듐이디티에이-카퍼
+  영문명: Disodium EDTA-Copper
+  CASNO: 14025-15-1
+  이명: Copper Versenate, Disodium((N,N'-1,2-Ethanediylbis(N,(Carboxymethyl)Glycinate))(4-)-N,N',O,O',On,On')Cuprate(2-)
+  배합제한국가: 미국
+  고시원료명: Disodium EDTA-copper
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Shampoos * 특별 제한조건 : 샴푸
+
+[레코드 15152]
+  구분: 한도
+  표준명: 크로뮴하이드록사이드그린
+  영문명: Chromium Hydroxide Green, CI 77289
+  CASNO: 12001-99-9
+  이명: Chromic Oxide Hydrated, Chromium Hydroxide Green, Hydrated Chromium Sesquioxide, Pigment Green 18
+  배합제한국가: 미국
+  고시원료명: Chromium hydroxide green
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 15200]
+  구분: 금지
+  표준명: 클로로폼
+  영문명: Chloroform
+  CASNO: 67-66-3
+  이명: Trichloromethane
+  배합제한국가: 미국
+  고시원료명: Chloroform
+  단서조항: The use of chloroform in cosmetic products is prohibited because it causes cancer in animals and is likely to be harmful to human health, too. The regulation makes an exception for residual amounts from its use as a processing solvent during manufacture, or as a byproduct from the synthesis of an ingredient
+
+[레코드 15662]
+  구분: 한도
+  표준명: 피로필라이트
+  영문명: Pyrophyllite
+  이명: Pyrophyllite Clay
+  배합제한국가: 미국
+  고시원료명: Pyrophyllite
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 15923]
+  구분: 한도
+  표준명: 페릭페로시아나이드
+  영문명: Ferric Ferrocyanide, CI 77510
+  CASNO: 12240-15-2, 14038-43-8
+  이명: CI 77510, Ferrate(4-), Hexakis(Cyano-C)-, Iron(3+) (3:4), Iron Blue, Pigment Blue 27, Prussian Blue
+  배합제한국가: 미국
+  고시원료명: Ferric ferrocyanide
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 16035]
+  구분: 한도
+  표준명: 에칠헥실살리실레이트
+  영문명: Ethylhexyl Salicylate
+  CASNO: 118-60-5
+  이명: Benzoic Acid, 2-Hydroxy-, 2-Ethylhexyl Ester, 2-Ethylhexyl 2-Hydroxybenzoate, 2-Ethylhexyl Salicylate, Ethyl hexyl salicylate (RIFM), Octisalate (INN), Octyl Salicylate, Octyl Salicylate (RIFM), Salicylic Acid, 2-Ethylhexyl Ester
+  배합제한국가: 미국
+  고시원료명: Octisalate
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 5% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 16216]
+  구분: 한도
+  표준명: 루미네센트징크설파이드
+  영문명: Luminescent Zinc Sulfide
+  배합제한국가: 미국
+  고시원료명: Luminescent zinc sulfide
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Externally applied facial makeup and nail polish; <10%; for infrequent use (e.g., Halloween) * 특별 제한조건 : 얼굴 메이크업, 네일 폴리시에 외용적으로 사용 < 10% 드문 사용 (할로윈)
+
+[레코드 16590]
+  구분: 한도
+  표준명: 청색1호
+  영문명: Brilliant Blue FCF, FD&C Blue No. 1, Blue 1 Lake, Ao1, CI 42090
+  CASNO: 2650-18-2, 3844-45-9, 37307-56-5
+  이명: Acid Blue 9, Benzenemethanaminium, N-Ethyl-N-[4-[[4-Ethyl[(3-Sulfophenyl)Methyl]Amino]Phenyl](2-Sulfophenyl)Methylene-2,5-Cyclohexadien-1-ylidene]-3-Sulfo, Hydroxide, Inner Salt, Disodium Salt, Benzenemethanaminium, N-Ethyl-N-(4-((4-Ethyl((3-Sulfophenyl)Methyl)Amino)Phenyl)(2-Sulfophenyl)Methylene)-2,5-Cyclohexadien-1-ylidene)-3-Sulfo-, Inner Salt, Diammonium Salt, Blue No. 1 , Blue No. 205 , Brilliant Blue FCF , N-Ethyl-N-[4-[[4-[Ethyl[(3-Sulfophenyl)Methyl]Amino]Phenyl](2-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfobenzenemethanaminium Hydroxide, Inner Salt, Disodium Salt , Food Blue 2, Japan Blue 1, Japan Blue 205
+  배합제한국가: 미국
+  고시원료명: FD&C Blue No. 1
+  제한사항: * Eye Area : Yes, also Al lake * 눈 주위 : 사용가능 (색소) * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 17285]
+  구분: 한도
+  표준명: 비스머스옥시클로라이드
+  영문명: Bismuth oxychloride, CI 77163
+  CASNO: 7787-59-9
+  이명: Bismuth Chloride Oxide, Bismuthine, Chlorooxo-, Bismuth Oxychloride, Chlorooxobismuthine, Pigment White 14
+  배합제한국가: 미국
+  고시원료명: Bismuth oxychloride
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 17318]
+  구분: 한도
+  표준명: 망가니즈바이올렛
+  영문명: Ammonium Manganese(3+) Diphosphate, Manganese Violet, CI 77742
+  CASNO: 10101-66-3
+  이명: Ammonium Manganese Pyrophosphate, Manganese Violet, Mango Violet, Pigment Violet 16, Pyrophosphoric Acid, Ammonium Manganese(3+)Salt(1:1:1)
+  배합제한국가: 미국
+  고시원료명: Manganese violet
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 17387]
+  구분: 한도
+  표준명: 갈색1호
+  영문명: Brown 1
+  CASNO: 1320-07-6, 6371-84-2
+  이명: D&C Brown No. 1
+  배합제한국가: 미국
+  고시원료명: D&C Brown No. 1
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 17598]
+  구분: 한도/금지
+  표준명: 산성등색24호
+  영문명: Acid Orange 24, CI 20170
+  CASNO: 1320-07-6, 6371-84-2
+  이명: Benzenesulfonic Acid, 4-[[3-[(2,4-Dimethylphenyl)Azo]-2,4-Dihydroxyphenyl]Azo]-, Monosodium Salt, Brown No. 201, CI 20170, 4-[[3-[(2,4-Dimethylphenyl)Azo]-2,4-Dihydroxyphenyl]Azo]Benzenesulfonic Acid, Monosodium Salt, Japan Brown 201, Resorcin Brown
+  배합제한국가: 미국
+  고시원료명: D&C Brown No. 1
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 18416]
+  구분: 금지
+  표준명: 다이머큐릭다이클로라이드
+  영문명: Dimercury Dichloride
+  CASNO: 10112-91-1
+  이명: calomel, mercurous chloride, mercury(I) chloride
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 18460]
+  구분: 한도
+  표준명: 마이카
+  영문명: Mica, CI 77019
+  CASNO: 12001-26-2
+  이명: CI 77019 , Golden Mica , Muscovite Mica , Pigment White 20 , Sericite , Sericite GMS-C , Sericite GMS-2C , Sericite MK-A , Sericite MK-B
+  배합제한국가: 미국
+  고시원료명: Mica
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 18507]
+  구분: 한도
+  표준명: 아나토
+  영문명: Annatto, CI 75120
+  CASNO: 542-40-5, 1393-63-1, 6983-79-5 (alpha-)
+  이명: Annatto, 6,6'-Diapo-ψ,ψ,-Carotenedioic Acid, 2,4,6,8,10,12,14,16,18-Eicosanonaenedioic Acid, 4,8,13,17-Tetramethyl-, (all-E)-, Natural Orange 4, Norbixin
+  배합제한국가: 미국
+  고시원료명: Annatto
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 18530]
+  구분: 한도
+  표준명: 등색201호
+  영문명: Dibromofluorescein, D&C Orange No. 5, Daidai201, CI 45370:1
+  CASNO: 4372-02-5, 596-03-2
+  이명: Acid Orange 11, CI 45370, 4',5'-Dibromo-3',6'-Dihydroxy-Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-One, Disodium Salt, Dibromofluorescein, Orange No. 201, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 4',5'-Dibromo-3',6'-Dihydroxy-, Disodium Salt, Solvent Red 72
+  배합제한국가: 미국
+  고시원료명: D&C Orange No. 5
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Subject to Limitations * 일반적인 사용 (립스틱 포함) : 사용제한 * External Use : Yes * 외용 : 사용가능 * Specific Limitations  and Comments : Mouthwashes, dentifrices; ≤5% for lipsticks * 특별 제한조건 : 마우스워시, 덴트리피스 ≤5% 립스틱 용도
+
+[레코드 18859]
+  구분: 금지
+  표준명: 비닐클로라이드
+  영문명: Vinyl Chloride
+  CASNO: 1975-01-04
+  배합제한국가: 미국
+  고시원료명: Vinyl chloride
+  단서조항: The use of vinyl chloride is prohibited as an ingredient of aerosol products, because it causes cancer and other health problems
+
+[레코드 19059]
+  구분: 한도
+  표준명: 녹색201호
+  영문명: Alizarine Cyanine Green F, D&C Green No. 5, Midori201, CI 61570
+  CASNO: 0
+  이명: Acid Green 25, Alizarin Cyanine Green, Benzenesulfonic Acid, 2,2'-[(9,10-Dihydro-9,10-Dioxo-1,4-Anthracenediyl)Diimino]Bis(5-Methyl)-, Disodium Salt, 2,2'-[(9,10-Dihydro-9,19-Dioxo-1,4-Anthracenediyl)Diimino]Bis[5-Methyl]Benzenesulfonic Acid, Disodium Salt, Green No. 201, Japan Green 201, μ-Toluenesulfonic Acid, 6,6'-(1,4-Anthraquinonylenediimino)di-, Disodium Salt
+  배합제한국가: 미국
+  고시원료명: D&C Green No. 5
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 19178]
+  구분: 한도/금지
+  표준명: 헥사클로로펜
+  영문명: Hexachlorophene
+  CASNO: 70-30-4
+  배합제한국가: 미국
+  고시원료명: Hexachlorophene
+  제한사항: * Specific Limitations  and Comments : Because of its toxic effect and ability to penetrate human skin, hexachlorophene (HCP) may be used only when no other preservative has been shown to be as effective. The HCP concentration in a cosmetic may not exceed 0.1 percent, and it may not be used in cosmetics that are applied to mucous membranes, such as the lips * 특별 제한조건 : 독성과 신체 피부의 침투하는 능력 때문에, 헥사클로로펜은 다른 효과적인 보존제가 존재하지 않을 때에만 사용할 수 있다. 화장품에서 HCP의 농도는 0.1 퍼센트를 초과하면 안되고, 화장품에 사용되는 HCP 제품들은 립이나 점막에 사용하면 안된다.
+
+[레코드 19228]
+  구분: 한도
+  표준명: 황색202호의(1)
+  영문명: Uranine, D&C Yellow No. 8, Acid Yellow 73 Sodium Salt, Ki202(2), CI 45350
+  CASNO: 518-45-6, 518-47-8
+  이명: Acid Yellow 73 Sodium Salt, 3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Disodium Salt, Japan Yellow 202(1), Sodium Fluorescein , Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 3',6'-Dihydroxy-, Disodium Salt , Uranine, Yellow No. 201, Yellow No. 202(1), Yellow No. 202(2)
+  배합제한국가: 미국
+  고시원료명: D&C Yellow No. 8
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 19249]
+  구분: 한도/금지
+  표준명: 실버나이트레이트
+  영문명: Silver Nitrate
+  CASNO: 7761-88-8
+  이명: argenti nitras (EP), Nitric Acid, Silver(1+) Salt
+  배합제한국가: 미국
+  고시원료명: Silver Nitrate
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : No * 외용 : 사용금지 * Specific Limitations  and Comments : Externally applied professional-use only cosmetics intended to impart color to the eyebrows and eyelashes; <4%; not intended for use on persons under the age of 16. * 특별 제한조건 : 눈썹과 속눈썹에 색상을 부여하기 위한 전문용 화장품; < 4%; 16세 미만 사용금지
+
+[레코드 19272]
+  구분: 금지
+  표준명: 테트라클로로살리실아닐리드
+  영문명: Tetrachlorosalicylanilide
+  CASNO: 7426-07-05
+  이명: Benzamide, 2,3,4,5-tetrachloro-6-hydroxy-N-phenyl
+  배합제한국가: 미국
+  고시원료명: Halogenated salicylanilides (di-, tri-, metabromsalan and tetrachlorosalicylanilide)
+  단서조항: These are prohibited in cosmetic products because they may cause serious skin disorders
+
+[레코드 19282]
+  구분: 한도
+  표준명: 적색225호
+  영문명: Sudan III, D&C Red No. 17, Aka225, CI 26100
+  CASNO: 0
+  이명: 2-Naphthalenol, 1-[[4-(Phenylazo)Phenyl]Azo]-, 2-Naphthol, 1-(p-phenyulazophenylazo)-, 1-[[4-(Phenylazo)Phenyl]Azo]-2-Naphthalenol, Red No. 225, Solvent Red 23, Sudan III, Sudan Red BK, Tetrazobenzene-beta-Naphthol
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 17
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 19797]
+  구분: 한도
+  표준명: 적색218호
+  영문명: Tetrachlorotetrabromofluorescein, D&C Red No. 27, Aka218, Red 27 Lake, CI 45410:1
+  CASNO: 13473-26-2, 18472-87-2, 2134-15-8
+  이명: CI 45410:1, Japan Red 104, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxy-, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H), 9'-[9H]Xanthen]-3-one
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 27
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 19884]
+  구분: 한도
+  표준명: 실버
+  영문명: Silver, CI 77820
+  CASNO: 7440-22-4
+  이명: Silver
+  배합제한국가: 미국
+  고시원료명: Silver
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Subject to limitations * 외용 : 사용제한 * Specific Limitations  and Comments : Fingernail polish; ≤1% * 특별 제한조건 : 손톱 폴리시 ; ≤1%
+
+[레코드 19896]
+  구분: 한도
+  표준명: 적색40호
+  영문명: Allura Red AC, FD&C Red No. 40, CI 16035
+  CASNO: 25956-17-6
+  이명: Allura Red AC , Coccin Red , Curry Red , Food Red 17 , 6-Hydroxy-5-[(2-Methoxy-5-Methyl-4-Sulfophenyl)Azo]-2-Naphthalenesulfonic Acid, Disodium Salt , 2-Naphthalenesulfonic Acid, 6-Hydroxy-5-[(2-Methoxy-5-Methyl-4-Sulfophenyl)Azo]-, Disodium Salt , 2-Naphthalenesulfonic Acid, 6-Hydroxy-5-((6-Methoxy-4-Sulfo-m-Tolyl)Azo)-, Disodium Salt
+  배합제한국가: 미국
+  고시원료명: FD&C Red No. 40
+  제한사항: * Eye Area : Yes, also Al lake * 눈 주위 : 사용가능 (색소) * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 20734]
+  구분: 한도/금지
+  표준명: 티메로살
+  영문명: Thimerosal
+  CASNO: 54-64-8
+  이명: Ethyl(2-Mercaptobenzoato-S)Mercury, Sodium Salt, Mercurate(1-), Ethyl(2-(Mercapto-κS)Benzoate(2-)-κO)-, Sodium, Mercurate(1-), Ethyl(2-(Mercaptpo-κS)Benzoato(2-)-κO)-, Sodium, Sodium Ethylmercurithiosalicylate ?thiomersal (INN)
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 20838]
+  구분: 한도
+  표준명: 페러스옥사이드
+  영문명: Ferrous oxide, Iron Oxide, CI 77489
+  CASNO: 1345-25-1
+  이명: Iron Oxides
+  배합제한국가: 미국
+  고시원료명: Iron oxides
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 20904]
+  구분: 금지
+  표준명: 다이알리옥시네오헥실지르코늄트라이데카노에이트
+  영문명: Diallyloxyneohexyl Zirconium Tridecanoate
+  CASNO: 110392-54-6
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 21013]
+  구분: 금지
+  표준명: 클로로플루오로카본 추진제
+  영문명: Chlorofluorocarbon Propellants
+  배합제한국가: 미국
+  고시원료명: Chlorofluorocarbon propellants
+  단서조항: The use of chlorofluorocarbon propellants in cosmetic aerosol products intended for domestic consumption is prohibited.
+
+[레코드 21221]
+  구분: 한도
+  표준명: 황색201호
+  영문명: Fluorescein, D&C Yellow No. 7, Ki201, CI 45350:1
+  CASNO: 518-47-8
+  이명: CI 45350, 3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Fluorescein, Obiturine, Uranin, Uranine, Yellow No. 201
+  배합제한국가: 미국
+  고시원료명: D&C Yellow No. 7
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 21737]
+  구분: 한도
+  표준명: 호모살레이트
+  영문명: Homosalate
+  CASNO: 118-56-9
+  이명: Benzoic Acid, 2-Hydroxy-, 3,3,5-Trimethylcyclohexyl Ester, Cyclohexanol, 3,3,5-trimethyl-, salicylate, Homomenthyl Salicylate, Metahomomenthyl Salicylate, 3,3,5-Trimethylcyclohexyl 2-Hydroxybenzoate
+  배합제한국가: 미국
+  고시원료명: Homosalate
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 15% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 21932]
+  구분: 한도
+  표준명: 적색227호
+  영문명: Fast Acid Magenta, D&C Red No. 33, Red 33 Lake, Aka227, FOOD RED 12, CI 17200
+  CASNO: 0
+  이명: Acid Red 33, Disodium Salt, 5-Amino-4-Hydroxy-3-(Phenylazo)-2,7-Naphthalenedisulfonic Acid, Disodium Salt, Azofuchsin, Azo Fuchsine, Disodium 1-Hydroxy-2-Phenylazo-8-Aminonaphthalene-3,6-Disulfonate, Food Red 12, 2,7-Naphthalenedisulfonic Acid, 5-Amino-4-Hydroxy-3-(Phenylazo)-, Disodium Salt, Red No. 227
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 33
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Subject to Limitations * 일반적인 사용 (립스틱 포함) : 사용제한 * External Use : Yes * 외용 : 사용가능 * Specific Limitations  and Comments : Lipstick  products ≤3%; mouthwash, dentrifices * 특별 제한조건 : 립스틱 제품 ≤3%; 마우스워시, 덴트리피스
+
+[레코드 22377]
+  구분: 한도
+  표준명: 적색228호
+  영문명: Permaton Red, D&C Red No. 36, Red 36 Lake, Aka228, PIGMENT RED 4, CI 12085
+  CASNO: 0
+  이명: 1-[(2-Chloro-4-Nitrophenyl)Azo]-2-Naphthalenol, 2-Naphthalenol, 1-[(2-Chloro-4-Nitrophenyl)Azo]-, Pigment Red 4, Red No. 228
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 36
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Subject to Limitations * 일반적인 사용 (립스틱 포함) : 사용제한 * External Use : Yes * 외용 : 사용가능 * Specific Limitations  and Comments : Lipstick  products ≤3% * 특별 제한조건 : 립스틱 제품 ≤3%
+
+[레코드 23058]
+  구분: 한도
+  표준명: 카민
+  영문명: Carmine, Cochineal, CI 75470
+  CASNO: 0
+  이명: Carminic Acid, Carminic Acid Lake, Cochineal, Cochineal (Coccus cacti L.) (RIFM), Natural Red 4
+  배합제한국가: 미국
+  고시원료명: Carmine
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 23487]
+  구분: 한도
+  표준명: 부틸메톡시디벤조일메탄
+  영문명: Butyl Methoxydibenzoylmethane
+  CASNO: 70356-09-1
+  이명: avobenzone (INN), 4-tert-Butyl-4'-methoxydibenzoylmethane, 1-(4-Tert-butylphenyl)-3-(4-, Methoxyphenyl)Propane-1,3-dione1-[4-(1,1-Dimethylethyl)Phenyl]-3-(4-Methoxyphenyl)-1,3-Propanedione, 1,3-Propanedione, 2-butyl-2-methoxy-1,3-diphenyl-, 1,3-Propanedione, 1-[4-(1,1-Dimethylethyl)Phenyl]-3-(4-Methoxyphenyl)-
+  배합제한국가: 미국
+  고시원료명: Avobenzone
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 3% * Specific Limitations  and Comments : Use of the term ""sunscreen"" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, ""Contains a sunscreen to protect product color."" If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : ""선스크린""의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, ""제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다."" 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 23819]
+  구분: 금지
+  표준명: 할로겐화살리실아닐리드(다이-,트리-,메타브롬잘란 및 테트라클로로살리실아닐리드)
+  영문명: Halogenated salicylanilides
+  배합제한국가: 미국
+  고시원료명: Halogenated salicylanilides (di-, tri-, metabromsalan and tetrachlorosalicylanilide)
+  단서조항: These are prohibited in cosmetic products because they may cause serious skin disorders
+
+[레코드 24095]
+  구분: 한도
+  표준명: 적색103호의(1)
+  영문명: Eosine YS, D&C Red No. 22, Red 22 Lake, Pigment Red 90:1 Aluminum Lake, Aka230(1), CI 45380
+  CASNO: 17372-87-1, 548-26-5
+  이명: Bromoeosine, Bromofluoresceic Acid, Bromo Fluorescein, CI 45380 (Na Salt), Eosine, Eosine G, Eosin YS, Red 22, Red No. 230(1), Spiro[Isobenzofuran-1[3H], 9'-[9H]-Xanthen]-3-one, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxy Disodium Salt, 2',4',5',7',-Tetrabromo-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Disodium Salt, 2',4',5',7'-Tetrabromofluoroscein
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 22
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 24112]
+  구분: 금지
+  표준명: 지르코닐다이옥사이드
+  영문명: Zirconyl Dioxide
+  CASNO: 1314-23-4?
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+
+[레코드 25528]
+  구분: 한도
+  표준명: 구리가루
+  영문명: Copper powder, CI 77400
+  CASNO: 7440-50-8
+  이명: Bronze Powder, Copper Powder, Pigment Metal 2
+  배합제한국가: 미국
+  고시원료명: Copper powder
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 26240]
+  구분: 한도
+  표준명: 황색5호
+  영문명: Sunset Yellow FCF, FD&C Yellow No. 6, Sunset Yellow Aluminum Lake, Yellow 6 Lake, FOOD YELLOW 3, CI 15985
+  CASNO: 0
+  이명: Food Yellow 3, Disodium Salt, 6-Hydroxy-5-[(4-Sulfophenyl)Azo]-2-Naphthalenesulfonic Acid, Disodium Salt, 2-Naphthalenesulfonic Acid, 6-Hydroxy-5-[(4-Sulfophenyl)Azo]-, Disodium Salt, Sunset Yellow, Sunset Yellow FCF
+  배합제한국가: 미국
+  고시원료명: FD&C Yellow No. 6
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 26374]
+  구분: 한도/금지
+  표준명: 페닐머큐릭브로마이드
+  영문명: Phenyl Mercuric Bromide
+  CASNO: 1192-89-8
+  이명: Bromophenylmercury
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 26609]
+  구분: 한도/금지
+  표준명: 페닐머큐릭아세테이트
+  영문명: Phenyl Mercuric Acetate
+  CASNO: 62-38-4,  94-43-9
+  이명: (Acetato-o)PhenylmercuryAcetoxyphenylmercury
+  배합제한국가: 미국
+  고시원료명: Mercury compounds
+  제한사항: * Specific Limitations  and Comments : Mercury compounds are readily absorbed through the skin on topical application and tend to accumulate in the body. They may cause allergic reactions, skin irritation, or neurotoxic problems. The use of mercury compounds in cosmetics is limited to eye area products at no more than 65 parts per million (0.0065 percent) of mercury calculated as the metal and is permitted only if no other effective and safe preservative is available. All other cosmetics containing mercury are adulterated and subject to regulatory action unless it occurs in a trace amount of less than 1 part per million (0.0001 percent) calculated as the metal and its presence is unavoidable under conditions of good manufacturing practice * 특별 제한조건 : 수은 화합물들은 국소 적용된 피부를 통해 흡수되어, 신체에 축적되는 경향이 있다. 수은은 알러지 반응, 피부 자극반응 또는 신경독성의 문제를 야기할 수  있다. 눈가에 바르는 제품에서 수은 화합물의 사용은 금속의 수은으로서 계산했을 때 0.0065퍼센트를 초과하면 안되며 효과적이고 안전한 다른 보존제가 이용가능하지 않을경우에만 허용된다. 금속으로 계산했을때 트레이스로 1 ppm(0.0001 퍼센트)이며 GMP 조건하에서 이러한 트레이스의 존재를 피할 수 없는 경우가 아니라면 수은을 함유하는 모든 다른 화장품은 불량화장품이며 규제를 받는다.
+
+[레코드 26905]
+  구분: 한도
+  표준명: 카라멜
+  영문명: Caramel
+  CASNO: 0
+  이명: Caramel color (RIFM), Natural Brown 10
+  배합제한국가: 미국
+  고시원료명: Caramel
+  제한사항: * Eye Area : Yes * 눈 주위 : 사용가능 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 26934]
+  구분: 금지
+  표준명: 비닐클로라이드모노머
+  영문명: Vinyl Chloride Monomer
+  CASNO: 75-0-4
+  이명: Chloride, Vinyl, Chloroethylene, Vinyl Chloride
+  배합제한국가: 미국
+  고시원료명: Vinyl chloride
+  단서조항: The use of vinyl chloride is prohibited as an ingredient of aerosol products, because it causes cancer and other health problems
+
+[레코드 27040]
+  구분: 한도
+  표준명: 황색203호
+  영문명: Quinoline Yellow WS, D&C Yellow No. 10, Yellow 10 Lake, Ki203, Acid Yellow 3 Aluminum Lake, FOOD YELLOW 13, CI 47005
+  CASNO: 38615-46-2, 8004-92-0, 95193-83-2
+  이명: Acid Yellow 3, Food Yellow 13, Japan Yellow 203, Quinoline Yellow, Yellow No. 203
+  배합제한국가: 미국
+  고시원료명: D&C Yellow No. 10
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 27114]
+  구분: 한도
+  표준명: 티이에이-살리실레이트
+  영문명: TEA-Salicylate
+  CASNO: 2174-16-5
+  이명: Benzoic Acid, 2-Hydroxy-, Compd. with 2,2',2"-Nitrilotris[Ethanol] (1:1), 2-Hydroxybenzoic Acid, Compd. with 2,2',2"-Nitrilotris[Ethanol] (1:1), Triethanolamine Salicylate, Trolamine Salicylate
+  배합제한국가: 미국
+  고시원료명: Trolamine Salicylate
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 12% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 27249]
+  구분: 한도/금지
+  표준명: 지르코늄
+  영문명: Zirconium
+  CASNO: 7440-67-7
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 27720]
+  구분: 한도
+  표준명: 적색104호의(1)
+  영문명: Phloxine B, D&C Red No. 28, Red 28 Lake, Aka104(1), CI 45410
+  CASNO: 18472-87-2
+  이명: Phloxine B, Red No. 218, Solvent Red 48, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxy-, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H), 9'-[9H]Xanthen]-3-one
+  배합제한국가: 미국
+  고시원료명: D&C Red No. 28
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : Yes * 일반적인 사용 (립스틱 포함) : 사용가능 * External Use : Yes * 외용 : 사용가능
+
+[레코드 27891]
+  구분: 한도
+  표준명: 벤조페논-4
+  영문명: Benzophenone-4
+  CASNO: 4065-45-6
+  이명: Benzenesulfonic Acid, 5-Benzoyl-4-Hydroxy-2-Methoxy-, 5-Benzoyl-4-Hydroxy-2-Methoxybenesulfonic Acid, 5-Benzoyl-4-Hydroxy-2-Methoxybenzene Sulfonic Acid, 2-Hydroxy-4-Methoxybenzophenone-5-Sulfonic Acid, 2-Hydroxy-4-methoxybenzophenone-5-sulfonic Acid (Trihydrate), 1-Phenol-4-Sulfonic Acid, 2-Benzoyl-5-Methoxy-, Sulisobenzone (INN)
+  배합제한국가: 미국
+  고시원료명: Sulisobenzone
+  제한사항: * 【Restrictions】Maximum Concentration (제한) : 10% * Specific Limitations  and Comments : Use of the term "sunscreen" or similar sun protection wording in a product's labeling generally causes the product to be subject to regulation as a drug or a drug/cosmetic, depending on the claims. However, sunscreen ingredients may also be used in some cosmetic products to protect the products’ color. The labelling must also state why the sunscreen ingredient is used, for example, "Contains a sunscreen to protect product color." If this explanation isn’t present, the product may be subject to regulation as a drug (21 CFR 700.35). For more information on sunscreens, refer to Tanning Products * 특별 제한조건 : "선스크린"의 단어를 사용하거나 자외선 차단과 비슷한 단어를 사용할 경우, 해당 제품은 클레임(표시광고)에 따라 제약 또는 제약/화장품의 규정을 따라야 한다. 그러나, 자외선 차단의 성분들은 제품의 색을 보호하는 역할로 사용되기도 한다. 자외선을 차단하는 성분이 사용된 목적에 대해 라벨링에 반드시 명시해야한다. 예를 들어, "제품의 색을 보호하기 위해 자외차단제 성분을 함유하고 있다." 만약 이러한 설명을 라벨링에 하지 않는다면, 그 상품은 제약으로서의 규정에 따라야한다. (21 CFR 700.35) 자외선 차단에 대한 정보가 궁금하면 태닝 제품을 참고하라.
+
+[레코드 28567]
+  구분: 한도/금지
+  표준명: 다이클로로메탄
+  영문명: Dichloromethane
+  CASNO: 1975-09-02
+  배합제한국가: 미국
+  고시원료명: Methylene chloride
+  단서조항: It causes cancer in animals and is likely to be harmful to human health, too
+
+[레코드 29302]
+  구분: 한도
+  표준명: 구아이아줄렌
+  영문명: Guaiazulene
+  CASNO: 489-84-9
+  이명: , Azulene, 1,4-Dimethyl-7-(1-Methylethyl)- , 1,4-Dimethyl-7-Isopropyl-Azulene , 1,4-Dimethyl-7-(1-Methylethyl)Azulene , 7-Isopropyl-1,4-dimethylazulene (RIFM)
+  배합제한국가: 미국
+  고시원료명: Guaiazulene
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
+
+[레코드 29315]
+  구분: 금지
+  표준명: 지르코늄가루
+  영문명: Zirconium Powder
+  CASNO: 7440-67-7
+  배합제한국가: 미국
+  고시원료명: Zirconium-containing Complexes
+  단서조항: The use of zirconium-containing complexes in aerosol cosmetic products is prohibited because of their toxic effect on lungs of animals, as well as the formation of granulomas in human skin
+
+[레코드 30976]
+  구분: 한도
+  표준명: 자색201호
+  영문명: Alizurine Purple SS, D&C Violet No. 2, Murasaki201, CI 60725
+  CASNO: 0
+  이명: 9,10-Anthracenedione, 1-Hydroxy-4-[(4-Methylphenyl)Amino]-, Anthraquinone, 1-Hydroxy-4-ψ-Toluidino, Disperse Blue 72, 1-Hydroxy-4-(4-Methylanilino)Anthraquinone, 1-Hydroxy-4-[(4-Methylphenyl)Amino]-9,10-Anthracenedione, Japan Violet 201, Solvent Violet 13, Violet No. 201
+  배합제한국가: 미국
+  고시원료명: D&C Violet No. 2
+  제한사항: * Eye Area : No * 눈 주위 : 사용금지 * Generally  (Includes  Lipsticks) : No * 일반적인 사용 (립스틱 포함) : 사용금지 * External Use : Yes * 외용 : 사용가능
