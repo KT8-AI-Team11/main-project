@@ -54,10 +54,10 @@
 
     .cosy-page{
   flex: 1;
-  min-width: 0;               /* ✅ flex 환경에서 가로 스크롤/overflow 안정화 */
-  padding: var(--cosy-pad-page) var(--cosy-pad-page) 40px;
+  min-width: 0;
+  padding: var(--cosy-pad-page);
   background: var(--cosy-page-bg);
-  overflow: auto;             /* ✅ 세로/가로 둘 다 스크롤 가능 */
+  overflow: visible; /* ✅ body가 스크롤하도록 */
 }
 
 .cosy-grid-3{
@@ -566,7 +566,7 @@
   padding: 18px 14px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;   /* ✅ */
   position: sticky;
   top: 0;
   overflow: hidden;

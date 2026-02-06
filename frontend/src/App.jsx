@@ -220,6 +220,7 @@ export default function CosyUI() {
     <div
       style={{
         minHeight: "100vh",
+        height: "100vh",
         display: "flex",
         backgroundColor: "#f9fafb",
         fontFamily: "sans-serif",
@@ -237,7 +238,16 @@ export default function CosyUI() {
       />
 
       {/* Main */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
         {/* Header */}
         <Header
           onGoHome={() => setCurrentPage("home")}
@@ -254,6 +264,8 @@ export default function CosyUI() {
             flex: 1,
             display: "flex",
             flexDirection: "column",
+            minHeight: 0,
+            overflowY: "auto",
           }}
         >
           <div style={{ flex: "1 0 auto", display: "flex", flexDirection: "column" }}>

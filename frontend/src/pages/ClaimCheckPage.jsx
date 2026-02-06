@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 import CountryMultiSelect from "../components/CountryMultiSelect";
-import { ocrExtract } from "../api/ocr"; 
+import { ocrExtract } from "../api/ocr";
 import { checkRegulation } from "../api/compliance";
 import { saveInspectionLog } from "../api/log";
 
@@ -32,7 +32,6 @@ function mapFindingRiskToSeverity(risk) {
   if (r === "MEDIUM") return "WARN";
   return "PASS";
 }
-
 
 function normalizeInspectionResult(apiJson, countryCode) {
   const status = mapOverallRiskToStatus(apiJson?.overall_risk);
@@ -58,13 +57,17 @@ function normalizeInspectionResult(apiJson, countryCode) {
 
   return {
     phase: "done",
-    status, // PASS/WARN/FAIL
-    violations, // highlight 계산에 사용
+    status,
+    violations,
     llmText,
   };
 }
 
-export default function ClaimCheckPage({ initialSelectedProducts, initialSelectedProductIds, navData = [] }) {
+export default function ClaimCheckPage({
+  initialSelectedProducts,
+  initialSelectedProductIds,
+  navData = [],
+}) {
   // =========================
   // 1) 국가 옵션
   // =========================
@@ -91,7 +94,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   const [ocrPhase, setOcrPhase] = useState("idle"); // idle | loading | done | error
   const [ocrMsg, setOcrMsg] = useState("");
 
-  // ✅ 디폴트 자동 선택 없음
   const [selectedCountryCodes, setSelectedCountryCodes] = useState([]);
 
   // =========================
@@ -100,7 +102,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   const [resultsByCountry, setResultsByCountry] = useState({});
   const [inspectionStarted, setInspectionStarted] = useState(false);
 
-  // ✅ “돌아가는 중”을 버튼/패널에 강하게 표시하기 위한 상태
   const [isInspecting, setIsInspecting] = useState(false);
   const [currentInspectingCode, setCurrentInspectingCode] = useState("");
 
@@ -122,7 +123,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
     setCurrentInspectingCode("");
   };
 
-  // 선택한 국가가 바뀌면 activeTab이 범위 밖일 수 있어 보정
   useEffect(() => {
     if (selectedCountryCodes.length === 0) return;
     if (!selectedCountryCodes.includes(activeTab)) {
@@ -202,7 +202,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   };
 
   // =========================
-  // 4) OCR 연동 (절대 깨지면 안 됨)
+  // 4) OCR
   // =========================
   const onPickImage = (file) => {
     if (!file) return;
@@ -233,8 +233,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
       setOcrPhase("loading");
       setOcrMsg("");
 
-      // ✅ 기존 유지 (OCR이 이미 정상 동작 중인 흐름 보존)
-      const res = await ocrExtract(imageFile, "korean"); // key=image, lang=korean
+      const res = await ocrExtract(imageFile, "korean");
       const normalized = res?.normalized_text || "";
       const text = res?.text || "";
 
@@ -250,11 +249,11 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   };
 
   // =========================
-  // 5) 검사 실행 (FastAPI: POST /v1/compliance/check-regulation)
+  // 5) 검사 실행
   // =========================
   const runInspection = async () => {
     if (!canRunInspection) return;
-    if (isInspecting) return; // ✅ 중복 클릭 방지
+    if (isInspecting) return;
 
     setInspectionStarted(true);
     setTabPinned(false);
@@ -262,11 +261,9 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
     setCurrentInspectingCode("");
 
     try {
-      // 1) 선택 국가 초기 상태 세팅
       const initState = {};
       selectedCountryCodes.forEach((c) => {
         if (!SUPPORTED_MARKETS.has(c)) {
-          // ❗ 미지원 국가: ERR 대신 PEND로 처리(보기 좋게)
           initState[c] = {
             phase: "done",
             status: "PEND",
@@ -281,12 +278,10 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
       });
       setResultsByCountry(initState);
 
-      // 2) 결과 영역으로 스크롤
       setTimeout(() => {
         resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 50);
 
-      // 3) 국가별 반복 호출 (순차)
       for (let i = 0; i < selectedCountryCodes.length; i++) {
         const c = selectedCountryCodes[i];
         if (!SUPPORTED_MARKETS.has(c)) continue;
@@ -302,7 +297,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
           const normalized = normalizeInspectionResult(apiJson, c);
           setResultsByCountry((prev) => ({ ...prev, [c]: normalized }));
 
-          // 데이터 Backend로 전송
           const productId = initialSelectedProductIds?.[0];
           if (productId) {
               const logRequest = {
@@ -310,7 +304,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                   country: c,
                   updateType: "MARKETING",
                   marketingStatus: apiJson.overall_risk || "MEDIUM",
-                  // 상세 사유들을 하나로 합쳐서 저장
                   marketingLaw: apiJson.findings?.map(f => `[${f.snippet}] ${f.reason}`).join("\n") || "규제 근거 정보 없음",
               };
               await saveInspectionLog(logRequest);
@@ -338,7 +331,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   const activeResult = resultsByCountry?.[activeTab];
 
   // =========================
-  // 6) UI helpers: 상태 chip
+  // 6) UI helpers
   // =========================
   const getMiniStatusMeta = (code) => {
     if (!inspectionStarted) return null;
@@ -422,23 +415,26 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   };
 
   const renderReadyRow = (label, ok) => {
+    const statusTextStyle = (color) => ({
+      color,
+      fontWeight: 900,
+      whiteSpace: "nowrap",
+      wordBreak: "keep-all",
+      overflowWrap: "normal",
+      flexShrink: 0,
+    });
+
     return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 10,
-        }}
-      >
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
         <div className="cosy-subtext" style={{ color: "#111827" }}>
           {label}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
           {ok ? (
             <>
               <CheckCircle2 size={16} color="#16a34a" />
-              <div className="cosy-subtext" style={{ color: "#16a34a", fontWeight: 900 }}>
+              <div className="cosy-subtext" style={statusTextStyle("#16a34a")}>
                 완료
               </div>
             </>
@@ -458,8 +454,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
   // =========================
   // 7) Render
   // =========================
-  
-
   return (
     <div className="cosy-page">
       <div className="cosy-grid-3 claim-top-grid">
@@ -467,18 +461,8 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
         <div className="cosy-panel">
           <div className="cosy-panel__title">라벨 이미지 업로드</div>
 
-          <div
-            className="cosy-card claim-upload-card"
-            style={{ padding: 14, display: "flex", flexDirection: "column", gap: 10 }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 10,
-              }}
-            >
+          <div className="cosy-card claim-upload-card" style={{ padding: 14, display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <ImageIcon size={18} />
                 <div style={{ fontWeight: 900, fontSize: 13 }}>
@@ -506,11 +490,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
               }}
             >
               {imagePreview ? (
-                <img
-                  src={imagePreview}
-                  alt="preview"
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                />
+                <img src={imagePreview} alt="preview" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               ) : (
                 <label
                   style={{
@@ -528,19 +508,12 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                 >
                   <UploadCloud />
                   <div>클릭해서 업로드</div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    style={{ display: "none" }}
-                    onChange={(e) => onPickImage(e.target.files?.[0])}
-                  />
+                  <input type="file" accept="image/*" style={{ display: "none" }} onChange={(e) => onPickImage(e.target.files?.[0])} />
                 </label>
               )}
             </div>
 
-            <div className="cosy-subtext">
-              * 다음 패널에서 “OCR 추출”을 눌러 텍스트로 변환할 수 있어요.
-            </div>
+            <div className="cosy-subtext">* 다음 패널에서 “OCR 추출”을 눌러 텍스트로 변환할 수 있어요.</div>
           </div>
         </div>
 
@@ -548,16 +521,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
         <div className="cosy-panel">
           <div className="cosy-panel__title">OCR 결과 텍스트</div>
 
-          <div
-            className="cosy-card claim-ocr-card"
-            style={{
-              padding: 14,
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-            }}
-          >
-            {/* ✅ OCR 헤더 줄바꿈 방지 */}
+          <div className="cosy-card claim-ocr-card" style={{ padding: 14, display: "flex", flexDirection: "column", gap: 10 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, width: "100%" }}>
               <div
                 className="cosy-subtext"
@@ -575,22 +539,11 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                 OCR 결과가 자동으로 입력되고, 직접 수정할 수 있어요.
               </div>
 
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  flexShrink: 0,
-                  whiteSpace: "nowrap",
-                }}
-              >
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, flexShrink: 0, whiteSpace: "nowrap" }}>
                 {ocrPhase === "done" ? (
                   <>
                     <CheckCircle2 size={16} color="#16a34a" />
-                    <div
-                      className="cosy-subtext"
-                      style={{ color: "#16a34a", fontWeight: 900, whiteSpace: "nowrap" }}
-                    >
+                    <div className="cosy-subtext" style={{ color: "#16a34a", fontWeight: 900, whiteSpace: "nowrap" }}>
                       {ocrMsg || "OCR 완료"}
                     </div>
                   </>
@@ -604,20 +557,14 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                 ) : ocrPhase === "error" ? (
                   <>
                     <AlertTriangle size={16} color="#ef4444" />
-                    <div
-                      className="cosy-subtext"
-                      style={{ color: "#ef4444", fontWeight: 900, whiteSpace: "nowrap" }}
-                    >
+                    <div className="cosy-subtext" style={{ color: "#ef4444", fontWeight: 900, whiteSpace: "nowrap" }}>
                       {ocrMsg || "OCR 실패"}
                     </div>
                   </>
                 ) : (
                   <>
                     <Minus size={16} color="#9ca3af" />
-                    <div
-                      className="cosy-subtext"
-                      style={{ color: "#9ca3af", fontWeight: 900, whiteSpace: "nowrap" }}
-                    >
+                    <div className="cosy-subtext" style={{ color: "#9ca3af", fontWeight: 900, whiteSpace: "nowrap" }}>
                       대기
                     </div>
                   </>
@@ -646,12 +593,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
             />
 
             <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
-              <button
-                type="button"
-                className="cosy-btn cosy-btn--primary"
-                onClick={runOcr}
-                disabled={!imageFile || ocrPhase === "loading"}
-              >
+              <button type="button" className="cosy-btn cosy-btn--primary" onClick={runOcr} disabled={!imageFile || ocrPhase === "loading"}>
                 {ocrPhase === "loading" ? "OCR 추출 중..." : "OCR 추출"}
               </button>
             </div>
@@ -662,7 +604,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
         <div className="cosy-panel is-relative">
           <div className="cosy-panel__title">검사</div>
 
-          {/* ✅ 검사 중에는 국가 선택 UI 잠금 + 약간 투명 */}
           <div style={{ pointerEvents: isInspecting ? "none" : "auto", opacity: isInspecting ? 0.65 : 1 }}>
             <CountryMultiSelect
               label="대상 국가 선택"
@@ -680,7 +621,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
               disabled={isInspecting}
               onClick={() => setSelectedCountryCodes(countryOptions.map((c) => c.code))}
               style={{ cursor: isInspecting ? "not-allowed" : "pointer" }}
-              title={isInspecting ? "검사 중에는 변경할 수 없어요" : ""}
             >
               전체 선택
             </button>
@@ -691,28 +631,17 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
               disabled={isInspecting}
               onClick={() => setSelectedCountryCodes([])}
               style={{ cursor: isInspecting ? "not-allowed" : "pointer" }}
-              title={isInspecting ? "검사 중에는 변경할 수 없어요" : ""}
             >
               해제
             </button>
           </div>
 
-          <div className="claim-inspection-grid" style={{ marginTop: 14 }}>
-            {/* 왼쪽: 요약 박스 */}
-            <div
-              className="cosy-card claim-inspection-summary"
-              style={{
-                padding: 18,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
+          {/* ✅ 여기부터: 2칸 레이아웃 삭제하고 “한 박스”로 통합 */}
+          <div style={{ marginTop: 14 }}>
+            <div className="cosy-card claim-inspection-summary" style={{ padding: 18 }}>
               {!inspectionStarted ? (
-                <div style={{ width: "100%" }}>
-                  <div style={{ fontWeight: 900, color: "#111827", marginBottom: 10 }}>
-                    준비 상태 체크
-                  </div>
+                <>
+                  <div style={{ fontWeight: 900, color: "#111827", marginBottom: 10 }}>준비 상태 체크</div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {renderReadyRow("이미지 업로드", hasImage)}
@@ -722,36 +651,19 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
 
                   <div style={{ height: 10 }} />
 
-                  <div
-                    className="cosy-subtext"
-                    style={{
-                      fontWeight: 900,
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
+                  <div className="cosy-subtext" style={{ fontWeight: 900, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {canRunInspection
-                      ? "준비 완료! 오른쪽 ‘검사 실행’을 누르면 국가별 검사가 시작됩니다."
+                      ? "준비 완료! 아래 ‘검사 실행’을 누르면 국가별 검사가 시작됩니다."
                       : "위 항목이 모두 ‘완료’가 되면 ‘검사 실행’이 가능합니다."}
                   </div>
-                </div>
+                </>
               ) : (
-                <div style={{ width: "100%" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: 10,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    <div style={{ fontWeight: 900, color: "#111827" }}>
+                <>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                    <div style={{ fontWeight: 900, color: "#111827", whiteSpace: "nowrap" }}>
                       검사 진행: {overall.doneCount}/{overall.total} 완료
                     </div>
 
-                    {/* ✅ 더 눈에 띄는 “처리 중” 표시 */}
                     {isInspecting && !allDone ? (
                       <div
                         style={{
@@ -764,22 +676,14 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                           border: "1px solid #93C5FD",
                           color: "#1D4ED8",
                           fontWeight: 900,
+                          whiteSpace: "nowrap",
                         }}
-                        title="검사가 진행 중입니다"
                       >
                         <Loader2 size={14} className="cosy-spin" />
-                        처리 중
+                        {currentInspectingCode ? `현재 ${currentInspectingCode} 처리 중…` : `처리 중 (${overall.loading})`}
                       </div>
                     ) : (
-                      <div
-                        className="cosy-subtext"
-                        style={{
-                          fontWeight: 900,
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                      >
+                      <div className="cosy-subtext" style={{ fontWeight: 900, whiteSpace: "nowrap" }}>
                         처리중 {overall.loading}
                       </div>
                     )}
@@ -787,6 +691,17 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
 
                   <div style={{ height: 10 }} />
                   {renderMiniStatusChips()}
+
+                  {/* 진행률 */}
+                  <div style={{ width: "100%", marginTop: 12 }}>
+                    <div style={{ height: 8, background: "#E5E7EB", borderRadius: 999, overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${progressPct}%`, background: "#1D4ED8", transition: "width 180ms ease" }} />
+                    </div>
+                    <div className="cosy-subtext" style={{ textAlign: "center", marginTop: 6, fontWeight: 900, whiteSpace: "nowrap" }}>
+                      {progressPct}%
+                    </div>
+                  </div>
+
                   <div style={{ height: 12 }} />
 
                   {allDone ? (
@@ -800,178 +715,58 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                       <div style={{ height: 10 }} />
 
                       {highlight ? (
-                        <div
-                          className="cosy-subtext"
-                          style={{
-                            fontWeight: 900,
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
+                        <div className="cosy-subtext" style={{ fontWeight: 900, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                           우선 확인: {highlight.code} {highlight.status} ({highlight.count}건)
                         </div>
                       ) : (
-                        <div
-                          className="cosy-subtext"
-                          style={{
-                            fontWeight: 900,
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
+                        <div className="cosy-subtext" style={{ fontWeight: 900, whiteSpace: "nowrap" }}>
                           모든 국가에서 큰 이슈가 발견되지 않았습니다.
                         </div>
                       )}
 
-                      <div
-                        className="cosy-subtext"
-                        style={{
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                      >
-                        자세한 내용은 아래 ‘문구 규제 검사 결과’ 영역에서 국가 탭을 눌러 확인하세요.
+                      <div className="cosy-subtext" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        자세한 내용은 아래 영역에서 국가 탭을 눌러 확인하세요.
                       </div>
                     </>
                   ) : (
-                    <div
-                      className="cosy-subtext"
-                      style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
-                    >
+                    <div className="cosy-subtext" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       일부 국가는 아직 처리 중입니다. 완료되는 대로 아래 결과 탭에 반영됩니다.
                     </div>
                   )}
-                </div>
+                </>
               )}
-            </div>
 
-            {/* 오른쪽: 실행 버튼 */}
-            <div
-              className="cosy-card claim-inspection-action"
-              style={{
-                padding: 14,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-                gap: 10,
-              }}
-            >
-              {/* 상단 상태 */}
-              <div
-                className="cosy-subtext"
-                style={{
-                  fontWeight: 900,
-                  textAlign: "center",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {isInspecting
-                  ? `검사 진행 중 ${overall.doneCount}/${overall.total}`
-                  : canRunInspection
-                  ? allDone && inspectionStarted
-                    ? "완료됨"
-                    : "준비됨"
-                  : "대기중"}
-              </div>
-
-              {/* 현재 처리 국가 */}
-              {isInspecting ? (
-                <div
-                  className="cosy-subtext"
+              {/* ✅ 버튼도 같은 박스 안으로 */}
+              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 14 }}>
+                <button
+                  type="button"
+                  className="cosy-btn cosy-btn--primary"
+                  onClick={runInspection}
+                  disabled={!canRunInspection || isInspecting}
                   style={{
-                    textAlign: "center",
+                    minHeight: 36,
+                    padding: "0px 14px",
+                    opacity: !canRunInspection || isInspecting ? 0.65 : 1,
+                    cursor: !canRunInspection || isInspecting ? "not-allowed" : "pointer",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
                     whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    color: "#1D4ED8",
-                    fontWeight: 900,
+                    fontSize: 12,
                   }}
-                  title="현재 처리 중인 국가"
+                  title={
+                    !canRunInspection
+                      ? "국가 선택 + OCR 텍스트가 있어야 실행할 수 있어요"
+                      : isInspecting
+                      ? "검사 진행 중입니다"
+                      : ""
+                  }
                 >
-                  {currentInspectingCode
-                    ? `현재 ${currentInspectingCode} 처리 중…`
-                    : "요청 준비 중…"}
-                </div>
-              ) : null}
-
-              {/* 버튼 */}
-              <button
-                type="button"
-                className="cosy-btn cosy-btn--primary"
-                onClick={runInspection}
-                disabled={!canRunInspection || isInspecting}
-                style={{
-                  width: "100%",
-                  minHeight: 36,
-                  height: "36",
-                  padding: "0px 12px",
-                  opacity: !canRunInspection || isInspecting ? 0.65 : 1,
-                  cursor: !canRunInspection || isInspecting ? "not-allowed" : "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  whiteSpace: "nowrap",
-                  textAlign: "center",
-                  lineHeight: 1,
-                  fontSize: 12,
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-                title={
-                  !canRunInspection
-                    ? "국가 선택 + OCR 텍스트가 있어야 실행할 수 있어요"
-                    : isInspecting
-                    ? "검사 진행 중입니다"
-                    : ""
-                }
-              >
-                {isInspecting ? <Loader2 size={16} className="cosy-spin" /> : null}
-                {isInspecting
-                  ? "검사 중..."
-                  : inspectionStarted && allDone
-                  ? "다시 검사"
-                  : "검사 실행"}
-              </button>
-
-              {/* 진행률 바 */}
-              {inspectionStarted ? (
-                <div style={{ width: "100%" }}>
-                  <div
-                    style={{
-                      height: 8,
-                      background: "#E5E7EB",
-                      borderRadius: 999,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        width: `${progressPct}%`,
-                        background: "#1D4ED8",
-                        transition: "width 180ms ease",
-                      }}
-                    />
-                  </div>
-                  <div
-                    className="cosy-subtext"
-                    style={{
-                      textAlign: "center",
-                      marginTop: 6,
-                      fontWeight: 900,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {progressPct}%
-                  </div>
-                </div>
-              ) : null}
+                  {isInspecting ? <Loader2 size={16} className="cosy-spin" /> : null}
+                  {isInspecting ? "검사 중..." : inspectionStarted && allDone ? "다시 검사" : "검사 실행"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1005,7 +800,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
 
           <div style={{ height: 10 }} />
 
-          {/* 국가 탭 */}
           <div className="cosy-card" style={{ padding: 10 }}>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {(selectedCountryCodes.length ? selectedCountryCodes : COUNTRY_CODES).map((code) => {
@@ -1034,7 +828,6 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
 
           <div style={{ height: 10 }} />
 
-          {/* LLM 답변만 */}
           <div className="cosy-card" style={{ padding: 14 }}>
             {!inspectionStarted ? (
               <div className="cosy-subtext">아직 검사 전입니다.</div>
@@ -1053,7 +846,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                     {getCountryName(activeTab)}({activeTab}) 결과: {activeResult.status}
                   </div>
                   <div className="cosy-subtext" style={{ marginLeft: "auto" }}>
-                    * 이 영역은 백엔드 검사 API 응답으로 갱신됩니다.
+
                   </div>
                 </div>
 
@@ -1082,7 +875,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
             )}
           </div>
 
-          <div style={{ height: 8 }} />  
+          <div style={{ height: 8 }} />
         </div>
       </div>
     </div>

@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Search,
-  X,
-  CheckCircle,
-  Image as ImageIcon,
-  Code,
-  Send,
-} from "lucide-react";
+import { Search, X, CheckCircle } from "lucide-react";
 
 export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLogin }) {
   const [showNotice, setShowNotice] = useState(true);
@@ -247,29 +240,7 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
         </div>
       </div>
 
-      {/* 하단 입력바 */}
-      <div style={{ borderTop: "1px solid #e5e7eb", backgroundColor: "white", padding: "20px 32px", flexShrink: 0 }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative" }}>
-          <input
-            type="text"
-            placeholder="분석하고 싶은 성분 파일을 업로드하거나 질문을 입력하세요."
-            style={{
-              width: "100%",
-              padding: "10px 120px 10px 10px",
-              border: "1px solid #d1d5db",
-              borderRadius: "12px",
-              fontSize: "14px",
-              outline: "none",
-              boxSizing: "border-box",
-            }}
-          />
-          <div style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", display: "flex", gap: "8px" }}>
-            <InputIconButton icon={<ImageIcon size={20} />} onClick={() => requireLogin("파일 업로드")} />
-            <InputIconButton icon={<Code size={20} />} onClick={() => requireLogin("성분표 분석")} />
-            <InputIconButton icon={<Send size={20} color="#3b82f6" />} onClick={() => requireLogin("전송")} />
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
 }
@@ -291,25 +262,6 @@ const Notice = ({ onClose }) => (
       </p>
     </div>
   </div>
-);
-
-const InputIconButton = ({ icon, onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    style={{
-      padding: "8px",
-      background: "transparent",
-      border: "none",
-      cursor: "pointer",
-      borderRadius: "6px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    {icon}
-  </button>
 );
 
 const summaryCardStyle = {
