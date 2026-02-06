@@ -166,19 +166,19 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
                 <div style={summaryCardStyle}>
                   <div style={summaryLabelStyle}>최근 규제 검토</div>
                   <div style={summaryValueStyle}>{stats.recentChecks}</div>
-                  <div style={summaryHintStyle}>추후 자동 집계</div>
+                  <div style={summaryHintStyle}>일주일 내 검토 진행</div>
                 </div>
 
                 <div style={summaryCardStyle}>
                   <div style={summaryLabelStyle}>성분 경고 항목</div>
                   <div style={summaryValueStyle}>{stats.ingredientCount}</div>
-                  <div style={summaryHintStyle}>추후 자동 집계</div>
+                  <div style={summaryHintStyle}>진행한 성분 항목 중 집계</div>
                 </div>
 
                 <div style={summaryCardStyle}>
                     <div style={summaryLabelStyle}>문구 경고 항목</div>
                     <div style={summaryValueStyle}>{stats.marketingCount}</div>
-                    <div style={summaryHintStyle}>추후 자동 집계</div>
+                    <div style={summaryHintStyle}>진행한 문구 항목 중 집계</div>
                 </div>
               </div>
 
