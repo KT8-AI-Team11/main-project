@@ -49,3 +49,7 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
+     
+      - name: Debug distribution id
+        run: |
+          echo "Distribution ID is ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"
