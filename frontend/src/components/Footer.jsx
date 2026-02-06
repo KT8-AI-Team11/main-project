@@ -23,6 +23,7 @@ export default function Footer() {
         display: "flex",
         justifyContent: "flex-start",
         backgroundColor: "#f9fafb",
+        marginTop: "auto",
       }}
     >
       <button
