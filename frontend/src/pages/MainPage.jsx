@@ -31,11 +31,11 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
   const [stats, setStats] = useState({
       productCount: 0,
       recentChecks: 0,
-      warningCount: 0
+      ingredientCount: 0,
+      marketingCount: 0
   });
 
   const userEmail = localStorage.getItem("cosy_user_email") || "";
-  const productsLS = safeJson(localStorage.getItem("cosy_products"), []);
   useEffect(() => {
       if (isLoggedIn) {
           axios.get("/api/dashboard/stats", {headers: getAuthHeader()})
@@ -170,9 +170,15 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
                 </div>
 
                 <div style={summaryCardStyle}>
-                  <div style={summaryLabelStyle}>경고 항목</div>
-                  <div style={summaryValueStyle}>{stats.warningCount}</div>
+                  <div style={summaryLabelStyle}>성분 경고 항목</div>
+                  <div style={summaryValueStyle}>{stats.ingredientCount}</div>
                   <div style={summaryHintStyle}>추후 자동 집계</div>
+                </div>
+
+                <div style={summaryCardStyle}>
+                    <div style={summaryLabelStyle}>문구 경고 항목</div>
+                    <div style={summaryValueStyle}>{stats.marketingCount}</div>
+                    <div style={summaryHintStyle}>추후 자동 집계</div>
                 </div>
               </div>
 
