@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Eye, EyeOff} from "lucide-react";
 import {signup} from "../api/auth";
+import TermsModal from "../components/TermsModal";
 
 export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
     const [email, setEmail] = useState("");
@@ -10,6 +11,8 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
     const [errorMsg, setErrorMsg] = useState("");
     const [termsAgreed, setTermsAgreed] = useState(false);
     const [privacyAgreed, setPrivacyAgreed] = useState(false);
+    const [termsModalOpen, setTermsModalOpen] = useState(false);
+    const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -101,89 +104,114 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
                 >
                     {/* 이용약관 */}
                     <div style={{marginBottom: "4px"}}>
-                        <label
-                            style={{
-                                fontSize: "12px",
-                                fontWeight: 700,
-                                color: "#374151",
-                            }}
-                        >
-                            이용약관
-                        </label>
-                        <iframe
-                            src="/terms-and-condition.html"
-                            title="이용약관"
-                            style={{
-                                width: "100%",
-                                height: "150px",
-                                border: "1px solid #e5e7eb",
-                                borderRadius: "12px",
-                                marginTop: "6px",
-                                boxSizing: "border-box",
-                            }}
-                        />
-                        <label
+                        <div
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "6px",
-                                fontSize: "13px",
-                                color: "#374151",
-                                marginTop: "6px",
-                                cursor: "pointer",
+                                justifyContent: "space-between",
                             }}
                         >
-                            <input
-                                type="checkbox"
-                                checked={termsAgreed}
-                                onChange={(e) => setTermsAgreed(e.target.checked)}
-                            />
-                            <span>[필수] 이용약관에 동의합니다</span>
-                        </label>
+                            <label
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                    fontSize: "13px",
+                                    color: "#374151",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                <input
+                                    type="checkbox"
+                                    checked={termsAgreed}
+                                    onChange={(e) => setTermsAgreed(e.target.checked)}
+                                />
+                                <span>[필수] 이용약관에 동의합니다</span>
+                            </label>
+                            <button
+                                type="button"
+                                onClick={() => setTermsModalOpen(true)}
+                                style={{
+                                    border: "none",
+                                    background: "transparent",
+                                    color: "#3b82f6",
+                                    fontSize: "12px",
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                    textDecoration: "underline",
+                                    padding: 0,
+                                }}
+                            >
+                                약관 보기
+                            </button>
+                        </div>
                     </div>
 
                     {/* 개인정보 수집·이용 동의 */}
                     <div style={{marginBottom: "4px"}}>
-                        <label
-                            style={{
-                                fontSize: "12px",
-                                fontWeight: 700,
-                                color: "#374151",
-                            }}
-                        >
-                            개인정보 수집·이용 동의
-                        </label>
-                        <iframe
-                            src="/privacy-consent.html"
-                            title="개인정보 수집·이용 동의"
-                            style={{
-                                width: "100%",
-                                height: "150px",
-                                border: "1px solid #e5e7eb",
-                                borderRadius: "12px",
-                                marginTop: "6px",
-                                boxSizing: "border-box",
-                            }}
-                        />
-                        <label
+                        <div
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "6px",
-                                fontSize: "13px",
-                                color: "#374151",
-                                marginTop: "6px",
-                                cursor: "pointer",
+                                justifyContent: "space-between",
                             }}
                         >
-                            <input
-                                type="checkbox"
-                                checked={privacyAgreed}
-                                onChange={(e) => setPrivacyAgreed(e.target.checked)}
-                            />
-                            <span>[필수] 개인정보 수집·이용에 동의합니다</span>
-                        </label>
+                            <label
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                    fontSize: "13px",
+                                    color: "#374151",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                <input
+                                    type="checkbox"
+                                    checked={privacyAgreed}
+                                    onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                                />
+                                <span>[필수] 개인정보 수집·이용에 동의합니다</span>
+                            </label>
+                            <button
+                                type="button"
+                                onClick={() => setPrivacyModalOpen(true)}
+                                style={{
+                                    border: "none",
+                                    background: "transparent",
+                                    color: "#3b82f6",
+                                    fontSize: "12px",
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                    textDecoration: "underline",
+                                    padding: 0,
+                                }}
+                            >
+                                약관 보기
+                            </button>
+                        </div>
                     </div>
+
+                    <TermsModal
+                        open={termsModalOpen}
+                        title="이용약관"
+                        htmlUrl="/terms-and-condition.html"
+                        onAgree={() => {
+                            setTermsAgreed(true);
+                            setTermsModalOpen(false);
+                        }}
+                        onClose={() => setTermsModalOpen(false)}
+                    />
+                    <TermsModal
+                        open={privacyModalOpen}
+                        title="개인정보 수집·이용 동의"
+                        htmlUrl="/privacy-consent.html"
+                        onAgree={() => {
+                            setPrivacyAgreed(true);
+                            setPrivacyModalOpen(false);
+                        }}
+                        onClose={() => setPrivacyModalOpen(false)}
+                    />
 
                     <label
                         style={{
