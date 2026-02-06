@@ -8,7 +8,6 @@ const getAuthHeader = () => ({
     "Authorization": `Bearer ${localStorage.getItem("cosy_access_token")}`
 });
 
-// --- 컴포넌트 생략 (SeverityPill, CountryPill은 기존과 동일) ---
 const SEVERITY_META = {
     HIGH: { bg: "#FEE2E2", fg: "#991B1B", bd: "#FCA5A5" },
     MEDIUM: { bg: "#FEF3C7", fg: "#92400E", bd: "#FCD34D" },
@@ -76,21 +75,21 @@ export default function LogPage() {
     return (
         <div style={{
             width: "100%",
-            height: "100vh",            // [중요] 전체 높이 고정
+            height: "100vh",
             display: "flex",
             flexDirection: "column",
-            overflow: "hidden",         // [중요] 페이지 전체 스크롤 방지
+            overflow: "hidden",
             backgroundColor: "#f3f4f6",
             padding: "20px"
         }}>
             <div className="cosy-panel" style={{
-                flex: 1,                // 남은 공간 꽉 채우기
+                flex: 1,
                 display: "flex",
                 flexDirection: "column",
                 backgroundColor: "white",
                 borderRadius: "16px",
                 padding: "24px",
-                overflow: "hidden"      // 패널 밖으로 나가는 것 방지
+                overflow: "hidden"
             }}>
 
                 {/* 상단 고정 영역 (헤더/필터) */}
