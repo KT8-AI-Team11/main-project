@@ -311,7 +311,7 @@ export default function ClaimCheckPage({ initialSelectedProducts, initialSelecte
                   updateType: "MARKETING",
                   marketingStatus: apiJson.overall_risk || "MEDIUM",
                   // 상세 사유들을 하나로 합쳐서 저장
-                  marketingLaw: apiJson.findings?.map(f => `[${f.finding}] ${f.reason}`).join("\n") || "규제 근거 정보 없음",
+                  marketingLaw: apiJson.findings?.map(f => `[${f.snippet}] ${f.reason}`).join("\n") || "규제 근거 정보 없음",
               };
               await saveInspectionLog(logRequest);
               console.log(`[Log Saved] ${c} 결과가 DB에 기록되었습니다.`);
