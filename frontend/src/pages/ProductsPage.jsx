@@ -200,6 +200,7 @@ export default function ProductsPage({ onNavigate }) {
       setIsAddModalOpen(false);
       resetInputFields();
     } catch (error) {
+      console.log(error);
       alert("제품 등록 중 오류가 발생했습니다.");
     }
   };

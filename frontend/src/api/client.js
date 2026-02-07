@@ -191,9 +191,19 @@ export async function apiFetch(path, { method = "GET", body, token, _retry = fal
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: body ? JSON.stringify(body) : undefined,
-  });
+  }, 120_000);
 
   const data = await res.json().catch(() => null);
+
+  // 500대 에러는 콘솔에 출력
+  if (res.status >= 500) {
+    console.error("[API 5xx ERROR]", {
+      url,
+      method,
+      status: res.status,
+      response: data,
+    });
+  }
 
   if ((res.status === 401 || res.status === 403) && _retry) {
     if (!isLoggingOut) {
