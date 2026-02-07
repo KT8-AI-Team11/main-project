@@ -5,6 +5,7 @@ COPY --chown=gradle:gradle . .
 RUN gradle --version
 RUN gradle clean bootJar -x test
 
+
 # ---- run stage ----
 FROM eclipse-temurin:17-jre
 WORKDIR /app
