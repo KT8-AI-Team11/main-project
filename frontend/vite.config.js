@@ -10,14 +10,14 @@ export default defineConfig({
     proxy: {
       // Spring Boot 서버
       '/api': {
-        target: import.meta.env.VITE_API_BASE_URL,
+        target: 'http://localhost:8080',
         changeOrigin: true,
         secure: false,
       },
 
       // ✅ FastAPI 서버 (OCR + compliance 등 /v1/*)
       '/v1': {
-        target: import.meta.env.VITE_V1_BASE_URL, // ← FastAPI 포트가 다르면 여기만 수정
+        target: 'http://localhost:8000', // ← FastAPI 포트가 다르면 여기만 수정
         changeOrigin: true,
         secure: false,
       },
