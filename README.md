@@ -1,4 +1,4 @@
-# COSY
+# COSY 
 
 ## fastapi를 로컬에서 돌리기 위한 환경 세팅
 1. Python 3.10.x 설치
