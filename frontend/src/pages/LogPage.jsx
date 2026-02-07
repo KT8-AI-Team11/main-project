@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Search, FileText, RefreshCw, Loader2 } from "lucide-react";
 
-const API_BASE_URL = "http://localhost:8080/api/log";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL + "/api/log";
 
 const getAuthHeader = () => ({
     "Content-Type": "application/json",
