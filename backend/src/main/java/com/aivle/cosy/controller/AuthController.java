@@ -51,6 +51,7 @@ public class AuthController {
     public ResponseEntity<RefreshResponse> refresh(
             @CookieValue(name = "refresh_token", required = false) String refreshToken
     ) {
+        log.info("refresh 진입");
         if (refreshToken == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
