@@ -93,7 +93,7 @@ public class ProductService {
         }
 
         String imageUrl = product.getImage();
-        if (imageUrl != null || imageUrl.isEmpty()) {
+        if (imageUrl != null && !imageUrl.isEmpty()) {
             s3Service.deleteFileByUrl(imageUrl);
         }
 
@@ -115,7 +115,7 @@ public class ProductService {
                 throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
             }
             String imageUrl = p.getImage();
-            if (imageUrl != null || imageUrl.isEmpty()) {
+            if (imageUrl != null && !imageUrl.isEmpty()) {
                 s3Service.deleteFileByUrl(imageUrl);
             }
         }
