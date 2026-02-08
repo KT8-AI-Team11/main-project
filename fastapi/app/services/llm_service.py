@@ -69,9 +69,12 @@ class LlmService:
 {text}
 
 [NOTE]
-추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다, 항목 중 하나라도 risk가 
-MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 입력받은 모든 항목에 대한 내용을 
-표시해라. 
+추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
+항목 중 하나라도 risk가 MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 
+입력받은 모든 항목에 대한 내용을 표시해라. 
+규제 조항과 해당하는 법적 근거를 반드시 명시해라.  
+규제 조항과 법적 근거는 반드시 한글로만 작성해라.
+
 
 [OUTPUT JSON]
 다음 JSON 형태로만 답하라.
@@ -81,17 +84,17 @@ MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 입력받은 모
     {{
       "snippet": "문제되는 성분/문구 일부",
       "risk": "LOW|MEDIUM|HIGH",
-      "reason": "규제 문서명과 해당하는 법적 근거 표시",
+      "reason": "[규제 문서/조항명]에 따르면, '해당 문구'는 ~에 해당하여 위반됩니다.",
       "suggested_rewrite": "대체 문구/수정안(가능하면)"
     }}
   ],
-  "notes": ["추가 참고/한계/확인이 필요한 사항"]
+  "notes": ["INPUT 문구에 대한 추가 참고/한계/확인이 필요한 사항만 작성. NOTE의 지시사항을 그대로 옮기지 마라."]
 }}
 
 
 """.strip()
 
-        raw = self._generate(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
+        raw = self._generate_with_reflection(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
 
         # ```json ... ``` 제거 대응
         cleaned = raw.strip()
@@ -316,6 +319,7 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
 - 피드백: {reflection["feedback"]}
 
 위 피드백을 반영하여, 동일한 JSON 형식으로 개선된 답변을 다시 작성하라.
+단, 피드백 내용 자체를 notes에 포함하지 마라. notes에는 규제 검토와 관련된 참고사항만 작성하라.
 """.strip()
 
         return self.generate(retry_prompt)
