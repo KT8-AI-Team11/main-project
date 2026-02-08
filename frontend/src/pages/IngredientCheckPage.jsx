@@ -3,6 +3,7 @@ import { Search, Check, Loader2, SlidersHorizontal, X } from "lucide-react";
 import CountryMultiSelect from "../components/CountryMultiSelect";
 import { checkIngredients } from "../api/compliance";
 import { useProducts } from "../store/ProductsContext";
+import { saveInspectionLog } from "../api/log";
 
 const COUNTRY_OPTIONS = [
   { code: "US", name: "미국" },
@@ -423,7 +424,7 @@ export default function IngredientCheckPage({
     return Array.from(set).sort((a, b) => a.localeCompare(b, "ko"));
   }, [tableRows]);
 
- 
+
   // ✅ 결과 필터 적용(국가/위험도/제품명/성분)
   const filteredRows = useMemo(() => {
     let rows = tableRows;
@@ -654,46 +655,78 @@ export default function IngredientCheckPage({
         const cacheKey = `${market}__${p.id}__${ingKey}`;
 
         jobs.push(
-          limit(async () => {
-            try {
-              if (!ingredients) throw new Error("전성분(ingredients)이 비어있습니다.");
+            limit(async () => {
+                try {
+                    if (!ingredients) throw new Error("전성분(ingredients)이 비어있습니다.");
+                    if (mountedRef.current) setProgressText(`${p.name} · ${market}`);
 
-              if (mountedRef.current) setProgressText(`${p.name} · ${market}`);
+                    let finalData = null;
 
-              const cached = readCache(cacheKey);
-              if (cached) {
-                if (mountedRef.current) {
-                  setComboResults((prev) => ({
-                    ...prev,
-                    [comboKey]: { ok: true, data: cached },
-                  }));
-                }
-                return;
-              }
+                    const cached = readCache(cacheKey);
+                    if (cached) {
+                        finalData = cached; // 캐시 데이터 할당
+                        if (mountedRef.current) {
+                            setComboResults((prev) => ({
+                                ...prev,
+                                [comboKey]: { ok: true, data: cached },
+                            }));
+                        }
+                    } else {
+                        const data = await checkIngredients({ market, ingredients });
+                        writeCache(cacheKey, data);
+                        finalData = data;
+                        if (mountedRef.current) {
+                            setComboResults((prev) => ({
+                                ...prev,
+                                [comboKey]: { ok: true, data },
+                            }));
+                        }
+                    }
 
-              const data = await checkIngredients({ market, ingredients });
-              writeCache(cacheKey, data);
+                    // Back으로 데이터 전송
+                    if (finalData && p?.id) {
+                        const details = Array.isArray(finalData.details) ? finalData.details : [];
 
-              if (mountedRef.current) {
-                setComboResults((prev) => ({
-                  ...prev,
-                  [comboKey]: { ok: true, data },
-                }));
-              }
-            } catch (e) {
-              if (mountedRef.current) {
-                setComboResults((prev) => ({
-                  ...prev,
-                  [comboKey]: { ok: false, error: e?.message || "요청 실패" },
-                }));
-              }
-            } finally {
-              done += 1;
-              const pct = Math.round((done / total) * 100);
-              if (mountedRef.current) setProgressPct(pct);
-            }
-          })
-        );
+                        const hasHigh = details.some(d =>
+                            ["HIGH", "FORBIDDEN", "CRITICAL"].includes(String(d.severity || "").toUpperCase())
+                        );
+                        const hasMedium = details.some(d =>
+                            ["MEDIUM", "RESTRICTED", "MID", "WARNING"].includes(String(d.severity || "").toUpperCase())
+                        );
+                        const finalStatus = hasHigh ? "HIGH" : (hasMedium ? "MEDIUM" : "LOW");
+
+                        const logRequest = {
+                            productId: Number(p.id),
+                            country: market,
+                            updateType: "INGREDIENT",
+                            ingredientStatus: finalStatus || "HIGH",
+                            cautiousIngredient: details.map(d => d.ingredient).join(", ").slice(0, 255) || "없음",
+                            ingredientLaw: details.map(d => `${d.ingredient}: ${d.regulation}`).join("\n").slice(0, 500) || "제한 규제 없음",
+
+                              marketingStatus: null,
+                              marketingLaw: null
+                          };
+
+                          saveInspectionLog(logRequest)
+                              .then(() => console.log(`[Log Success] ${p.name} (${market})`))
+                              .catch(err => console.error(`[Log Error] ${p.name}:`, err));
+                      }
+                      // -----------------------------------------------------------------
+
+                  } catch (e) {
+                      if (mountedRef.current) {
+                          setComboResults((prev) => ({
+                              ...prev,
+                              [comboKey]: { ok: false, error: e?.message || "요청 실패" },
+                          }));
+                      }
+                  } finally {
+                      done += 1;
+                      const pct = Math.round((done / total) * 100);
+                      if (mountedRef.current) setProgressPct(pct);
+                  }
+              })
+          );
       }
     }
 

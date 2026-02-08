@@ -3,10 +3,10 @@ import {
   Lock,
   Home,
   Package,
+  Database,
   FlaskConical,
   Megaphone,
   Globe,
-  ShieldCheck,
   PanelLeftClose,
   PanelLeftOpen,
 } from "lucide-react";
@@ -72,17 +72,7 @@ export default function Sidebar({
   collapsed = false,
   onToggleCollapsed,
 }) {
-  const openPrivacy = () => {
-    const width = 600;
-    const height = 700;
-    const left = (window.screen.width - width) / 2;
-    const top = (window.screen.height - height) / 2;
-    window.open(
-      "/privacy-policy.html",
-      "_blank",
-      `width=${width},height=${height},left=${left},top=${top}`
-    );
-  };
+  
 
   return (
     <div
@@ -183,6 +173,16 @@ export default function Sidebar({
     collapsed={collapsed}
   />
 
+  <SidebarItem
+      active={currentPage === "log-history"}
+      onClick={() => onNavigate("log-history")}
+      label="제품 규제 목록"
+      icon={Database}
+      requiresLogin={true}
+      isLoggedIn={isLoggedIn}
+      collapsed={collapsed}
+  />
+
   {/* 섹션 2: 규제 확인 */}
   {!collapsed && (
     <div
@@ -232,34 +232,6 @@ export default function Sidebar({
     collapsed={collapsed}
   />
 </div>
-
-      {/* 하단: 개인정보 처리 방침 */}
-      <div style={{ marginTop: "auto", paddingTop: 12, borderTop: "1px solid #d1d5db" }}>
-        <button
-          type="button"
-          onClick={openPrivacy}
-          title="개인정보 처리 방침"
-          aria-label="개인정보 처리 방침"
-          style={{
-            width: "100%",
-            border: "none",
-            background: "transparent",
-            padding: collapsed ? "10px 8px" : "10px 12px",
-            borderRadius: 10,
-            cursor: "pointer",
-            color: "#6b7280",
-            fontWeight: 800,
-            fontSize: 12,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: collapsed ? "center" : "flex-start",
-            gap: 10,
-          }}
-        >
-          <ShieldCheck style={{ width: 16, height: 16 }} />
-          {!collapsed && <span>개인정보 처리 방침</span>}
-        </button>
-      </div>
     </div>
   );
 }

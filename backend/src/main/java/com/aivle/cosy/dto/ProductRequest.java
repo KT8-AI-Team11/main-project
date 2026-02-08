@@ -16,7 +16,6 @@ public class ProductRequest {
     public static class SaveRequest {
         private String name;
         private Product.ProductType type;
-        private String image;
         private String fullIngredient;
         private Status status;
     }

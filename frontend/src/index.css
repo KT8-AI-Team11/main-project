@@ -54,14 +54,14 @@
 
     .cosy-page{
   flex: 1;
-  min-width: 0;               /* ✅ flex 환경에서 가로 스크롤/overflow 안정화 */
-  padding: var(--cosy-pad-page) var(--cosy-pad-page) 40px;
+  min-width: 0;
+  padding: var(--cosy-pad-page);
   background: var(--cosy-page-bg);
-  overflow: auto;             /* ✅ 세로/가로 둘 다 스크롤 가능 */
+  overflow: visible; /* ✅ body가 스크롤하도록 */
 }
 
-   .cosy-grid-3{
-  display: grid;
+.cosy-grid-3{
+    display: grid;
   gap: var(--cosy-gap);
   align-items: stretch;
   margin-bottom: 18px;
@@ -72,18 +72,46 @@
     minmax(420px, 1fr)
     minmax(360px, 1fr);
 
-    /* ✅ ClaimCheckPage(문구 규제 확인) 상단 3패널은 조금 더 넉넉한 최소폭 */
-.cosy-grid-3.claim-top-grid{
-  grid-template-columns:
-    minmax(240px, 1fr)     /* 업로드 */
-    minmax(520px, 1.35fr)  /* OCR 텍스트 */
-    minmax(420px, 1fr);    /* 검사 */
-  min-width: 1220px;
+     /* ✅ 이 이하로는 억지로 줄이지 말고 가로 스크롤로 */
+  min-width: 1080px;
 }
 
+/* ✅ ClaimCheckPage(문구 규제 확인) 상단 3패널은 조금 더 넉넉한 최소폭 */
+.cosy-grid-3.claim-top-grid{
+  grid-template-columns:
+      minmax(260px, 1fr)     /* 업로드 */
+    minmax(420px, 1.15fr)  /* OCR 텍스트 */
+    minmax(360px, 1fr);    /* 검사 */
+  min-width: 1120px;
+}
 
-  /* ✅ 이 이하로는 억지로 줄이지 말고 가로 스크롤로 */
-  min-width: 1080px;
+.claim-upload-card,
+.claim-ocr-card{
+  flex: 1;
+  min-height: 0;
+}
+
+.claim-upload-dropzone{
+  height: clamp(200px, 28vh, 260px);
+}
+
+.claim-ocr-textarea{
+  min-height: clamp(180px, 26vh, 240px);
+}
+
+.claim-inspection-grid{
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(160px, 200px);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.claim-inspection-summary{
+  min-height: 220px;
+}
+
+.claim-inspection-action{
+  min-width: 160px;
 }
 
     .cosy-panel{
@@ -538,7 +566,7 @@
   padding: 18px 14px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;   /* ✅ */
   position: sticky;
   top: 0;
   overflow: hidden;

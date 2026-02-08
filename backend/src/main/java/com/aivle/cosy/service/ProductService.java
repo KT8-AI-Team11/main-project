@@ -9,9 +9,11 @@ import com.aivle.cosy.exception.ProductErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.ProductRepository;
+import com.aivle.cosy.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,6 +24,7 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
     private final CompanyRepository companyRepository;
+    private final S3Service s3Service;
 
     public List<ProductResponse.DetailResponse> getProducts(Long companyId) {
         return productRepository.findByCompanyId(companyId)
@@ -30,15 +33,20 @@ public class ProductService {
                 .toList();
     }
 
-    public ProductResponse.CreateResponse createProduct(Long companyId, ProductRequest.SaveRequest request) {
+    public ProductResponse.CreateResponse createProduct(Long companyId, ProductRequest.SaveRequest request, MultipartFile imageFile) {
         Company company = companyRepository.findById(companyId)
                 .orElseThrow(() -> new BusinessException(SignUpErrorCode.COMPANY_NOT_FOUND));
+
+        String imageUrl = null;
+        if (imageFile != null && !imageFile.isEmpty()) {
+            imageUrl = s3Service.uploadFile(imageFile, "products/" + companyId);
+        }
 
         Product product = Product.builder()
                 .company(company)
                 .name(request.getName())
                 .type(request.getType())
-                .image(request.getImage())
+                .image(imageUrl)
                 .fullIngredient(request.getFullIngredient())
                 .status(request.getStatus())
                 .build();
@@ -47,7 +55,7 @@ public class ProductService {
         return new ProductResponse.CreateResponse(savedProduct.getId(), "제품이 성공적으로 등록되었습니다.");
     }
 
-    public ProductResponse.MessageResponse updateProduct(Long id, Long companyId, ProductRequest.SaveRequest request) {
+    public ProductResponse.MessageResponse updateProduct(Long id, Long companyId, ProductRequest.SaveRequest request, MultipartFile imageFile) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ProductErrorCode.PRODUCT_NOT_FOUND));
 
@@ -56,11 +64,18 @@ public class ProductService {
             throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
         }
 
+        String imageUrl = product.getImage();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            s3Service.deleteFileByUrl(imageUrl);
+            imageUrl = s3Service.uploadFile(imageFile, "products/" + companyId);
+            // (선택) 기존 이미지 S3 삭제까지 하고 싶으면 여기서 처리
+        }
+
         // 엔티티 내 update 메서드 호출
         product.update(
                 request.getName(),
                 request.getType().name(),
-                request.getImage(),
+                imageUrl,
                 request.getFullIngredient(),
                 request.getStatus()
         );
@@ -75,6 +90,11 @@ public class ProductService {
 
         if (!product.getCompany().getId().equals(companyId)) {
             throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
+        }
+
+        String imageUrl = product.getImage();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            s3Service.deleteFileByUrl(imageUrl);
         }
 
         productRepository.delete(product);
@@ -93,6 +113,10 @@ public class ProductService {
         for (Product p : products) {
             if (!p.getCompany().getId().equals(companyId)) {
                 throw new BusinessException(ProductErrorCode.UNAUTHORIZED_ACCESS);
+            }
+            String imageUrl = p.getImage();
+            if (imageUrl != null && !imageUrl.isEmpty()) {
+                s3Service.deleteFileByUrl(imageUrl);
             }
         }
 

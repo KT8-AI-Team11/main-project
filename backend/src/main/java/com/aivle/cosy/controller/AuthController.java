@@ -9,6 +9,7 @@ import com.aivle.cosy.service.AuthService;
 import com.aivle.cosy.service.UserService;
 import com.aivle.cosy.util.CookieUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
@@ -28,6 +30,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+
+        log.info("login 진입: {}",  request);
         LoginResponse loginResponse = authService.login(request);
 
         return ResponseEntity.ok()
@@ -37,6 +41,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<SignUpResponse> signUp(@RequestBody SignUpRequest request) {
+        log.info("signup 진입: {}",  request);
 
         SignUpResponse signUpResponse = userService.signUp(request);
         return new ResponseEntity<>(signUpResponse, HttpStatus.CREATED);
@@ -46,6 +51,7 @@ public class AuthController {
     public ResponseEntity<RefreshResponse> refresh(
             @CookieValue(name = "refresh_token", required = false) String refreshToken
     ) {
+        log.info("refresh 진입");
         if (refreshToken == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -57,6 +63,7 @@ public class AuthController {
     public ResponseEntity<Void> logout(@RequestHeader("Authorization") String token,
                                        @CookieValue(name = "refresh_token", required = false) String refreshToken) {
 
+        log.info("logout 진입");
         if (token == null || !token.startsWith("Bearer ")) { // TODO: 검증용, 나중에 refactoring 가능
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

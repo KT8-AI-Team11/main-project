@@ -5,12 +5,16 @@ import com.aivle.cosy.dto.ProductResponse;
 import com.aivle.cosy.service.ProductService;
 import com.aivle.cosy.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Slf4j
 @CrossOrigin(origins = "http://localhost:5173") // React 기본 포트 허용
 @RestController
 @RequiredArgsConstructor
@@ -23,7 +27,7 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResponse.DetailResponse>> getMyCompanyProducts(
             @RequestHeader("Authorization") String bearerToken) {
-
+        log.info("getMyCompanyProducts 진입");
         String token = bearerToken.substring(7); // "Bearer " 제거
         Long companyId = tokenProvider.getCompanyId(token); // 토큰에서 회사 ID 추출
 
@@ -31,27 +35,31 @@ public class ProductController {
     }
 
     // 제품 생성
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ProductResponse.CreateResponse> createProduct(
             @RequestHeader("Authorization") String bearerToken,
-            @RequestBody ProductRequest.SaveRequest request) {
+            @RequestPart("data") ProductRequest.SaveRequest request,
+            @RequestPart(value = "image", required = false) MultipartFile imageFile) {
 
+        log.info("createProduct 진입");
         Long companyId = tokenProvider.getCompanyId(bearerToken.substring(7));
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(productService.createProduct(companyId, request));
+                .body(productService.createProduct(companyId, request, imageFile));
     }
 
     // 제품 수정
-    @PatchMapping("/{id}")
+    @PatchMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ProductResponse.MessageResponse> patchProduct(
             @PathVariable Long id,
             @RequestHeader("Authorization") String bearerToken,
-            @RequestBody ProductRequest.SaveRequest request) {
+            @RequestPart("data") ProductRequest.SaveRequest request,
+            @RequestPart(value = "image", required = false) MultipartFile imageFile) {
 
+        log.info("patchProduct 진입");
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 
-        return ResponseEntity.ok(productService.updateProduct(id, companyId, request));
+        return ResponseEntity.ok(productService.updateProduct(id, companyId, request, imageFile));
     }
 
 
@@ -61,6 +69,7 @@ public class ProductController {
             @PathVariable Long id,
             @RequestHeader("Authorization") String bearerToken){
 
+        log.info("deleteProduct 진입");
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 
@@ -72,6 +81,7 @@ public class ProductController {
             @RequestHeader("Authorization") String bearerToken,
             @RequestBody List<Long> ids) { // 삭제할 ID 리스트를 Body로 받음
 
+        log.info("deleteMultipleProducts 진입");
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 
