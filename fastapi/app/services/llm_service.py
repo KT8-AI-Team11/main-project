@@ -78,6 +78,7 @@ class LlmService:
 
 [OUTPUT JSON]
 다음 JSON 형태로만 답하라.
+
 {{
   "overall_risk": "LOW|MEDIUM|HIGH",
   "findings": [
@@ -167,6 +168,8 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
 [NOTE]
 추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
 입력받은 모든 성분에 대한 내용을 details에 빠짐없이 표시해라.
+규제 근거를 찾지 못한 성분도 반드시 details에 포함하고, severity를 "LOW", regulation을 "근거 부족"으로 표시해라.
+어떤 경우에도 INPUT의 성분을 details에서 생략하지 마라.
 
 [OUTPUT JSON]
 반드시 아래 JSON 형식으로만 답하라. 다른 텍스트를 절대 출력하지 마라.
@@ -254,6 +257,8 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
 3. 구체성: findings/details의 reason, regulation 등이 구체적이고 한국어로 작성되어있는가?
 4. 완전성: INPUT에서 검토해야 할 항목을 빠뜨리지 않았는가?
 5. 일관성: overall_risk와 개별 항목의 risk/severity가 논리적으로 일관되는가?
+6. 한글 작성: 모든 텍스트 필드(reason, snippet, suggested_rewrite, notes, regulation, content, action 등)가 한글로 작성되어 있는가?
+한글 이외의 언어(영어, 중국어, 일본어 등)로 작성된 부분이 있으면 감점한다.
  
 [CONTEXT]
 {context}
