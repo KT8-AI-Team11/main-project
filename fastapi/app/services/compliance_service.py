@@ -140,7 +140,7 @@ class ComplianceService:
         # ── Step 1: 제한 원료 DB에서 문제 성분 탐색 ──
         step1_retriever = get_retriever(
             market=market, domain="restricted_ingredients",
-            k=15, fetch_k=60, bm25_weight=0.6, vector_weight=0.4,
+            k=3, fetch_k=20, bm25_weight=0.6, vector_weight=0.4,
         )
         restricted_docs = step1_retriever.invoke(normalized)
         _log_retrieved_docs("restricted_ingredients", restricted_docs)
@@ -166,14 +166,16 @@ class ComplianceService:
             reg_docs = fallback_retriever.invoke(fallback_query)
             _log_retrieved_docs("ingredients(fallback)", reg_docs)
 
-        # ── Step 3: 두 결과를 합쳐서 LLM context 구성 ──
-        context = _format_docs_for_context(restricted_docs + reg_docs)
+        # ── Step 3: 두 결과를 분리하여 LLM context 구성 ──
+        restricted_context = _format_docs_for_context(restricted_docs)
+        regulation_context = _format_docs_for_context(reg_docs)
 
         # 4) LLM 호출
         llm_result = self.llm.analyze_ingredients(
             market=market,
             ingredients=normalized,
-            context=context,
+            restricted_context=restricted_context,
+            regulation_context=regulation_context,
         )
         return llm_result
 

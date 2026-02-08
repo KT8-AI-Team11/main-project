@@ -136,18 +136,26 @@ MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 입력받은 모
         )
 
     # 전성분 규제 분석
-    def analyze_ingredients(self, market: str, ingredients: str,context: str) -> IngLlmResult:
+    def analyze_ingredients(self, market: str, ingredients: str,
+                           restricted_context: str, regulation_context: str) -> IngLlmResult:
         prompt = f"""
 너는 {market} 화장품 "전성분(성분) 규제" 검토를 도와주는 컴플라이언스 전문가다.
 
-아래 [CONTEXT]는 검색된 공식 규정/가이드 원문 발췌이다.
-반드시 CONTEXT에 근거해서만 판단하라.
-만약 [CONTEXT]가 비어있거나, [CONTEXT]에 해당 국가({market})의
-라벨/문구 규제가 없으면 반드시 "근거 부족"으로 판단하고
+아래에 두 종류의 참고 자료가 제공된다.
+반드시 아래 자료에 근거해서만 판단하라.
+만약 두 자료 모두 비어있거나, 해당 국가({market})의
+성분 규제 근거가 없으면 반드시 "근거 부족"으로 판단하고
 추론하거나 일반 지식을 사용하지 말아라.
 
-[CONTEXT]
-{context}
+[CONTEXT 1: 제한 원료 DB]
+아래는 제한/금지 원료 데이터베이스에서 검색된 레코드이다.
+[레코드 N] 형태로 구분되며, 표준명/영문명/CASNO/제한사항/단서조항 등이 포함되어 있다.
+INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 근거로 판단하라.
+{restricted_context}
+
+[CONTEXT 2: 규제 원문]
+아래는 해당 국가의 화장품 성분 규제 법령/가이드에서 검색된 원문 발췌이다.
+{regulation_context}
 
 [INPUT]
 아래는 화장품 전성분(성분) 목록이다. (쉼표/줄바꿈으로 구분될 수 있음)
@@ -155,11 +163,12 @@ MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 입력받은 모
 
 [NOTE]
 추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
+입력받은 모든 성분에 대한 내용을 details에 빠짐없이 표시해라.
 
 [OUTPUT JSON]
 반드시 아래 JSON 형식으로만 답하라. 다른 텍스트를 절대 출력하지 마라.
 - regulation: 규제 "문서명"을 작성 (가능하면 한글 문서명)
-- content: 해당 규정의 핵심 내용을 1~2문장으로 요약한다. 반드시 한국어로 작성한다.
+- content: 해당 규정의 핵심 내용을 1~2문장으로 요약한다. 반드시 한글로만 작성한다.
 - action: 권장 조치(예: "사용 금지/제거", "농도 기준 확인", "표기 변경", "추가 근거 확인")
 {{
   "overall_risk": "LOW|MEDIUM|HIGH",
@@ -217,6 +226,7 @@ MEDIUM 또는 HIGH라면 overall_risk는 LOW가 될 수 없다. 입력받은 모
                 {"role": "user", "content": prompt},
             ],
             temperature=0,
+            max_tokens=16384,
         )
         return resp.choices[0].message.content or ""
 
