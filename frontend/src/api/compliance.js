@@ -7,7 +7,7 @@
 //   import.meta.env.VITE_COMPLIANCE_API_BASE ||
 //   "";
 
-const BASE = import.meta.env.VITE_API_BASE_URL;
+const BASE = import.meta.env.VITE_V1_BASE_URL || import.meta.env.VITE_API_BASE_URL;
 
 // ✅ 백엔드 최신 스펙
 const PATH_LABELING = "/v1/compliance/labeling";
