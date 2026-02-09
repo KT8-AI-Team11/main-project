@@ -181,6 +181,7 @@ async function refreshToken() {
 
 export async function apiFetch(path, { method = "GET", body, token, _retry = false } = {}) {
   // ✅ path는 이미 "/api/..." 형태니까 BASE가 ""이면 그대로 나감
+  console.log(BASE);
   const url = `${BASE}${path}`;
 
   const isFormData = body instanceof FormData;
