@@ -148,7 +148,7 @@ export default function LogPage() {
                             <th style={{ ...thStyle, width: "100px", textAlign: "center" }}>결과</th>
                             {activeTab === "INGREDIENT" ? (
                                 <>
-                                    <th style={{ ...thStyle, width: "30%" }}>주의 성분</th>
+                                    <th style={{ ...thStyle, width: "30%" }}>화장품 전성분</th>
                                     <th style={{ ...thStyle, width: "30%" }}>성분 규제 근거</th>
                                 </>
                             ) : (
