@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import axios from "axios";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChatWidget from "./components/Chatwidget";
@@ -13,7 +12,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import LogPage from "./pages/LogPage";
-import { login, logout, isTokenExpired } from "./api/auth";
+import { login, logout, refresh, isTokenExpired } from "./api/auth";
+import { apiFetch } from "./api/client";
 import CountryRegulationsPage from "./pages/CountryRegulationsPage";
 import { useProducts } from "./store/ProductsContext";
 
@@ -74,21 +74,12 @@ export default function CosyUI() {
 
   const { products, setProducts } = useProducts();
 
-  const api = axios.create({
-      baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
-  });
-
-  api.interceptors.request.use((config) => {
-    const token = localStorage.getItem("cosy_access_token");
-    if (token) config.headers.Authorization = `Bearer ${token}`;
-    return config;
-  });
-  
   const fetchProducts = async () => {
     try {
-      const response = await api.get("/products");
-      console.log("products response.data =", response.data);
-      setProducts(response.data);
+      const token = localStorage.getItem("cosy_access_token");
+      const data = await apiFetch("/api/products", { token });
+      console.log("products response.data =", data);
+      setProducts(data);
     } catch (error) {
       console.error("데이터 로딩 실패", error);
     }
@@ -119,14 +110,7 @@ export default function CosyUI() {
     } catch (error) {
       console.error("로그아웃 API 호출 실패:", error);
     } finally {
-      localStorage.removeItem("cosy_access_token");
-      localStorage.removeItem("cosy_logged_in");
-      localStorage.removeItem("cosy_login_type");
-      localStorage.removeItem("cosy_user_email");
-      localStorage.removeItem("cosy_demo_user");
-      // 선택 제품 전달용 임시값
-      localStorage.removeItem("cosy_selected_product_ids");
-      localStorage.removeItem("cosy_selected_products");
+      localStorage.clear();
 
       setIsLoggedIn(false);
       setCurrentPage("home");
@@ -164,31 +148,39 @@ export default function CosyUI() {
    * @param {string} targetPage - 이동할 페이지
    * @param {object} params - 페이지에 전달할 파라미터 (선택 제품 등)
    */
-  const requireAuth = (targetPage, params = {}) => {
-    // ✅ 로그인 필요한 페이지만 여기에 넣기
-    // (국가별 규제 정보는 정보성 페이지라면 굳이 로그인 강제 안 해도 됨)
-    const protectedPages = ["products", "ingredient-check", "claim-check", "profile"];
+  const requireAuth = async (targetPage, params = {}) => {
+    const protectedPages = ["products", "ingredient-check", "claim-check", "profile", "log-history"];
 
     if (protectedPages.includes(targetPage)) {
       const token = localStorage.getItem("cosy_access_token");
 
-      // 토큰이 없거나 만료된 경우
-      if (!token || isTokenExpired(token)) {
-        // 로그인 상태였다면 세션 만료 처리
+      // 토큰 자체가 없으면 → 로그인 필요
+      if (!token) {
         if (isLoggedIn) {
-          localStorage.removeItem("cosy_access_token");
-          localStorage.removeItem("cosy_logged_in");
-          localStorage.removeItem("cosy_user_email");
           setIsLoggedIn(false);
           alert("세션이 만료되었습니다. 다시 로그인해주세요.");
         } else {
           alert("해당 기능은 로그인 후 이용할 수 있어요.");
         }
-
-        // 로그인 후 원래 가려던 곳으로 복귀할 수 있게 저장
         setPendingNav({ targetPage, params });
         setCurrentPage("login");
         return;
+      }
+
+      // access token 만료 → refresh 시도
+      if (isTokenExpired(token)) {
+        try {
+          const res = await refresh();
+          localStorage.setItem("cosy_access_token", res.accessToken);
+        } catch {
+          // refresh 실패 → 세션 완전 만료
+          localStorage.clear();
+          setIsLoggedIn(false);
+          alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+          setPendingNav({ targetPage, params });
+          setCurrentPage("login");
+          return;
+        }
       }
     }
 

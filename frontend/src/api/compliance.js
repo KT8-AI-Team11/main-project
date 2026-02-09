@@ -2,20 +2,20 @@
 // DEV: base="" -> /v1/... 상대경로 호출 -> vite proxy가 FastAPI(8000)로 전달
 // PROD: 필요하면 VITE_COMPLIANCE_BASE_URL로 base 지정 가능
 
-// const COMPLIANCE_BASE_PROD =
-//   import.meta.env.VITE_COMPLIANCE_BASE_URL ||
-//   import.meta.env.VITE_COMPLIANCE_API_BASE ||
-//   "";
+const COMPLIANCE_BASE_PROD =
+  import.meta.env.VITE_COMPLIANCE_BASE_URL ||
+  import.meta.env.VITE_COMPLIANCE_API_BASE ||
+  "";
 
-const BASE = import.meta.env.VITE_API_BASE_URL;
+const BASE = import.meta.env.DEV ? "" : COMPLIANCE_BASE_PROD;
 
 // ✅ 백엔드 최신 스펙
 const PATH_LABELING = "/v1/compliance/labeling";
 const PATH_INGREDIENTS = "/v1/compliance/ingredients";
 
 function buildUrl(path) {
-  // const base = BASE || window.location.origin;
-  return new URL(path, BASE).toString();
+  const base = BASE || window.location.origin;
+  return new URL(path, base).toString();
 }
 
 function pickErrorMessage(data, fallback) {
