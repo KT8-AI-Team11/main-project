@@ -2,6 +2,9 @@ package com.aivle.cosy.repository;
 
 import com.aivle.cosy.domain.Log;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -25,4 +28,9 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     // 위험도 MEDIUM 또는 HIGH인 로그 개수
     long countByCompanyIdAndIngredientStatusIn(Long companyId, List<Log.ApprovalStatus> statuses);
     long countByCompanyIdAndMarketingStatusIn(Long companyId, List<Log.ApprovalStatus> statuses);
+
+    // 제품 ID 목록으로 로그 삭제 (제품 삭제 전 FK 정리용)
+    @Modifying
+    @Query("DELETE FROM Log l WHERE l.product.id IN :productIds")
+    void deleteAllByProductIdIn(@Param("productIds") List<Long> productIds);
 }

@@ -8,6 +8,7 @@ import com.aivle.cosy.exception.BusinessException;
 import com.aivle.cosy.exception.ProductErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
+import com.aivle.cosy.repository.LogRepository;
 import com.aivle.cosy.repository.ProductRepository;
 import com.aivle.cosy.service.S3Service;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
     private final CompanyRepository companyRepository;
+    private final LogRepository logRepository;
     private final S3Service s3Service;
 
     public List<ProductResponse.DetailResponse> getProducts(Long companyId) {
@@ -97,6 +99,7 @@ public class ProductService {
             s3Service.deleteFileByUrl(imageUrl);
         }
 
+        logRepository.deleteAllByProductIdIn(List.of(id));
         productRepository.delete(product);
         return new ProductResponse.MessageResponse("제품이 삭제되었습니다.");
     }
@@ -120,6 +123,7 @@ public class ProductService {
             }
         }
 
+        logRepository.deleteAllByProductIdIn(ids);
         productRepository.deleteAllInBatch(products);
         return new ProductResponse.MessageResponse(products.size() + "개의 제품이 삭제되었습니다.");
     }
