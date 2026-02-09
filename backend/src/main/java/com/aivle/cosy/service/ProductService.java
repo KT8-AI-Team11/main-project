@@ -11,6 +11,7 @@ import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.ProductRepository;
 import com.aivle.cosy.service.S3Service;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -39,6 +41,7 @@ public class ProductService {
 
         String imageUrl = null;
         if (imageFile != null && !imageFile.isEmpty()) {
+            log.info("제품생성 중 s3 접근");
             imageUrl = s3Service.uploadFile(imageFile, "products/" + companyId);
         }
 
@@ -51,6 +54,7 @@ public class ProductService {
                 .status(request.getStatus())
                 .build();
 
+        log.info("제품생성 중 db 접근");
         Product savedProduct = productRepository.save(product);
         return new ProductResponse.CreateResponse(savedProduct.getId(), "제품이 성공적으로 등록되었습니다.");
     }
