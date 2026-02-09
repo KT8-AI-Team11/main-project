@@ -5,9 +5,21 @@ import {
     Building2, ClipboardList, Shield, Users, MapPin, Info
 } from 'lucide-react';
 
-export default function ImprovedCountryRegulations() {
+import usaFlag from '../assets/ChatGPT Image 2026년 2월 6일 오후 01_40_36.png';
+import euFlag from '../assets/ChatGPT Image 2026년 2월 6일 오후 01_41_29.png';
+import cnFlag from '../assets/ChatGPT Image 2026년 2월 6일 오후 01_42_22.png';
+import jpFlag from '../assets/ChatGPT Image 2026년 2월 6일 오후 01_46_15.png';
+
+export default function CountryRegulationsPage() {
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [selectedRegulation, setSelectedRegulation] = useState(null);
+
+    const flagImageUrls = {
+        '미국': usaFlag,
+        '유럽연합': euFlag,
+        '중국': cnFlag,
+        '일본': jpFlag
+    };
 
     // 국가별 상세 데이터
     const countriesData = {
@@ -18,7 +30,7 @@ export default function ImprovedCountryRegulations() {
             authority: 'FDA (Food and Drug Administration)',
             marketSize: '$93.7B',
             marketGrowth: '+4.2% YoY',
-            overview: '미국은 세계 최대의 화장품 시장으로, FDA의 MoCRA 법안에 따라 규제가 강화되었습니다. 2026년부터는 단순 등록을 넘어 안전성 실증(Safety Substantiation) 자료의 상시 비치와 실사와 같은 사후 관리가 핵심입니다.',
+            overview: '세계 최대 화장품 시장으로, 2026년부터 FDA MoCRA에 따라 등록을 넘어 안전성 입증 자료 상시 비치와 사후 실사가 핵심 규제로 강화되었습니다.',
             keyFeatures: [
                 '안전성 실증 의무화',
                 '중대한 부작용 보고',
@@ -117,7 +129,7 @@ export default function ImprovedCountryRegulations() {
             authority: 'European Commission',
             marketSize: '€119.1B',
             marketGrowth: '+4.0% YoY',
-            overview: 'EU는 세계에서 가장 엄격한 화장품 규제를 시행하며, Regulation (EC) No 1223/2009에 따라 관리됩니다. 2026년부터는 마이크로플라스틱 금지와 PFAS 단계적 퇴출 등 환경 규제가 제품 설계 단계부터 필수적으로 고려되어야 합니다.',
+            overview: 'Regulation (EC) No 1223/2009에 따라 엄격한 규제를 시행하며, 2026년부터 마이크로플라스틱 금지와 PFAS 퇴출 등 환경 규제가 제품 설계 단계부터 필수화되었습니다.',
             keyFeatures: [
                 '안전성 평가 보고서(CPSR) 강화',
                 '동물 실험 전면 금지',
@@ -223,7 +235,7 @@ export default function ImprovedCountryRegulations() {
             authority: 'NMPA (National Medical Products Administration)',
             marketSize: '$82.1B',
             marketGrowth: '+7.4% YoY',
-            overview: '중국은 세계 2위의 화장품 시장으로, NMPA의 CSAR(화장품감독관리조례)에 따라 엄격한 규제를 받습니다. 2026년부터 전자라벨 시범사업이 본격화되었으며, 단순 신고제를 넘어 제품의 안전성 평가 보고서(전성분) 제출이 필수화되었습니다.',
+            overview: '세계 2위 화장품 시장으로, 2026년부터 NMPA CSAR 하에 전자라벨 도입과 전성분 기반 안전성 평가 보고서 제출이 의무화되었습니다.',
             keyFeatures: [
                 '전자라벨(QR코드) 시범 운영',
                 '특수 화장품 범위 축소',
@@ -365,7 +377,7 @@ export default function ImprovedCountryRegulations() {
             authority: 'MHLW (Ministry of Health, Labour and Welfare)',
             marketSize: '¥2.75T',
             marketGrowth: '+2.7% YoY',
-            overview: '일본은 아시아 최대 선진 시장 중 하나로, 후생노동성(MHLW)의 규제를 받습니다. 2026년부터는 PFAS(PFHxS 등) 금지 물질 확대와 같은 환경 안전 규제가 대폭 강화되어 성분 검토의 정확성이 더욱 중요해졌습니다.',
+            overview: 'MHLW 관할의 선진 시장으로, 2026년부터 PFAS 금지 물질 확대 등 환경·성분 안전 규제가 대폭 강화되었습니다.',
             keyFeatures: [
                 '의약부외품 vs 일반화장품 구분',
                 '특정 화학물질 금지 목록 확대',
@@ -684,7 +696,19 @@ export default function ImprovedCountryRegulations() {
                         font-weight: 700;
                         letter-spacing: -0.03em;
                     }
-                `}</style>
+                /* [수정됨] 애니메이션 정의: 숫자와 중괄호 사이 공백 보정 */
+                @keyframes wave {
+                    0% { transform: scale(1) rotate(0deg) translateX(0); }
+                    25% { transform: scale(1.05) rotate(2deg) translateX(5px); }
+                    50% { transform: scale(1) rotate(0deg) translateX(0); }
+                    75% { transform: scale(1.05) rotate(-2deg) translateX(-5px); }
+                    100% { transform: scale(1) rotate(0deg) translateX(0); }
+                }
+                .flag-animation {
+                    animation: wave 4s ease-in-out infinite;
+                    transform-origin: center;
+                }
+            `}</style>
 
                 {/* Header */}
                 <div style={{ marginBottom: '48px', textAlign: 'center' }}>
@@ -739,15 +763,24 @@ export default function ImprovedCountryRegulations() {
                                     e.currentTarget.style.borderColor = 'transparent';
                                 }}
                             >
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '-20px',
-                                    right: '-20px',
-                                    fontSize: '120px',
-                                    opacity: '0.1'
-                                }}>
-                                    {country.flag}
-                                </div>
+                                {/* 배경 국기 이미지 (성조기 등 이미지 소스 사용) */}
+                                <div
+                                    className="flag-animation"
+                                    style={{
+                                        position: 'absolute',
+                                        top: '10%',
+                                        right: '-10%',
+                                        width: '180px',
+                                        height: '120px',
+                                        backgroundImage: `url(${flagImageUrls[country.name]})`,
+                                        backgroundSize: 'contain',
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundPosition: 'center',
+                                        opacity: '0.5',
+                                        pointerEvents: 'none',
+                                        animation: 'wave 4s ease-in-out infinite'
+                                }}
+                            />
 
                                 <div style={{ position: 'relative', zIndex: 1 }}>
                                     <div style={{ fontSize: '64px', marginBottom: '16px' }}>
