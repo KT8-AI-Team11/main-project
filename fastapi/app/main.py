@@ -1,8 +1,16 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.health import router as health_router
 from app.api.v1.compliance import router as compliance_router
 from app.api.v1.ocr import router as ocr_router
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
+    force=True,
+)
 
 def create_app() -> FastAPI:
     app = FastAPI(

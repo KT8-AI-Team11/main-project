@@ -183,15 +183,16 @@ export async function apiFetch(path, { method = "GET", body, token, _retry = fal
   // ✅ path는 이미 "/api/..." 형태니까 BASE가 ""이면 그대로 나감
   const url = `${BASE}${path}`;
 
+  const isFormData = body instanceof FormData;
   const res = await fetch(url, {
     method,
     credentials: "include",
     headers: {
-      ...(body ? { "Content-Type": "application/json" } : {}),
+      ...(!isFormData && body ? { "Content-Type": "application/json" } : {}),
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
-    body: body ? JSON.stringify(body) : undefined,
-  }, 120_000);
+    body: isFormData ? body : (body ? JSON.stringify(body) : undefined),
+  });
 
   const data = await res.json().catch(() => null);
 
@@ -208,9 +209,7 @@ export async function apiFetch(path, { method = "GET", body, token, _retry = fal
   if ((res.status === 401 || res.status === 403) && _retry) {
     if (!isLoggingOut) {
       isLoggingOut = true;
-      localStorage.removeItem("cosy_access_token");
-      localStorage.removeItem("cosy_logged_in");
-      localStorage.removeItem("cosy_user_email");
+      localStorage.clear();
       alert("세션이 만료되었습니다. 다시 로그인해주세요.");
       sessionStorage.setItem("redirect_to_login", "true");
       window.location.reload();
@@ -236,9 +235,7 @@ export async function apiFetch(path, { method = "GET", body, token, _retry = fal
 
       if (!isLoggingOut) {
         isLoggingOut = true;
-        localStorage.removeItem("cosy_access_token");
-        localStorage.removeItem("cosy_logged_in");
-        localStorage.removeItem("cosy_user_email");
+        localStorage.clear();
         alert("세션이 만료되었습니다. 다시 로그인해주세요.");
         sessionStorage.setItem("redirect_to_login", "true");
         window.location.reload();
