@@ -26,7 +26,8 @@ def create_app() -> FastAPI:
             "http://localhost:5173",
             "http://localhost:8000",
             "http://cosy-frontend-bucket.s3.ap-northeast-2.amazonaws.com",
-            "http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com"
+            "http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com",
+            "https://dk26fz6kuu4it.cloudfront.net"
         ],
         allow_credentials=True,
         allow_methods=["*"],
