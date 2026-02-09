@@ -54,6 +54,7 @@ public class WebSecurityConfig {
        // 1. 허용할 출처 (우리 프론트엔드 주소)
        config.addAllowedOrigin("http://localhost:5173");
        config.addAllowedOrigin("http://127.0.0.1:5500");
+         config.addAllowedOrigin("http://cosy-frontend-bucket.s3.ap-northeast-2.amazonaws.com");
        config.addAllowedOrigin("https://dd1luume97j85.cloudfront.net");
        config.addAllowedOrigin("http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com");
 
