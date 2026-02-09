@@ -24,6 +24,21 @@ export default function TermsModal({open, onAgree, onClose, title, htmlUrl}) {
         }
     }, [open, html]);
 
+    // 추가: HTML 로드 후 스크롤 가능 여부 확인
+    useEffect(() => {
+        if (open && contentRef.current && html) {
+            const checkScrollable = () => {
+                const el = contentRef.current;
+                if (el && el.scrollHeight <= el.clientHeight) {
+                    // 스크롤이 필요 없으면 바로 활성화
+                    setScrolledToBottom(true);
+                }
+            };
+            // DOM 렌더링 후 체크
+            setTimeout(checkScrollable, 100);
+        }
+    }, [open, html]);
+
     const handleScroll = useCallback((e) => {
         const el = e.target;
         if (el.scrollHeight - el.scrollTop - el.clientHeight < 20) {
