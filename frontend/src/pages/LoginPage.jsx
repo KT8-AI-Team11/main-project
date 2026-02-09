@@ -5,7 +5,7 @@ import { login } from "../api/auth.js";
 export default function LoginPage({ onLoginSuccess, onGoToRegister }) {
 
     // WARNING: SHOULD BE ALREADY STORED IN THE ACTUAL DB!!!
-    const DEMO_EMAIL = "aivle@test.com";
+    const DEMO_EMAIL = "aivle@aivle.kt.co";
     const DEMO_PASSWORD = "*Aivle0611!";
 
     const [email, setEmail] = useState("");
