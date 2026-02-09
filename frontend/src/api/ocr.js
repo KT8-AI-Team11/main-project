@@ -9,8 +9,7 @@
 
 // const OCR_PATH = import.meta.env.VITE_OCR_EXTRACT_PATH || "/v1/ocr/extract";
 
-// const BASE = import.meta.env.VITE_API_BASE_URL;
-const BASE = "http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com";
+const BASE = import.meta.env.VITE_API_BASE_URL;
 
 function buildUrl(lang = "korean") {
   // base가 비어있으면 현재 origin 기준으로 상대경로 호출 (vite proxy 타게 됨)
