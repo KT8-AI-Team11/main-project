@@ -23,6 +23,8 @@ def create_app() -> FastAPI:
         CORSMiddleware,
         allow_origins=[
             "http://localhost:3000",  # React dev
+            "http://localhost:5173",
+            "http://cosy-frontend-bucket.s3.ap-northeast-2.amazonaws.com"
         ],
         allow_credentials=True,
         allow_methods=["*"],
