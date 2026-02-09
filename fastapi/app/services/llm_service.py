@@ -1,12 +1,9 @@
 from __future__ import annotations
 from typing import List
 import json
-import logging
 from openai import OpenAI
 from app.core.config import OPENAI_API_KEY, OPENAI_MODEL, REFLECTION_MODEL
 from app.schemas.compliance import LabelingLlmResult, Finding, IngLlmResult, Detail
-
-logger = logging.getLogger(__name__)
 
 REFLECTION_THRESHOLD = 7  # 이 점수 미만이면 재생성
 
@@ -288,11 +285,9 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
             score = int(result.get("score", 5))
             feedback = str(result.get("feedback", ""))
         except Exception:
-            logger.warning("Reflection JSON 파싱 실패, 기본값(score=5) 사용. Raw: %s", raw[:200])
             score = 5
             feedback = "Reflection 파싱 실패 — 재생성 권장"
 
-        logger.info("Reflection score=%d, feedback=%s", score, feedback[:100])
         return {"score": score, "feedback": feedback}
 
     def _generate_with_reflection(self, prompt: str, context: str) -> str:
@@ -310,11 +305,9 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
         )
 
         if reflection["score"] >= REFLECTION_THRESHOLD:
-            logger.info("Reflection PASS (score=%d) — 1차 응답 사용", reflection["score"])
             return first_response
 
         # 재생성: 피드백을 포함한 보강 프롬프트
-        logger.info("Reflection FAIL (score=%d) — 피드백 포함 재생성", reflection["score"])
         retry_prompt = f"""
 {prompt}
 

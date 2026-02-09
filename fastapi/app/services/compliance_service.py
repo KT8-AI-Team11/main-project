@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 import json
-import logging
 from typing import List, Optional, Tuple
 
 from langchain_core.documents import Document
@@ -12,7 +11,6 @@ from app.services.llm_service import LlmService
 
 from app.schemas.compliance import LabelingLlmResult, Finding
 
-logger = logging.getLogger(__name__)
 
 def _normalize_text(text: str) -> str:
     return "\n".join([line.strip() for line in (text or "").splitlines() if line.strip()])
@@ -79,19 +77,6 @@ def _extract_flagged_ingredients(docs: List[Document]) -> List[str]:
     return unique
 
 
-def _log_retrieved_docs(stage: str, docs: List[Document]) -> None:
-    """검색 결과 요약 로그를 출력한다."""
-    logger.info("[RAG %s] 검색 결과 %d건", stage, len(docs))
-    for i, d in enumerate(docs, 1):
-        meta = d.metadata or {}
-        snippet = (d.page_content or "")[:80].replace("\n", " ")
-        logger.info(
-            "  [%d] domain=%s, country=%s, title=%s | %s...",
-            i, meta.get("domain", "?"), meta.get("country", "?"),
-            meta.get("title", "?"), snippet,
-        )
-
-
 class ComplianceService:
     def __init__(self):
         self.llm = LlmService()
@@ -114,7 +99,6 @@ class ComplianceService:
         retriever = get_retriever(market=market, domain="labeling", k=6, fetch_k=20)
         # 1-3. 문서 검색 실행
         docs = retriever.invoke(rag_query)
-        _log_retrieved_docs("labeling", docs)
         # 1-4. LLM에게 전달할 문자열 context 생성
         context = _format_docs_for_context(docs)
 
@@ -143,28 +127,23 @@ class ComplianceService:
             k=3, fetch_k=20, bm25_weight=0.6, vector_weight=0.4,
         )
         restricted_docs = step1_retriever.invoke(normalized)
-        _log_retrieved_docs("restricted_ingredients", restricted_docs)
 
         # ── Step 2: 문제 성분이 발견되면, 해당 성분에 대한 규제 원문 검색 ──
         reg_docs: List[Document] = []
         if restricted_docs:
             flagged = _extract_flagged_ingredients(restricted_docs)
             if flagged:
-                logger.info("문제 성분 발견: %s", ", ".join(flagged))
                 reg_query = f"{market} 화장품 규제: {', '.join(flagged)}"
                 step2_retriever = get_retriever(
                     market=market, domain="ingredients", k=6, fetch_k=20,
                 )
                 reg_docs = step2_retriever.invoke(reg_query)
-                _log_retrieved_docs("ingredients(규제 원문)", reg_docs)
         else:
-            logger.info("제한 원료 검색 결과 없음 — 규제 원문으로 fallback 검색")
             fallback_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
             fallback_retriever = get_retriever(
                 market=market, domain="ingredients", k=10, fetch_k=40,
             )
             reg_docs = fallback_retriever.invoke(fallback_query)
-            _log_retrieved_docs("ingredients(fallback)", reg_docs)
 
         # ── Step 3: 두 결과를 분리하여 LLM context 구성 ──
         restricted_context = _format_docs_for_context(restricted_docs)
