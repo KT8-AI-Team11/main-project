@@ -29,9 +29,11 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
   });
 
   const userEmail = localStorage.getItem("cosy_user_email") || "";
+  const BASE = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL);
+
   useEffect(() => {
       if (isLoggedIn) {
-          axios.get("/api/dashboard/stats", {headers: getAuthHeader()})
+          axios.get(`${BASE}/api/dashboard/stats`, {headers: getAuthHeader()})
               .then(response => {
                   setStats(response.data);
               })
