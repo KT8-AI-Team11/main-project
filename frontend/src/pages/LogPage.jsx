@@ -1,12 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Search, FileText, RefreshCw, Loader2 } from "lucide-react";
-
-const API_BASE_URL = "http://localhost:8080/api/log";
-
-const getAuthHeader = () => ({
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${localStorage.getItem("cosy_access_token")}`
-});
+import { apiFetch } from "../api/client";
 
 const SEVERITY_META = {
     HIGH: { bg: "#FEE2E2", fg: "#991B1B", bd: "#FCA5A5" },
@@ -54,12 +48,12 @@ export default function LogPage() {
         try {
             setLoading(true);
             const categoryPath = activeTab === "INGREDIENT" ? "ingredient" : "marketing";
-            const url = selectedCountry === "ALL"
-                ? `${API_BASE_URL}/${categoryPath}`
-                : `${API_BASE_URL}/${categoryPath}/${selectedCountry}`;
+            const path = selectedCountry === "ALL"
+                ? `/api/log/${categoryPath}`
+                : `/api/log/${categoryPath}/${selectedCountry}`;
 
-            const response = await fetch(url, { headers: getAuthHeader() });
-            const data = await response.json();
+            const token = localStorage.getItem("cosy_access_token");
+            const data = await apiFetch(path, { token });
             if (Array.isArray(data)) {
                 setLogs(data.sort((a, b) => new Date(b.updDate || 0) - new Date(a.updDate || 0)));
             }
@@ -154,7 +148,7 @@ export default function LogPage() {
                             <th style={{ ...thStyle, width: "100px", textAlign: "center" }}>결과</th>
                             {activeTab === "INGREDIENT" ? (
                                 <>
-                                    <th style={{ ...thStyle, width: "30%" }}>주의 성분</th>
+                                    <th style={{ ...thStyle, width: "30%" }}>화장품 전성분</th>
                                     <th style={{ ...thStyle, width: "30%" }}>성분 규제 근거</th>
                                 </>
                             ) : (

@@ -1,8 +1,16 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.health import router as health_router
 from app.api.v1.compliance import router as compliance_router
 from app.api.v1.ocr import router as ocr_router
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
+    force=True,
+)
 
 def create_app() -> FastAPI:
     app = FastAPI(
@@ -15,6 +23,11 @@ def create_app() -> FastAPI:
         CORSMiddleware,
         allow_origins=[
             "http://localhost:3000",  # React dev
+            "http://localhost:5173",
+            "http://localhost:8000",
+            "http://cosy-frontend-bucket.s3.ap-northeast-2.amazonaws.com",
+            "http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com",
+            "https://dk26fz6kuu4it.cloudfront.net"
         ],
         allow_credentials=True,
         allow_methods=["*"],

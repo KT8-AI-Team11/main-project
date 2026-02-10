@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {Eye, EyeOff} from "lucide-react";
-import {signup} from "../api/auth";
+import React, { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { signup } from "../api/auth";
 import TermsModal from "../components/TermsModal";
 
-export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
+export default function RegisterPage({ onRegisterSuccess, onBackToLogin }) {
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
     const [showPw, setShowPw] = useState(false);
@@ -13,6 +13,13 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
     const [privacyAgreed, setPrivacyAgreed] = useState(false);
     const [termsModalOpen, setTermsModalOpen] = useState(false);
     const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+
+    // 공백 입력을 물리적으로 차단하는 핸들러
+    const handleNoSpaceKeyDown = (e) => {
+        if (e.key === " " || e.keyCode === 32) {
+            e.preventDefault();
+        }
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -73,11 +80,11 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
                     overflow: "hidden",
                 }}
             >
-                <div style={{marginBottom: "18px"}}>
-                    <div style={{fontSize: "24px", fontWeight: 800, color: "#111827"}}>
+                <div style={{ marginBottom: "18px" }}>
+                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#111827" }}>
                         COSY 회원가입
                     </div>
-                    <div style={{marginTop: "6px", fontSize: "13px", color: "#6b7280"}}>
+                    <div style={{ marginTop: "6px", fontSize: "13px", color: "#6b7280" }}>
                         새로운 계정을 만들어 서비스를 이용하세요.
                     </div>
                 </div>
@@ -100,10 +107,10 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
 
                 <form
                     onSubmit={onSubmit}
-                    style={{display: "flex", flexDirection: "column", gap: "10px"}}
+                    style={{ display: "flex", flexDirection: "column", gap: "10px" }}
                 >
                     {/* 이용약관 */}
-                    <div style={{marginBottom: "4px"}}>
+                    <div style={{ marginBottom: "4px" }}>
                         <div
                             style={{
                                 display: "flex",
@@ -148,7 +155,7 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
                     </div>
 
                     {/* 개인정보 수집·이용 동의 */}
-                    <div style={{marginBottom: "4px"}}>
+                    <div style={{ marginBottom: "4px" }}>
                         <div
                             style={{
                                 display: "flex",
@@ -226,7 +233,8 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
                     <input
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={handleNoSpaceKeyDown} // 물리적 공백 입력 차단
+                        onChange={(e) => setEmail(e.target.value.replace(/\s/g, ""))} // 공백 제거 후 반영
                         placeholder="example@email.com"
                         autoComplete="email"
                         style={{
@@ -253,11 +261,12 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
                         비밀번호
                     </label>
 
-                    <div style={{position: "relative", width: "100%"}}>
+                    <div style={{ position: "relative", width: "100%" }}>
                         <input
                             type={showPw ? "text" : "password"}
                             value={pw}
-                            onChange={(e) => setPw(e.target.value)}
+                            onKeyDown={handleNoSpaceKeyDown} // 물리적 공백 입력 차단
+                            onChange={(e) => setPw(e.target.value.replace(/\s/g, ""))} // 공백 제거 후 반영
                             placeholder="비밀번호를 입력하세요"
                             autoComplete="new-password"
                             style={{
@@ -287,10 +296,11 @@ export default function RegisterPage({onRegisterSuccess, onBackToLogin}) {
                             }}
                             aria-label="비밀번호 보기 토글"
                         >
+                            {/* 로직 반전: 보일 때 Eye, 안 보일 때 EyeOff */}
                             {showPw ? (
-                                <EyeOff size={18} color="#6b7280"/>
+                                <Eye size={18} color="#6b7280" />
                             ) : (
-                                <Eye size={18} color="#6b7280"/>
+                                <EyeOff size={18} color="#6b7280" />
                             )}
                         </button>
                     </div>

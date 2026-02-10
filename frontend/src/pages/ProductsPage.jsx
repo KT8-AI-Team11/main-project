@@ -5,84 +5,48 @@ import { useProducts } from "../store/ProductsContext";
 
 const BASE = import.meta.env.VITE_API_BASE_URL || "";
 
-/**
- * Axios 인스턴스 생성
- * - ProductsPage 전용 API 클라이언트
- * - 토큰 자동 첨부 및 갱신 로직 포함
- */
 const api = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
 });
 
-/**
- * Request Interceptor: 모든 요청에 Access Token 자동 첨부
- * - localStorage에서 토큰을 가져와 Authorization 헤더에 추가
- */
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("cosy_access_token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-/**
- * 모듈 레벨 상태 변수들 (client.js와 동일한 패턴)
- * - isRefreshing: refresh 요청 중복 방지
- * - refreshPromise: 여러 실패 요청이 같은 refresh를 공유
- * - isLoggingOut: 중복 alert/reload 방지
- */
 let isRefreshing = false;
 let refreshPromise = null;
 let isLoggingOut = false;
 
-/**
- * Response Interceptor: 401/403 에러 시 토큰 자동 갱신
- *
- * 동작 흐름:
- * 1. 401/403 에러 발생 → refresh token으로 새 access token 발급
- * 2. 발급 성공 → 새 토큰으로 실패했던 요청 재시도
- * 3. 발급 실패 또는 재시도도 실패 → 세션 만료 처리 (로그아웃)
- */
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
 
-        /**
-         * 케이스 1: 재시도(_retry=true)에서도 401/403 발생
-         * → refresh token도 만료됨 → 세션 완전 만료 → 로그아웃
-         */
         if ((error.response?.status === 401 || error.response?.status === 403) && originalRequest._retry) {
             if (!isLoggingOut) {
                 isLoggingOut = true;
-                localStorage.removeItem("cosy_access_token");
-                localStorage.removeItem("cosy_logged_in");
-                localStorage.removeItem("cosy_user_email");
+                localStorage.clear();
                 alert("세션이 만료되었습니다.");
                 window.location.reload();
             }
             return Promise.reject(error);
         }
 
-        /**
-         * 케이스 2: 첫 요청에서 401/403 발생 (access token 만료)
-         * → refresh token으로 새 access token 발급 시도
-         */
         if ((error.response?.status === 401 || error.response?.status === 403) && !originalRequest._retry) {
             originalRequest._retry = true;
 
             try {
-                // 동시에 여러 요청이 실패해도 refresh는 한 번만 실행
                 if (!isRefreshing) {
                     isRefreshing = true;
                     refreshPromise = axios.post(`${BASE}/api/auth/refresh`, {}, { withCredentials: true });
                 }
 
-                // 모든 실패한 요청이 같은 refresh Promise를 기다림
                 const res = await refreshPromise;
                 isRefreshing = false;
                 refreshPromise = null;
 
-                // 새 토큰 저장 및 원래 요청 재시도
                 const newToken = res.data.accessToken;
                 localStorage.setItem("cosy_access_token", newToken);
 
@@ -92,12 +56,9 @@ api.interceptors.response.use(
                 isRefreshing = false;
                 refreshPromise = null;
 
-                // refresh 실패 → 세션 만료 → 로그아웃 처리
                 if (!isLoggingOut) {
                     isLoggingOut = true;
-                    localStorage.removeItem("cosy_access_token");
-                    localStorage.removeItem("cosy_logged_in");
-                    localStorage.removeItem("cosy_user_email");
+                    localStorage.clear();
                     alert("세션이 만료되었습니다.");
                     window.location.reload();
                 }
@@ -200,6 +161,7 @@ export default function ProductsPage({ onNavigate }) {
       setIsAddModalOpen(false);
       resetInputFields();
     } catch (error) {
+      console.log(error);
       alert("제품 등록 중 오류가 발생했습니다.");
     }
   };
@@ -226,6 +188,7 @@ export default function ProductsPage({ onNavigate }) {
       alert("제품 정보가 성공적으로 수정되었습니다.");
       setIsEditModalOpen(false);
     } catch (error) {
+      console.log(error)
       alert("수정 중 오류가 발생했습니다.");
     }
   };

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/log"; // 백엔드 주소에 맞게 수정
+const API_URL = import.meta.env.VITE_API_BASE_URL + "/api/log"; // 백엔드 주소에 맞게 수정
 
 export const getInspectionLogs = async () => {
     const token = localStorage.getItem("cosy_access_token");
@@ -20,7 +20,7 @@ export const getLogsByCountry = async (country) => {
 
 export const saveInspectionLog = async (logData) => {
     const token = localStorage.getItem("cosy_access_token");
-    const response = await fetch("http://localhost:8080/api/log", {
+    const response = await fetch(import.meta.env.VITE_API_BASE_URL + "/api/log", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

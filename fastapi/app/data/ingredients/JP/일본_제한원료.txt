@@ -1,0 +1,3681 @@
+[레코드 95]
+  구분: 한도
+  표준명: 메틸파라벤
+  영문명: Methylparaben
+  CASNO: 99-76-3
+  이명: Benzoic Acid, 4-Hydroxy-, Methyl Ester , p-Carbomethoxyphenol , 4-Hydroxybenzoic Acid, Methyl Ester , p-Methoxycarbonylphenol , Methyl 4-Hydroxybenzoate , Methyl p-hydroxybenzoate (RIFM) , methylis parahydroxybenzoas (EP) , Methyl Parahydroxybenzoate , Parahydroxybenzoate Ester
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 180]
+  구분: 한도
+  표준명: 황색404호
+  영문명: Ki404, Yellow AB, CI 11380
+  CASNO: 85-84-7
+  이명: 2-Naphthalenamine, 1-(Phenylazo)- , 2-Naphthylamine, 1-Phenylazo- , Solvent Yellow 5
+  배합제한국가: 일본
+  고시원료명: Yellow AB
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 182]
+  구분: 금지
+  표준명: 수은
+  영문명: Mercury
+  CASNO: 7439-97-6
+  배합제한국가: 일본
+  고시원료명: Mercury and its compounds
+  단서조항: Trace : 수은 (1㎍/g이하)
+
+[레코드 239]
+  구분: 한도/금지
+  표준명: 하이드로젠퍼옥사이드
+  영문명: Hydrogen Peroxide
+  CASNO: 7722-84-1
+  배합제한국가: 일본
+  고시원료명: Hydrogen peroxide
+
+[레코드 314]
+  구분: 한도
+  표준명: 적색205호
+  영문명: Lithol Red, Aka205, CI 15630
+  이명: Calcium, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-1-Naphthalenesulfonate, 1-Naphthalenesulfonic Acid, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-, Monosodium Salt, Red No. 205, Sodium Lithol
+  배합제한국가: 일본
+  고시원료명: Lithol Red
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 390]
+  구분: 한도
+  표준명: 적색206호
+  영문명: Lithol Red CA, Aka206, CI 15630:2
+  CASNO: 1103-39-5, 1248-18-6
+  이명: Calcium, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-1-Naphthalenesulfonate, CI 15630:2, Lithol Red, Ca, 1-Naphthalenesulfonic Acid, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]- Calcium Salt, Pigment Red 49:2, Red 11, Red No. 206
+  배합제한국가: 일본
+  고시원료명: Lithol Red CA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 460]
+  구분: 한도
+  표준명: 벤조페논-1
+  영문명: Benzophenone-1
+  CASNO: 131-56-6
+  이명: Benzophenone-1 (HCPA), Benzoresorcinol, 4-Benzoyl Resorcinol, 2,4-Dihydroxybenzophenone, (2,4-Dihydroxyphenyl)Phenylmethanone, Methanone, (2,4-Dihydroxyphenyl)Phenyl-
+  배합제한국가: 일본
+  고시원료명: Dihydroxybenzophenone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 473]
+  구분: 한도
+  표준명: 벤조페논-3
+  영문명: Benzophenone-3
+  CASNO: 131-57-7
+  이명: 2-Benzoyl-5-methoxyphenol, 2-Hydroxy-4-Methoxybenzophenone, (2-Hydroxy-4-Methoxyphenyl)Phenylmethanone, Methanone, (2-Hydroxy-4-Methoxyphenyl)Phenyl-, Oxybenzone (INN)
+  배합제한국가: 일본
+  고시원료명: 2-Hydroxy-4-methoxybenzophenone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 5.0 g
+
+[레코드 477]
+  구분: 금지
+  표준명: 머큐리다이클로라이드
+  영문명: Mercury Dichloride
+  이명: mercuric chloride, Bichloride,Mercury, Chloride, Mercuric, Corrosive Sublimate, Dichloride,Mercury, HgCl2Mercuric Chloride, Mercuric Perchloride, Mercury Bichloride, Mercury Dichloride, Mercury Perchloride, Perchloride, Mercuric, Perchloride, Mercury, Sublimate, Sublimate, Corrosive
+  배합제한국가: 일본
+  고시원료명: Mercury and its compounds
+  단서조항: Trace : 수은 (1㎍/g이하)
+
+[레코드 549]
+  구분: 한도/금지
+  표준명: 과붕산나트륨
+  영문명: Sodium Perborate
+  CASNO: 11138-47-9, 7632-04-4, 10332-33-9 (monohydrate), 15120-21-5(tetrahydrate)
+  이명: Perboric Acid, Sodium Salt, Sodium Perborate Monohydrate, Sodium Peroxoborate
+  배합제한국가: 일본
+  고시원료명: Sodium perborate
+
+[레코드 556]
+  구분: 한도
+  표준명: 청색403호
+  영문명: Ao403, CI 61520
+  CASNO: 64553-79-3
+  이명: Solvent Blue 63, Sudan Blue 3
+  배합제한국가: 일본
+  고시원료명: Sudan Blue B
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 642]
+  구분: 금지
+  표준명: 바이타민L1,L2
+  영문명: Vitamin L1, L2
+  배합제한국가: 일본
+  고시원료명: Vitamin L1 and Vitamin L2
+
+[레코드 729]
+  구분: 한도
+  표준명: 마그네슘살리실레이트
+  영문명: Magnesium Salicylate
+  CASNO: 551-37-1, 18917-89-0
+  이명: Benzoic Acid, 2-Hydroxy-, Magnesium Salt, Magnesium 2-Hydroxybenzoate, Salicylic Acid, Magnesium Salt
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 869]
+  구분: 한도
+  표준명: 녹색204호
+  영문명: Pyranine Conc, D&C Green No. 8, Midori204, CI 59040
+  CASNO: 0
+  이명: Green No. 204, 8-Hydroxy-1,3,6-Pyrenetrisulfonic Acid, Trisodium Salt, Japan Green 204, Pyranine, 1,3,6-Pyrenetrisulfonic Acid, 8-Hydroxy-, Trisodium Salt, Solvent Green 7
+  배합제한국가: 일본
+  고시원료명: Pyranine Conc
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 932]
+  구분: 한도
+  표준명: 적색220호
+  영문명: Deep Maroon, D&C Red No. 34, Red 34 Lake, CI 15880:1
+  CASNO: 1103-39-5, 1248-18-6
+  이명: Calcium, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-1-Naphthalenesulfonate, CI 15630:2, Lithol Red, Ca, 1-Naphthalenesulfonic Acid, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]- Calcium Salt, Pigment Red 49:2, Red 11, Red No. 206
+  배합제한국가: 일본
+  고시원료명: Deep Maroon
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 1013]
+  구분: 한도
+  표준명: 페닐벤즈이미다졸설포닉애씨드
+  영문명: Phenylbenzimidazole Sulfonic Acid
+  CASNO: 27503-81-7
+  이명: ensulizole (INN), 2-Phenylbenzimidazole-5-Sulfonic Acid, 2-Phenyl-5-Sulfobenzimidazole
+  배합제한국가: 일본
+  고시원료명: Phenylbenzimidazole sulfonic acid
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 1173]
+  구분: 한도
+  표준명: 칼슘솔베이트
+  영문명: Calcium Sorbate
+  CASNO: 7492-55-9
+  이명: Calcium 2,4-Hexadienoate, 2,4-Hexadienoic Acid, Calcium Salt, Sorbic Acid, Calcium Salt
+  배합제한국가: 일본
+  고시원료명: Sorbic acid and sorbate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 1276]
+  구분: 한도/금지
+  표준명: 파바
+  영문명: PABA
+  CASNO: 150-13-0
+  이명: Aminobenzoic Acid, 4-Aminobenzoic Acid, p-Aminobenzoic Acid, Aniline-4-Carboxylic Acid, Benzoic Acid, 4-Amino-, p-Carboxyaniline, P-Carboxyphenylamine
+  배합제한국가: 일본
+  고시원료명: p-Aminobenzoic acid and its esters
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 4.0 as total(合計量として4.0)(합계량으로 4.0 g)
+
+[레코드 1301]
+  구분: 한도
+  표준명: DL-α-토코페롤아세테이트
+  영문명: DL-α-Tocopheryl Acetate
+  CASNO: 52225-20-4, 58-95-7, 7695-91-2
+  이명: 3,4-Dihydro-2,5,7,8-Tetramethyl-2-(4,8,12-Trimethyltridecyl-2H-Benzopyran-6-ol, Acetate, 2H-1-Benzopyran-6-ol, 3,4-Dihydro-2,5,7,8-Tetramethyl-2-(4,8,12-Trimethyltridecyl)-, Acetate, D-α-Tocopheryl Acetate, d-alpha-Tocopheryl Acetate, DL-α-Tocopheryl Acetate, DL-Alpha-Tocopheryl Acetate, Tocopheryl Acetate (HCPA), Vitamin E Acetate
+  배합제한국가: 일본
+  고시원료명: DL-α-Tocopheryl Acetate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。注4)　すべてのdl―α―トコフェロ?ル誘導?をdl―α―トコフェロ?ルに換算して、dl―α―トコフェロ?ルとして合計。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.03 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 3.03 g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。注4)　すべてのdl―α―トコフェロ?ル誘導?をdl―α―トコフェロ?ルに換算して、dl―α―トコフェロ?ルとして合計。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것(주4)  모든 dl-α-토코페롤유도체를 dl-α-토코페롤에 환산하여 dl-α-토코페롤로 하여 합계
+
+[레코드 1318]
+  구분: 금지
+  표준명: 나이트로퓨란계 화합물
+  영문명: Nitrofuran compounds (e.g. Nitrofurantoin, Furazolidone)
+  CASNO: 67-20-9
+  배합제한국가: 일본
+  고시원료명: Nitrofuran type compounds
+
+[레코드 1326]
+  구분: 한도
+  표준명: 다이포타슘글리시리제이트
+  영문명: Dipotassium Glycyrrhizate
+  CASNO: 68797-35-3
+  이명: Dipotassium Glycyrrhizinate, α-D-Glucopyranosiduronic Acid, (3β,20β)-20-Carboxy-11-oxo-30-Norlean-12-en-3-yl-2-O-β-D-Glucopyranuronosyl-, Dipotassium Salt, 30-Noroleanane, α-D-Glucopyranosiduronic Acid Deriv.
+  배합제한국가: 일본
+  고시원료명: Dipotassium Glycyrrhizate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : (0.80) g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.5 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.20) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 1378]
+  구분: 한도/금지
+  표준명: 아이소부틸파라벤
+  영문명: Isobutylparaben
+  CASNO: 4247-02-03
+  이명: Benzoic Acid, 4-Hydroxy-, 2-Methylpropyl Ester, 4-Hydroxybenzoic Acid, 2-Methylpropyl Ester, Isobutyl p-Hydroxybenzoate, Isobutyl Parahydroxybenzoate, Parahydroxybenzoic Acid, Isobutyl Ester
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 1427]
+  구분: 한도
+  표준명: 벤조에이트
+  영문명: Benzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 1464]
+  구분: 한도
+  표준명: 솔베이트
+  영문명: sorbate
+  배합제한국가: 일본
+  고시원료명: Sorbic acid and sorbate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 1468]
+  구분: 한도
+  표준명: N-아세틸-L-시스테인
+  영문명: N-Acetyl-L-Cysteine
+  CASNO: 616-91-1
+  이명: acetylcysteine (INN) , N-Acetyl-L-Cysteine , L-Cysteine, N-Acetyl- , Mercapturic Acid
+  배합제한국가: 일본
+  고시원료명: N-Acetyl-L-Cysteine
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 9.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 9.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 1522]
+  구분: 한도
+  표준명: 등색203호
+  영문명: Daidai203, Pigment Orange 5, CI 12075
+  CASNO: 3468-63-1
+  이명: Dinitroaniline Orange , 1-[(2,4-Dinitrophenyl)Azo]-2-Naphthalenol , 2-Naphthalenol, 1-[(2,4-Dinitrophenyl)Azo]-
+  배합제한국가: 일본
+  고시원료명: Permanent Orange
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 1579]
+  구분: 한도
+  표준명: 포타슘살리실레이트
+  영문명: Potassium Salicylate
+  CASNO: 578-36-9
+  이명: Benzoic Acid, 2-Hydroxy-, Potassium Salt, Potassium 2-Hydroxybenzoate, Salicylic Acid, Potassium Salt
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 1601]
+  구분: 한도
+  표준명: 소듐벤조에이트
+  영문명: Sodium Benzoate
+  CASNO: 532-32-1
+  이명: Benzoic Acid, Sodium Salt, natrii benzoas (EP), Sodium benzoate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 1642]
+  구분: 한도
+  표준명: 적색219호
+  영문명: Brilliant Lake Red R, D&C Red No. 31, Red 31 Lake, Aka219, PIGMENT RED 64, CI 15800
+  CASNO: 0
+  이명: CI 15800:1, 3-Hydroxy-4-(Phenylazo)-2-Naphthalenecarboxylic Acid, Calcium Salt(2:1), 2-Hydroxy-1-phenylazo-3-naphthoic Acid, Calcium Salt, 2-Naphthalenecarboxylic Acid, 3-Hydroxy-5-(Phenylazo)-, Calcium Salt (2:1), Pigment Red 64:1, Red No. 219
+  배합제한국가: 일본
+  고시원료명: Brilliant Lake Red R
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 1677]
+  구분: 금지
+  표준명: 프로카인
+  영문명: procaine
+  CASNO: 59-46-1
+  배합제한국가: 일본
+  고시원료명: Local anesthetics such as procaine
+
+[레코드 1681]
+  구분: 한도
+  표준명: 황색4호
+  영문명: Tartrazine, , FD&C Yellow No. 5, Acid Yellow 23 Aluminum Lake, Yellow 5 Lake, Ki4, FOOD YELLOW 4, CI 19140
+  CASNO: 1934-21-0
+  이명: , CI 19140 , 4,5-Dihydro-5-Oxo-ACID YELLOW 23, 1-(4-Sulfophenyl)-4-[(4-Sulfophenyl)Azo]-1H-Pyrazole-3-Carboxylic Acid, Trisodium Salt , 1H-Pyrazole-3-Carboxylic Acid, 4,5-Dihydro-5-Oxo-1-(4-Sulfophenyl)-4-[(4-Sulfophenyl)Azo]-, Trisodium Salt , Japan Yellow 4 , Tartrazin , Tartrazine , Yellow No. 4
+  배합제한국가: 일본
+  고시원료명: Tartrazine
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함이 성분의 지르코늄 레이크 포함
+
+[레코드 1713]
+  구분: 한도
+  표준명: 아이소페닐트라이메톡시신나메이트트라이실록세인
+  영문명: Isopentyl Trimethoxycinnamate Trisiloxane
+  이명: Methyl Bis(trimethylsiloxy)silyl Isopentyl Trimethoxycinnamate, 3-Methyl-4-(Methyl Bis(Trimethylsiloxy)Silyl) Butyl 3,4,5-Trimethoxycinnamate, Methylbis(trimethylsiloxy)silyl isopentyl trimethoxycinnamonate
+  배합제한국가: 일본
+  고시원료명: Methylbis(trimethylsiloxy)silyl isopentyltrimethoxycinnamonate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 7.5 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 7.5 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 2.5
+
+[레코드 1784]
+  구분: 한도
+  표준명: p-옥시벤조익애씨드 에스텔류
+  영문명: p-Oxybenzoic acid esters
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 1851]
+  구분: 금지
+  표준명: 카드뮴(비-발화성)
+  영문명: Cadmium (Non-Pyrophoric)
+  CASNO: 7440-43-9
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 2020]
+  구분: 금지
+  표준명: 셀레늄콜로이드
+  영문명: Colloidal Selenium
+  CASNO: 7782-49-2
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 2025]
+  구분: 한도
+  표준명: 4-하이드록시벤조익애씨드
+  영문명: 4-Hydroxybenzoic Acid
+  CASNO: 99-96-7
+  이명: Benzoic Acid, 4-Hydroxy- , p-Carboxyphenol , p-Hydroxybenzoic Acid , 4-Hydroxybenzoic acid (RIFM) , Paraben , p-Salicyclic Acid
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 2041]
+  구분: 한도
+  표준명: 적색226호
+  영문명: Helindone Pink CN, D&C Red No. 30, Red 30 Lake, Aka226, VAT RED 1, CI 73360
+  CASNO: 0
+  이명: Benzo[b]Thiophen-3(2H)-one, 6-Chloro-2-(6-Chloro-4-Methyl-3-Oxobenzo[b]Thien-2(3H)-ylidene)-4-Methyl-, 6-Chloro-2-(6-Chloro-4-Methyl-3-Oxobenzo[b]Thien-2(3H)-ylidene)-4-Methylbenzo[b]Thiophen-3(2H)-one, 5,5'-Dichloro-3,3'-Dimethyl-Thioindigo, Japan Red 226, Pigment Red 181, Red No. 226, Vat Red 1
+  배합제한국가: 일본
+  고시원료명: Helindone Pink CN
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 2257]
+  구분: 한도/금지
+  표준명: 에스트라다이올
+  영문명: Estradiol
+  배합제한국가: 일본
+  고시원료명: Estradiol, estrone and ethinylestradiol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)(b) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)((a) 머리, 점막부 또는 구강 내에 사용되는 화장품 및 기타 부위에 사용되는 화장품 중 지방족 저급 1가 알코올류를 함유한 화장품(오직 해당 화장품에 배합되는 성분의 용해만을 목적으로 해당 알코올류를 함유하는 것은 제외)(b) 머리, 점막부 또는 구강 내에 사용되는 화장품 이외의 화장품에서 지방족 저급일가알코올류를 함유하지 않는 화장품 (해당 화장품에 배합된 성분의 용해만을 목적으로 해서 해당 알코올류를 함유하는 것을 포함한다.)) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 20000 IU as total(合計量として20000?際?位)(b) 50000 IU as total(合計量として50000?際?位)((a) 합계량으로 20000 IU, (b) 합계량으로 50000 IU)
+
+[레코드 2400]
+  구분: 금지
+  표준명: 카드뮴시아나이드
+  영문명: Cadmium Cyanide
+  CASNO: 542-83-6
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 2519]
+  구분: 한도
+  표준명: 캠퍼
+  영문명: Camphor
+  CASNO: 464-49-3/76-22-2
+  배합제한국가: 일본
+  고시원료명: DL-Camphor
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 4.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 4.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (1.0) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 2543]
+  구분: 한도
+  표준명: p-옥시벤조익애씨드 소듐염류
+  영문명: p-Oxybenzoic acid sodium salts
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 2658]
+  구분: 한도
+  표준명: 수용성유황
+  영문명: Water-soluble Sulphur
+  배합제한국가: 일본
+  고시원료명: Water-soluble Sulphur
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 2.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 2.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 2676]
+  구분: 한도
+  표준명: 알클록사
+  영문명: Alcloxa
+  CASNO: 1317-25-5
+  배합제한국가: 일본
+  고시원료명: Aluminum chlorhydroxy allantoinate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 g(1.0 g)
+
+[레코드 2693]
+  구분: 한도
+  표준명: 녹색202호
+  영문명: Quinizarine Green SS, D&C Green No. 6, Midori202, CI 61565
+  CASNO: 0
+  이명: 9,10-Anthracenedione, 1,4-Bis[(4-Methylphenyl)Amino]-, Anthraquinone, 1,4-Di-ψ-Toluidino-, 1,4-bis(4'-Methylanilino)Anthraquinone, 1,4-Bis[(4-Methylphenyl)Amino-9,10-Anthracenedione, Ceres Green BB, Green No. 202, Quinizarin Green SS, Solvent Green 3
+  배합제한국가: 일본
+  고시원료명: Quinizarine Green SS
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 2748]
+  구분: 한도
+  표준명: 포타슘메틸파라벤
+  영문명: Potassium Methylparaben
+  CASNO: 26112-07-2
+  이명: Benzoic Acid, 4-Hydroxy-, Methyl Ester, Potassium Salt , 4-Hydroxybenzoic Acid, Methyl Ester, Potassium Salt , Methyl p-Hydroxybenzoate Potassium Salt , Methylparaben, Potassium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 2794]
+  구분: 금지
+  표준명: 사이클리진
+  영문명: Cyclizine
+  CASNO: 82-92-8
+  이명: Marezine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 2872]
+  구분: 금지
+  표준명: 카드뮴헥사플루오로실리케이트(2-);카드뮴플루오로실리카
+  영문명: Cadmiumhexafluorosilicate(2-); Cadmium Fluorosilica
+  CASNO: 17010-21-8
+  이명: Cadmiumhexafluorosilikat, Cadmium Silicofluoride
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 2953]
+  구분: 한도
+  표준명: 황색204호
+  영문명: Quinoline Yellow SS, D&C Yellow No. 11, Ki204, SOLVENT YELLOW 33, CI 47000
+  CASNO: 0
+  이명: 1H-Indene-1,3-(2H)-dione, 2-(2-Quinolinyl)-, Japan Yellow 204 , Quinoline Yellow SS, Quinolphthalone, 2-(2-Quinolyl)-1,3-Indandione, Solvent Yellow 33, Yellow No. 204
+  배합제한국가: 일본
+  고시원료명: Quinoline Yellow SS
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 3038]
+  구분: 한도
+  표준명: 데하이드로아세테이트
+  영문명: dehydroacetate
+  배합제한국가: 일본
+  고시원료명: Dehydroacetic acid and dehydroacetate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 3095]
+  구분: 한도
+  표준명: 쿼터늄-45
+  영문명: Quaternium-45
+  CASNO: 21034-17-3
+  배합제한국가: 일본
+  고시원료명: Photosensitizing dyes
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.0020 as total(合計量として0.0020)(합계량으로 0.0020 g)
+
+[레코드 3122]
+  구분: 금지
+  표준명: 수은 및 그 화합물
+  영문명: Mercury and its compounds
+  CASNO: 7439-97-6
+  배합제한국가: 일본
+  고시원료명: Mercury and its compounds
+  단서조항: Trace : 수은 (1㎍/g이하)
+
+[레코드 3140]
+  구분: 금지
+  표준명: 셀레늄 및 그 화합물(셀레늄다이설파이드는 제외)
+  영문명: Selenium and its compounds with the exception of selenium disulphide
+  CASNO: 7782-49-2
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+  단서조항: 셀레늄아스파테이트는 제외
+
+[레코드 3185]
+  구분: 한도
+  표준명: 시녹세이트
+  영문명: Cinoxate
+  CASNO: 104-28-9
+  배합제한국가: 일본
+  고시원료명: Cinoxate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 5.0 g
+
+[레코드 3192]
+  구분: 한도/금지
+  표준명: 포름알데하이드
+  영문명: Formaldehyde
+  CASNO: 50-00-0
+  이명: Formalin, Formic Aldehyde, Methaldehyde, Methanal, Methyl Aldehyde, Oxomethane, Oxymethylene
+  배합제한국가: 일본
+  고시원료명: Formalin
+
+[레코드 3231]
+  구분: 한도
+  표준명: 살리실레이트류
+  영문명: Salicylates
+  CASNO: 69-72-7
+  이명: 2 Hydroxybenzoic Acid, 2-Hydroxybenzoic Acid, Acid, 2-Hydroxybenzoic, Acid, o-Hydroxybenzoic, Acid, ortho-Hydroxybenzoic, Acid, Salicylic, o Hydroxybenzoic Acid, o-Hydroxybenzoic Acid, ortho Hydroxybenzoic Acid, ortho-Hydroxybenzoic Acid, Salicylic Acid
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 3251]
+  구분: 한도
+  표준명: 적색501호
+  영문명: Aka501, Scarlet Red NF, CI 26105
+  CASNO: 85-83-6
+  이명: 2',3-Dimethyl-4-(2-Hydroxynaphthylazo) Azobenzene , 1-[[2-Methyl-4-[(2-Methylphenyl)Azo]Phenyl]Azo]-2-Naphthalenol , 2-Naphthalenol, 1-[[2-Methyl-4-[(2-Methylphenyl)Azo]Phenyl]Azo]- , 2-Naphthol, 1-(4-o-Tolylazo-o-Tolylazo)- , Scarlet Red
+  배합제한국가: 일본
+  고시원료명: Scarlet Red NF
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 3259]
+  구분: 한도
+  표준명: 유비퀴논
+  영문명: Ubiquinone
+  CASNO: 303-98-0  60684-33-5
+  이명: Coenzyme Q10, 2,5-Cyclohexadiene-1,4-Dione, 2-(3,7,11,15,19,23,27,31,35,39-Decamethyl-2,6,10,14,18,22,26,30,34,38- Tetracontadecaenyl)-5,6-Dimethoxy-3-Methyl-,, ubidecarenone (INN), Ubiquinone 10, Ubiquinone 50, Ubiquinone Q10
+  배합제한국가: 일본
+  고시원료명: Ubidecarenone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.03 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.03 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 3343]
+  구분: 한도
+  표준명: 청색202호
+  영문명: Ao202, Patent Blue NA, CI 42052
+  CASNO: 3374-30-9
+  이명: Acid Blue 5, Sodium Salt , Benzenemethanaminium, N-Ethyl-N-[4-[[4-[Ethyl(phenylmethyl)amino]phenyl](5-Hydroxy-2,4-Disulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-, Inner Salt, Sodium Salt , Blue No. 202 , CI 42052 , Patent Blue 5
+  배합제한국가: 일본
+  고시원료명: Patent Blue NA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 바륨레이크 포함
+
+[레코드 3347]
+  구분: 금지
+  표준명: 필로카르핀
+  영문명: Pilocarpine
+  CASNO: 92-13-7
+  이명: 2(3H)-Furanone, 3-ethyldihydro-4-((1-methyl-1H-imidazol-5-yl)methyl)-, (3S,4R)-, Isoptocarpine, Pilokarpin, Salagen, Pilocarpin
+  배합제한국가: 일본
+  고시원료명: Pilocalpine
+
+[레코드 3983]
+  구분: 한도
+  표준명: 황
+  영문명: Sulfur
+  CASNO: 7704-34-9
+  이명: Flowers of Sulfur, Hydrogen Sulfide, Hydrogen Sulfide (H2(Sx)), Hydrogen Sulfide (H2S2), Hydrogen Sulfide (H2S3), Sulfide, Hydrogen
+  배합제한국가: 일본
+  고시원료명: Sulfur
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.62 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.62 g
+
+[레코드 4358]
+  구분: 금지
+  표준명: CI 77805
+  영문명: CI 77805
+  CASNO: 7782-49-2, 7783-07-5
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 4516]
+  구분: 한도
+  표준명: 에스트라다이올, 에스트론 및 에티닐에스트라디올
+  영문명: Estradiol, estrone and ethinylestradiol
+  배합제한국가: 일본
+  고시원료명: Estradiol, estrone and ethinylestradiol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)(b) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)((a) 머리, 점막부 또는 구강 내에 사용되는 화장품 및 기타 부위에 사용되는 화장품 중 지방족 저급 1가 알코올류를 함유한 화장품(오직 해당 화장품에 배합되는 성분의 용해만을 목적으로 해당 알코올류를 함유하는 것은 제외)(b) 머리, 점막부 또는 구강 내에 사용되는 화장품 이외의 화장품에서 지방족 저급일가알코올류를 함유하지 않는 화장품 (해당 화장품에 배합된 성분의 용해만을 목적으로 해서 해당 알코올류를 함유하는 것을 포함한다.)) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 20000 IU as total(合計量として20000?際?位)(b) 50000 IU as total(合計量として50000?際?位)((a) 합계량으로 20000 IU, (b) 합계량으로 50000 IU)
+
+[레코드 4553]
+  구분: 한도
+  표준명: 적색105(1)호
+  영문명: Aka105(1), CI 45440
+  CASNO: 632-69-9
+  이명: Acid Red 94 , CI 45440 , Red No. 105(1) , Rose Bengal Na Salt , Spiro[Isobenzofuran-1(3H), 9'-(9H)Xanthen]-3-one, 4,5,6,7-Tetrachloro-3',6'-Dihydroxy-2',4',5',7'-Tetraiodo-, Disodium Salt
+  배합제한국가: 일본
+  고시원료명: Rose Bengal
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 4665]
+  구분: 한도
+  표준명: 황색205호
+  영문명: Ki205, Benzidine Yellow G, CI 21090
+  CASNO: 6358-85-6
+  이명: Acetoacetanilide, 2,2"-(3,3'-dichloro-4,4'-biphenylylenebisazo)bis-, Benzidine Yellow G, Butanamide, 2,2'-[(3,3'-Dichloro[1,1'-Biphenyl]4,4'-diyl)Bis(Azo)]Bis[3-Oxo-N-Phenyl-, CI 21090, 2,2'-[(3,3'-Dichloro[1,1'-Biphenyl]-4,4'-diyl)Bis(Azo)]Bis[3-Oxo-N-Phenylbutanamide], Pigment Yellow 12, Yellow No. 205
+  배합제한국가: 일본
+  고시원료명: Benzidine Yellow G
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 4728]
+  구분: 한도
+  표준명: 디에칠아미노하이드록시벤조일헥실벤조에이트
+  영문명: Diethylamino Hydroxybenzoyl Hexyl Benzoate
+  CASNO: 302776-68-7
+  이명: Benzoic Acid, 2-[4-(Diethylamino)-2-Hydroxybenzoyl]-, Hexyl Ester
+  배합제한국가: 일본
+  고시원료명: 2-[4-(diethylamino)-2-hydroxybenzyl]benzoic acid hexylester
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 4749]
+  구분: 금지
+  표준명: 메타피릴렌 및 그 염류
+  영문명: Methapyrilene (INN) and its salts
+  CASNO: 91-80-5
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 4824]
+  구분: 한도
+  표준명: 티안톨
+  영문명: Thianthol
+  CASNO: 135-58-0
+  이명: mesulfen (INN), Thianthrene, 2,7-dimethyl-
+  배합제한국가: 일본
+  고시원료명: Thianthol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.80 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.80 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 4829]
+  구분: 한도
+  표준명: 클로헥시딘다이하이드로클로라이드
+  영문명: Chlorhexidine Dihydrochloride
+  CASNO: 3697-42-5
+  이명: N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-2,4,11,13-Tetraazatetradecanediimidamide, Dihydrochloride, Chlorhexidine Hydrochloride, chlorhexidini hydrochloridum (EP), Chlorhexidinium Dichloride, 1,1'-Hexamethylene Bis(5-(p-Chlorophenyl)Biguanide) Dihydrochloride, 2,4,11,13-Tetraazatetradecanediimidamide, N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-, Dihydrochloride
+  배합제한국가: 일본
+  고시원료명: Chlorhexidine hydrochloride
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.0010 g
+
+[레코드 4900]
+  구분: 한도
+  표준명: 클로헥시딘다이글루코네이트액
+  영문명: Chlorhexidine Digluconate Solution
+  CASNO: 18472-51-0
+  이명: N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-2,4,11,13-Tetraazatetradecanediimidamide, Compd. with D-Gluconic Acid, Chlorhexidine Bigluconate, Chlorhexidine Gluconate, Chlorhexidine Gluconate Solution, chlorhexidini gluconati solutio (EP), D-Gluconic Acid, Compd. with N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-2,4,11,13-Tetraazatetradecanediimidamide (2:1), 1,1'-Hexamethylene Bis(5-(p-Chlorophenyl)Biguanide) Digluconate
+  배합제한국가: 일본
+  고시원료명: Chlorhexidine Digluconate Solution
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.225 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.225 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 4926]
+  구분: 한도
+  표준명: 청색205호
+  영문명: Alphazurine FG, D&C Blue No. 4, Ao205, Acid Blue 9 Ammonium Salt, CI 42090
+  CASNO: 2650-18-2, 37307-56-5, 6371-85-3
+  이명: Acid Blue 9, Benzenemethanaminium, Blue No. 205, CI 42090, Japan Blue 205
+  배합제한국가: 일본
+  고시원료명: Alphazurine FG
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 4933]
+  구분: 한도
+  표준명: 디엠디엠하이단토인
+  영문명: DMDM Hydantoin
+  CASNO: 6440-58-0
+  이명: 1,3-Bis(Hydroxymethyl)-5,5-Dimethylimidazolidine-2,4-dione(+), 1,3-Dimethylol-5,5-Dimethyl Hydantoin, 2,4-Imidazolidinedione, 1,3-Bis(Hydroxymethyl)-5,5-Dimethyl-
+  배합제한국가: 일본
+  고시원료명: 1,3-Dimethylol-5,5-dimethylhydantoin
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 배합금지 * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 5019]
+  구분: 한도
+  표준명: 등색204호
+  영문명: Benzidine Orange G, Daidai204, CI 21110
+  CASNO: 3520-72-7
+  이명: Benzidine Orange G, CI 21110, 3H-Pyrazol-3-one, 4,4'-[(3,3'-dichloro[1,1'-biphenyl]-4,4'-diyl)bis(azo)bis[2,4-dihydro-5-methyl-2-phenyl-, Orange No. 204, Pigment Orange 13
+  배합제한국가: 일본
+  고시원료명: Benzidine Orange G
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 5136]
+  구분: 한도
+  표준명: 암모늄벤조에이트
+  영문명: Ammonium Benzoate
+  CASNO: 1863-63-4
+  이명: Benzoic Acid, Ammonium Salt
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 5180]
+  구분: 금지
+  표준명: 피로갈롤
+  영문명: Pyrogallol
+  CASNO: 87-66-1
+  배합제한국가: 일본
+  고시원료명: Pyrogallol
+
+[레코드 5186]
+  구분: 한도/금지
+  표준명: 황색406호
+  영문명: Ki406, Metanil Yellow, CI 13065
+  CASNO: 587-98-4
+  이명: Acid Yellow 36, Monosodium Salt, Benzenesulfonic Acid, 3-[[4-(Phenylamino)Phenyl]Azo]-, Monosodium Salt, CI 13065, Metanil Yellow, Yellow No. 406
+  배합제한국가: 일본
+  고시원료명: Metanil Yellow
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 5295]
+  구분: 금지
+  표준명: 셀레늄/돌콩싹추출물
+  영문명: Selenium/Glycine Soja (Soybean) Sprout Extract
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 5339]
+  구분: 금지
+  표준명: 프로카인과 같은 국소마취제
+  영문명: Local anesthetics such as procaine
+  배합제한국가: 일본
+  고시원료명: Local anesthetics such as procaine
+
+[레코드 5451]
+  구분: 한도
+  표준명: 스페인감초전초추출물
+  영문명: Glycyrrhiza Glabra (Licorice) Extract
+  배합제한국가: 일본
+  고시원료명: Glycyrrhiza Glabra (Licorice) Extract
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : (8.0) g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 4.3 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (2.0) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 5633]
+  구분: 금지
+  표준명: 비티오놀
+  영문명: Bithionol
+  CASNO: 97-18-7
+  이명: Bitin
+  배합제한국가: 일본
+  고시원료명: Bithionol
+
+[레코드 5840]
+  구분: 한도
+  표준명: 적색504호
+  영문명: Ponceau SX, FD&C Red No. 4, Red 4 Lake, Aka504, FOOD RED 1, CI 14700
+  CASNO: 0
+  이명: 3-[(2,4-Dimethyl-5-Sulfophenyl)Azo]-4-Hydroxy-1-Naphthalenesulfonic Acid, Disodium Salt, Food Red 1, 1-Naphthalenesulfonic Acid, 3-[(2,4-Dimethyl-5-Sulfophenyl)Azo]-4-Hydroxy-, Disodium Salt, Ponceau SX, Red No. 504
+  배합제한국가: 일본
+  고시원료명: Ponceau SX
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 5960]
+  구분: 한도
+  표준명: 소듐파라벤
+  영문명: Sodium Paraben
+  CASNO: 114-63-6, 85080-04-2
+  이명: Benzoic Acid, 4-Hydroxy-, Sodium Salt , 4-Hydroxybenzoic Acid, Sodium Salt , p-Hydroxybenzoic Acid, Sodium Salt , Sodium p-Hydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 6027]
+  구분: 한도
+  표준명: 적색204호
+  영문명: Aka204, Lake Red CBA, CI 15585:1
+  CASNO: 5160-02-01
+  이명: , Benzenesulfonic Acid, 5-Chloro-2-[(2-Hydroxy-1-Naphthalenyl)Azo]-4-Methyl-, Barium Salt(2:1) 5-Chloro-2-[(2-Hydroxy-1-Naphthalenyl)Azo]-4-Methylbenzenesulfonic Acid, Barium Salt(2:1)
+  배합제한국가: 일본
+  고시원료명: Lake Red CBA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 6061]
+  구분: 한도
+  표준명: 아미노에텔형 항히스타민제
+  영문명: Aminoether type antihistamines
+  배합제한국가: 일본
+  고시원료명: Aminoether type antihistamines
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 頭部のみに使用される化粧品 (머리에만 사용되는 화장품)(b) 頭部のみに使用される化粧品以外の化粧品 (머리에만 사용되는 화장품 외의 화장품) )* 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 0.010 g (b) Prohibited(配合不可)(배합금지)
+
+[레코드 6114]
+  구분: 한도
+  표준명: 적색223호
+  영문명: Tetrabromofluorescein, D&C Red No. 21, Red 21 Lake, Aka223, CI 45380:2
+  CASNO: 15086-94-9
+  이명: Bromofluoresceic Acid, CI 45380:2, Eosin, Eosine G, Red No. 223, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxy-, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Tetrabromofluorescein
+  배합제한국가: 일본
+  고시원료명: Tetrabromofluorescein
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 6201]
+  구분: 한도
+  표준명: 메틸벤조에이트
+  영문명: Methyl Benzoate
+  CASNO: 93-58-3
+  이명: Benzoic Acid, Methyl Ester, Methyl Benzenecarboxylate, Methyl benzoate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 6227]
+  구분: 한도
+  표준명: 에칠헥실메톡시신나메이트
+  영문명: Ethylhexyl Methoxycinnamate
+  CASNO: 5466-77-3
+  이명: 2-Ethylhexyl Methoxycinnamate, 2-Ethylhexyl 4-Methoxycinnamate, p-Methoxycinnamic Acid, 2-Ethylhexyl Ester, 3-(4-Methoxyphenyl)-2-Propenoic Acid, 2-Ethylhexyl Ester, Octinoxate (INN), Octyl Methoxycinnamate, 2-Propenoic Acid, 3-(4-Methoxyphenyl)-, 2-Ethylhexyl Ester
+  배합제한국가: 일본
+  고시원료명: 2-Ethylhexyl p-methoxycinnamate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 20 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 20 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 8.0 g
+
+[레코드 6312]
+  구분: 한도
+  표준명: 청색204호
+  영문명: Carbanthrene Blue, Ao204, VAT BLUE 6, CI 69825
+  CASNO: 0
+  이명: 5,9,14,18-Anthrazinetetrone, 7,16-Dichloro-6,15-Dihydro-,, Blue No. 204, 7,16-Dichloro-6,15-Dihydro-5,9,14,18-Anthrazinetetrone, 3,3'-Dichloroindanthrone, Indanthrene Blue BC, Pigment Blue 64, Vat Blue 6
+  배합제한국가: 일본
+  고시원료명: Carbanthrene Blue
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 6325]
+  구분: 한도
+  표준명: 프로필파라벤
+  영문명: Propylparaben
+  CASNO: 94-13-3
+  이명: Benzoic Acid, 4-Hydroxy-, Propyl Ester 4-Hydroxybenzoic Acid, Propyl Ester , Parahydroxybenzoate Ester , Propyl p-Hydroxybenzoate , Propyl p-hydroxybenzoate (RIFM) , propylis parahydroxybenzoas (EP) , Propyl Parahydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 6371]
+  구분: 한도
+  표준명: 황색405호
+  영문명: Ki405, Yellow OB, CI 11390
+  CASNO: 131-79-3
+  이명: 2-Naphthalenamine, 1-[(2-Methylphenyl)Azo]- , 2-Naphthylamine, 1-o-tolylazo- , Solvent Yellow 6
+  배합제한국가: 일본
+  고시원료명: Yellow OB
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 6443]
+  구분: 한도
+  표준명: 포타슘파라벤
+  영문명: Potassium Paraben
+  CASNO: 16782-08-4
+  이명: Benzoic Acid, 4-Hydroxy-, Potassium Salt , 4-Hydroxybenzoic Acid, Potassium Salt , p-Hydroxybenzoic Acid, Potassium Salt , Potassium p-Hydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 6812]
+  구분: 한도/금지
+  표준명: 에스트론
+  영문명: Estrone
+  배합제한국가: 일본
+  고시원료명: Estradiol, estrone and ethinylestradiol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)(b) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)((a) 머리, 점막부 또는 구강 내에 사용되는 화장품 및 기타 부위에 사용되는 화장품 중 지방족 저급 1가 알코올류를 함유한 화장품(오직 해당 화장품에 배합되는 성분의 용해만을 목적으로 해당 알코올류를 함유하는 것은 제외)(b) 머리, 점막부 또는 구강 내에 사용되는 화장품 이외의 화장품에서 지방족 저급일가알코올류를 함유하지 않는 화장품 (해당 화장품에 배합된 성분의 용해만을 목적으로 해서 해당 알코올류를 함유하는 것을 포함한다.)) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 20000 IU as total(合計量として20000?際?位)(b) 50000 IU as total(合計量として50000?際?位)((a) 합계량으로 20000 IU, (b) 합계량으로 50000 IU)
+
+[레코드 6816]
+  구분: 한도
+  표준명: 오렌지오일
+  영문명: Citrus Oil
+  배합제한국가: 일본
+  고시원료명: Citrus Oil
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 6898]
+  구분: 한도
+  표준명: 혼합크레졸
+  영문명: Mixed Cresols
+  CASNO: 1319-77-3
+  이명: Cresol , Cresol (mixed isomers) (RIFM) , Methylphenol, Mixed , Phenol, Methyl-. Mixed
+  배합제한국가: 일본
+  고시원료명: Cresol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.010 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.010 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 6989]
+  구분: 한도
+  표준명: 황색401호
+  영문명: Hanza Yellow, FOOD YELLOW 1, Ki401, CI 11680
+  CASNO: 0
+  이명: Butanamide, 2-[(4-Methyl-2-Nitrophenyl)Azo]-3-Oxo-N-Phenyl-, Hansa Yellow G, 2-[(4-Methyl-2-Nitrophenyl)Azo]-3-Oxo-N-Phenylbutanamide, α-(o-Nitro-p-tolylazo)acetoacetanilide, Pigment Yellow 1, Yellow No. 401
+  배합제한국가: 일본
+  고시원료명: Hanza Yellow
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 7123]
+  구분: 한도
+  표준명: 마그네슘/알루미늄/하이드록사이드/카보네이트
+  영문명: Magnesium/Aluminum/Hydroxide/Carbonate
+  CASNO: 11097-59-9, 12304-65-3, 85585-93-9
+  이명: [Carbonato(2-)]Hexadecahydroxybis(Aluminum)Hexamagnesium, Magnaesium, Carbonate Hydroxy Aluminum Complexes, Magnaesium, [Carbonato(2-)]Hexadecahydroxybis(Aluminum)Hexa-
+  배합제한국가: 일본
+  고시원료명: Synthetic Hydrotalcite
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g * 단서조항 :
+
+[레코드 7165]
+  구분: 한도/금지
+  표준명: 부틸파바
+  영문명: Butyl PABA
+  CASNO: 94-25-7
+  이명: p-Aminobenzoic Acid Butyl Ester, Benzoic Acid, 4-Amino-, Butyl Ester, Butamben, Butyl 4-Aminobenzoate
+  배합제한국가: 일본
+  고시원료명: p-Aminobenzoic acid and its esters
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 4.0 as total(合計量として4.0)(합계량으로 4.0 g)
+
+[레코드 7196]
+  구분: 한도
+  표준명: 라우릴아이소퀴놀리늄브로마이드
+  영문명: Lauryl Isoquinolinium Bromide
+  CASNO: 93-23-2
+  이명: Alkylisoquinolinium Bromide Solution, 2-Dodecylisoquinolinium Bromide
+  배합제한국가: 일본
+  고시원료명: Alkylisoquinolinium bromide
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.050 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.050 g
+
+[레코드 7426]
+  구분: 한도
+  표준명: 메칠렌비스-벤조트리아졸릴테트라메칠부틸페놀
+  영문명: Methylene Bis-Benzotriazolyl Tetramethylbutylphenol
+  CASNO: 103597-45-1
+  이명: Bisoctrizole (USAN) , 2,2'-Methylenebis[4-(1,1,3,3-Tetramethylbutyl)-6-(2H-Benzotriazol-2-yl)Phenol]
+  배합제한국가: 일본
+  고시원료명: 2,2’-methylenebis(6-(2H-benzotriazole-2-yl)-4-(1,1,3,3-tetramethylbutyl)phenol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 7452]
+  구분: 한도/금지
+  표준명: 메틸알코올
+  영문명: Methyl Alcohol
+  CASNO: 67-56-1
+  이명: Carbinol, Methanol (RIFM), Methyl Hydroxide, Methylol, Wood Alcohol
+  배합제한국가: 일본
+  고시원료명: Methyl alcohol
+  단서조항: 에탄올 및 이소프로필알콜의 변성제로서만 알콜 중 5%까지 사용
+
+[레코드 7649]
+  구분: 한도
+  표준명: 소듐o-페닐페네이트
+  영문명: Sodium o-Phenylphenate
+  CASNO: 132-27-4
+  배합제한국가: 일본
+  고시원료명: Sodium o-phenylphenate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.15 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.15 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 7834]
+  구분: 한도/금지
+  표준명: 펜틸다이메틸파바
+  영문명: Pentyl Dimethyl PABA
+  CASNO: 14779-78-3
+  이명: Amyl 4-Dimethylaminobenzoate, Mixed Isomers, Amyl p-Dimethylamino Benzoate, Amyl Dimethyl PABA, Benzoic Acid, 4-(Dimethylamino)-, Pentyl Ester, Padimate A, Pentyl p-(Dimethylamino)Benzoate
+  배합제한국가: 일본
+  고시원료명: Amyl p-dimethylaminobenzoate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 7873]
+  구분: 금지
+  표준명: 다이페닐피랄린 및 그 염류
+  영문명: Diphenylpyraline and its salts
+  CASNO: 147-20-6
+  이명: 4-diphenylmethoxy-1-methylpiperidine, diphenylpyraline, diphenylpyraline hydrochloride, diphenylpyraline maleate (2:1), Lergobine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 7934]
+  구분: 한도
+  표준명: 적색2호
+  영문명: Amaranth, Aka2, Acid Red 27 Aluminum Lake, FOOD RED 9, CI 16185
+  CASNO: 0
+  이명: Acid Red 27, Amaranth, Food Red 9, 3-Hydroxy-4-[(4-Sulfo-1-Naphthalenyl)Azo]-2,7-Naphthalenedisulfonic Acid, Trisodium Salt, 2,7-NaphthalenedisulfonicAcid, 3-Hydroxy-4-[(4-Sulfo-1-Naphthalenyl)Azo]-, Trisodium Salt, Red No. 2
+  배합제한국가: 일본
+  고시원료명: Amaranth
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 8111]
+  구분: 한도
+  표준명: 운데실렌아마이드엠이에이
+  영문명: Undecylenamide MEA
+  CASNO: 20545-92-0 75046-17-2
+  이명: N-(2-Hydroxyethyl)Undecenamide, Undecenamide, N-(2-Hydroxyethyl)-, Undecylenic Acid Monoethanolamide, Undecylenoyl Monoethanolamide
+  배합제한국가: 일본
+  고시원료명: Undecylenic acid monoethanolamide
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 石けん,シャンプ?等の直ちに洗い流す化粧品以外の化粧品(비누, 화장품 등 즉시 씻어 내는 화장품 외의 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : Prohibited(配合不可)(배합금지)
+
+[레코드 8137]
+  구분: 한도
+  표준명: 적색215호
+  영문명: Aka215, Rhodamine B-Stearate, CI 45170:1
+  CASNO: 6373-07-05
+  이명: Ammonium, (9-(o-Carboxyphenyl)-6(Diethylamino)-3H-xanthen-3-ylidene)diethyl-, Stearate, N-[9-(2-Carboxyphenyl)-6-(Diethylamino)-3H-Xanthen-3-ylidene]-N-Ethylethanaminium Octadecanoate, Ethanaminium, N-[9-(2-Carboxyphenyl)-6-(Diethylamino)-3H-Xanthen-3-ylidene]-N-Ethyl-, Octadecanoate, Rhodamine B-Stearate, Xanthylium, 9-(2-Carboxyphenyl)-3,6-bis(Diethylamino)-, Octadecanoate
+  배합제한국가: 일본
+  고시원료명: Rhodamine B Stearate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 8543]
+  구분: 한도
+  표준명: 칼슘파라벤
+  영문명: Calcium Paraben
+  CASNO: 69959-44-0
+  이명: Benzoic Acid, 4-Hydroxy-, Calcium Salt , 4-Hydroxybenzoic Acid, Calcium Salt , p-Hydroxybenzoic Acid, Calcium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 8592]
+  구분: 한도
+  표준명: 페녹시에탄올
+  영문명: Phenoxyethanol
+  CASNO: 122-99-6
+  이명: Ethanol, 2-Phenoxy-, Ethylene Glycol Monophenyl Ether, 2-Hydroxyethyl Phenyl Ether, 2-Phenoxyethanol, 2-Phenoxyethanol (RIFM), phenoxyethanolum (EP), 2-Phenoxyethyl Alcohol, Phenoxytol
+  배합제한국가: 일본
+  고시원료명: Phenoxyethanol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 g(1.0 g)
+
+[레코드 8642]
+  구분: 한도
+  표준명: 판테닐에틸에터벤조에이트
+  영문명: Panthenyl Ethyl Ether Benzoate
+  이명: Pantothenyl ethylether benzoate
+  배합제한국가: 일본
+  고시원료명: Pantothenyl ethylether benzoate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.30 g
+
+[레코드 8810]
+  구분: 금지
+  표준명: 하이드록시진
+  영문명: Hydroxyzine
+  CASNO: 68-88-2
+  이명: 2-(2-(4-((4-Chlorophenyl)phenylmethyl)-1-piperazinyl)ethoxy)ethanol, Hydroxyzine Pamoate, Pamoate, Hydroxyzine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 8857]
+  구분: 한도
+  표준명: 녹색401호
+  영문명: Naphthol Green B, Midori401, CI 10020
+  CASNO: 19381-50-1
+  이명: Acid Green 1, Ferrate(3)-, Tris[5,6-Dihydro-5-(Hydroxyimino)-6-Oxo-2-Naphthalenesulfonato(2-)-N5,O 6, Trisodium, Green No. 401, Green PLX, Japan Green 401, 2-Naphthalenesulfonic Acid, 5,6-Dihydro-5-(hydroxyimino)-6-oxo, Iron Complex, Naphthol Green B, Tris[5,6-Dihydro-5-(Hydroxyimino)-6-Oxo-2-Naphthalenesulfonato(2-)-N5,O6]Ferrate(3), Trisodium
+  배합제한국가: 일본
+  고시원료명: Naphthol Green B
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 8891]
+  구분: 한도
+  표준명: DL-판토테닐알코올
+  영문명: DL-Pantothenyl Alcohol
+  CASNO: 81-13-0(D-Form), 16485-10-2
+  이명: Butanamide, 2,4-Dihydroxy-N-(3-Hydroxypropyl)-3,3-Dimethyl-, Dexpanthenol, dexpanthenol (INN), dexpanthenolum (EP), 2,4-Dihydroxy-N-(3-Hydroxypropyl)-3,3-Dimethylbutanamide, panthenol (INN), Pantothenol, Pantothenyl Alcohol, D-Pantothenyl Alcohol, DL-Pantothenyl Alcohol, Provitamin B5
+  배합제한국가: 일본
+  고시원료명: DL-Pantothenyl Alcohol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 8.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.3) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 8979]
+  구분: 금지
+  표준명: 다이펜하이드라민 및 그 염류
+  영문명: Diphenhydramine and its salts
+  CASNO: 58-73-1, 147-24-0, 88637-37-0
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 8992]
+  구분: 한도/금지
+  표준명: 피록톤올아민
+  영문명: Piroctone Olamine
+  CASNO: 68890-66-4
+  이명: 1-Hydroxy-4-Methyl-6-(2,4,4-Trimethylpentyl)-2-(1H)Pyridinone, 2-Aminoethanol Salt
+  배합제한국가: 일본
+  고시원료명: Piroctone olamine
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.05 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.05 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 9057]
+  구분: 한도
+  표준명: 세틸피리디늄클로라이드
+  영문명: Cetylpyridinium Chloride
+  CASNO: 123-03-5, 6004-24-6
+  이명: cetylpyridinii chloridum (EP), cetylpyridinium chloride (INN), 1-Hexadecylpyridinium Chloride, 1-Palmitylpyridinium Chloride, Pyridinium, 1-Hexadecyl-, Chloride, Cetylpyridinium chloride monohydrate
+  배합제한국가: 일본
+  고시원료명: Cetylpyridinium chloride
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.010 g
+
+[레코드 9136]
+  구분: 한도
+  표준명: 오리자놀
+  영문명: Oryzanol
+  CASNO: 11042-64-1, 12738-23-7
+  이명: Orizanol, gamma-Orizanol
+  배합제한국가: 일본
+  고시원료명: γ-Oryzanol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.25 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.25 g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 9137]
+  구분: 한도
+  표준명: 비사보롤
+  영문명: Bisabolol
+  CASNO: 72691-24-8, 23089-26-1, 515-69-5
+  이명: alpha.-Bisabolol (RIFM), Bisabolol (HCPA), 3-Cyclohexene-1-Methanol, α,4-Dimethyl-α-(4-Methyl-3-Pentenyl)-, α,4-Dimethyl-α-(4-Methyl-3-Pentenyl)-3-Cyclohexene-1-Methanol, Levomenol (INN), 1-Methyl-4-(1-hydroxy-1,5,5-trimethyl-4-pentenyl) Cyclohex-1-ene
+  배합제한국가: 일본
+  고시원료명: Bisabolol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.2 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.2 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.7905 g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분
+
+[레코드 9163]
+  구분: 한도
+  표준명: p-클로로-m-크레졸
+  영문명: p-Chloro-m-Cresol
+  CASNO: 59-50-7
+  이명: chlorocresol (INN), 4-Chloro-m-Cresol, chlorocresolum (EP), 2-Chloro-5-Hydroxytoluene, 1-Chloro-2-Methyl-4-Hydroxybenzene, Chloromethylphenol, 4-Chloro-3-Methyl Phenol, Parachlorometacresol, Phenol, 4-Chloro-3-Methyl-
+  배합제한국가: 일본
+  고시원료명: Chlorcresol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50(0.50 g)
+
+[레코드 9184]
+  구분: 한도/금지
+  표준명: 적색221호
+  영문명: Toluidine Red, Aka221, PIGMENT RED 3, CI 12120
+  CASNO: 0
+  이명: Hansa Red B, 1-[(4-Methyl-2-Nitrophenyl)Azo]-2-Naphthalenol, 2-Naphthalenol, 1-[(4-Methyl-2-Nitrophenyl)Azo]-, 1-(o-Nitro-p-tolylazo)-2-Naphthol, Pigment Red 3, Red No. 221
+  배합제한국가: 일본
+  고시원료명: Toluidine Red
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 9190]
+  구분: 한도
+  표준명: 합성히드로탈사이트
+  영문명: Synthetic Hydrotalcite
+  배합제한국가: 일본
+  고시원료명: Synthetic Hydrotalcite
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g * 단서조항 :
+
+[레코드 9205]
+  구분: 한도
+  표준명: 녹색205호
+  영문명: Midori205, Light Green SF Yellowish, CI 42095
+  CASNO: 93942-43-9
+  이명: Acid Green 5 , Benzenemethanaminium, N-Ethyl-N-[4-[[4-[Ethyl(3-Sulfophenyl)methyl]amino]phenyl](4-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfo, Inner Salt, Disodium Salt , CI 42095 , Food Green 2 , Green No. 205
+  배합제한국가: 일본
+  고시원료명: Light Green SF Yellowish
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 지르코늄 레이크 포함
+
+[레코드 9209]
+  구분: 금지
+  표준명: 무기플루오린화합물
+  영문명: Inorganic fluorine compounds
+  배합제한국가: 일본
+  고시원료명: Inorganic fluorine compounds
+
+[레코드 9276]
+  구분: 한도
+  표준명: 에칠헥실트리아존
+  영문명: Ethylhexyl Triazone
+  CASNO: 88122-99-0?
+  이명: Benzoic Acid, 4,4',4"-(1,3,5-Triazine-2,4,6-Triyltriimino)tris-, tris(2-Ethylhexyl) Ester, Octyl Triazone, 2,4,6-Trianilino-(p-carbo-2'-Ethylhexyl-1'-oxy)-1,3,5-Triazine
+  배합제한국가: 일본
+  고시원료명: 2,4,6-Tris[4-(2-ethylhexyloxycarbonyl)anilino]-1,3,5-triazine
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 9512]
+  구분: 한도
+  표준명: 가용화유황
+  영문명: Solubilization of Sulfur
+  배합제한국가: 일본
+  고시원료명: Solubilization of Sulfur
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.3 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.3 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 9530]
+  구분: 한도/금지
+  표준명: 에티닐에스트라다이올
+  영문명: Ethinylestradiol
+  CASNO: 57-63-6
+  이명: 17-Ethinyl Estradiol, ethinylestradiol (INN), (17α)-19-Norpregna-1,3,5(10)-trien-20-yne-3,17-diol
+  배합제한국가: 일본
+  고시원료명: Estradiol, estrone and ethinylestradiol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)(b) 頭部,粘膜部又は口腔?に使用される化粧品及びその他の部位に使用される化粧品で脂肪族低級一?アルコ?ル類を含有する化粧品(?該化粧品に配合された成分の溶解のみを目的として?該アルコ?ル類を含有するものを除く。)((a) 머리, 점막부 또는 구강 내에 사용되는 화장품 및 기타 부위에 사용되는 화장품 중 지방족 저급 1가 알코올류를 함유한 화장품(오직 해당 화장품에 배합되는 성분의 용해만을 목적으로 해당 알코올류를 함유하는 것은 제외)(b) 머리, 점막부 또는 구강 내에 사용되는 화장품 이외의 화장품에서 지방족 저급일가알코올류를 함유하지 않는 화장품 (해당 화장품에 배합된 성분의 용해만을 목적으로 해서 해당 알코올류를 함유하는 것을 포함한다.)) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 20000 IU as total(合計量として20000?際?位)(b) 50000 IU as total(合計量として50000?際?位)((a) 합계량으로 20000 IU, (b) 합계량으로 50000 IU)
+
+[레코드 9645]
+  구분: 한도
+  표준명: 자색401호
+  영문명: Alizurol Purple, Ext. D&C Violet No. 2, Murasaki401, ACID VIOLET 43, CI 60730
+  CASNO: 0
+  이명: Acid Violet 43, Benzenesulfonic Acid, 2-[(9,10-Dihydro-4-Hydroxy-9,10-Dioxo-1-Anthracenyl)Amino]-5-Methyl-, Monosodium Salt, 2-[(9,10-Dihydro-4-Hydroxy-9,10-Dioxo-1-Anthracenyl)Amino]-5-Methylbenzenesulfonic Acid, Monosodium Salt, Japan Violet 401, μ-Toluenesulfonic Acid, 6-((4-Hydroxy-1-Anthraquinonyl)Amino)-, Monosodium Salt, Violet No. 401
+  배합제한국가: 일본
+  고시원료명: Alizurol Purple
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 9844]
+  구분: 한도
+  표준명: 트리클로카반
+  영문명: Triclocarban
+  CASNO: 101-20-2, 1322-40-3
+  이명: N-(4-Chlorophenyl)-N'-(3,4-Dichlorophenyl)Urea, TCC, Trichlorocarbanilide, 3,4,4'-Trichlorocarbanilide, triclocarban (INN), Urea, N-(4-Chlorophenyl)-N'-(3,4-Dichlorophenyl)-
+  배합제한국가: 일본
+  고시원료명: Trichlorocarbanilide
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.30 g
+
+[레코드 10045]
+  구분: 한도
+  표준명: 녹색402호
+  영문명: Midori402, Guinea Green B, CI 42085
+  CASNO: 4680-78-8
+  이명: Acid Green 3, Benzenemethanaminium, N-Ethyl-N-[4-[[4-[Ethyl(3-Sulfophenyl)methyl)amino]phenyl](Phenylmethylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfo, Inner Salt, Sodium Salt, CI 42085, Food Green 1, Green No. 402, Guinea Green B
+  배합제한국가: 일본
+  고시원료명: Guinea Green B
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함
+
+[레코드 10142]
+  구분: 한도
+  표준명: β-글리시레티닉애씨드
+  영문명: β-Glycyrrhetinic Acid
+  CASNO: 471-53-4
+  이명: enoxolone (INN), Glycyrretinic Acid, Glycyrrhetic Acid, (3β,20β)-3-Hydroxy-11-Oxo-Olean-12-en-29-oic Acid, Olean-12-En-29-Oic Acid, 3-Hydroxy-11-Oxo-, (3β,20β)-, Uralenic Acid
+  배합제한국가: 일본
+  고시원료명: β-Glycyrrhetinic Acid
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : (0.80) g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.5 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.20) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 10155]
+  구분: 금지
+  표준명: 머큐릭옥사이드
+  영문명: Mercuric Oxide
+  CASNO: 21908-53-2
+  이명: mercuric oxide, (197)mercury-labeled, mercuric oxide, (203)mercury-labeled
+  배합제한국가: 일본
+  고시원료명: Mercury and its compounds
+  단서조항: Trace : 수은 (1㎍/g이하)
+
+[레코드 10170]
+  구분: 한도
+  표준명: 소듐데하이드로아세테이트
+  영문명: Sodium Dehydroacetate
+  CASNO: 4418-26-2
+  이명: 3-Acetyl-6-Methyl-2H-Pyran-2,4(3H)-Dione, Ion(1-), Sodium Salt, 2H-Pyran-2,4(3H)-dione, 3-Acetyl-6-Methyl-, Ion(1-), Sodium
+  배합제한국가: 일본
+  고시원료명: Dehydroacetic acid and dehydroacetate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 10207]
+  구분: 한도
+  표준명: 적색203호
+  영문명: Aka203, Lake Red C, Pigment Red 53, CI 15585
+  CASNO: 2092-56-0
+  이명: Benzenesulfonic Acid, 5-Chloro-2-[(2-Hydroxy-1-Naphthalenyl)Azo]-4-Methyl-, Monosodium Salt , 5-Chloro-2-[(2-Hydroxy-1-Naphthalenyl)Azo]-4-Methylbenzenesulfonic Acid, Monosodium Salt
+  배합제한국가: 일본
+  고시원료명: Lake Red C
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 10296]
+  구분: 한도
+  표준명: 적색214호
+  영문명: Aka214, Rhodamine B Acetate, CI 45170
+  CASNO: 81-88-9
+  이명: Rhodamine B Acetate, Xanthylium, 9-(2-Carboxyphenyl)-3,6-bis(Diethylamino)-, Acetate
+  배합제한국가: 일본
+  고시원료명: Rhodamine B Acetate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 10304]
+  구분: 한도
+  표준명: 메칠이소치아졸리논
+  영문명: Methylisothiazolinone
+  CASNO: 2682-20-4
+  이명: 5-Chloro-2-Methyl-4-Isothiazolin-3-one, 4-Isothiazolin-3-one, 5-Chloro-2-Methyl-
+  배합제한국가: 일본
+  고시원료명: Methyl isothiazolinone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.01 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.01 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 10442]
+  구분: 한도
+  표준명: 클로헥시딘다이글루코네이트
+  영문명: Chlorhexidine Digluconate
+  CASNO: 18472-51-0
+  이명: N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-2,4,11,13-Tetraazatetradecanediimidamide, Compd. with D-Gluconic Acid, Chlorhexidine Bigluconate, Chlorhexidine Gluconate, Chlorhexidine Gluconate Solution, chlorhexidini gluconati solutio (EP), D-Gluconic Acid, Compd. with N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-2,4,11,13-Tetraazatetradecanediimidamide (2:1), 1,1'-Hexamethylene Bis(5-(p-Chlorophenyl)Biguanide) Digluconate
+  배합제한국가: 일본
+  고시원료명: Chlorhexidine gluconate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.050 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.050 g
+
+[레코드 10478]
+  구분: 금지
+  표준명: 프레그네놀론아세테이트
+  영문명: Pregnenolone Acetate
+  CASNO: 1778-02-5
+  배합제한국가: 일본
+  고시원료명: Progrenolone acetate
+
+[레코드 10547]
+  구분: 한도/금지
+  표준명: 소듐보레이트
+  영문명: Sodium borate
+  CASNO: 1303-96-4 (hydrous), 1330-43-4
+  이명: borax (EP), Borax Granular, Boric Acid, Disodium Salt, Puffed Borax, Sodium Tetraborate
+  배합제한국가: 일본
+  고시원료명: Sodium pyroborate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) ツロウ及びサラシミツロウを乳化させる目的で使用するもの (밀랍 및 백랍을 유화하는 목적으로 사용하는 것)(b) ミツロウ及びサラシミツロウを乳化させる目的以外で使用するもの(밀랍 및 백랍을 유화하는 목적 외로 사용하는 것) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 0.76 g(limited not to greater than 1/2 amount of beewax and white beewax)/(ミツロウ及びサラシミツロウの1/2以下の配合量である場合に限る)(0.76g (밀랍 및 백랍의 1/2이하의 배합량일 경우에 한함)(b) Prohibited(配合不可)(배합금지)
+
+[레코드 10581]
+  구분: 한도
+  표준명: 판테놀
+  영문명: Panthenol
+  CASNO: 81-13-0(D-Form), 16485-10-2
+  이명: Butanamide, 2,4-Dihydroxy-N-(3-Hydroxypropyl)-3,3-Dimethyl-, Dexpanthenol, dexpanthenol (INN), dexpanthenolum (EP), 2,4-Dihydroxy-N-(3-Hydroxypropyl)-3,3-Dimethylbutanamide, panthenol (INN), Pantothenol, Pantothenyl Alcohol, D-Pantothenyl Alcohol, DL-Pantothenyl Alcohol, Provitamin B5
+  배합제한국가: 일본
+  고시원료명: DL-Pantothenyl AlcoholD-Pantothenyl Alcohol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: <DL-Pantothenyl Alcohol>* 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 8.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.3) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것<D-Pantothenyl Alcohol>* 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.3) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 10685]
+  구분: 한도
+  표준명: 카페인
+  영문명: Caffeine
+  CASNO: 1958-08-02
+  이명: Anhydrous Caffeine, Caffeine (RIFM), coffeinum (EP), 3,7-Dihydro-1,3,7-Trimethyl-1H-Purine-2,6-dione, 1H-Purine-2,6-dione, 3,7-Dihydro-1,3,7-Trimethyl-, Methyltheobromine, 7-Methyltheophylline
+  배합제한국가: 일본
+  고시원료명: Caffeine
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 2.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 2.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분
+
+[레코드 10709]
+  구분: 한도
+  표준명: 황색402호
+  영문명: Ki402, Polar Yellow 5G, CI 18950
+  CASNO: 6372-96-9
+  이명: Acid Yellow 40, Monosodium Salt, Benzenesulfonic Acid, 5-Chloro-2-[4,5-Dihydro-3-Methyl-4-[[4-[[4-Methylphenyl)Sulfonyl]Oxy]Phenyl]Azo]-5-Oxo-1H-Pyrazol-1-yl]-, Sodium Salt, CI 18950, Polar Yellow 5G, Yellow No. 402
+  배합제한국가: 일본
+  고시원료명: Polar Yellow 5G
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 10721]
+  구분: 한도
+  표준명: 에틸헥실다이메톡시벤질리덴다이옥소이미다졸리딘프로피오네이트
+  영문명: Ethylhexyl Dimethoxybenzylidene Dioxoimidazolidine Propionate
+  CASNO: 113757-49-6
+  이명: Ethylhexyl dimethoxybenzylidene dioxoimidazolidine propionate, Dimethoxybenzylidene dioxo-imidazolidine 2-ethylhexyl propionate
+  배합제한국가: 일본
+  고시원료명: Dimethoxybenzylidene dioxo-imidazolidine2-ethylhexyl propionate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 10837]
+  구분: 한도
+  표준명: 황색403호의(1)
+  영문명: Naphthol Yellow S, Ext. D&C Yellow No. 7, Ki403(1), CI 10316
+  CASNO: 0
+  이명: Acid Yellow 1, 2,4-Dinitro-1-Naphthol-7-Sulfonic Acid, Disodium Salt, Disodium Flavianate, Flavianic Acid, Disodium Salt, 8-Hydroxy-5,7-Dinitro-2-Naphthalenesulfonic Acid, Disodium Salt, 2-Naphthalenesulfonic Acid, 8-Hydroxy-5,7-Dinitro-, Disodium Salt, Naphthol Yellow S, Yellow No. 403(1)
+  배합제한국가: 일본
+  고시원료명: Naphthol Yellow S
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 10938]
+  구분: 한도/금지
+  표준명: 아이소프로필파라벤
+  영문명: Isopropylparaben
+  CASNO: 4191-73-5
+  이명: Benzoic Acid, 4-Hydroxy-, 1-Methylethyl Ester, p-Hydroxybenzoic Acid Isopropyl Ester, 4-Hydroxybenzoic Acid, 1-Methylethyl Ester, Isopropyl p-Hydroxybenzoate, Isopropylparaben (HCPA), 1-Methylethyl-4-Hydroxybenzoate, Parahydroxybenzoate, Isopropyl Ester
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 10969]
+  구분: 금지
+  표준명: 하이드록시진하이드로클로라이드
+  영문명: Hydroxyzine Hydrochloride
+  CASNO: 2192-20-3
+  이명: 2-(2-(4-((4-Chlorophenyl)phenylmethyl)-1-piperazinyl)ethoxy)ethanol, Hydroxyzine, Hydroxyzine Dihydrochloride, Hydroxyzine Hydrochloride, Hydroxyzine Pamoate, Pamoate, Hydroxyzine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 10986]
+  구분: 금지
+  표준명: 하이드롤라이즈드효모/소듐셀레네이트발효추출물
+  영문명: Hydrolyzed Saccharomyces/Sodium Selenate Ferment Extract
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 11012]
+  구분: 한도
+  표준명: 페룰릭애씨드
+  영문명: Ferulic Acid
+  CASNO: 1135-24-6
+  이명: Cinnamic Acid, 4-Hydroxy-3-Methoxy-, Coniferic Acid, 3-(4-Hydroxy)-3-Methoxyphenyl)-2-Propenoic Acid, 2-Propenoic Acid, 3-(4-Hydroxy-3-Methoxyphenyl)-
+  배합제한국가: 일본
+  고시원료명: Ferulic acid
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 11022]
+  구분: 한도/금지
+  표준명: 페놀
+  영문명: Phenol
+  CASNO: 108-95-2
+  배합제한국가: 일본
+  고시원료명: Phenol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.10 g(0.10 g)
+
+[레코드 11157]
+  구분: 한도
+  표준명: 적색106호
+  영문명: Acid Red, Aka106, CI 45100
+  CASNO: 3520-42-1
+  이명: Acid Red 52 , Ammonium, (6-(Diethylamino)-9-(2,4-Disulfophenyl)-3H-Xanthen-3-Ylidene)Diethyl-, Hydroxide, Inner Salt, Sodium Salt , N-[6-(Diethylamino)-9-(2,4-Disulfophenyl)-3H-Xanthen-3-ylidene]-N-Ethylethanaminium, Hydroxide, Inner Salt, Sodium Salt , Ethanaminium, N-[6-(Diethylamino)-9-(2,4-Disulfophenyl)-3H-Xanthen-3-ylidene]-N-Ethyl-, Hydroxide, Inner Salt, Sodium Salt , Japan Red 106 , Phloxine Rhodamine , Red No. 106 , Xanthylium, 3,6-Bis(Diethylamino)-9-(2,4-Disulfophenyl)-, Hydroxide, Inner Salt, Sodium Salt
+  배합제한국가: 일본
+  고시원료명: Acid Red
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 11255]
+  구분: 한도/금지
+  표준명: 녹색3호
+  영문명: Fast Green FCF, FD&C Green No. 3, Green 3 Lake, Midori3, CI 42053
+  CASNO: 2353-45-9
+  이명: Benzenemethanaminium, N-Ethyl-N-[4-[[4-[Ethyl[3-Sulfophenyl)Methyl]Amino]Phenyl](4-Hydroxy-2-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfo-, Hydroxide, Inner Salt, Disodium Salt, CI 42053, N-Ethyl-N-[4-[[4-[Ethyl[3-Sulfophenyl)Methyl]Amino]Phenyl](4-Hydroxy-2-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfobenzenemethanaminium Hydroxide, Inner Salt, Disodium Salt, Food Green 3, Green No. 3, Japan Green 3
+  배합제한국가: 일본
+  고시원료명: Fast Green FCF
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 11277]
+  구분: 한도
+  표준명: γ-오리자놀
+  영문명: γ-Oryzanol
+  CASNO: 11042-64-1, 12738-23-7
+  이명: Orizanol, gamma-Orizanol
+  배합제한국가: 일본
+  고시원료명: γ-Oryzanol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.25 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.25 g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 11482]
+  구분: 한도
+  표준명: 메칠클로로이소치아졸리논과 메칠이소치아졸리논 용액
+  영문명: Methylchloro isothiazolinone andmethyl isothiazolinone solution
+  배합제한국가: 일본
+  고시원료명: Methylchloro isothiazolinone andmethyl isothiazolinone solution(*3)
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注3）5－クロロ－2－メチル－4－イソチアゾリン－3－オン1.0～1.3%及び2－メチル－4－イソチアゾリン－3－オン0.30～0.42%を含む水溶液をいう。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.10 g메칠클로로이소치아졸리논과 메칠이소치아졸리논 용액으로 사용될때 * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 배합금지 * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注3）5－クロロ－2－メチル－4－イソチアゾリン－3－オン1.0～1.3%及び2－メチル－4－イソチアゾリン－3－オン0.30～0.42%を含む水溶液をいう。 (주3) 5-chloro-2-methyl-4-isothiazolin-3-one 1.0~1.3% 및 2-methyl-4-isothiazolin-3-one 0.30~0.42%를 함유하는 수용액을 말함.
+
+[레코드 11651]
+  구분: 금지
+  표준명: 설포아미드
+  영문명: Sulfamide
+  배합제한국가: 일본
+  고시원료명: Sulfamide and its derivatives
+
+[레코드 11664]
+  구분: 한도
+  표준명: 하이드록시메톡시벤조페논설포네이트 및 이것의 트라이하이드레이트
+  영문명: Hydroxymethoxybenzophenone sulfonate and its trihydrate
+  배합제한국가: 일본
+  고시원료명: Hydroxymethoxybenzophenone sulfonate and its trihydrate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注3）ヒドロキシメトキシベンゾフェノンスルホン酸としての合計量とする。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g (하이드록시메톡시벤조페논 설포네이트로서의 합계량으로 함) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g (하이드록시메톡시벤조페논 설포네이트로서의 합계량으로 함) * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.10 g (하이드록시메톡시벤조페논 설포네이트로서의 합계량으로 함)
+
+[레코드 11719]
+  구분: 한도
+  표준명: 에칠헥실디메칠파바
+  영문명: Ethylhexyl Dimethyl PABA
+  CASNO: 21245-02-3 58817-05-3
+  이명: Benzoic Acid, 4-(Dimethylamino)-, 2-Ethylhexyl Ester, Benzoic Acid, 4-(Dimethylamino)-, Octyl Ester, 4-(Dimethylamino)Benzoic Acid, 2-Ethylhexyl Ester, 2-Ethylhexyl 4-Dimethyl-aminobenzoate, 2-Ethylhexyl Paradimethylamino Benzoate, Octyl Dimethyl PABA
+  배합제한국가: 일본
+  고시원료명: 2-Ethylhexyl p-dimethylaminobenzoate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 7.0 g
+
+[레코드 11736]
+  구분: 한도
+  표준명: 다이메틸아미노스티릴헵틸메틸티아졸리움아이오다이드
+  영문명: Dimethylaminostyryl Heptyl Methyl Thiazolium Iodide
+  이명: 2-(p-Dimethylaminostyryl)-3-heptyl-4-methylthiazorium Iodide
+  배합제한국가: 일본
+  고시원료명: p-Dimethylaminostyryl heptyl methyl thiazolium iodide
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.0015 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.0015 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 11846]
+  구분: 금지
+  표준명: 셀레늄
+  영문명: Selenium
+  CASNO: 7782-49-2, 7783-07-5
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 11940]
+  구분: 한도
+  표준명: 적색104호의(2)
+  영문명: Phloxine BK, Aka231, CI 45410
+  CASNO: 75888-73-2, 18472-87-2
+  이명: Acid Red 92, Potassium Salt, CI 45410, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxy-, Dipotassium Salt, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-One, Dipotassium Salt
+  배합제한국가: 일본
+  고시원료명: Phloxine BK
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 11979]
+  구분: 한도
+  표준명: 소듐부틸파라벤
+  영문명: Sodium Butylparaben
+  CASNO: 36457-20-2
+  이명: Benzoic Acid, 4-Hydroxy-, Butyl Ester, Sodium Salt , Butylparaben, Sodium Salt , 4-Hydroxybenzoic Acid, Butyl Ester, Sodium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 12026]
+  구분: 금지
+  표준명: 설포아미드 및 그 유도체
+  영문명: Sulfamide and its derivatives
+  배합제한국가: 일본
+  고시원료명: Sulfamide and its derivatives
+
+[레코드 12068]
+  구분: 한도
+  표준명: 다이아이소프로필에틸신나메이트
+  영문명: Diisopropyl Ethyl Cinnamate
+  배합제한국가: 일본
+  고시원료명: Isopropyl p-methoxycinnamate anddiisopropyl cinnamate ester mixture(*2)
+  단서조항: （注 1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを 示す。 （注 2）パラメトキシケイ皮酸イソプロピル 72.0～79.0%、2,4－ジイソプロピルケ イ皮酸エチル 15.0～21.0%及び 2,4－ジイソプロピルケイ皮酸メチル 3.0～ 9.0%を含有するものをいう
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注 2）パラメトキシケイ皮酸イソプロピル 72.0～79.0%、2,4－ジイソプロピルケ イ皮酸エチル 15.0～21.0%及び 2,4－ジイソプロピルケイ皮酸メチル 3.0～ 9.0%を含有するものをいう (주2 ) isopropyl p-methoxycinnamate 72.0 - 79.0%와 ethyl 2,4-diisopropyl cinnamate  15.0 - 21.0%, 그리고  methyl 2,4-diisopropyl cinnamate 3.0 - 9.0% 를 함유하는 것을 가르킴
+
+[레코드 12112]
+  구분: 한도
+  표준명: 옥토크릴렌
+  영문명: Octocrylene
+  CASNO: 6197-30-4
+  이명: 2-Cyano-3,3-Diphenyl Acrylic Acid, 2-Ethylhexyl Ester, 2-Ethylhexyl 2-Cyano-3,3-Diphenylacrylate, 2-Ethylhexyl 2-Cyano-3,3-Diphenyl-2-Propenoate, 2-Ethylhexyl 2-Cyano-3-Phenylcinnamate, octocrilene (INN), 2-Propenoic Acid, 2-Cyano-3.3-Diphenyl-, 2-Ethylhexyl Ether, UV Absorber-3
+  배합제한국가: 일본
+  고시원료명: 2-Cyano-3,3-diphenyl prop-2-enoic acid2-ethylhexyl ester (octocrylene)
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 10 g(10 g)
+
+[레코드 12137]
+  구분: 금지
+  표준명: 브롬페니라민 및 그 염류
+  영문명: Brompheniramine and its salts
+  CASNO: 86-22-6
+  이명: Brompheniramine, Brompheniramine Maleate, Brompheniramine Maleate (1:1), Chlorphed, Dimetane, Maleate, Brompheniramine, p Bromdylamine, p-Bromdylamine, para Bromdylamine, para-Bromdylamine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 12232]
+  구분: 한도/금지
+  표준명: 엠이에이-벤조에이트
+  영문명: MEA-Benzoate
+  CASNO: 33545-23-2, 4337-66-0
+  이명: Benzoic Acid, Compd. with 2-Aminoethanol, Ehtanol, 2-Amino-, Benzoate, Ethanolamine Benzoate, Monoethanolamine Benzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 12320]
+  구분: 한도
+  표준명: 에틸벤조에이트
+  영문명: Ethyl Benzoate
+  CASNO: 93-89-0
+  이명: Benzoic Acid, Ethyl Ester, Ethyl benzoate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 12755]
+  구분: 금지
+  표준명: 트라이펠렌아민하이드로클로라이드
+  영문명: Tripelennamine Hydrochloride
+  CASNO: 154-69-8
+  이명: Asid Bonz Brand of Tripelennamine Hydrochloride, Azaron, Histantin, Pyribenzamine, Tripelennamine, Tripelennamine Citrate, Tripelennamine Citrate (1:1), Tripelennamine Hydrochloride, Tripelennamine Maleate, Tripelennamine Maleate (1:1), Tripelennamine Monohydrochloride, Vetibenzamin
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 12853]
+  구분: 한도
+  표준명: 폴리아미노프로필바이구아나이드
+  영문명: Polyaminopropyl Biguanide
+  CASNO: 32289-58-0?
+  이명: polihexanide (INN), Polyaminopropyl Biguanide (HCPA), Poly(hexamethylenebiguanide) hydrochloride, Poly[iminocarbonimidoyliminocarbonimidoylimino-1,6-hexanediyl], hydrochloride, Poly(1-Hexamethylenebiguanide) hydrochloride
+  배합제한국가: 일본
+  고시원료명: Polyaminopropyl biguanide
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.1 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.1 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.1 g
+
+[레코드 12866]
+  구분: 한도
+  표준명: 소듐메틸파라벤
+  영문명: Sodium Methylparaben
+  CASNO: 5026-62-0
+  이명: Benzoic Acid, 4-Hydroxy-, Methyl Ester, Sodium Salt , methylis parahydroxybenzoas natricum (EP) , Methylparaben, Sodium Salt , Sodium 4-Carbomethoxyphenolate , Sodium p-Methoxycarbonylphenoxide , Sodium Methyl p-Hydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 12878]
+  구분: 한도
+  표준명: 청색404호
+  영문명: Phthalocyanine Blue, Ao404, PIGMENT BLUE 15, CI 74160
+  CASNO: 0
+  이명: Blue No. 404, Copper, [29H, 31H-Phthalocyaninato(2-)-κN29,κN30,κN31,κN32]-, (SP-4-1)-, Copper Phthalocyanine, Copper Tetrabenzoporphyrazine, Heliogen Blue B, Japan Blue 404, Pigment Blue 15
+  배합제한국가: 일본
+  고시원료명: Phthalocyanine Blue
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 13015]
+  구분: 한도
+  표준명: 적색202호
+  영문명: Lithol Rubine BCA, D&C Red No. 7, , Red 7 Lake, Aka202, CI 15850:1
+  CASNO: 29092-56-6, 5281-04-9
+  이명: D&C Red No. 7
+  배합제한국가: 일본
+  고시원료명: Lithol Rubine BCA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 13017]
+  구분: 한도
+  표준명: 드로메트리졸
+  영문명: Drometrizole
+  CASNO: 2440-22-4
+  이명: drometrizole (INN), 2-(2H-Benzotriazol-2-yl)-4-Methylphenol, 2-(2'-Hydroxy-5'-Methylphenyl)Benzotriazole, Phenol, 2-(2H-Benzotriazol-2-yl)-4-Methyl-, UV Absorber-1
+  배합제한국가: 일본
+  고시원료명: 2-(2-Hydroxy-5-methylphenyl) benzotriazole
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 石けん,シャンプ?等の直ちに洗い流す化粧品以外の化粧品(비누, 화장품 등 즉시 씻어 내는 화장품 외의 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 7.0 g(7.0 g)
+
+[레코드 13022]
+  구분: 한도
+  표준명: 비스-에칠헥실옥시페놀메톡시페닐트리아진
+  영문명: Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine
+  CASNO: 187393-00-6
+  이명: Bemotrizinol, Bis-Octoxyphenol Methoxyphenyl Triazine, Phenol, 2,2'-[6-(4-Methoxyphenyl)-1,3,5-Triazine-2,4-Diyl]Bis[5-[(2-Ethylhexyl)Oxy]-
+  배합제한국가: 일본
+  고시원료명: 2,4-Bis-[{4-(2-ethylhexyloxy)-2-hydroxy}-phenyl]-6-(4-methoxyphenyl)-1,3,5-triazine
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 13072]
+  구분: 한도
+  표준명: 토코페릴아세테이트
+  영문명: Tocopheryl Acetate
+  CASNO: 52225-20-4, 58-95-7, 7695-91-2
+  이명: 3,4-Dihydro-2,5,7,8-Tetramethyl-2-(4,8,12-Trimethyltridecyl-2H-Benzopyran-6-ol, Acetate, 2H-1-Benzopyran-6-ol, 3,4-Dihydro-2,5,7,8-Tetramethyl-2-(4,8,12-Trimethyltridecyl)-, Acetate, D-α-Tocopheryl Acetate, d-alpha-Tocopheryl Acetate, DL-α-Tocopheryl Acetate, DL-Alpha-Tocopheryl Acetate, Tocopheryl Acetate (HCPA), Vitamin E Acetate
+  배합제한국가: 일본
+  고시원료명: DL-α-Tocopheryl Acetate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。注4)　すべてのdl―α―トコフェロ?ル誘導?をdl―α―トコフェロ?ルに換算して、dl―α―トコフェロ?ルとして合計。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.03 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 3.03 g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。注4)　すべてのdl―α―トコフェロ?ル誘導?をdl―α―トコフェロ?ルに換算して、dl―α―トコフェロ?ルとして合計。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것(주4)  모든 dl-α-토코페롤유도체를 dl-α-토코페롤에 환산하여 dl-α-토코페롤로 하여 합계
+
+[레코드 13103]
+  구분: 금지
+  표준명: 클로르페녹사민
+  영문명: Chlorphenoxamine
+  CASNO: 77-38-3
+  이명: chlorphenoxamine hydrochloride, Systral
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 13470]
+  구분: 금지
+  표준명: 머큐릭클로라이드
+  영문명: Mercuric Chloride
+  CASNO: 7487-94-7
+  배합제한국가: 일본
+  고시원료명: Mercury and its compounds
+  단서조항: Trace : 수은 (1㎍/g이하)
+
+[레코드 13555]
+  구분: 한도/금지
+  표준명: 벤질파라벤
+  영문명: Benzylparaben
+  CASNO: 94-18-8
+  이명: Benzoic Acid, 4-Hydroxy-, Phenylmethyl Ester, Benzyl p-Hydroxybenzoate , Benzyl Parahydroxybenzoate, 4-Hydroxybenzoic Acid, Benzyl Ester, Phenylmethyl 4-Hydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 13584]
+  구분: 한도
+  표준명: 등색206호
+  영문명: Diiodofluorescein, D&C Orange No. 10, Daidai206, CI 45425:1
+  CASNO: 38577-97-8, 518-40-1
+  이명: D&C Orange No. 10
+  배합제한국가: 일본
+  고시원료명: Diiodofluorescein
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 13633]
+  구분: 한도
+  표준명: 살리실릭애씨드
+  영문명: Salicylic Acid
+  CASNO: 69-72-7
+  이명: acidum salicylicum (EP), Benzoic Acid, 2-Hydroxy-, o-Carboxyphenol, o-Hydroxybenzoic Acid, 2-Hydroxybenzoic acid (RIFM), Phenol-2-Carboxylic Acid, Benzoic acid, 2-hydroxy- (10)
+  배합제한국가: 일본
+  고시원료명: Salicylic acid
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.20(0.20 g)
+
+[레코드 13680]
+  구분: 한도/금지
+  표준명: 소듐아이소부틸파라벤
+  영문명: Sodium Isobutylparaben
+  CASNO: 84930-15-4
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 13690]
+  구분: 한도
+  표준명: 등색205호
+  영문명: Orange II, D&C Orange No. 4, Daidai205, CI 15510
+  CASNO: 0
+  이명: Acid Orange 7, Monosodium Salt, Benzenesulfonic Acid, 4-[(2-Hydroxy-1-Naphthalenyl)Azo]-, Monosodium Salt, 4-[(2-Hydroxy-1-Naphthalenyl)Azo]Benzenesulfonic Acid, Monosodium Salt, Naphthol Orange, Orange 2 Sodium Salt, Orange II, Orange No. 205
+  배합제한국가: 일본
+  고시원료명: Orange Ⅱ
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함이 성분의 지르코늄 레이크 포함
+
+[레코드 13861]
+  구분: 한도
+  표준명: 징크설페이트
+  영문명: Zinc Sulfate
+  CASNO: 7446-19-7 (monohydrate), 7446-20-0 (heptahydrate), 7733-02-0 (anhydrous)
+  이명: Sulfuric Acid, Zinc Salt (1:1), zinci sulfas (EP)
+  배합제한국가: 일본
+  고시원료명: Zinc Sulfate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분
+
+[레코드 13997]
+  구분: 한도
+  표준명: 트리클로산
+  영문명: Triclosan
+  CASNO: 3380-34-5
+  이명: 5-Chloro-2-(2,4-Dichlorophenoxy)phenol, Phenol, 5-Chloro-2-(2,4-Dichlorophenoxy)-, 2,4,4'-Trichloro-2'-Hydroxy Diphenyl Ether, triclosan (INN)
+  배합제한국가: 일본
+  고시원료명: Trichlorohydroxydiphenylether (Triclosan)
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.10 g(0.10 g)
+
+[레코드 14044]
+  구분: 한도
+  표준명: 클로헥시딘
+  영문명: Chlorhexidine
+  CASNO: 55-56-1
+  이명: N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-2,4,11,13-Tetraazatetradecanediimidamide, chlorhexidine (INN), Chlorohexidine, 1,6-Di(N-p-Chlorophenyldiguanido)Hexane1,1'-Hexamethylene bis(5-(p-Chlorophenyl)Biguanide), 2,4,11,13-Tetraazatetradecanediimidamide, N,N'-Bis(4-Chlorophenyl)-3,12-Diimino-
+  배합제한국가: 일본
+  고시원료명: Chlorhexidine
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.050 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.050 g
+
+[레코드 14184]
+  구분: 금지
+  표준명: 다이페닐피랄린하이드로클로라이드
+  영문명: Diphenylpyraline Hydrochloride
+  CASNO: 132-18-3
+  이명: 4-diphenylmethoxy-1-methylpiperidine, diphenylpyraline, diphenylpyraline hydrochloride, diphenylpyraline maleate (2:1), Lergobine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 14204]
+  구분: 한도
+  표준명: 벤조익애씨드
+  영문명: Benzoic Acid
+  CASNO: 65-85-0
+  이명: acidum benzoicum (EP), Benzenecarboxylic Acid, Benzeneformic Acid, Benzenemethanoic Acid, Benzoic acid (RIFM), Carboxybenzene, Dracyclic Acid, Phenylcarboxylic Acid, Phenylformic Acid
+  배합제한국가: 일본
+  고시원료명: Benzoic acid
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.2 g(0.2 g)
+
+[레코드 14290]
+  구분: 한도
+  표준명: 알란토인
+  영문명: Allantoin
+  CASNO: 97-59-6
+  이명: (2,5-Dioxo-4-Imidazolidinyl)Urea, Glyoxyldiureid, Glyoxyldiureide, Glyoxylic Diureide, Urea, (2,5-Dioxo-4-Imidazolidinyl)-, 5-Ureidohydantoin
+  배합제한국가: 일본
+  고시원료명: Allantoin
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : (0.50) g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.3 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.20) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 14315]
+  구분: 한도
+  표준명: 대추추출물
+  영문명: Zizyphus Jujuba Fruit Extract
+  CASNO: 90045-99-1
+  이명: Jujube Extract, Jujube (Zizyphus Jujuba) Extract, Taisoh Zizyphi Fructus, Taisou Ekisu (JPN), Zizyphus Jujube Miller Extract
+  배합제한국가: 일본
+  고시원료명: Jujube Extract (*2)
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注2）日本?局方タイソウを30％（w/v）エタノ?ル水溶液で抽出することにより得られるエキスをいう。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 5.0 g * 단서조항 : （注2）日本?局方タイソウを30％（w/v）エタノ?ル水溶液で抽出することにより得られるエキスをいう。 (주2) 일본약국방 대추를 30%(w/v)에탄올 수용액으로 추출하여 획득한 엑기스를 말함.
+
+[레코드 14377]
+  구분: 한도/금지
+  표준명: 비스머트시트레이트
+  영문명: Bismuth Citrate
+  CASNO: 813-93-4
+  배합제한국가: 일본
+  고시원료명: Bismuth compounds other than bismuth oxychloride
+
+[레코드 14387]
+  구분: 한도
+  표준명: 등색207호
+  영문명: Erythrosine Yellowish NA, D&C Orange No. 11, Daidai207, CI 45425
+  CASNO: 33239-19-9
+  이명: D&C Orange No. 11
+  배합제한국가: 일본
+  고시원료명: Erythrosine Yellowish NA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 14431]
+  구분: 한도
+  표준명: 약용 숯
+  영문명: Charcoal
+  배합제한국가: 일본
+  고시원료명: Charcoal
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 2.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 2.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분
+
+[레코드 14565]
+  구분: 한도
+  표준명: 글리세릴에틸헥사노에이트다이메톡시신나메이트
+  영문명: Glyceryl Ethylhexanoate Dimethoxycinnamate
+  이명: Glyceryl Octanoate Dimethoxycinnamate, Glyceryl Octanoate Di-p-methoxy Cinnamate
+  배합제한국가: 일본
+  고시원료명: Glyceryl mono-2-ethylhexanoate di-p-methoxycinnamate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 10 g(10 g)
+
+[레코드 14609]
+  구분: 한도
+  표준명: o-사이멘-5-올
+  영문명: o-Cymen-5-ol
+  CASNO: 3228-02-2, 39660-61-2
+  이명: Isopropyl Methylphenol, 3-Methyl-4-(1-Methylethyl)Phenol, Phenol, 3-Methyl-4-(1-Methylethyl)-
+  배합제한국가: 일본
+  고시원료명: Isopropylmethylphenol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.10 g
+
+[레코드 14708]
+  구분: 한도
+  표준명: 적색505호
+  영문명: Aka505, Oil Red XO, CI 12140
+  CASNO: 3118-97-6
+  이명: 2-Naphthalenol, 1-[(2,4-Dimethylphenyl)Azo]- , Solvent Orange 7 , Sudan Red
+  배합제한국가: 일본
+  고시원료명: Oil Red XO
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 14715]
+  구분: 한도
+  표준명: 적색201호
+  영문명: Lithol Rubine B, D&C Red No. 6, Red 6 Lake, Aka201, PIGMENT RED 57, CI 15850
+  이명: CI 15850:1, 3-Hydroxy-4-[(4-Methyl-2-Sulfophenyl)Azo]-2-Naphthalenecarboxylic Acid, Disodium Salt, Lithol Rubin B, 2-Naphthalenecarboxylic Acid, 3-Hydroxy-4-[(4-Methyl-2-Sulfophenyl)Azo]-, Disodium Salt, Pigment Red 57, Disodium Salt, Red No. 201
+  배합제한국가: 일본
+  고시원료명: Lithol Rubine B
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 14733]
+  구분: 금지
+  표준명: 카드뮴아이오다이드
+  영문명: Cadmium Iodide
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 14956]
+  구분: 한도/금지
+  표준명: 소듐아이소프로필파라벤
+  영문명: Sodium Isopropylparaben
+  CASNO: 4191-73-5
+  이명: Benzoic Acid, 4-Hydroxy, 1-Methylethyl Ester, Sodium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 15029]
+  구분: 한도
+  표준명: 소듐구아이아줄렌설포네이트
+  영문명: Sodium Guaiazulene Sulfonate
+  CASNO: 6223-35-4
+  이명: 1-Azulenesulfonic Acid, 3,8-Dimethyl-5-(1-Methylethyl)-, Sodium Salt, 3,8-Dimethyl-5-(1-Methylethyl)-1-Azulenesulfonic Acid, Sodium Salt, 7-Isopropyl-1,4-dimethyl-3-sodiumsulfonate Azulene, Sodium 3,8-Dimethyl-5-(1-Methylethyl)-1-Azulenesulfonate, sodium gualenate (INN), Sodium Guiazulene Sulfonate, Sodium 7-Isopropyl-1,4-Dimethylazulene-3-Sulfonate
+  배합제한국가: 일본
+  고시원료명: Sodium Guaiazulene Sulfonate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.010) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 15048]
+  구분: 한도
+  표준명: 건강틴크
+  영문명: ginger tincture
+  배합제한국가: 일본
+  고시원료명: Cantharides tincture, ginger tincture or capsicum tincture
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0g as total(合計量として1.0g)(합계량으로 1.0g)
+
+[레코드 15049]
+  구분: 한도/금지
+  표준명: 에틸파바
+  영문명: Ethyl PABA
+  CASNO: 1994-09-07
+  배합제한국가: 일본
+  고시원료명: p-Aminobenzoic acid and its esters
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 4.0 as total(合計量として4.0)(합계량으로 4.0 g)
+
+[레코드 15194]
+  구분: 금지
+  표준명: 클로로폼
+  영문명: Chloroform
+  CASNO: 67-66-3
+  이명: Trichloromethane
+  배합제한국가: 일본
+  고시원료명: Chloroform
+
+[레코드 15234]
+  구분: 금지
+  표준명: 셀레니우스애씨드;하이드로젠셀레나이트;셀레늄다이옥사이드,모노하이드레이트
+  영문명: Selenious Acid; Hydrogen Selenite; Selenium Dioxide, Monohydrated
+  CASNO: 7783-00-8
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 15260]
+  구분: 한도
+  표준명: 클로로자일레놀
+  영문명: Chloroxylenol
+  CASNO: 88-04-0, 1321-23-9
+  이명: Chlorodimethylhydroxybenzene, 4-Chloro-3,5-Dimethylphenol, 4-Chloro-3,5-Xylenol, chloroxylenol (INN), p-Chloro-m-Xylenol, PCMX, Phenol, Chlorodimethyl-, Phenol, 4-Chloro-3,5-Dimethyl-
+  배합제한국가: 일본
+  고시원료명: Chlorxylenol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.20 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.20 g
+
+[레코드 15331]
+  구분: 한도
+  표준명: 에틸파라벤
+  영문명: Ethylparaben
+  CASNO: 120-47-8
+  이명: Benzoic Acid, 4-Hydroxy-, Ethyl Ester , Ethyl 4-Hydroxybenzoate , Ethyl p-Hydroxybenzoate , Ethyl 4-hydroxybenzoate (RIFM) , Ethyl Parahydroxybenzoate , 4-Hydroxybenzoic Acid, Ethyl Ester , Parahydroxybenzoate Ester
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 15455]
+  구분: 한도
+  표준명: 멘톨
+  영문명: Menthol
+  CASNO: -
+  배합제한국가: 일본
+  고시원료명: l-Menthol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 7.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 7.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (1.0) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 15479]
+  구분: 한도
+  표준명: 칸타리스 틴크, 건강 틴크. 및 고추 틴크
+  영문명: Cantharides tincture, ginger tincture or capsicum tincture
+  배합제한국가: 일본
+  고시원료명: Cantharides tincture, ginger tincture or capsicum tincture
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0g as total(合計量として1.0g)(합계량으로 1.0g)
+
+[레코드 15511]
+  구분: 금지
+  표준명: 메타피릴렌
+  영문명: Methapyrilene
+  CASNO: 91-80-5
+  이명: Lullamin, N,N-Dimethyl-N'-2-pyridinyl-N'-(2-thienylmethyl)-1,2-, ethanediamine, Restryl, Tenalin, Thenylpyramine, Thionylan
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 15553]
+  구분: 한도
+  표준명: 1-(3,4-다이메톡시페닐)-4,4-다이메틸-1,3-펜탄다이온
+  영문명: 1-(3,4-dimethoxyphenyl)-4, 4-dimethyl-1,3-pentanedione
+  배합제한국가: 일본
+  고시원료명: 1-(3,4-dimethoxyphenyl)-4, 4-dimethyl-1,3-pentanedione
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 7.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 7.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 15802]
+  구분: 금지
+  표준명: 다이소듐셀레나이트
+  영문명: Disodium Selenite
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 16022]
+  구분: 한도
+  표준명: 적색230호의(2)
+  영문명: Eosine YSK, D&C Red No. 22, Aka230(1), CI 45380
+  CASNO: 17372-87-1, 548-26-5
+  이명: Acid Red 87, Potassium Salt, CI 45380, Red No. 230(2), Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxy-, Dipotassium Salt, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Dipotassium Salt
+  배합제한국가: 일본
+  고시원료명: Eosine YSK
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 16039]
+  구분: 한도
+  표준명: 에칠헥실살리실레이트
+  영문명: Ethylhexyl Salicylate
+  CASNO: 118-60-5
+  이명: Benzoic Acid, 2-Hydroxy-, 2-Ethylhexyl Ester, 2-Ethylhexyl 2-Hydroxybenzoate, 2-Ethylhexyl Salicylate, Ethyl hexyl salicylate (RIFM), Octisalate (INN), Octyl Salicylate, Octyl Salicylate (RIFM), Salicylic Acid, 2-Ethylhexyl Ester
+  배합제한국가: 일본
+  고시원료명: Octyl salicylate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 5.0 g
+
+[레코드 16145]
+  구분: 금지
+  표준명: 노르아드레날린 및 그 염류
+  영문명: Noradrenaline and its salts
+  CASNO: 51-41-2
+  배합제한국가: 일본
+  고시원료명: Hormones and those derivatives except estradiol, estrone and ethinylestradiol
+
+[레코드 16273]
+  구분: 한도
+  표준명: 부틸파라벤
+  영문명: Butylparaben
+  CASNO: 94-26-8
+  이명: Benzoic Acid, 4-Hydroxy-, Butyl Ester , Butyl 4-Hydroxybenzoate , Butyl p-Hydroxybenzoate , Butyl p-hydroxy benzoate (RIFM) , Butyl Parahydroxybenzoate , Parahydroxybenzoate Ester
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 16399]
+  구분: 한도
+  표준명: 적색232호
+  영문명: Aka232, Rose Bengal K, CI 45440
+  CASNO: 632-68-8
+  이명: Acid Red 94 , Blue 7 , CI 45440 , Red No. 232 , Rose Bengal K Salt , Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 4,5,6,7-Tetrachloro-3',6'-Dihydroxy-2',4',5',7'-Tetraiodo-, Dipotassium Salt
+  배합제한국가: 일본
+  고시원료명: Rose Bengal K
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 16475]
+  구분: 한도
+  표준명: 등색402호
+  영문명: Daidai402, Orange I, CI 14600
+  CASNO: 523-44-4?
+  이명: Acid Orange 20, Benzenesulfonic Acid, 4-[(4-Hydroxy-1-Naphthalenyl)azo]-, Monosodium Salt, CI 14600, Orange I, Orange No. 402
+  배합제한국가: 일본
+  고시원료명: Orange I
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함
+
+[레코드 16500]
+  구분: 한도
+  표준명: 징크,암모니아 및 실버 치환된 제올라이트
+  영문명: Zinc, ammonia and silver substituted zeolite
+  배합제한국가: 일본
+  고시원료명: Zinc, ammonia and silver substituted zeolite(*4)
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注4）?熱した場合において、銀として0.2%～4.0%及び?鉛として5.0%～15.0%を含有するものをいう。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注4）?熱した場合において、銀として0.2%～4.0%及び?鉛として5.0%～15.0%を含有するものをいう。 (주4) 강한 열을 가했을 때 은 0.2%~4.0% 및 아연 5.0%~15.0%를 함유하는 것을 말함.
+
+[레코드 16596]
+  구분: 한도
+  표준명: 청색1호
+  영문명: Brilliant Blue FCF, FD&C Blue No. 1, Blue 1 Lake, Ao1, CI 42090
+  CASNO: 2650-18-2, 3844-45-9, 37307-56-5
+  이명: Acid Blue 9, Benzenemethanaminium, N-Ethyl-N-[4-[[4-Ethyl[(3-Sulfophenyl)Methyl]Amino]Phenyl](2-Sulfophenyl)Methylene-2,5-Cyclohexadien-1-ylidene]-3-Sulfo, Hydroxide, Inner Salt, Disodium Salt, Benzenemethanaminium, N-Ethyl-N-(4-((4-Ethyl((3-Sulfophenyl)Methyl)Amino)Phenyl)(2-Sulfophenyl)Methylene)-2,5-Cyclohexadien-1-ylidene)-3-Sulfo-, Inner Salt, Diammonium Salt, Blue No. 1 , Blue No. 205 , Brilliant Blue FCF , N-Ethyl-N-[4-[[4-[Ethyl[(3-Sulfophenyl)Methyl]Amino]Phenyl](2-Sulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-3-Sulfobenzenemethanaminium Hydroxide, Inner Salt, Disodium Salt , Food Blue 2, Japan Blue 1, Japan Blue 205
+  배합제한국가: 일본
+  고시원료명: Brilliant Blue FCF
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함이 성분의 지르코늄 레이크 포함
+
+[레코드 16632]
+  구분: 한도
+  표준명: 소르빅애씨드
+  영문명: Sorbic Acid
+  CASNO: 110-44-1
+  이명: acidum sorbicum (EP), 2,4-Hexadienoic Acid, 2,4-Hexadienoic acid, (E,E)- (RIFM), 1,3-Pentadiene-1-Carboxylic Acid
+  배합제한국가: 일본
+  고시원료명: Sorbic acid and sorbate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 16796]
+  구분: 금지
+  표준명: 할로겐화살리실아닐리드
+  영문명: Halogenated salicylanilide
+  배합제한국가: 일본
+  고시원료명: Halogenated salicylanilide
+
+[레코드 16842]
+  구분: 한도
+  표준명: 페닐벤조에이트
+  영문명: Phenyl Benzoate
+  CASNO: 93-99-2
+  이명: Benzoic Acid, Phenyl Ester, Phenyl benzoate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 16881]
+  구분: 한도
+  표준명: 2-메틸페닐4-메톡시신나메이트
+  영문명: 2-Methylphenyl 4-methoxycinnamate
+  배합제한국가: 일본
+  고시원료명: 2-Methylphenyl 4-methoxycinnamate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 16906]
+  구분: 한도
+  표준명: 테레프탈릴리덴디캠퍼설포닉애씨드
+  영문명: Terephthalylidene Dicamphor Sulfonic Acid
+  CASNO: 92761-26-7
+  이명: Bicyclo [2.2.1] Heptane-1-Methanesulfonic Acid, 3,3'-(1,4-Phenylenedimethylidene) Bis[7,7-Dimethyl-2-Oxo-, Ecamsule, 3,3-(1,4-Phenylenedimethylene) bis(7,7-Dimethyl-2-oxo-bicyclo-[2.2.1] hept-1-ylmethanesulphonic Acid, 3,3'-(1,4-Phenylenedimethylidene)Bis[7,7-Dimethyl-2-Oxobicyclo[2.2.1]Heptane-1-Methanesulfonic Acid
+  배합제한국가: 일본
+  고시원료명: Terephthalylidene dicamphor sulfonic acid
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 16998]
+  구분: 한도
+  표준명: 적색207호
+  영문명: Lithol Red BA, Aka207, CI 15630:1
+  CASNO: 1103-38-4, 1248-18-6
+  이명: CI 15630:1, Lithol Red Ba, 1-Naphthalenesulfonic Acid, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-, Barium Salt, Pigment Red 49:1, Red 12, Red No. 207
+  배합제한국가: 일본
+  고시원료명: Lithol Red BA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 17083]
+  구분: 한도
+  표준명: 적색401호
+  영문명: Violamine R, Aka401, ACID VIOLET 9, CI 45190
+  CASNO: 0
+  이명: Acid Violet 9, Benzoic Acid, θ-(3-((4-Sulfo-θ-Tolyl)Imino)-6-θ-Toluidino-3H-Xanthen-9-yl)-, Monosodium Salt, 9-(2-Carboxyphenyl)-3-[(2-Methylphenyl)Amino]-6-[(2-Methyl-4-Sulfophenyl)Amino]Xanthylium, Hydroxide, Inner Salt, Monosodium Salt, Japan Red 401, Red No. 401, Xanthylium, 9-(2-Carboxyphenyl)-3-[(2-Methylphenyl)Amino]-6-[(2-Methyl-4-Sulfophenyl)Amino]-, Hydroxide, Inner Salt, Monosodium Salt
+  배합제한국가: 일본
+  고시원료명: Violamine R
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 17325]
+  구분: 한도
+  표준명: 적색502호
+  영문명: Aka502, Ponceau 3R, CI 16155
+  CASNO: 3564-09-8?
+  이명: CI 16155, Food Red 6, 2,7-Naphthalenedisulfonic Acid, 3-Hydroxy-4-[(2,4,5-Trimethylphenyl)Azo]-, Disodium Salt, Ponceau 3R, Red No. 502
+  배합제한국가: 일본
+  고시원료명: Ponceau 3R
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 17356]
+  구분: 한도
+  표준명: 적색3호
+  영문명: Aka3, CI 45430
+  이명: Acid Red 51, 3',6'-Dihydroxy-2',4',5',7'-Tetraiodospiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Disodium Salt, Erythrosine, Fluorescein, 2',4',5',7'-Tetraiodo-, Disodium Salt, Food Red 14, Japan Red 3, Red No. 3, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 3',6'-Dihydroxy-2',4',5',7'-Tetraiodo-, Disodium Salt, , 2',4',5',7'-Tetraiodofluoroscein, Disodium Salt, Yellow No. 201, Yellow No. 202(1), Yellow No. 202(2)
+  배합제한국가: 일본
+  고시원료명: Erythrosine
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 17483]
+  구분: 한도/금지
+  표준명: 클로라민T
+  영문명: Chloramine T
+  CASNO: 127-65-1
+  이명: Benzenesulfonamide, N-Chloro-4-Methyl-, Sodium Salt, N-Chloro-4-Methylbenzenesulfonamide, Sodium Salt, Sodium N-Chloro-p-Toluenesulfonamide, Sodium Tosylchloramide, tosylchloramide sodium (INN)
+  배합제한국가: 일본
+  고시원료명: Chloramine T
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 17597]
+  구분: 한도
+  표준명: 등색403호
+  영문명: Daidai403, Orange SS, CI 12100
+  CASNO: 2646-17-5
+  이명: 2-Naphthalenol, 1-[(2-Methylphenyl)azo]-
+  배합제한국가: 일본
+  고시원료명: Orange SS
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 17622]
+  구분: 한도
+  표준명: 아세틸시스테인
+  영문명: Acetyl Cysteine
+  CASNO: 616-91-1
+  이명: acetylcysteine (INN), N-Acetyl-L-Cysteine, L-Cysteine, N-Acetyl-, Mercapturic Acid
+  배합제한국가: 일본
+  고시원료명: N-Acetyl-L-Cysteine
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 9.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 9.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 17698]
+  구분: 한도
+  표준명: 디히드록시알루미늄 아미노아세테이트
+  영문명: Dihydroxyaluminum Aminoacetate
+  CASNO: 13682-92-3
+  이명: Aluminum Dihydroxyaminoacetate, Aluminum, (Glycinato-N,O)Dihydroxy-, Aluminum, (Glycinato-κN,κO)Dihydroxy-, (T-4)-, Dihydroxyaluminum Aminoacetate, Dihydroxyaluminum Glycinate, (Glycinato-N,O)Dihydroxyaluminum
+  배합제한국가: 일본
+  고시원료명: Dihydroxyaluminum Aminoacetate
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g * 단서조항 :
+
+[레코드 17803]
+  구분: 한도
+  표준명: 아이소부틸벤조에이트
+  영문명: Isobutyl Benzoate
+  CASNO: 120-50-3
+  이명: Benzoic Acid, Isobutyl Ester, Benzoic Acid, 2-Methylpropyl Ester, Isobutyl benzoate (RIFM), 2-Methylpropyl Benzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 17864]
+  구분: 한도
+  표준명: 벤조페논-9
+  영문명: Benzophenone-9
+  CASNO: 76656-36-5
+  이명: Benzenesulfonic Acid, 3-3'-Carbonylbis(40Hydroxy-6-Methoxy- Disodium Salt, Disodium 2,2'-Dihydroxy-4,4'-Dimethoxy-5,5'-Disulfobenzophenone, Sodium dihydroxydimethoxybenzophenone disulfonate
+  배합제한국가: 일본
+  고시원료명: Sodium dihydroxydimethoxybenzophenone disulfonate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 17930]
+  구분: 한도
+  표준명: 부틸벤조에이트
+  영문명: Butyl Benzoate
+  CASNO: 136-60-7
+  이명: Benzoic Acid, n-Butyl Ester, Butyl benzoate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 17987]
+  구분: 한도/금지
+  표준명: 클로플루카반
+  영문명: Cloflucarban
+  CASNO: 369-77-7
+  이명: N-(4-Chlorophenyl)-N'-[4-Chloro-3-(Trifluoromethyl)Phenyl]Urea, 4,4'-Dichloro-3-(Trifluoromethyl)-Carbanilide, halocarban (INN), Trifluoromethyldichlorocarbanilide, Urea, N-(4-Chlorophenyl)-N'-[4-Chloro-3-(Trifluoromethyl)Phenyl]-
+  배합제한국가: 일본
+  고시원료명: Halocarban
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.30 g
+
+[레코드 18400]
+  구분: 금지
+  표준명: 다이머큐릭다이클로라이드
+  영문명: Dimercury Dichloride
+  CASNO: 10112-91-1
+  이명: calomel, mercurous chloride, mercury(I) chloride
+  배합제한국가: 일본
+  고시원료명: Mercury and its compounds
+  단서조항: Trace : 수은 (1㎍/g이하)
+
+[레코드 18513]
+  구분: 한도
+  표준명: 벤잘코늄클로라이드
+  영문명: Benzalkonium Chloride
+  CASNO: 91080-29-4/63449-41-2/68391-01-5/68424-85-1/85409-22-9/68989-01-5
+  배합제한국가: 일본
+  고시원료명: Benzalkonium chloride
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.050 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.050 g
+
+[레코드 18518]
+  구분: 한도
+  표준명: 포타슘솔베이트
+  영문명: Potassium Sorbate
+  CASNO: 24634-61-5, 590-00-1
+  이명: L-Ascorbic Acid, Monopotassium Salt, 2,4-Hexadienoic Acid, Potassium Salt, kalii sorbas (EP), Potassium sorbate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Sorbic acid and sorbate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 18532]
+  구분: 한도
+  표준명: 등색201호
+  영문명: Dibromofluorescein, D&C Orange No. 5, Daidai201, CI 45370:1
+  CASNO: 4372-02-5, 596-03-2
+  이명: Acid Orange 11, CI 45370, 4',5'-Dibromo-3',6'-Dihydroxy-Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-One, Disodium Salt, Dibromofluorescein, Orange No. 201, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 4',5'-Dibromo-3',6'-Dihydroxy-, Disodium Salt, Solvent Red 72
+  배합제한국가: 일본
+  고시원료명: Dibromofluorescein
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 18533]
+  구분: 한도/금지
+  표준명: 티람
+  영문명: Thiram
+  CASNO: 137-26-8
+  배합제한국가: 일본
+  고시원료명: Thiram
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 石けん,シャンプ?等の直ちに洗い流す化粧品(b) 石けん,シャンプ?等の直ちに洗い流す化粧品以外の化粧品((a) 비누, 화장품 등 즉시 씻어 내는 화장품(b) 비누, 화장품 등 즉시 씻어 내는 화장품 외의 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) 0.50 g (b) 0.30g
+
+[레코드 18681]
+  구분: 한도
+  표준명: 레조시놀
+  영문명: Resorcinol
+  CASNO: 108-46-3
+  배합제한국가: 일본
+  고시원료명: Resorcin
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.10 g(0.10 g)
+
+[레코드 18692]
+  구분: 금지
+  표준명: 트라이펠렌아민시트레이트
+  영문명: Tripelennamine Citrate
+  CASNO: 6138-56-3
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 18831]
+  구분: 한도/금지
+  표준명: 스트론튬
+  영문명: Strontium
+  배합제한국가: 일본
+  고시원료명: Strontium compounds
+
+[레코드 18911]
+  구분: 금지
+  표준명: 바이타민L1
+  영문명: Vitamin L1
+  배합제한국가: 일본
+  고시원료명: Vitamin L1 and Vitamin L2
+
+[레코드 18921]
+  구분: 금지
+  표준명: 다이페닐피랄린
+  영문명: Diphenylpyraline
+  CASNO: 147-20-6
+  이명: 4-diphenylmethoxy-1-methylpiperidine, diphenylpyraline, diphenylpyraline hydrochloride, diphenylpyraline maleate (2:1), Lergobine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 19023]
+  구분: 금지
+  표준명: 노르핀프린바이타트레이트안하이드로스
+  영문명: Norepinephrine Bitartrate Anhydrous
+  배합제한국가: 일본
+  고시원료명: Hormones and those derivatives except estradiol, estrone and ethinylestradiol
+
+[레코드 19062]
+  구분: 한도
+  표준명: 녹색201호
+  영문명: Alizarine Cyanine Green F, D&C Green No. 5, Midori201, CI 61570
+  CASNO: 0
+  이명: Acid Green 25, Alizarin Cyanine Green, Benzenesulfonic Acid, 2,2'-[(9,10-Dihydro-9,10-Dioxo-1,4-Anthracenediyl)Diimino]Bis(5-Methyl)-, Disodium Salt, 2,2'-[(9,10-Dihydro-9,19-Dioxo-1,4-Anthracenediyl)Diimino]Bis[5-Methyl]Benzenesulfonic Acid, Disodium Salt, Green No. 201, Japan Green 201, μ-Toluenesulfonic Acid, 6,6'-(1,4-Anthraquinonylenediimino)di-, Disodium Salt
+  배합제한국가: 일본
+  고시원료명: Alizarine Cyanine Green F
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 19148]
+  구분: 한도/금지
+  표준명: 징크피리치온
+  영문명: Zinc Pyrithione
+  CASNO: 13463-41-7
+  배합제한국가: 일본
+  고시원료명: Zinc pyrithione
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.010 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.010 g
+
+[레코드 19181]
+  구분: 한도/금지
+  표준명: 헥사클로로펜
+  영문명: Hexachlorophene
+  CASNO: 70-30-4
+  배합제한국가: 일본
+  고시원료명: Hexachlorophen
+
+[레코드 19221]
+  구분: 한도
+  표준명: C12-14알킬다이아미노에틸글라이신에이치씨엘
+  영문명: C12-14 Alkyl Diaminoethylglycine HCl
+  이명: Alkylpolyaminoethylglycine hydrochloride
+  배합제한국가: 일본
+  고시원료명: Alkyldiaminoethylglycine hydrochloride
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.20(0.20 g)
+
+[레코드 19224]
+  구분: 한도
+  표준명: 소듐살리실레이트
+  영문명: Sodium Salicylate
+  CASNO: 54-21-7
+  이명: Benzoic Acid, 2-Hydroxy-, Monosodium Salt, 2-Hydroxybenzoic Acid, Monosodium Salt, natrii salicylas (EP), Sodium o-Hydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 19230]
+  구분: 한도
+  표준명: 황색202호의(1)
+  영문명: Uranine, D&C Yellow No. 8, Acid Yellow 73 Sodium Salt, Ki202(2), CI 45350
+  CASNO: 518-45-6, 518-47-8
+  이명: Acid Yellow 73 Sodium Salt, 3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Disodium Salt, Japan Yellow 202(1), Sodium Fluorescein , Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 3',6'-Dihydroxy-, Disodium Salt , Uranine, Yellow No. 201, Yellow No. 202(1), Yellow No. 202(2)
+  배합제한국가: 일본
+  고시원료명: Uranine
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 19283]
+  구분: 한도
+  표준명: 적색225호
+  영문명: Sudan III, D&C Red No. 17, Aka225, CI 26100
+  CASNO: 0
+  이명: 2-Naphthalenol, 1-[[4-(Phenylazo)Phenyl]Azo]-, 2-Naphthol, 1-(p-phenyulazophenylazo)-, 1-[[4-(Phenylazo)Phenyl]Azo]-2-Naphthalenol, Red No. 225, Solvent Red 23, Sudan III, Sudan Red BK, Tetrazobenzene-beta-Naphthol
+  배합제한국가: 일본
+  고시원료명: Sudan Ⅲ
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 19298]
+  구분: 한도
+  표준명: 적색506호
+  영문명: Fast Red S, Aka506, ACID RED 88, CI 15620
+  CASNO: 0
+  이명: Acid Red 88, Monosodium Salt, Fast Red S, 1-Naphthalenesulfonic Acid, 4-[(2-Hydroxy-1-Naphthalenyl)Azo]-, Monosodium Salt, Red No. 506, Rocceline, Sodium 4-[(2-Hydroxy-1-Naphthalenyl)Azo-1-Naphthalenesulfonate
+  배합제한국가: 일본
+  고시원료명: Fast Red S
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 19799]
+  구분: 한도
+  표준명: 적색218호
+  영문명: Tetrachlorotetrabromofluorescein, D&C Red No. 27, Aka218, Red 27 Lake, CI 45410:1
+  CASNO: 13473-26-2, 18472-87-2, 2134-15-8
+  이명: CI 45410:1, Japan Red 104, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxy-, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H), 9'-[9H]Xanthen]-3-one
+  배합제한국가: 일본
+  고시원료명: Tetrachlorotetrabromofluorescein
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 19802]
+  구분: 금지
+  표준명: 카드뮴클로라이드
+  영문명: Cadmium Chloride
+  CASNO: 10108-64-2
+  이명: Cadmium Dichloride, CdCl2, Chloride, Cadmium, Dichloride, Cadmium
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 19815]
+  구분: 금지
+  표준명: 다이펜하이드라민에이치씨엘
+  영문명: Diphenhydramine HCl
+  CASNO: 147-24-0
+  이명: Diphenhydramine Hydrochloride, 2-Diphenylmethoxy-N,N-dimethylethylamine, Allerdryl, Benadryl, Benhydramin, Benylin, Benzhydramine, Citrate, Diphenhydramine, Dimedrol, Diphenhydramine, Diphenhydramine Citrate, Diphenhydramine Citrate (1:1), Diphenylhydramin, Diphenylhydramine, Dormin, Hydrochloride, Diphenhydramine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 19837]
+  구분: 한도
+  표준명: 청색2호
+  영문명: Indigo Carmine, Acid Blue 74 Aluminum Lake, FOOD BLUE 1, Ao2, CI 73015
+  CASNO: 860-22-0
+  이명: Acid Blue 746Blue No. 2, 2-(1,3-Dihydro-3-Oxo-5-Sulfo-2H-Indol-2-ylidene)-2,3-Dihydro-3-Oxo-1H-Indole-5-Sulfonic Acid, Disodium Salt, 1H-Indole-5-Sulfonic Acid, 2-(1,3-Dihydro-3-Oxo-5-Sulfo-2H-Indol-2-ylidene)-2,3-Dihydro-3-Oxo-, Disodium Salt, Indigo Carmine, Japan Blue 2
+  배합제한국가: 일본
+  고시원료명: Indigo Carmine
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 20009]
+  구분: 한도/금지
+  표준명: 다이에틸렌글라이콜
+  영문명: Diethylene Glycol
+  CASNO: 111-46-6
+  이명: Bis(2-Hydroxyethyl)Ether, Diethylene glycol (RIFM), Diglycol, Ethanol, 2,2'-Oxybis-, 2,2'-Oxybisethanol
+  배합제한국가: 일본
+  고시원료명: Diethylene glycol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : ?磨(치약) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : Prohibited(配合不可)(배합금지)
+
+[레코드 20032]
+  구분: 금지
+  표준명: 카드뮴설파이드
+  영문명: Cadmium Sulphide
+  CASNO: 1306-23-6
+  이명: Biocadmio
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 20134]
+  구분: 한도
+  표준명: 포타슘프로필파라벤
+  영문명: Potassium Propylparaben
+  CASNO: 84930-16-5
+  이명: Propylparaben, Potassium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 20194]
+  구분: 한도
+  표준명: 암모늄은아연알루미늄실리케이트
+  영문명: Ammonium Silver Zinc Aluminum Silicate
+  배합제한국가: 일본
+  고시원료명: Zinc, ammonia and silver substituted zeolite(*4)
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注4）?熱した場合において、銀として0.2%～4.0%及び?鉛として5.0%～15.0%を含有するものをいう。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注4）?熱した場合において、銀として0.2%～4.0%及び?鉛として5.0%～15.0%を含有するものをいう。 (주4) 강한 열을 가했을 때 은 0.2%~4.0% 및 아연 5.0%~15.0%를 함유하는 것을 말함.
+
+[레코드 20331]
+  구분: 한도
+  표준명: 적색503호
+  영문명: Aka503, Ponceau R, CI 16150
+  CASNO: 3761-53-3
+  이명: Acid Red 26 , CI 16150 , Food Red 5 , 2,7-Naphthalenedisulfonic Acid, 4-[(2,4-Dimethylphenyl)Azo]-3-Hydroxy-, Disodium Salt , Ponceau 2R , Red No. 503
+  배합제한국가: 일본
+  고시원료명: Ponceau R
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 20372]
+  구분: 금지
+  표준명: 카드뮴 및 그 화합물
+  영문명: Cadmium and its compounds
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 20413]
+  구분: 금지
+  표준명: 카드뮴포메이트
+  영문명: Cadmiumformate
+  CASNO: 4464-23-7?
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 20511]
+  구분: 한도
+  표준명: 청색201호
+  영문명: Indigo, Ao201, VAT BLUE 1, CI 73000
+  CASNO: 0
+  이명: Blue No. 201, 2-(1,3-Dihydro-3-Oxo-2H-Indol-2-ylidene)-1,2-Dihydro-3H-Indol-3-one, 3H-Indol-3-one, 2-(1,3-Dihydro-3-Oxo-2H-Indol-2-ylidene)-1,2-Dihydro-, Indigo, Pigment Blue 66, Vat Blue 1
+  배합제한국가: 일본
+  고시원료명: Indigo
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 20527]
+  구분: 한도
+  표준명: 폴리옥시에틸렌라우릴에터(8-10E.O.)
+  영문명: Polyoxyethylene laurylether(8-10E.O.)
+  배합제한국가: 일본
+  고시원료명: Polyoxyethylene laurylether(8-10E.O.)
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 2.0 g(2.0 g)
+
+[레코드 20577]
+  구분: 금지
+  표준명: 확정세포배양액
+  영문명: Defined Cell Culture Media
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 20994]
+  구분: 한도
+  표준명: 마그네슘벤조에이트
+  영문명: Magnesium Benzoate
+  CASNO: 553-70-8
+  이명: Benzoic Acid, Magnesium Salt, Magnesium Dibenzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 21186]
+  구분: 금지
+  표준명: 카드뮴다이포메이트
+  영문명: Cadmium Diformate
+  CASNO: 4464-23-7
+  이명: cadmiumformate
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 21222]
+  구분: 한도
+  표준명: 황색201호
+  영문명: Fluorescein, D&C Yellow No. 7, Ki201, CI 45350:1
+  CASNO: 518-47-8
+  이명: CI 45350, 3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Fluorescein, Obiturine, Uranin, Uranine, Yellow No. 201
+  배합제한국가: 일본
+  고시원료명: Fluorescein
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 21323]
+  구분: 한도
+  표준명: 라드
+  영문명: Lard
+  CASNO: 61789-99-9
+  이명: Adeps Suillus (EU), Fats and Glycerdic Oils, Lard
+  배합제한국가: 일본
+  고시원료명: Lard
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 69.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 69.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 21676]
+  구분: 한도
+  표준명: l-멘톨
+  영문명: l-Menthol
+  CASNO: 1490-04-6, 15356-70-4, 2216-51-5, 89-78-1
+  이명: Cyclohexanol, 5-Methyl-2-(1-Methylethyl)-, 3-Hydroxy-p-menthane, 2-Isopropyl-5-methylcyclohexanol, DL-Menthol, Menthol (HCPA), d,l-Menthol (isomer unspecified) (RIFM), l-Menthol, Menthol racemic (RIFM), Menthol (RIFM), d-Menthol (RIFM), l-Menthol (RIFM), mentholum (EP), p-Methan-3-ol, 5-Methyl-2-(1-Methylethyl)Cyclohexanol, Racemic Menthol
+  배합제한국가: 일본
+  고시원료명: l-Menthol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 7.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 7.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (1.0) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 21712]
+  구분: 한도
+  표준명: 알지닌에이치씨엘
+  영문명: Arginine HCl
+  CASNO: 1119-34-2
+  이명: (+)-L-Arginine Hydrochloride, L-Arginine, Monohydrochloride
+  배합제한국가: 일본
+  고시원료명: Arginine HCl
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 5.0 g * 단서조항 :
+
+[레코드 21724]
+  구분: 한도
+  표준명: 호모살레이트
+  영문명: Homosalate
+  CASNO: 118-56-9
+  이명: Benzoic Acid, 2-Hydroxy-, 3,3,5-Trimethylcyclohexyl Ester, Cyclohexanol, 3,3,5-trimethyl-, salicylate, Homomenthyl Salicylate, Metahomomenthyl Salicylate, 3,3,5-Trimethylcyclohexyl 2-Hydroxybenzoate
+  배합제한국가: 일본
+  고시원료명: Homomenthyl salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 10 g(10 g)
+
+[레코드 21734]
+  구분: 한도
+  표준명: 데하이드로아세틱애씨드 및 데하이드로아세테이트
+  영문명: Dehydroacetic acid and dehydroacetate
+  배합제한국가: 일본
+  고시원료명: Dehydroacetic acid and dehydroacetate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 21776]
+  구분: 한도
+  표준명: 벤제토늄클로라이드
+  영문명: Benzethonium Chloride
+  CASNO: 121-54-0
+  이명: Benzenemethanaminium, N,N-Dimethyl-N-[2-[2-[4-(1,1,3,3-Tetramethylbutyl)Phenoxy]Ethoxy]Ethyl]-, Chloride, Benzethonii chloridum (EP), benzethonium chloride (INN), Benzethonium Chloride Solution, Benzyl(Dimethyl)(2-{2-[4-(1,1,3,3-Tetramethylbutyl)Phenoxy]Ethoxy)-Ethyl)Ammonium Chloride, Diisobutyl Phenoxy Ethoxy Ethyl Dimethyl Benzyl Ammonium Chloride, N,N-Dimethyl-N-[2-[2-[4-(1,1,3,3-Tetramethylbutyl)Phenoxy]Ethoxy]Ethyl]Benzenemethanaminium Chloride
+  배합제한국가: 일본
+  고시원료명: Benzethonium chloride
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.50 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.20 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 21935]
+  구분: 한도
+  표준명: 적색227호
+  영문명: Fast Acid Magenta, D&C Red No. 33, Red 33 Lake, Aka227, FOOD RED 12, CI 17200
+  CASNO: 0
+  이명: Acid Red 33, Disodium Salt, 5-Amino-4-Hydroxy-3-(Phenylazo)-2,7-Naphthalenedisulfonic Acid, Disodium Salt, Azofuchsin, Azo Fuchsine, Disodium 1-Hydroxy-2-Phenylazo-8-Aminonaphthalene-3,6-Disulfonate, Food Red 12, 2,7-Naphthalenedisulfonic Acid, 5-Amino-4-Hydroxy-3-(Phenylazo)-, Disodium Salt, Red No. 227
+  배합제한국가: 일본
+  고시원료명: Fast Acid Magenta
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 21945]
+  구분: 금지
+  표준명: 노르핀프린하이드로젠타트레이트
+  영문명: Norepinephrine Hydrogen Tartrate
+  CASNO: 51-40-1
+  이명: Norepinephrine bitartrate anhydrous, Norepinephrine Bitartrate, 4-(2-amino-1-hydroxyethyl)benzene-1,2-diol;(2R,3R)-2,3-dihydroxybutanedioate, 1,2-Benzenediol, 4-(2-amino-1-hydroxyethyl)-, 2,3-dihydroxybutanedioate (1:1) (salt), (+-)-Arterenol bitartrate, (+-)-Noradrenaline bitartrate, (+-)-Norepinephrine bitartrate
+  배합제한국가: 일본
+  고시원료명: Hormones and those derivatives except estradiol, estrone and ethinylestradiol
+
+[레코드 21993]
+  구분: 금지
+  표준명: 비스머스옥시클로라이드를 제외한 비스머스화합물
+  영문명: Bismuth compounds other than bismuth oxychloride
+  배합제한국가: 일본
+  고시원료명: Bismuth compounds other than bismuth oxychloride
+
+[레코드 22052]
+  구분: 한도
+  표준명: 소르빅애씨드 및 솔베이트
+  영문명: Sorbic acid and sorbate
+  배합제한국가: 일본
+  고시원료명: Sorbic acid and sorbate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 22070]
+  구분: 한도
+  표준명: 히노키티올
+  영문명: Hinokitiol
+  CASNO: 38094-79-0, 499-44-5
+  이명: 2,4,6-Cycloheptatrien-1-one, 2-Hydroxy-4-(1-Methylethyl)-, 2-Hydroxy-4-isopropyl-2,4,6-cycloheptatrien-1-one (RIFM), 2-Hydroxy-4-(1-Methylethyl)-2,4,6-Cycloheptatrien-1-one, Isopropyltropolone, Beta-Thujaplicin
+  배합제한국가: 일본
+  고시원료명: Hinokitiol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.050 g
+
+[레코드 22071]
+  구분: 한도
+  표준명: 감광성염료
+  영문명: Photosensitizing dyes
+  배합제한국가: 일본
+  고시원료명: Photosensitizing dyes
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.0020 as total(合計量として0.0020)(합계량으로 0.0020 g)
+
+[레코드 22114]
+  구분: 금지
+  표준명: 카드뮴다이포메이트;카드뮴포메이트
+  영문명: Cadmium Diformate; Cadmiumformate
+  CASNO: 4464-23-7?
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 22199]
+  구분: 한도
+  표준명: 실버카퍼제올라이트
+  영문명: Silver Copper Zeolite
+  CASNO: 130328-19-7168042-42-0 (generic)
+  배합제한국가: 일본
+  고시원료명: Silver-Copper Zeolite(*5)
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注5）?熱した場合において、銀として2.7%～3.7%及び銅として4.9%～6.3%を含有するものをいう。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.5 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.5 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注5）?熱した場合において、銀として2.7%～3.7%及び銅として4.9%～6.3%を含有するものをいう。 (주5) 강한 열을 가했을 때 은2.7%~3.7% 및 아연 4.9%~6.3%를 함유하는 것을 말함.
+
+[레코드 22239]
+  구분: 한도
+  표준명: 적색208호
+  영문명: Lithol Red SR, Aka208, CI 15630:3
+  CASNO: 1248-18-6, 6371-67-1
+  이명: CI 15630:3, Lithol Red, Sr, 1-Naphthalenesulfonic Acid, 2-[(2-Hydroxy-1-Naphthalenyl)Azo]-, Strontium Salt, Pigment Red 49:3, Red 13, Red No. 208, Strontium, 2-[(2-Hydroxy-1-naphthalenyl)Azo]-1-Naphthalenesulfonate
+  배합제한국가: 일본
+  고시원료명: Lithol Red SR
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 22317]
+  구분: 한도
+  표준명: 알루미늄글리시네이트
+  영문명: Aluminum Glycinate
+  CASNO: 13682-92-3
+  이명: Aluminum Dihydroxyaminoacetate, Aluminum, (Glycinato-N,O)Dihydroxy-, Aluminum, (Glycinato-κN,κO)Dihydroxy-, (T-4)-, Dihydroxyaluminum Aminoacetate, Dihydroxyaluminum Glycinate, (Glycinato-N,O)Dihydroxyaluminum
+  배합제한국가: 일본
+  고시원료명: Dihydroxyaluminum Aminoacetate
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g * 단서조항 :
+
+[레코드 22380]
+  구분: 한도
+  표준명: 적색228호
+  영문명: Permaton Red, D&C Red No. 36, Red 36 Lake, Aka228, PIGMENT RED 4, CI 12085
+  CASNO: 0
+  이명: 1-[(2-Chloro-4-Nitrophenyl)Azo]-2-Naphthalenol, 2-Naphthalenol, 1-[(2-Chloro-4-Nitrophenyl)Azo]-, Pigment Red 4, Red No. 228
+  배합제한국가: 일본
+  고시원료명: Permaton Red
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 22387]
+  구분: 한도
+  표준명: p-옥시벤조익애씨드 에스터류 및 그 소듐염
+  영문명: p-Oxybenzoic acid esters and their sodium salts
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 22401]
+  구분: 한도
+  표준명: 아이소프로필크레솔
+  영문명: Isopropyl Cresols
+  CASNO: 0
+  이명: o-cymen-5-ol
+  배합제한국가: 일본
+  고시원료명: Isopropylmethylphenol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.10 g
+
+[레코드 22491]
+  구분: 한도
+  표준명: DL-캠퍼
+  영문명: DL-Camphor
+  CASNO: 464-49-3, 76-22-2
+  이명: Bicyclo[2.2.1]Heptan-2-one, 1,7,7-Trimethyl-, 2-Bornanone, camphora (EP), D-Camphor, DL-Camphor, d-Camphor (RIFM), dl-Camphor (RIFM), Gum Camphor, 1,7,7-Trimethylbicyclo[2.2.1]Heptan-2-one, 1,7,7-Trimethylbicyclo[2.2.1]heptan-2-one (RIFM)
+  배합제한국가: 일본
+  고시원료명: DL-Camphor
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 4.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 4.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (1.0) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 22791]
+  구분: 한도
+  표준명: 글리시레티닉애씨드
+  영문명: Glycyrrhetinic Acid
+  CASNO: 471-53-4
+  이명: enoxolone (INN), Glycyrretinic Acid, Glycyrrhetic Acid, (3β,20β)-3-Hydroxy-11-Oxo-Olean-12-en-29-oic Acid, Olean-12-En-29-Oic Acid, 3-Hydroxy-11-Oxo-, (3β,20β)-, Uralenic Acid
+  배합제한국가: 일본
+  고시원료명: β-Glycyrrhetinic Acid
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : (0.80) g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.5 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.20) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 22834]
+  구분: 금지
+  표준명: 다이펜하이드라민시트레이트
+  영문명: Diphenhydramine Citrate
+  CASNO: 88637-37-0
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 22913]
+  구분: 금지
+  표준명: 하이드록시진파모에이트;에탄올,2-(2-(4-((4-클로로페닐)페닐메틸)-1-피페라지닐)에톡시)-, 4,4'-메틸렌비스(3-하이드록시-2-나프탈렌카복실릭애씨드)의 화합물 (1:1)
+  영문명: Hydroxyzine pamoate; Ethanol, 2-(2-(4-((4-chlorophenyl)phenylmethyl)-1-piperazinyl)ethoxy)-, compd. with 4,4'-methylenebis(3-hydroxy-2-naphthalenecarboxylic acid) (1:1)
+  CASNO: 10246-75-0
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 23020]
+  구분: 금지
+  표준명: 사이클리진 및 그 염류
+  영문명: Cyclizine (INN) and its salts
+  CASNO: 82-92-8
+  이명: Cyclizine, Cyclizine HCl, Cyclizine Hydrochloride, HCl, Cyclizine, Hydrochloride, Cyclizine, Marezine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 23063]
+  구분: 금지
+  표준명: 바이타민L2
+  영문명: Vitamin L2
+  배합제한국가: 일본
+  고시원료명: Vitamin L1 and Vitamin L2
+
+[레코드 23345]
+  구분: 금지
+  표준명: 효모/징크/마그네슘/칼슘/게르마늄/셀레늄발효물
+  영문명: Saccharomyces/Zinc/Magnesium/Calcium/Germanium/Selenium Ferment
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 23355]
+  구분: 한도
+  표준명: 데하이드로아세틱애씨드
+  영문명: Dehydroacetic Acid
+  CASNO: 16807-48-0, 520-45-6, 771-03-9
+  이명: 3-Acetyl-4-Hydroxy-6-Methyl-2H-Pyran-2-One, 3-Acetyl-6-Methyl-2H-Pyran-2,4(3H)-Dione, Ion(1-),, 2H-Pyran-2,4(3H)-Dione, 3-Acetyl-6-Methyl-
+  배합제한국가: 일본
+  고시원료명: Dehydroacetic acid and dehydroacetate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.50 as total(合計量として0.5)(합계량으로 0.50 g)
+
+[레코드 23423]
+  구분: 한도/금지
+  표준명: 비스머트서브갈레이트
+  영문명: Bismuth Subgallate
+  CASNO: 99-26-3
+  배합제한국가: 일본
+  고시원료명: Bismuth Subgallate
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 23424]
+  구분: 한도/금지
+  표준명: 비스머트서브갈레이트
+  영문명: Bismuth Subgallate
+  CASNO: 99-26-3
+  배합제한국가: 일본
+  고시원료명: Bismuth compounds other than bismuth oxychloride
+
+[레코드 23477]
+  구분: 한도
+  표준명: 부틸메톡시디벤조일메탄
+  영문명: Butyl Methoxydibenzoylmethane
+  CASNO: 70356-09-1
+  이명: avobenzone (INN), 4-tert-Butyl-4'-methoxydibenzoylmethane, 1-(4-Tert-butylphenyl)-3-(4-, Methoxyphenyl)Propane-1,3-dione1-[4-(1,1-Dimethylethyl)Phenyl]-3-(4-Methoxyphenyl)-1,3-Propanedione, 1,3-Propanedione, 2-butyl-2-methoxy-1,3-diphenyl-, 1,3-Propanedione, 1-[4-(1,1-Dimethylethyl)Phenyl]-3-(4-Methoxyphenyl)-
+  배합제한국가: 일본
+  고시원료명: 4-tert-Butyl-4’-methoxy dibenzoylmethane
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 10 g(10 g)
+
+[레코드 23552]
+  구분: 금지
+  표준명: 카드뮴플루오다이드
+  영문명: Cadmium Fluoride
+  CASNO: 7790-79-6
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 23717]
+  구분: 한도
+  표준명: 벤조페논-6
+  영문명: Benzophenone-6
+  CASNO: 131-54-4
+  이명: Bis(2-Hydroxy-4-Methoxyphenyl)Methanone, Dihydroxy Dimethoxy Benzophenone, 2,2'-Dihydroxy-4,4'-Dimethoxybenzophenone, 2,2'-Dihydroxy-4,4'-dimethoxybenzophenone (RIFM), Methanone, Bis(2-Hydroxy-4-Methoxyphenyl)-
+  배합제한국가: 일본
+  고시원료명: Dihydroxydimethoxybenzophenone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 23821]
+  구분: 한도
+  표준명: 알루미늄벤조에이트
+  영문명: Aluminum Benzoate
+  CASNO: 555-32-8
+  이명: Aluminum Tribenzoate, Benzoic Acid, Aluminum Salt
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 24000]
+  구분: 금지
+  표준명: 항히스타민제(예 : 독실아민, 다이페닐피랄린, 다이펜하이드라민, 메타피릴렌, 브롬페니라민, 사이클리진, 클로르페녹사민, 트라이펠렌아민, 하이드록사진 등)
+  영문명: Antihistamines(e.g: Doxylamine, Diphenylpyralin, Diphehydramine, Methapyrilene, Brompheniramine, Cyclizine, Chlorphenoxamine, Triphelenamine, Hydroxyzine)
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 24097]
+  구분: 한도
+  표준명: 적색103호의(1)
+  영문명: Eosine YS, D&C Red No. 22, Red 22 Lake, Pigment Red 90:1 Aluminum Lake, Aka230(1), CI 45380
+  CASNO: 17372-87-1, 548-26-5
+  이명: Bromoeosine, Bromofluoresceic Acid, Bromo Fluorescein, CI 45380 (Na Salt), Eosine, Eosine G, Eosin YS, Red 22, Red No. 230(1), Spiro[Isobenzofuran-1[3H], 9'-[9H]-Xanthen]-3-one, 2',4',5',7'-Tetrabromo-3',6'-Dihydroxy Disodium Salt, 2',4',5',7',-Tetrabromo-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Disodium Salt, 2',4',5',7'-Tetrabromofluoroscein
+  배합제한국가: 일본
+  고시원료명: Eosine YS
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 24102]
+  구분: 한도
+  표준명: 소듐라우릴다이에틸렌다이아미노글라이시네이트
+  영문명: Sodium Lauryl Diethylenediaminoglycinate
+  배합제한국가: 일본
+  고시원료명: Sodium lauryldiaminoethylglycine
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.030 g(0.030 g)
+
+[레코드 24335]
+  구분: 한도
+  표준명: 포타슘벤조에이트
+  영문명: Potassium Benzoate
+  CASNO: 582-25-2
+  이명: Benzoic Acid, Potassium Salt
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 24525]
+  구분: 한도
+  표준명: 티옥틱애씨드
+  영문명: Thioctic Acid
+  CASNO: 1077-28-7
+  이명: 1,2-Dithiolane-3-Pentanoic Acid, 1,2-Dithiolane-3-Valeric Acid, 5-(Dithiolan-3-yl)Valeric Acid, α-Lipoic Acid
+  배합제한국가: 일본
+  고시원료명: Thioctic acid
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.01 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.01 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 24611]
+  구분: 한도
+  표준명: 적색213호
+  영문명: Aka213, Rhodamine B, CI 45170
+  CASNO: 81-88-9
+  이명: N-[9-(2-Carboxyphenyl)-6-(Diethylamino)-3H-Xanthen-3-ylidene]-N-Ethylethanaminium Chloride, Ethanaminium, N-[9-(2-Carboxyphenyl)-6-(Diethylamino)-3H-Xanthen-3-ylidene]-N-Ethyl-, Chloride, Rhodamine B
+  배합제한국가: 일본
+  고시원료명: Rhodamine B
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 24631]
+  구분: 한도
+  표준명: 포타슘에틸파라벤
+  영문명: Potassium Ethylparaben
+  CASNO: 36457-19-9
+  이명: Ethylparaben, Potassium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 24723]
+  구분: 금지
+  표준명: 효모/셀레늄발효물
+  영문명: Saccharomyces/Selenium Ferment
+  배합제한국가: 일본
+  고시원료명: Selenium compounds
+
+[레코드 24932]
+  구분: 한도
+  표준명: 적색404호
+  영문명: Aka404, Brilliant Fast Scarlet, CI 12315
+  CASNO: 6448-95-9
+  이명: 2-Naphthalenecarboxamide, 3-Hydroxy-4-[(2-Methyl-5-Nitrophenyl)Azo]-N-Phenyl- , Pigment Red 22
+  배합제한국가: 일본
+  고시원료명: Brilliant Fast Scarlet
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 25013]
+  구분: 한도
+  표준명: 흑색401호
+  영문명: Naphthol Blue Black, Kuro401, ACID BLACK 1, CI 20470
+  CASNO: 0
+  이명: Acid Black 1, Disodium Salt, Amido Black 10B, Amino Black 10B, 4-Amino-5-Hydroxy-3-[(4-Nitrophenyl)Azo]-6-(Phenylazo)-2,7-Naphthalenedisulfonic Acid, Disodium Salt, Black No. 401, 2,7-Naphthalenedisulfonic Acid, 4-Amino-5-Hydroxy-3-[(4-Nitrophenyl)Azo]-6-(Phenylazo)-, Disodium Salt
+  배합제한국가: 일본
+  고시원료명: Naphthol Blue Black
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 25063]
+  구분: 한도
+  표준명: 황색407호
+  영문명: Fast Light Yellow 3G, Ki407, ACID YELLOW 11, CI 18820
+  CASNO: 0
+  이명: Acid Yellow 11, Sodium Salt, Benzenesulfonic Acid, 4-[4,5-Dihydro-3-Methyl-5-Oxo-4-(Phenylazo)-1H-Pyrazol-1-yl], Sodium Salt, Flavazine L, Sodium 4-[4,5-Dihydro-3-Methyl-5-Oxo-4-(Phenylazo)-1H-Pyrazol-1-yl]Benzenesulfonate, Yellow No. 407
+  배합제한국가: 일본
+  고시원료명: Fast Light Yellow 3G
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 25072]
+  구분: 금지
+  표준명: 다이펜하이드라민;에탄아민,2-(다이페닐메톡시)-N,N-다이메틸-
+  영문명: Diphenhydramine; Ethanamine, 2-(Diphenylmethoxy)-N,N-Dimethyl-
+  CASNO: 58-73-1
+  이명: 2-Diphenylmethoxy-N,N-dimethylethylamine, Allerdryl, Benadryl, Benhydramin, Benylin, Benzhydramine, Citrate, Diphenhydramine, Dimedrol, Diphenhydramine, Diphenhydramine Citrate, Diphenhydramine Citrate (1:1), Diphenhydramine Hydrochloride, Diphenylhydramin, Diphenylhydramine, Dormin, Hydrochloride, Diphenhydramine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 25138]
+  구분: 한도
+  표준명: 아이소프로필메톡시신나메이트
+  영문명: Isopropyl Methoxycinnamate
+  CASNO: 13682-92-3
+  이명: Cinnamic Acid, p-methoxy-, Isopropyl Ester3-(4-Methoxyphenyl)-2-Propenoic Acid, 1-Methylethyl Ester2-Propenoic Acid, 3-(4-Methoxyphenyl)-, 1-Methylethyl Ester
+  배합제한국가: 일본
+  고시원료명: Isopropyl p-methoxycinnamate anddiisopropyl cinnamate ester mixture(*2)
+  단서조항: （注 1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを 示す。 （注 2）パラメトキシケイ皮酸イソプロピル 72.0～79.0%、2,4－ジイソプロピルケ イ皮酸エチル 15.0～21.0%及び 2,4－ジイソプロピルケイ皮酸メチル 3.0～ 9.0%を含有するものをいう
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注 2）パラメトキシケイ皮酸イソプロピル 72.0～79.0%、2,4－ジイソプロピルケ イ皮酸エチル 15.0～21.0%及び 2,4－ジイソプロピルケイ皮酸メチル 3.0～ 9.0%を含有するものをいう (주2 ) isopropyl p-methoxycinnamate 72.0 - 79.0%와 ethyl 2,4-diisopropyl cinnamate  15.0 - 21.0%, 그리고  methyl 2,4-diisopropyl cinnamate 3.0 - 9.0% 를 함유하는 것을 가르킴
+
+[레코드 25215]
+  구분: 한도/금지
+  표준명: 글리세릴파바
+  영문명: Glyceryl PABA
+  CASNO: 136-44-7
+  배합제한국가: 일본
+  고시원료명: p-Aminobenzoic acid and its esters
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 4.0 as total(合計量として4.0)(합계량으로 4.0 g)
+
+[레코드 25262]
+  구분: 한도
+  표준명: p-아미노벤조익애씨드 및 그 에스터류
+  영문명: p-Aminobenzoic acid and its esters
+  배합제한국가: 일본
+  고시원료명: p-Aminobenzoic acid and its esters
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 4.0 as total(合計量として4.0)(합계량으로 4.0 g)
+
+[레코드 25296]
+  구분: 금지
+  표준명: 나이트로퓨란토인
+  영문명: Nitrofurantoin
+  CASNO: 67-20-9
+  이명: Hydantoin, 1-((5-nitrofurfurylidene)amino)-, 2,4-Imidazolidinedione, 1-(((5-nitro-2-furanyl)methylene)amino)-, 1-[(E)-(5-nitrofuran-2-yl)methylideneamino]imidazolidine-2,4-dione, Macrodantin, 5-Nitrofurantoin, Furadantine, Furadonine, Furadontin
+  배합제한국가: 일본
+  고시원료명: Nitrofuran type compounds
+
+[레코드 25574]
+  구분: 금지
+  표준명: 스트론튬화합물
+  영문명: Strontium Compound
+  배합제한국가: 일본
+  고시원료명: Strontium compounds
+
+[레코드 25586]
+  구분: 한도
+  표준명: 벤조페논-5
+  영문명: Benzophenone-5
+  CASNO: 6628-37-1
+  이명: Benzenesulfonic Acid, 5-Benzoyl-4-Hydroxy-2-Methoxy-, Monosodium Salt, 2-Hydroxy-4-Methoxybenzophenone-5-Sulfonic Acid, Sodium Salt, Sodium Hydroxymethoxybenzophenone Sulfonate, Sulisobenzone Sodium
+  배합제한국가: 일본
+  고시원료명: Sodium hydroxymethoxybenzophenone sulfonate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g
+
+[레코드 25710]
+  구분: 한도
+  표준명: 소듐에틸파라벤
+  영문명: Sodium Ethylparaben
+  CASNO: 35285-68-8
+  이명: Benzoic Acid, 4-Hydroxy-, Ethyl Ester, Sodium Salt , Ethyl p-Hydroxybenzoate Sodium Salt , Ethylparaben, Sodium Salt , 4-Hydroxybenzoic Acid, Ethyl Ester, Sodium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 25841]
+  구분: 한도
+  표준명: 포타슘부틸파라벤
+  영문명: Potassium Butylparaben
+  CASNO: 38566-94-8
+  이명: Butylparaben, Potassium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 25893]
+  구분: 한도
+  표준명: 징크페놀설포네이트
+  영문명: Zinc Phenolsulfonate
+  CASNO: 127-82-2
+  배합제한국가: 일본
+  고시원료명: Zinc p-phenolsulfonate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 石けん,シャンプ?等の直ちに洗い流す化粧品以外の化粧品(비누, 화장품 등 즉시 씻어 내는 화장품 외의 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 2.0 g(2.0 g)
+
+[레코드 25931]
+  구분: 금지
+  표준명: 2,2'-다이하이드록시-3,3',5,5',6,6'-헥사클로로다이페닐메탄(헥사클로로펜)
+  영문명: 2,2'-Dihydroxy-3,3',5,5',6,6'-hexachlorodiphenylmethane (Hexachlorophene)
+  CASNO: 70-30-4
+  이명: Bis(3,5,6-Trichloro-2-Hydroxyphenyl)-Methane, 2,2'-Dihydroxy-3,3',5,5'6,6'-Hexachlorodiphenylmethane, Hexachlorofen3,3',4,4',6,6'-Hexachloro-2,2'-Methylenediphenol, Hexachlorophen, hexachlorophene (INN), 2,2'-Methylenebis(3,4,6-Trichlorophenol), Phenol, 2,2'-Methylenebis(3,4,6-Trichloro-
+  배합제한국가: 일본
+  고시원료명: Hexachlorophen
+
+[레코드 25942]
+  구분: 금지
+  표준명: 4-벤질옥시페놀
+  영문명: 4-Benzyloxyphenol
+  CASNO: 103-16-2
+  이명: Hydroquinone Monobenzyl Ether, Monobenzone, 4-(Benzyloxy)phenol
+  배합제한국가: 일본
+  고시원료명: Hydroquinone monobenzylether
+
+[레코드 25992]
+  구분: 한도
+  표준명: 바이오설퍼F
+  영문명: biosulfur F
+  배합제한국가: 일본
+  고시원료명: biosulfur F
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 26091]
+  구분: 금지
+  표준명: 퓨라졸리돈
+  영문명: Furazolidone
+  CASNO: 67-45-8
+  이명: 2-Oxazolidinone, 3-((5-nitrofurfurylidene)amino)-, 3-[(E)-(5-nitrofuran-2-yl)methylideneamino]-1,3-oxazolidin-2-one, Furazol, Furazolidine, Furoxone, Nifurazolidone
+  배합제한국가: 일본
+  고시원료명: Nitrofuran type compounds
+
+[레코드 26244]
+  구분: 한도
+  표준명: 황색5호
+  영문명: Sunset Yellow FCF, FD&C Yellow No. 6, Sunset Yellow Aluminum Lake, Yellow 6 Lake, FOOD YELLOW 3, CI 15985
+  CASNO: 0
+  이명: Food Yellow 3, Disodium Salt, 6-Hydroxy-5-[(4-Sulfophenyl)Azo]-2-Naphthalenesulfonic Acid, Disodium Salt, 2-Naphthalenesulfonic Acid, 6-Hydroxy-5-[(4-Sulfophenyl)Azo]-, Disodium Salt, Sunset Yellow, Sunset Yellow FCF
+  배합제한국가: 일본
+  고시원료명: Sunset Yellow FCF
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함이 성분의 지르코늄 레이크 포함
+
+[레코드 26311]
+  구분: 한도
+  표준명: 칼슘벤조에이트
+  영문명: Calcium Benzoate
+  CASNO: 5/3/90
+  이명: Benzoic Acid, Calcium Salt, Calcium Dibenzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 26351]
+  구분: 금지
+  표준명: 독실아민
+  영문명: Doxylamine
+  CASNO: 469-21-6
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 26378]
+  구분: 한도
+  표준명: 쿼터늄-73
+  영문명: Quaternium-73
+  CASNO: 15763-48-1
+  이명: 4,4'-Dimethyl-3,3'-Diheptyl-2,2'Thiazolocyanine Iodide , 2-[2-(3-Heptyl-4-Methyl-2-Thiazolin-2-ylidene)Methene]-3-Heptyl- 4-Methyl Thiazolinium Iodide
+  배합제한국가: 일본
+  고시원료명: Photosensitizing dyes
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.0020 as total(合計量として0.0020)(합계량으로 0.0020 g)
+
+[레코드 26380]
+  구분: 한도
+  표준명: 쿼터늄-51
+  영문명: Quaternium-51
+  CASNO: 1463-95-2
+  배합제한국가: 일본
+  고시원료명: Photosensitizing dyes
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.0020 as total(合計量として0.0020)(합계량으로 0.0020 g)
+
+[레코드 26415]
+  구분: 금지
+  표준명: 다이펜하이드라민
+  영문명: Diphenhydramine
+  CASNO: 58-73-1
+  이명: 2-Diphenylmethoxy-N,N-dimethylethylamine, Allerdryl, Benadryl, Benhydramin, Benylin, Benzhydramine, Citrate, Diphenhydramine, Dimedrol, Diphenhydramine, Diphenhydramine Citrate, Diphenhydramine Citrate (1:1), Diphenhydramine Hydrochloride, Diphenylhydramin, Diphenylhydramine, Dormin, Hydrochloride, Diphenhydramine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 26482]
+  구분: 한도
+  표준명: 폴리실리콘-15
+  영문명: Polysilicone-15
+  CASNO: 207574-74-1
+  이명: Diethylbenzylidene Malonate Dimethicone, Diethylmalonylbenzylidene Oxypropene Dimethicone, Dimethicodiethylbenzalmalonate
+  배합제한국가: 일본
+  고시원료명: Dimethicodiethyl-benzal malonate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 10.0 g
+
+[레코드 26505]
+  구분: 한도
+  표준명: o-페닐페놀
+  영문명: o-Phenylphenol
+  CASNO: 90-43-7
+  이명: (1,1'-Biphenyl)-2-ol, o-Diphenylol, Orthophenylphenol, 2-Phenyl Phenol, 2-Phenylphenol (RIFM)
+  배합제한국가: 일본
+  고시원료명: o-Phenyl phenol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.30 g
+
+[레코드 26669]
+  구분: 한도
+  표준명: 사이코엑기스BS
+  영문명: Saiko ekisu BS
+  배합제한국가: 일본
+  고시원료명: Saiko ekisu BS
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 26855]
+  구분: 한도
+  표준명: 티타늄살리실레이트
+  영문명: Titanium Salicylate
+  CASNO: 0
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 26880]
+  구분: 한도
+  표준명: 칼슘살리실레이트
+  영문명: Calcium Salicylate
+  CASNO: 824-35-1
+  이명: Benzoic Acid, 2-Hydroxy-, Calcium Salt, Calcium 2-Hydroxybenzoate, Salicylic Acid, Calcium Salt
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 26925]
+  구분: 한도
+  표준명: 벤조페논-2
+  영문명: Benzophenone-2
+  CASNO: 131-55-5
+  이명: Bis(2,4-Dihydroxyphenyl)Methanone, Methanone, Bis(2,4-Dihydroxyphenyl)-, 2,2',4,4'-Tetrahydroxybenzophenone, 2,2',4,4'-Tetrahydroxybenzophenone (RIFM), Tetrahydroxybenzophenone
+  배합제한국가: 일본
+  고시원료명: Tetrahydroxybenzophenone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.050
+
+[레코드 26929]
+  구분: 금지
+  표준명: 비닐클로라이드모노머
+  영문명: Vinyl Chloride Monomer
+  CASNO: 75-0-4
+  이명: Chloride, Vinyl, Chloroethylene, Vinyl Chloride
+  배합제한국가: 일본
+  고시원료명: Vinyl chloride monomer
+
+[레코드 26975]
+  구분: 한도
+  표준명: 청색203호
+  영문명: Ao203, Patent Blue CA, CI 42052:1
+  CASNO: 3374-30-9
+  이명: Acid Blue 5, Calcium Salt, Benzenemethanaminium, N-Ethyl-N-[4-[[4-[Ethyl(phenylmethyl)amino]phenyl](5-Hydroxy-2,4-Disulfophenyl)Methylene]-2,5-Cyclohexadien-1-ylidene]-, Inner Salt, Calcium Salt (2:1), Blue No. 203, CI 42052:1, Patent Blue Ca
+  배합제한국가: 일본
+  고시원료명: Patent Blue CA
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 27008]
+  구분: 한도
+  표준명: 플라토닌
+  영문명: Platonin
+  CASNO: 3571-88-8
+  이명: 2,2'-[3-[(3-Heptyl-4-Methyl-3H-Thiazol-2-ylidene)Ethylidene]Propylene] Bis[3-Heptyl-4-Methylthiazolium]Diiodide , 2,2'-Pentamethinethiazolocyanine 3,3''-Diiodide, 4,4',4''-Trimethyl-3,3',3''-Triheptyl-8-(2''-Thiazolyl)- , Platonin Diiodide
+  배합제한국가: 일본
+  고시원료명: Photosensitizing dyes
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.0020 as total(合計量として0.0020)(합계량으로 0.0020 g)
+
+[레코드 27043]
+  구분: 한도
+  표준명: 황색203호
+  영문명: Quinoline Yellow WS, D&C Yellow No. 10, Yellow 10 Lake, Ki203, Acid Yellow 3 Aluminum Lake, FOOD YELLOW 13, CI 47005
+  CASNO: 38615-46-2, 8004-92-0, 95193-83-2
+  이명: Acid Yellow 3, Food Yellow 13, Japan Yellow 203, Quinoline Yellow, Yellow No. 203
+  배합제한국가: 일본
+  고시원료명: Quinoline Yellow WS
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함이 성분의 지르코늄 레이크 포함
+
+[레코드 27056]
+  구분: 한도/금지
+  표준명: 페닐살리실레이트
+  영문명: Phenyl Salicylate
+  CASNO: 118-55-8
+  이명: Benzoic Acid, 2-Hydroxy-, Phenyl Ester 2-Hydroxybenzoic Acid, Phenyl Ester 2-Phenoxycarbonylphenol Phenyl-2-Hydroxybenzoate Phenyl salicylate (RIFM)
+  배합제한국가: 일본
+  고시원료명: Phenyl salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 g(1.0 g)
+
+[레코드 27064]
+  구분: 금지
+  표준명: 프레그난다이올
+  영문명: Pregnandiol, Pregnanediol
+  CASNO: 80-92-2
+  배합제한국가: 일본
+  고시원료명: Pregnanediol
+
+[레코드 27106]
+  구분: 한도
+  표준명: 티이에이-살리실레이트
+  영문명: TEA-Salicylate
+  CASNO: 2174-16-5
+  이명: Benzoic Acid, 2-Hydroxy-, Compd. with 2,2',2"-Nitrilotris[Ethanol] (1:1), 2-Hydroxybenzoic Acid, Compd. with 2,2',2"-Nitrilotris[Ethanol] (1:1), Triethanolamine Salicylate, Trolamine Salicylate
+  배합제한국가: 일본
+  고시원료명: Salicylate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 27206]
+  구분: 금지
+  표준명: 카드뮴(발화성)
+  영문명: Cadmium (Pyrophoric)
+  CASNO: 7440-43-9
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 27241]
+  구분: 한도/금지
+  표준명: 지르코늄
+  영문명: Zirconium
+  CASNO: 7440-67-7
+  배합제한국가: 일본
+  고시원료명: Zirconium
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : エアゾ?ル?(에어로졸제) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : Prohibited(配合不可)(배합금지)
+
+[레코드 27306]
+  구분: 금지
+  표준명: 다이페닐피랄린하이드로클로라이드;피페리딘,4-(다이페닐메톡시)-1-메틸-,하이드로클로라이드
+  영문명: Diphenylpyraline Hydrochloride; Piperidine, 4-(diphenylmethoxy)-1-methyl-, hydrochloride
+  CASNO: 132-18-3
+  이명: 4-diphenylmethoxy-1-methylpiperidine, diphenylpyraline, diphenylpyraline hydrochloride, diphenylpyraline maleate (2:1), Lergobine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 27336]
+  구분: 한도
+  표준명: 황색202호의(2)
+  영문명: Uranine K, Ki202(2), CI 45350
+  이명: Acid Yellow 73 Sodium Salt, 3',6'-Dihydroxyspiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, Disodium Salt, Japan Yellow 202(1), Sodium Fluorescein , Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 3',6'-Dihydroxy-, Disodium Salt , Uranine, Yellow No. 201, Yellow No. 202(1), Yellow No. 202(2)
+  배합제한국가: 일본
+  고시원료명: Uranine K
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 27397]
+  구분: 한도
+  표준명: 갈색201호
+  영문명: Katsu201, Resorcin Brown, Acid Orange 24, CI 20170
+  CASNO: 1320-07-6  , 6371-84-2
+  이명: Acid Orange 24, Sodium Salt, Benzenesulfonic Acid, 4-[[3-[(2,4-Dimethylphenyl)Azo]-2,4-Dihydroxyphenyl]Azo]-, Monosodium Salt, Brown No. 201, 4-[[3-[(2,4-Dimethylphenyl)Azo]-2,4-Dihydroxyphenyl]Azo]Benzenesulfonic Acid, Monosodium Salt, Resorcin Brown
+  배합제한국가: 일본
+  고시원료명: Resorcin Brown
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 27479]
+  구분: 한도/금지
+  표준명: 보릭애씨드
+  영문명: Boric acid
+  CASNO: 10043-35-3/11113-50-1
+  배합제한국가: 일본
+  고시원료명: Boric acid
+
+[레코드 27635]
+  구분: 한도
+  표준명: 티몰
+  영문명: Thymol
+  CASNO: 89-83-8
+  이명: 3-Hydroxy-p-Cymene, 2-Hydroxy-1-Isopropyl-4-Methylbenzene, 5-Methyl-2-(1-Methylethyl)Phenol, Phenol, 5-Methyl-2-(1-Methylethyl)-, Thymol (RIFM), thymolum (EP)
+  배합제한국가: 일본
+  고시원료명: Thymol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注2）粘膜に使用される化粧品であって、口腔に使用されるものに限り、配合することができる。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.050 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.050 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 점막에 사용되는 화장품으로 구강에 사용되는 것에 한하여 배합할 수 있음
+
+[레코드 27708]
+  구분: 한도
+  표준명: 이미다졸리디닐우레아
+  영문명: Imidazolidinyl Urea
+  CASNO: 39236-46-9
+  이명: N,N"-Methylenebis[N'-[3-(Hydroxymethyl)-2,5-Dioxo-4-Imidazolidinyl]Urea], Urea, N,N"-Methylenebis[N'-[3-(Hydroxymethyl)-2,5-Dioxo-4-Imidazolidinyl]-
+  배합제한국가: 일본
+  고시원료명: N,N”-Methylenebis[N’-(3-hydroxymethyl-2,5-dioxo-4-imidazolidinyl)urea]
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 배합금지 * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 27724]
+  구분: 한도
+  표준명: 적색104호의(1)
+  영문명: Phloxine B, D&C Red No. 28, Red 28 Lake, Aka104(1), CI 45410
+  CASNO: 18472-87-2
+  이명: Phloxine B, Red No. 218, Solvent Red 48, Spiro[Isobenzofuran-1(3H),9'-[9H]Xanthen]-3-one, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxy-, 2',4',5',7'-Tetrabromo-4,5,6,7-Tetrachloro-3',6'-Dihydroxyspiro[Isobenzofuran-1(3H), 9'-[9H]Xanthen]-3-one
+  배합제한국가: 일본
+  고시원료명: Phloxine B
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함이 성분의 바륨레이크 포함
+
+[레코드 27795]
+  구분: 한도
+  표준명: 적색102호
+  영문명: New Coccine, Aka102, Acid Red 18 Aluminum Lake, FOOD RED 7, CI 16255
+  CASNO: 0
+  이명: Acid Red 18, Trisodium Salt, Coccine, Cochineal Red A, Food Red 77-Hydroxy-8-[(4-Sulfo-1-Naphthalenyl)Azo]-1,3-Naphthalenedisulfonic Acid, Trisodium Salt, 1,3-Naphthalenedisulfonic Acid, 7-Hydroxy-8-[(4-Sulfo-1-Naphthalenyl)Azo]-, Trisodium Salt, Ponceau 4R, Red No. 102
+  배합제한국가: 일본
+  고시원료명: New Coccine
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 모든 의약품, 의약부외품, 화장품에 사용할 수 있는 색소 * 화장품용 타르 색소   : 이 성분의 알루미늄레이크 포함
+
+[레코드 27893]
+  구분: 한도
+  표준명: 벤조페논-4
+  영문명: Benzophenone-4
+  CASNO: 4065-45-6
+  이명: Benzenesulfonic Acid, 5-Benzoyl-4-Hydroxy-2-Methoxy-, 5-Benzoyl-4-Hydroxy-2-Methoxybenesulfonic Acid, 5-Benzoyl-4-Hydroxy-2-Methoxybenzene Sulfonic Acid, 2-Hydroxy-4-Methoxybenzophenone-5-Sulfonic Acid, 2-Hydroxy-4-methoxybenzophenone-5-sulfonic Acid (Trihydrate), 1-Phenol-4-Sulfonic Acid, 2-Benzoyl-5-Methoxy-, Sulisobenzone (INN)
+  배합제한국가: 일본
+  고시원료명: Hydroxymethoxybenzophenone sulfonate and its trihydrate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注3）ヒドロキシメトキシベンゾフェノンスルホン酸としての合計量とする。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g (하이드록시메톡시벤조페논 설포네이트로서의 합계량으로 함) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g (하이드록시메톡시벤조페논 설포네이트로서의 합계량으로 함) * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.10 g (하이드록시메톡시벤조페논 설포네이트로서의 합계량으로 함)
+
+[레코드 28008]
+  구분: 한도
+  표준명: 아이소프로필p-메톡시신나메이트 및 다이아이소프로필신나메이트에터의 혼합물
+  영문명: Isopropyl p-methoxycinnamate anddiisopropyl cinnamate ester mixture(*2)
+  배합제한국가: 일본
+  고시원료명: Isopropyl p-methoxycinnamate anddiisopropyl cinnamate ester mixture(*2)
+  단서조항: （注 1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを 示す。 （注 2）パラメトキシケイ皮酸イソプロピル 72.0～79.0%、2,4－ジイソプロピルケ イ皮酸エチル 15.0～21.0%及び 2,4－ジイソプロピルケイ皮酸メチル 3.0～ 9.0%を含有するものをいう
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지 * 단서조항 : （注 2）パラメトキシケイ皮酸イソプロピル 72.0～79.0%、2,4－ジイソプロピルケ イ皮酸エチル 15.0～21.0%及び 2,4－ジイソプロピルケイ皮酸メチル 3.0～ 9.0%を含有するものをいう (주2 ) isopropyl p-methoxycinnamate 72.0 - 79.0%와 ethyl 2,4-diisopropyl cinnamate  15.0 - 21.0%, 그리고  methyl 2,4-diisopropyl cinnamate 3.0 - 9.0% 를 함유하는 것을 가르킴
+
+[레코드 28030]
+  구분: 한도
+  표준명: 아이소프로필벤조에이트
+  영문명: Isopropyl Benzoate
+  CASNO: 939-48-0
+  이명: Benzoic Acid, Isopropyl Ester, Benzoic Acid, 1-Methylethyl Ester, Isopropyl benzoate (RIFM), 1-Methylethyl Benzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 28157]
+  구분: 한도
+  표준명: 녹용팅크M
+  영문명: Deer Antler Tincture M
+  배합제한국가: 일본
+  고시원료명: Deer Antler Tincture M
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 3.0075 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0075 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 28171]
+  구분: 한도
+  표준명: 칸타리스 틴크
+  영문명: Cantharides tincture
+  배합제한국가: 일본
+  고시원료명: Cantharides tincture, ginger tincture or capsicum tincture
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0g as total(合計量として1.0g)(합계량으로 1.0g)
+
+[레코드 28217]
+  구분: 금지
+  표준명: 카드뮴설페이트
+  영문명: Cadmium Sulphate
+  CASNO: 10124-36-4
+  이명: cadmium sulfate, hydrate (3:8), cadmium sulfate, tetrahydrate
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 28248]
+  구분: 한도
+  표준명: 다이아이소프로필메틸신나메이트
+  영문명: Diisopropyl Methyl Cinnamate
+  CASNO: 32580-71-5
+  이명: 3-[2,4-Bis(1-Methylethyl)Phenyl]-2-Propenoic Acid, Methyl Ester2,5-Diisopropyl Methyl CinnamateMethyl-3-[2,4-Bis(Methylethyl)Phenyl]-2-Propenoate2-Propenoic Acid, 3-[2,2-Bis(1-Methylethyl)Phenyl]-, Methyl Ester
+  배합제한국가: 일본
+  고시원료명: Methyl-2,5-diisopropylcinnamate
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 28383]
+  구분: 한도
+  표준명: 소듐프로필파라벤
+  영문명: Sodium Propylparaben
+  CASNO: 35285-69-9
+  이명: Benzoic Acid, 4-Hydroxy-, Propyl Ester, Sodium Salt , 4-Hydroxybenzoic Acid, Propyl Ester, Sodium Salt , Propyl p-Hydroxybenzoate Sodium Salt , Propylparaben, Sodium Salt
+  배합제한국가: 일본
+  고시원료명: p-Oxybenzoic acid esters and their sodium salts
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 28517]
+  구분: 한도
+  표준명: 적색405호
+  영문명: Aka405, Permanent Red F5R, PIGMENT RED 48, CI 15865:2
+  CASNO: 0
+  이명: 4-[(5-Chloro-4-Methyl-2-Sulfophenyl)Azo]-3-Hydroxy-2-Naphthalenecarboxylic Acid, Disodium Salt, 2-Naphthalenecarboxylic Acid, 4-[(5-Chloro-4-Methyl-2-Sulfophenyl)Azo]-3-Hydroxy-, Disodium Salt, Pigment Red 48, Disodium Salt, Red No. 405
+  배합제한국가: 일본
+  고시원료명: Permanent Red F5R
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 28562]
+  구분: 한도/금지
+  표준명: 다이클로로메탄
+  영문명: Dichloromethane
+  CASNO: 1975-09-02
+  배합제한국가: 일본
+  고시원료명: Methylene chloride
+
+[레코드 28619]
+  구분: 한도
+  표준명: 소듐라우로일사코시네이트
+  영문명: Sodium Lauroyl Sarcosinate
+  CASNO: 137-16-6
+  이명: N-Dodecanoylsarcosine Sodium Salt, Glycine, N-Methyl-N-(1-Oxododecyl)-, Sodium Salt, N-Methyl-N-(1-Oxododecyl)Glycine, Sodium Salt, Sodium N-Lauroyl Sarcosinate
+  배합제한국가: 일본
+  고시원료명: Sodium lauroyl sarcosinate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : (a) 石けん,シャンプ?等の直ちに洗い流す化粧品以外の化粧品 (b) ?磨((a) 비누, 화장품 등 즉시 씻어 내는 화장품 외의 화장품 (b) 치약) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : (a) Prohibited(配合不可) (b) 0.50 g
+
+[레코드 28679]
+  구분: 금지
+  표준명: 카드뮴옥사이드(비-발화성)
+  영문명: Cadmium Oxide (Non-Pyrophoric)
+  CASNO: 1306-19-0
+  이명: Cadmium Monoxide
+  배합제한국가: 일본
+  고시원료명: Cadmium compounds
+
+[레코드 28731]
+  구분: 금지
+  표준명: 독실아민 및 그 염류
+  영문명: Doxylamine and its salts
+  CASNO: 469-21-6
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 28945]
+  구분: 한도
+  표준명: 클로페네신
+  영문명: Chlorphenesin
+  CASNO: 104-29-0
+  이명: 3-(4-Chlorophenoxy)-1,2-Propanediol, p-Chlorophenyl Glyceryl Ether, chlorphenesin (INN), 1,2-Propanediol, 3-(4-Chlorophenoxy)-
+  배합제한국가: 일본
+  고시원료명: Chlorphenesin
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.30 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 29079]
+  구분: 한도
+  표준명: 벤질니코티네이트
+  영문명: Benzyl Nicotinate
+  CASNO: 94-44-0
+  이명: Niacin Benzyl Ester, Nicotinic Acid, Benzyl Ester, Phenylmethyl 3-Pyridinecarboxylate, 3-Pyridinecarboxylic Acid, Phenylmethyl Ester
+  배합제한국가: 일본
+  고시원료명: Benzyl Nicotinate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.2 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.2 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분
+
+[레코드 29193]
+  구분: 한도
+  표준명: 용골가루
+  영문명: Mastodon Bone Powder
+  배합제한국가: 일본
+  고시원료명: Mastodon Bone Powder
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 10.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 :  * 단서조항 :
+
+[레코드 29277]
+  구분: 한도
+  표준명: 등색401호
+  영문명: Orange no. 401, Daidai401, Hanza Orange, CI 11725
+  CASNO: 6371-96-6
+  이명: , Butanamide, 2-[(4-Methoxy-2-Nitrophenyl)Azo]-N-(2-Methylphenyl)-3-Oxo- , CI 11725 , Hansa Yellow 3R , 2-[(4-Methoxy-2-Nitrophenyl)Azo]-N-(2-Methylphenyl)-3-Oxobutanamide Pigment Orange 1
+  배합제한국가: 일본
+  고시원료명: Hanza Orange
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 점막에 사용되지 않는 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 29353]
+  구분: 한도
+  표준명: 프로필벤조에이트
+  영문명: Propyl Benzoate
+  CASNO: 2315-68-6
+  이명: Benzoic Acid, Isopropyl Ester, Benzoic Acid, 1-Methylethyl Ester, Isopropyl benzoate (RIFM), 1-Methylethyl Benzoate
+  배합제한국가: 일본
+  고시원료명: Benzoate
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 1.0 as total(合計量として1.0)(합계량으로 1.0 g)
+
+[레코드 29830]
+  구분: 금지
+  표준명: 트라이펠렌아민
+  영문명: Triphelenamine
+  CASNO: 91-81-6
+  이명: Azaron, Chefaro Brand of Tripelennamine, Histantin, Pyribenzamine, Tripelennamine Citrate, Tripelennamine Citrate (1:1), Tripelennamine Maleate, Tripelennamine Maleate (1:1), Tripelennamine Monohydrochloride, Vetibenzamin
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 29888]
+  구분: 금지
+  표준명: 다이메톡세인
+  영문명: Dimethoxane
+  CASNO: 828-00-2
+  이명: 2,6-Dimethyl-1,3-dioxan-4-yl acetate, o-acetoxy-2,4-dimethyl-m-dioxane, Acetomethoxane, 6-Acetoxy-2,4-dimethyl-m-dioxane, 2,6-Dimethyl-m-dioxan-4-ol acetate, 2,6-Dimethyl-m-dioxan-4-yl acetate, 2,4-Dimethyl-6-acetoxy-1,3-dioxane, 6-Acetoxy-2,4-dimethyl-1,3-dioxane
+  배합제한국가: 일본
+  고시원료명: 6-Acetoxy-2,4-dimethyl-m-dioxane
+
+[레코드 29910]
+  구분: 한도
+  표준명: 4-(2-베타-글루코피라노실록시)프로폭시-2-하이드록시벤조페논
+  영문명: 4-(2-Beta-Glucopyranosiloxy) Propoxy-2-Hydroxybenzophenone
+  배합제한국가: 일본
+  고시원료명: 4-(2-β-glucopyranosiloxy)propoxy-2-hydroxybenzophenone
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 29970]
+  구분: 한도
+  표준명: 메틸살리실레이트
+  영문명: Methyl Salicylate
+  CASNO: 119-36-8
+  배합제한국가: 일본
+  고시원료명: Methyl Salicylate
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 5.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.10) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 30081]
+  구분: 금지
+  표준명: 노르아드레날린
+  영문명: Noradrenaline
+  CASNO: 51-41-2
+  배합제한국가: 일본
+  고시원료명: Hormones and those derivatives except estradiol, estrone and ethinylestradiol
+
+[레코드 30261]
+  구분: 한도
+  표준명: 드로메트리졸트리실록산
+  영문명: Drometrizole Trisiloxane
+  CASNO: 155633-54-8?
+  이명: Phenol, 2-(2H-Benzotriazol-2-yl)-4-Methyl-6-[2-Methyl-3-[1,3,3,3-Tetramethyl-1-[(Trimethylsilyl)Oxy]Disiloxanyl]Propyl]-
+  배합제한국가: 일본
+  고시원료명: Drometrizole trisiloxane
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 15.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 15.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 30471]
+  구분: 한도
+  표준명: 아이오도프로피닐부틸카바메이트
+  영문명: Iodopropynyl Butylcarbamate
+  이명: 3-Iodo-2-propynyl butylcarbamate
+  배합제한국가: 일본
+  고시원료명: Iodopropynyl butylcarbamate(*6)
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。（注6）エアゾ?ル?へ配合してはならない。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.02 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.02 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 0.02 g * 단서조항 : （注6）エアゾ?ル?へ配合してはならない。 (주6) 에어로졸제에 배합금지
+
+[레코드 30668]
+  구분: 금지
+  표준명: 브롬페니라민하이드로젠말리에이트
+  영문명: Brompheniramine hydrogen maleate
+  CASNO: 980-71-2
+  이명: Brompheniramine, Brompheniramine Maleate, Brompheniramine Maleate (1:1), Chlorphed, Dimetane, Maleate, Brompheniramine, p Bromdylamine, p-Bromdylamine, para Bromdylamine, para-Bromdylamine
+  배합제한국가: 일본
+  고시원료명: Antihistamines except those of aminoether type(such as diphenhydramine)
+
+[레코드 30795]
+  구분: 한도
+  표준명: 몰약수지추출물
+  영문명: Commiphora Myrrha Resin Extract
+  CASNO: 84929-26-0
+  이명: Commiphora Extract, Myrrh (Commiphora Myrrha) Extract, Myrrh Extract
+  배합제한국가: 일본
+  고시원료명: Commiphora Myrrha Resin Extract
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 1.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 1.0 g * 단서조항 :
+
+[레코드 30840]
+  구분: 한도
+  표준명: p-클로로페놀
+  영문명: p-Chlorophenol
+  CASNO: 106-48-9
+  이명: 3-Chlorophenol, 4-Hydroxychlorobenzene, Parachlorophenol, Phenol, 4-Chloro-
+  배합제한국가: 일본
+  고시원료명: p-Chlorphenol
+  단서조항: （注1）空欄は、配合してはならないことを示し、○印は、配合の上限がないことを示す。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 0.25 g * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 0.25 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : 배합금지
+
+[레코드 30977]
+  구분: 한도
+  표준명: 자색201호
+  영문명: Alizurine Purple SS, D&C Violet No. 2, Murasaki201, CI 60725
+  CASNO: 0
+  이명: 9,10-Anthracenedione, 1-Hydroxy-4-[(4-Methylphenyl)Amino]-, Anthraquinone, 1-Hydroxy-4-ψ-Toluidino, Disperse Blue 72, 1-Hydroxy-4-(4-Methylanilino)Anthraquinone, 1-Hydroxy-4-[(4-Methylphenyl)Amino]-9,10-Anthracenedione, Japan Violet 201, Solvent Violet 13, Violet No. 201
+  배합제한국가: 일본
+  고시원료명: Alizurine Purple SS
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : 외용의약품, 외용의약부외품, 화장품에 사용 할 수 있는 색소
+
+[레코드 31029]
+  구분: 한도
+  표준명: D-판토테닐알코올
+  영문명: D-Pantothenyl Alcohol
+  CASNO: 81-13-0(D-Form), 16485-10-2
+  이명: Butanamide, 2,4-Dihydroxy-N-(3-Hydroxypropyl)-3,3-Dimethyl-, Dexpanthenol, dexpanthenol (INN), dexpanthenolum (EP), 2,4-Dihydroxy-N-(3-Hydroxypropyl)-3,3-Dimethylbutanamide, panthenol (INN), Pantothenol, Pantothenyl Alcohol, D-Pantothenyl Alcohol, DL-Pantothenyl Alcohol, Provitamin B5
+  배합제한국가: 일본
+  고시원료명: D-Pantothenyl Alcohol
+  단서조항: 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。
+  제한사항: * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내는 화장품 -Cosmetics not used for mucosa and to be washed away)】 : 한도 제한 없음(there is no upper limit for the amount of ingredient.) * 【100g당 최대 배합량 (점막에 사용하지 않고 씻어내지 않는 화장품 - Cosmetics not used for mucosa and not to be washed away)】 : 3.0 g * 【100g당 최대 배합량 (점막에 사용하는 화장품 - Cosmetics that may be used for mucosa)】 : (0.3) g * 단서조항 : 注1)　「＊」は?基準に?載されていた成分。注2)　(　)?は、?基準において示していた成分の分量を?考に付したもの。 (주1)  ‘*’는 구 기준에 수재되어 있던 성분(주2)  (  ) 안은 구 기준에 있어서 제시하던 성분 분량을 참고로 한 것
+
+[레코드 31081]
+  구분: 한도
+  표준명: 클로로부탄올
+  영문명: Chlorobutanol
+  CASNO: 57-15-8
+  이명: Acetochlorone, Acetone Chloroform, Chlorbutol, Chloretone, chlorobutanol (INN), Methaform, 2-Propanol, 1,1,1-Trichloro-2-Methyl-, Trichloro-t-butyl Alcohol, 1,1,1-Trichloro-2-Methyl-2-Propanol
+  배합제한국가: 일본
+  고시원료명: Chlorobutanol
+  제한사항: * 【제품 타입 또는 목적 (types or intended purposes of cosmetics)】 : すべての化粧品(모든 화장품) * 【100g당 최대 배합량(Maximum amount of ingredient per 100 g)】 : 0.10(0.10 g)
+
+[레코드 31167]
+  구분: 한도/금지
+  표준명: 다이클로로펜
+  영문명: Dichlorophene
+  CASNO: 97-23-4
+  이명: Bis(2-Hydroxy-5-Chlorophenyl)Methane, dichlorophen (INN), 2,2'-Methylenebis-(4-Chlorophenol), Phenol, 2,2'-Methylenebis(4-Chloro-
+  배합제한국가: 일본
+  고시원료명: Dichlorophene
