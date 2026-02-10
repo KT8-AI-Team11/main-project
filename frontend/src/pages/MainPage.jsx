@@ -31,13 +31,13 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
   const userEmail = localStorage.getItem("cosy_user_email") || "";
   useEffect(() => {
       if (isLoggedIn) {
-          // axios.get("/api/dashboard/stats", {headers: getAuthHeader()})
-          //     .then(response => {
-          //         setStats(response.data);
-          //     })
-          //     .catch(error => {
-          //         console.error("대시보드 데이터를 가져오는데 실패했습니다:", error);
-          //     });
+          axios.get("/api/dashboard/stats", {headers: getAuthHeader()})
+              .then(response => {
+                  setStats(response.data);
+              })
+              .catch(error => {
+                  console.error("대시보드 데이터를 가져오는데 실패했습니다:", error);
+              });
       }
   }, [isLoggedIn]);
 
