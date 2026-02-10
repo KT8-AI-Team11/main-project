@@ -15,7 +15,7 @@ from app.schemas.compliance import LabelingLlmResult, Finding
 def _normalize_text(text: str) -> str:
     return "\n".join([line.strip() for line in (text or "").splitlines() if line.strip()])
 
-def _format_docs_for_context(docs: List[Document], max_chars: int = 8000) -> str:
+def _format_docs_for_context(docs: List[Document], max_chars: int = 16000) -> str:
     chunks: List[str] = []
     total = 0
     for i, d in enumerate(docs, start=1):
@@ -124,26 +124,31 @@ class ComplianceService:
         # ── Step 1: 제한 원료 DB에서 문제 성분 탐색 ──
         step1_retriever = get_retriever(
             market=market, domain="restricted_ingredients",
-            k=3, fetch_k=20, bm25_weight=0.6, vector_weight=0.4,
+            k=40, fetch_k=80, bm25_weight=0.6, vector_weight=0.4,
         )
         restricted_docs = step1_retriever.invoke(normalized)
 
-        # ── Step 2: 문제 성분이 발견되면, 해당 성분에 대한 규제 원문 검색 ──
+        # ── Step 2: 규제 원문 검색 ──
         reg_docs: List[Document] = []
-        if restricted_docs:
-            flagged = _extract_flagged_ingredients(restricted_docs)
-            if flagged:
-                reg_query = f"{market} 화장품 규제: {', '.join(flagged)}"
-                step2_retriever = get_retriever(
-                    market=market, domain="ingredients", k=6, fetch_k=20,
-                )
-                reg_docs = step2_retriever.invoke(reg_query)
-        else:
+        flagged = _extract_flagged_ingredients(restricted_docs) if restricted_docs else []
+        if flagged:
+            reg_query = f"{market} 화장품 규제: {', '.join(flagged)}"
+            step2_retriever = get_retriever(
+                market=market, domain="ingredients", k=6, fetch_k=20,
+            )
+            reg_docs = step2_retriever.invoke(reg_query)
+
+        # fallback: flagged 성분이 없거나 규제 원문이 부족하면 전체 텍스트로 추가 검색
+        if len(reg_docs) < 3:
             fallback_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
             fallback_retriever = get_retriever(
                 market=market, domain="ingredients", k=10, fetch_k=40,
             )
-            reg_docs = fallback_retriever.invoke(fallback_query)
+            fallback_docs = fallback_retriever.invoke(fallback_query)
+            existing = {(d.page_content or "")[:200] for d in reg_docs}
+            for d in fallback_docs:
+                if (d.page_content or "")[:200] not in existing:
+                    reg_docs.append(d)
 
         # ── Step 3: 두 결과를 분리하여 LLM context 구성 ──
         restricted_context = _format_docs_for_context(restricted_docs)
