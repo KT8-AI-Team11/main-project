@@ -54,3 +54,12 @@ class IngLlmResult:
 class IngredientsCheckResponse(BaseModel):
     overall_risk: str
     details: List[Detail]
+
+#---------------------------------------------------------#
+# 보고서 생성용
+#---------------------------------------------------------#
+class ReportDownloadRequest(BaseModel):
+    market: str = Field(..., description="국가 코드")
+    text: str = Field(..., description="분석할 텍스트")
+    domain: Literal["labeling","ingredients"] = Field(...,description="분석 영역")
+    product_name: str
