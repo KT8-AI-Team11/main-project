@@ -139,6 +139,61 @@ export default function IngredientCheckPage({
   const { products: ctxProducts = [] } = useProducts();
   const resultsRef = useRef(null);
 
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [productName, setProductName] = useState("");
+
+    const handleDownloadReport = async () => {
+        // 1. 함수 실행 확인용 로그
+        console.log("다운로드 시도 중...");
+
+        // 2. 조건부 실행 방지 해제 (기존 if (!result) 삭제)
+        if (tableRows.length === 0) {
+            alert("검사 결과가 없습니다. 먼저 검사를 실행해 주세요.");
+            return;
+        }
+
+        setIsDownloading(true);
+        try {
+            // 백엔드 엔드포인트 및 페이로드 설정
+            const response = await fetch('http://127.0.0.1:8000/v1/compliance/download-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    market: activeTab || "US",
+                    text: ingredients,
+                    domain: 'ingredients',
+                    product_name: "성분_규제_검토_보고서"
+                }),
+            });
+
+            console.log("서버 응답:", response.status);
+
+            if (!response.ok) throw new Error('서버 응답 오류');
+
+            // 3. 브라우저 파일 저장 트리거
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+
+            // 파일명에 국가 코드 포함
+            a.download = `Regulatory_Report_Ingredients_${activeTab}.pdf`;
+
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+
+            console.log("다운로드 완료");
+
+        } catch (error) {
+            console.error("에러 상세:", error);
+            alert("보고서 생성 중 오류가 발생했습니다. 서버 상태를 확인하세요.");
+        } finally {
+            setIsDownloading(false);
+        }
+    };
+
   // ✅ 결과 패널 고정 높이
   const [resultsPanelHeight, setResultsPanelHeight] = useState(null);
 
@@ -1194,6 +1249,38 @@ export default function IngredientCheckPage({
                   </tbody>
                 </table>
               </div>
+                {hasRun && !showNoIssue && !showFilteredEmpty && (
+                    <div style={{ display: "flex", justifyContent: "flex-end", padding: "12px 16px", borderTop: "1px solid #E5E7EB" }}>
+                        <button
+                            type="button"
+                            className="cosy-btn"
+                            onClick={handleDownloadReport}
+                            disabled={isDownloading}
+                            style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 8,
+                                backgroundColor: "#16a34a",
+                                borderColor: "#16a34a",
+                                color: "#fff",
+                                fontWeight: "900",
+                                padding: "8px 16px"
+                            }}
+                        >
+                            {isDownloading ? (
+                                <>
+                                    <Loader2 size={16} className="animate-spin" />
+                                    보고서 생성 중...
+                                </>
+                            ) : (
+                                <>
+                                    <Search size={16} /> {/* 또는 원하는 아이콘 */}
+                                    리포트 PDF 다운로드
+                                </>
+                            )}
+                        </button>
+                    </div>
+                )}
             </div>
           )}
         </div>
