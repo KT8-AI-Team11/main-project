@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from pydantic import BaseModel, Field
-from typing import List, Optional, Literal
+from typing import List, Optional, Literal, Dict, Any
 
 #---------------------------------------------------------#
 # 문구용
@@ -60,6 +60,6 @@ class IngredientsCheckResponse(BaseModel):
 #---------------------------------------------------------#
 class ReportDownloadRequest(BaseModel):
     market: str = Field(..., description="국가 코드")
-    text: str = Field(..., description="분석할 텍스트")
     domain: Literal["labeling","ingredients"] = Field(...,description="분석 영역")
     product_name: str
+    analysis_data: Dict[str, Any]

@@ -329,47 +329,65 @@ export default function ClaimCheckPage({
     }
   };
 
-    const handleDownloadReport = async () => {
-        if (!activeTab || !ocrText) {
-            alert("검사 결과가 없습니다.");
-            return;
-        }
+  const handleDownloadReport = async () => {
+      const activeResult = resultsByCountry?.[activeTab];
 
-        const targetId = initialSelectedProductIds?.[0];
+      if (!activeTab || !activeResult || activeResult.phase !== "done") {
+          alert("선택된 국가의 검사 결과가 완료되지 않았거나 없습니다.");
+          return;
+      }
 
-        const productObj = initialSelectedProducts?.find(p => String(p.id) === String(targetId));
-        const pName = productObj ? productObj.name : "알 수 없는 제품";
+      const targetId = initialSelectedProductIds?.[0];
+      const productObj = initialSelectedProducts?.find(p => String(p.id) === String(targetId));
+      const pName = productObj ? productObj.name : "알 수 없는 제품";
 
-        try {
-            setIsDownloading(true);
+      try {
+          setIsDownloading(true);
 
-            const response = await fetch("http://127.0.0.1:8000/v1/compliance/download-report", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    market: activeTab,
-                    text: ocrText,
-                    domain: "labeling",
-                    product_name: pName
-                }),
-            });
+          const payload = {
+              market: activeTab,
+              domain: "labeling",
+              product_name: pName,
+              analysis_data: {
+                  market: activeTab,
+                  formatted_text: activeResult.llmText || "",
+                  overall_risk: activeResult.status,
+                  findings: activeResult.violations.map(v => ({
+                      snippet: v.snippet,
+                      risk: v.severity,
+                      reason: v.reason,
+                      suggested_rewrite: v.suggested_rewrite
+                  }))
+              }
+          };
 
-            if (!response.ok) throw new Error("서버 응답 오류");
+          const response = await fetch("http://localhost:8000/v1/compliance/download-report", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+          });
 
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `Marketing_Regulatory_Report_${activeTab}.pdf`;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-        } catch (err) {
-            alert("다운로드 중 오류가 발생했습니다: " + err.message);
-        } finally {
-            setIsDownloading(false);
-        }
-    };
+          if (!response.ok) {
+              const errorData = await response.json().catch(() => ({}));
+              throw new Error(errorData.detail || `서버 응답 오류 (${response.status})`);
+          }
+
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `Marketing_Regulatory_Report_${pName}_${activeTab}.pdf`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(url);
+      } catch (err) {
+          console.error("Download Error:", err);
+          alert("다운로드 중 오류가 발생했습니다: " + err.message);
+      } finally {
+          setIsDownloading(false);
+      }
+  };
 
   const activeResult = resultsByCountry?.[activeTab];
 
@@ -923,7 +941,7 @@ export default function ClaimCheckPage({
                                 display: "inline-flex",
                                 alignItems: "center",
                                 gap: 8,
-                                backgroundColor: "#16a34a", // 보고서 버튼은 초록색으로 차별화 가능
+                                backgroundColor: "#16a34a",
                                 borderColor: "#16a34a",
                                 color: "#fff",
                                 fontWeight: "900"
@@ -936,8 +954,8 @@ export default function ClaimCheckPage({
                                 </>
                             ) : (
                                 <>
-                                    <UploadCloud size={16} /> {/* 다운로드 아이콘 대신 업로드/공유 아이콘 활용 */}
-                                    {getCountryName(activeTab)} 리포트 PDF 다운로드
+                                    <UploadCloud size={16} />
+                                    {getCountryName(activeTab)} 레포트 PDF 다운로드
                                 </>
                             )}
                         </button>

@@ -70,33 +70,14 @@ async def check_ingredients(req: IngredientsCheckRequest):
 
 # 보고서 다운로드/발행용
 @router.post("/download-report")
-# async def download_report(req: ReportDownloadRequest):
-#     svc = get_report_service()
-    
-#     pdf_buffer = await svc.create_pdf_report(
-#         market=req.market,
-#         text=req.text,
-#         domain=req.domain,
-#         product_name=req.product_name
-#     )
-    
-#     filename = f"Regulatory_Report_{req.product_name}_{req.market}.pdf"
-    
-#     return StreamingResponse(
-#         pdf_buffer,
-#         media_type="application/pdf",
-#         headers={"Content-Disposition": f"attachment; filename={filename}",
-#         "Access-Control-Expose-Headers": "Content-Disposition"
-#         }
-#     )
 async def download_report(req: ReportDownloadRequest):
     svc = get_report_service()
     
     pdf_buffer = await svc.create_pdf_report(
         market=req.market,
-        text=req.text,
         domain=req.domain,
-        product_name=req.product_name
+        product_name=req.product_name,
+        analysis_data=req.analysis_data
     )
 
     filename = f"{req.domain}_Regulatory_Report_{req.product_name}_{req.market}.pdf"
