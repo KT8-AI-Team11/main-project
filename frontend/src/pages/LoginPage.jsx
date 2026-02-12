@@ -204,9 +204,9 @@ export default function LoginPage({ onLoginSuccess, onGoToRegister }) {
                             aria-label="비밀번호 보기 토글"
                         >
                             {showPw ? (
-                                <Eye size={18} color="#6b7280" />
-                            ) : (
                                 <EyeOff size={18} color="#6b7280" />
+                            ) : (
+                                <Eye size={18} color="#6b7280" />
                             )}
                         </button>
                     </div>

@@ -135,23 +135,6 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
                 >
                   로그인하고 제품관리 시작하기
                 </button>
-
-                <button
-                  type="button"
-                  onClick={onDemoLogin}
-                  style={{
-                    height: "44px",
-                    padding: "0 16px",
-                    borderRadius: "12px",
-                    border: "1px solid #dbeafe",
-                    cursor: "pointer",
-                    fontWeight: 800,
-                    backgroundColor: "white",
-                    color: "#1d4ed8",
-                  }}
-                >
-                  임의 로그인(코치)
-                </button>
               </>
             )}
           </div>
