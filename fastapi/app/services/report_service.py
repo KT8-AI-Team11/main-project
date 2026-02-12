@@ -34,7 +34,7 @@ class ReportService:
         pdf.cell(0, 15, txt="화장품 문구 규제 적합성 검토 보고서", ln=True, align='C')
         pdf.ln(10)
 
-        pdf.set_font("NanumGothic", style="B", size=12)
+        pdf.set_font("NanumGothic", size=11)
         pdf.cell(0, 8, txt=f"작성일: {datetime.now().strftime('%Y-%m-%d')}", ln=True, align='R')
         pdf.cell(0, 8, txt=f"제품명: {product_name}", ln=True)
         pdf.cell(0, 8, txt=f"검토 국가: {market}", ln=True)
@@ -78,7 +78,7 @@ class ReportService:
         except:
             llm_data = {"summary": "데이터 분석 중입니다.", "conclusion": "상세 내역을 확인하십시오."}
 
-        pdf.set_font("NanumGothic", style="B", size=12)
+        pdf.set_font("NanumGothic", size=11)
         pdf.cell(0, 8, txt=f"작성일: {datetime.now().strftime('%Y-%m-%d')}", ln=True, align='R')
         pdf.cell(0, 8, txt=f"제품명: {product_name}", ln=True)
         pdf.cell(0, 8, txt=f"검토 국가: {market}", ln=True)
