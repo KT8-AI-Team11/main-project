@@ -157,7 +157,7 @@ export default function Sidebar({
   <SidebarItem
     active={currentPage === "home"}
     onClick={() => onNavigate("home")}
-    label="AI 성분 분석기"
+    label="홈"
     icon={Home}
     isLoggedIn={isLoggedIn}
     collapsed={collapsed}

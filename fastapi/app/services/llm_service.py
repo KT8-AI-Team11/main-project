@@ -137,26 +137,18 @@ class LlmService:
         )
 
     # 전성분 규제 분석
-    def analyze_ingredients(self, market: str, ingredients: str,
-                           restricted_context: str, regulation_context: str) -> IngLlmResult:
+    def analyze_ingredients(self, market: str, ingredients: str, context: str) -> IngLlmResult:
         prompt = f"""
 너는 {market} 화장품 "전성분(성분) 규제" 검토를 도와주는 컴플라이언스 전문가다.
 
-아래에 두 종류의 참고 자료가 제공된다.
-반드시 아래 자료에 근거해서만 판단하라.
-만약 두 자료 모두 비어있거나, 해당 국가({market})의
+아래 [CONTEXT]는 검색된 공식 규정/가이드 원문 발췌이다.
+반드시 CONTEXT에 근거해서만 판단하라.
+만약 [CONTEXT]가 비어있거나, [CONTEXT]에 해당 국가({market})의
 성분 규제 근거가 없으면 반드시 "근거 부족"으로 판단하고
 추론하거나 일반 지식을 사용하지 말아라.
 
-[CONTEXT 1: 제한 원료 DB]
-아래는 제한/금지 원료 데이터베이스에서 검색된 레코드이다.
-[레코드 N] 형태로 구분되며, 표준명/영문명/CASNO/제한사항/단서조항 등이 포함되어 있다.
-INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 근거로 판단하라.
-{restricted_context}
-
-[CONTEXT 2: 규제 원문]
-아래는 해당 국가의 화장품 성분 규제 법령/가이드에서 검색된 원문 발췌이다.
-{regulation_context}
+[CONTEXT]
+{context}
 
 [INPUT]
 아래는 화장품 전성분(성분) 목록이다. (쉼표/줄바꿈으로 구분될 수 있음)
@@ -189,7 +181,7 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
 }}
 """.strip()
 
-        raw = self.generate(prompt) # reflection 추가시 여기 수정
+        raw = self._generate_with_reflection(prompt, context) # reflection 적용
 
         # ```json ... ``` 형태 제거
         cleaned = raw.strip()
@@ -228,57 +220,30 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
     def generate_labeling_report(self, analysis_data: dict, domain: str) -> str:
         findings = analysis_data.get('findings', [])
         content_section = "\n".join([
-            f"- 항목: {f.get('snippet')}\n  위험도: {f.get('risk')}\n  사유: {f.get('reason')}\n  수정제안: {f.get('suggested_rewrite') or '없음'}"
+            f"- 검토 항목: {f.get('snippet')}\n  위험도: {f.get('risk')}\n  위반 사유: {f.get('reason')}\n  수정 제안: {f.get('suggested_rewrite') or '없음'}"
             for f in findings
         ])
-        # 2. LLM에게 전달할 보고서 작성 프롬프트
-#         prompt = f"""
-# 당신은 화장품 규제 전문 컨설턴트입니다. 아래의 [분석 결과]를 바탕으로 고객사 제출용 '공식 검토 보고서'를 작성하세요.
-
-# [분석 정보]
-# - 검토 국가: {analysis_data.get('market', '알 수 없음')}
-# - 검토 영역: {domain_name}
-# - 종합 리스크: {analysis_data.get('overall_risk')}
-
-# [상세 분석 내역]
-# {content_section}
-
-# [지시사항]
-# 1. 문체: 매우 정중하고 격식 있는 비즈니스 한국어 문체를 사용하십시오. (~합니다, ~함이 바람직합니다 등)
-# 2. 구성: 
-#    - 보고서 제목
-#    - 검토 개요 및 종합 판정
-#    - 세부 위반 항목 및 규제 근거 (데이터에 있는 내용을 상세히 풀어서 작성)
-#    - 향후 조치 권고 사항
-# 3. 주의: 제공된 데이터 외에 허구의 규제 정보를 생성하지 마십시오.
-
-# 보고서 본문 텍스트만 출력하세요.
-# """.strip()
         prompt = f"""
-당신은 화장품 법률 가이드라인 전문입니다. 아래 데이터를 바탕으로 회사 내부 보고용 공식 보고서를 작성하세요.
-당신은 화장품 법률 가이드라인 전문가입니다. [문구 규제 검토] 회사 내부 마케팅 부서에서 사용할 수 있는 보고용 공식 결과 보고서를 작성하세요.
-항목별로 법적 근거를 명시해야 하며 절대 마크다운 기호를 사용하지 마세요.
+당신은 화장품 문구 법률 가이드라인 전문가입니다. [문구 규제 검토] 결과 보고서의 본문 내용만 작성하세요.
+검토 범위는 라벨/문구(표시·광고) 규제이다.
+절대 마크다운 기호(##, **, - 등)를 사용하지 마세요.
 
 [지시사항]
-1. 문체: 매우 정중하고 격식 있는 비즈니스 한국어 문체를 사용하십시오. (~합니다, ~함이 바람직합니다 등)
-2. 구성: 
-   - 보고서 제목
-   - 검토 개요 및 종합 판정
-   - 세부 위반 항목 및 규제 근거 (데이터에 있는 내용을 상세히 풀어서 작성)
-   - 향후 조치 권고 사항
-3. 주의: 제공된 데이터 외에 허구의 규제 정보를 생성하지 마십시오.
+1. 문체: 매우 정중하고 격식 있는 비즈니스 한국어 문체를 사용하십시오.
+2. 구성: 아래 3가지 섹션의 '내용'만 작성하고, 각 섹션 사이에는 반드시 [SEP] 라는 문자를 넣으세요.
+   - 첫 번째 섹션: 검토 개요 및 종합 판정
+   - 두 번째 섹션: 세부 위반 항목 및 규제 근거 (데이터를 바탕으로 상세히 서술)
+   - 세 번째 섹션: 향후 조치 권고 사항
+3. 각 섹션은 제목 없이 오직 본문 텍스트로만 시작해야 합니다.
+4. 섹션 사이의 구분자는 반드시 [SEP]를 사용하세요.
+5. 주의: '보고서 제목'이나 '소제목' 자체를 텍스트로 출력하지 마세요. 오직 본문만 작성하세요.
 
 [데이터]
 검토 국가: {analysis_data.get('market')}
 종합 리스크: {analysis_data.get('overall_risk')}
 세부 내역: {content_section}
 
-[구성 순서]
-1. 검토 개요 및 종합 판정
-2. 세부 위반 항목 및 근거
-3. 향후 조치 권고 사항
-
-보고서 본문 텍스트만 출력하세요.
+보고서 본문 텍스트만 출력하세요. 각 섹션 구분은 [SEP]를 사용하세요.
 """.strip()
         return self.generate(prompt)
     
