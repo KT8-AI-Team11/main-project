@@ -426,27 +426,54 @@ export default function IngredientCheckPage({
 
       setIsDownloading(true);
       try {
-          const currentCountry = (selectedCountries && selectedCountries.length > 0)
-              ? selectedCountries[0]
-              : "US";
-          const payload = {
-              market: currentCountry,
-              domain: "ingredients",
-              product_name: actualProductName,
-              analysis_data: {
-                  market: currentCountry,
-                  overall_risk: "CHECK_REQUIRED",
-                  details: filteredRows.map(row => ({
-                      ingredient: row.ingredient || "-",
-                      regulation: row.regulation || "-",
-                      severity: row.severity,
-                      content: row.content || "-",
-                      action: row.action || "-"
-                  }))
+          // const currentCountry = (selectedCountries && selectedCountries.length > 0)
+          //     ? selectedCountries[0]
+          //     : "US";
+          // const payload = {
+          //     market: currentCountry,
+          //     domain: "ingredients",
+          //     product_name: actualProductName,
+          //     analysis_data: {
+          //         market: currentCountry,
+          //         details: filteredRows.map(row => ({
+          //             ingredient: row.ingredient || "-",
+          //             regulation: row.regulation || "-",
+          //             severity: row.severity,
+          //             content: row.content || "-",
+          //             action: row.action || "-"
+          //         }))
+          //     }
+          // };
+
+
+          // 제품-국가 조합별로 데이터를 그룹화
+          const groupedData = filteredRows.reduce((acc, row) => {
+              const key = `${row.productName}__${row.market}`;
+              if (!acc[key]) {
+                  acc[key] = {
+                      market: row.market,
+                      product_name: row.productName,
+                      details: [],
+                      notes: []
+                  };
               }
+              acc[key].details.push({
+                  ingredient: row.ingredient,
+                  regulation: row.regulation,
+                  severity: row.severity,
+                  content: row.content || "",
+                  action: row.action
+              });
+              return acc;
+          }, {});
+
+          const payload = {
+              domain: "ingredients",
+              reports: Object.values(groupedData)
           };
 
-          const response = await fetch("http://localhost:8000/v1/compliance/download-report", {
+          // const response = await fetch("http://localhost:8000/v1/compliance/download-report", {
+          const response = await fetch("http://localhost:8000/v1/compliance/batch-download", {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload),
@@ -461,7 +488,7 @@ export default function IngredientCheckPage({
           const url = window.URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `Ingredients_Regulatory_Report_${actualProductName}_${currentCountry}.pdf`;
+          a.download = `Regulatory_Reports_Batch_${new Date().getDate()}.zip`;
           document.body.appendChild(a);
           a.click();
           a.remove();
