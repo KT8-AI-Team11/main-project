@@ -4,6 +4,11 @@ from app.schemas.compliance import LabelingCheckResponse, Finding, LabelingLlmRe
     IngredientsCheckRequest, LabelingCheckRequest
 from app.services.compliance_service import get_compliance_service
 
+from fastapi.responses import StreamingResponse
+from app.services.report_service import get_report_service
+from app.schemas.compliance import ReportDownloadRequest
+from urllib.parse import quote
+
 router = APIRouter()
 
 
@@ -61,4 +66,28 @@ async def check_ingredients(req: IngredientsCheckRequest):
             )
             for d in llm_result.details
         ]
+    )
+
+# 보고서 다운로드/발행용
+@router.post("/download-report")
+async def download_report(req: ReportDownloadRequest):
+    svc = get_report_service()
+    
+    pdf_buffer = await svc.create_pdf_report(
+        market=req.market,
+        domain=req.domain,
+        product_name=req.product_name,
+        analysis_data=req.analysis_data
+    )
+
+    filename = f"{req.domain}_Regulatory_Report_{req.product_name}_{req.market}.pdf"
+    encoded_filename = quote(filename) 
+    
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f"attachment; filename*=UTF-8''{encoded_filename}",
+            "Access-Control-Expose-Headers": "Content-Disposition"
+        }
     )
