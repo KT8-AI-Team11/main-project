@@ -47,7 +47,7 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Log> logs = new ArrayList<>();
 
     public enum ProductType{
