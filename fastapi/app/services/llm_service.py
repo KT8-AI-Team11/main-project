@@ -213,6 +213,77 @@ class LlmService:
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
             details=details,
         )
+    
+    # ========================================================
+    # 보고서 생성용 함수 (ReportService에서 호출)
+    # ========================================================
+    def generate_labeling_report(self, analysis_data: dict, domain: str) -> str:
+        findings = analysis_data.get('findings', [])
+        content_section = "\n".join([
+            f"- 검토 항목: {f.get('snippet')}\n  위험도: {f.get('risk')}\n  위반 사유: {f.get('reason')}\n  수정 제안: {f.get('suggested_rewrite') or '없음'}"
+            for f in findings
+        ])
+        prompt = f"""
+당신은 화장품 문구 법률 가이드라인 전문가입니다. [문구 규제 검토] 결과 보고서의 본문 내용만 작성하세요.
+검토 범위는 라벨/문구(표시·광고) 규제이다.
+절대 마크다운 기호(##, **, - 등)를 사용하지 마세요.
+
+[지시사항]
+1. 문체: 매우 정중하고 격식 있는 비즈니스 한국어 문체를 사용하십시오.
+2. 구성: 아래 3가지 섹션의 '내용'만 작성하고, 각 섹션 사이에는 반드시 [SEP] 라는 문자를 넣으세요.
+   - 첫 번째 섹션: 검토 개요 및 종합 판정
+   - 두 번째 섹션: 세부 위반 항목 및 규제 근거 (데이터를 바탕으로 상세히 서술)
+   - 세 번째 섹션: 향후 조치 권고 사항
+3. 각 섹션은 제목 없이 오직 본문 텍스트로만 시작해야 합니다.
+4. 섹션 사이의 구분자는 반드시 [SEP]를 사용하세요.
+5. 주의: '보고서 제목'이나 '소제목' 자체를 텍스트로 출력하지 마세요. 오직 본문만 작성하세요.
+
+[데이터]
+검토 국가: {analysis_data.get('market')}
+종합 리스크: {analysis_data.get('overall_risk')}
+세부 내역: {content_section}
+
+보고서 본문 텍스트만 출력하세요. 각 섹션 구분은 [SEP]를 사용하세요.
+""".strip()
+        return self.generate(prompt)
+    
+    def generate_ingredient_report(self, analysis_data: dict, domain: str) -> str:
+        details = analysis_data.get('details', [])
+        market = analysis_data.get('')
+        content_section = "\n".join([
+            f"- 성분명: {d.get('ingredient')}\n  규제근거: {d.get('regulation')}\n  내용: {d.get('content')}\n  조치사항: {d.get('action')}\n  위험도: {d.get('severity')}"
+            for d in details
+        ])
+
+        prompt = f"""
+당신은 글로벌 화장품 규제 준수(Regulatory Compliance) 전문가입니다. 
+제시된 [분석 데이터]를 바탕으로 {market} 국가의 화장품 법령에 의거한 성분 안전성 검토 보고서를 작성하세요.
+
+[지시사항]
+1. 국가별 특수성 반영: {market}의 최신 화장품 규제 표준(예: EU의 경우 Annex III/VI, 미국의 경우 MoCRA 등)의 관점에서 분석하세요.
+2. 전문 용어 사용: '배합 한도(Restricted)', '사용 금지(Prohibited)', '살균보존제(Preservatives)' 등 업계 전문 용어를 사용하세요.
+3. 데이터 요약: 텍스트로 구구절절 설명하지 말고, 표(Table)에 들어갈 수 있도록 각 성분의 위반 사항과 근거 법령을 명확히 요약하세요.
+4. 출력 형식: 반드시 아래 JSON 구조로만 응답하세요.
+
+[데이터]
+- 검토 국가: {market}
+- 성분 리스크 내역: {analysis_data['details']}
+
+[응답 JSON 형식]
+{{
+  "summary": "해당 국가 규정 대비 전체적인 제품의 적합성 총평 (3줄 이내)",
+  "table_rows": [
+    {{
+      "name": "성분명(INCI)",
+      "regulation": "해당 국가의 구체적인 규제 근거 및 법적 조항",
+      "risk_level": "위험도 (HIGH/MEDIUM/LOW)",
+      "action_plan": "R&D 또는 생산 부서에서 취해야 할 즉각적인 조치"
+    }}
+  ],
+  "conclusion": "해당 시장 진출 가능 여부 및 최종 전문가 의견"
+}}
+"""
+        return self.generate(prompt)
 
     def _call_llm(self, prompt: str, model: str | None = None) -> str:
         resp = self.client.chat.completions.create(
