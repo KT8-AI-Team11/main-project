@@ -52,11 +52,38 @@ def get_vectorstore() -> Chroma:
     return _vectorstore
 
 
+# def _get_bm25_retriever(market: str, domain: str, k: int = 6) -> BM25Retriever:
+#     """
+#     Chroma에 저장된 문서 중 market/domain에 해당하는 것만 뽑아 BM25 Retriever 생성.
+#     (최소 도입용: db._collection.get 사용)
+#     """
+#     key = (market, domain)
+#     if key in _bm25_cache:
+#         bm25 = _bm25_cache[key]
+#         bm25.k = k
+#         return bm25
+#
+#     vs = get_vectorstore()
+#
+#     # Chroma에서 문서/메타데이터를 가져온 후 Python에서 필터링
+#     # (Chroma의 get(where=...)가 버전마다 제약이 있어서, 최소 도입에선 안전하게 전체->필터 방식)
+#     data = vs._collection.get(include=["documents", "metadatas"])
+#     docs: list[Document] = []
+#
+#
+#     for text, meta in zip(data["documents"], data["metadatas"]):
+#         if not meta:
+#             continue
+#         if meta.get("country") == market and meta.get("domain") == domain:
+#             docs.append(Document(page_content=text, metadata=meta))
+#
+#     bm25 = BM25Retriever.from_documents(docs)
+#     bm25.k = k
+#
+#     _bm25_cache[key] = bm25
+#     return bm25
+
 def _get_bm25_retriever(market: str, domain: str, k: int = 6) -> BM25Retriever:
-    """
-    Chroma에 저장된 문서 중 market/domain에 해당하는 것만 뽑아 BM25 Retriever 생성.
-    (최소 도입용: db._collection.get 사용)
-    """
     key = (market, domain)
     if key in _bm25_cache:
         bm25 = _bm25_cache[key]
@@ -65,20 +92,36 @@ def _get_bm25_retriever(market: str, domain: str, k: int = 6) -> BM25Retriever:
 
     vs = get_vectorstore()
 
-    # Chroma에서 문서/메타데이터를 가져온 후 Python에서 필터링
-    # (Chroma의 get(where=...)가 버전마다 제약이 있어서, 최소 도입에선 안전하게 전체->필터 방식)
-    data = vs._collection.get(include=["documents", "metadatas"])
     docs: list[Document] = []
+    offset = 0
+    limit = 500  # 200~1000 사이로 적당히
 
-    for text, meta in zip(data["documents"], data["metadatas"]):
-        if not meta:
-            continue
-        if meta.get("country") == market and meta.get("domain") == domain:
-            docs.append(Document(page_content=text, metadata=meta))
+    while True:
+        where = {"$and": [{"country": market}, {"domain": domain}]}
+
+        data = vs._collection.get(
+            include=["documents", "metadatas"],
+            where=where,
+            limit=limit,
+            offset=offset,
+        )
+
+        batch_docs = data.get("documents") or []
+        batch_metas = data.get("metadatas") or []
+
+        if not batch_docs:
+            break
+
+        for text, meta in zip(batch_docs, batch_metas):
+            if not meta:
+                continue
+            if meta.get("country") == market and meta.get("domain") == domain:
+                docs.append(Document(page_content=text, metadata=meta))
+
+        offset += limit
 
     bm25 = BM25Retriever.from_documents(docs)
     bm25.k = k
-
     _bm25_cache[key] = bm25
     return bm25
 

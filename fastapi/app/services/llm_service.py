@@ -137,26 +137,18 @@ class LlmService:
         )
 
     # 전성분 규제 분석
-    def analyze_ingredients(self, market: str, ingredients: str,
-                           restricted_context: str, regulation_context: str) -> IngLlmResult:
+    def analyze_ingredients(self, market: str, ingredients: str, context: str) -> IngLlmResult:
         prompt = f"""
 너는 {market} 화장품 "전성분(성분) 규제" 검토를 도와주는 컴플라이언스 전문가다.
 
-아래에 두 종류의 참고 자료가 제공된다.
-반드시 아래 자료에 근거해서만 판단하라.
-만약 두 자료 모두 비어있거나, 해당 국가({market})의
+아래 [CONTEXT]는 검색된 공식 규정/가이드 원문 발췌이다.
+반드시 CONTEXT에 근거해서만 판단하라.
+만약 [CONTEXT]가 비어있거나, [CONTEXT]에 해당 국가({market})의
 성분 규제 근거가 없으면 반드시 "근거 부족"으로 판단하고
 추론하거나 일반 지식을 사용하지 말아라.
 
-[CONTEXT 1: 제한 원료 DB]
-아래는 제한/금지 원료 데이터베이스에서 검색된 레코드이다.
-[레코드 N] 형태로 구분되며, 표준명/영문명/CASNO/제한사항/단서조항 등이 포함되어 있다.
-INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 근거로 판단하라.
-{restricted_context}
-
-[CONTEXT 2: 규제 원문]
-아래는 해당 국가의 화장품 성분 규제 법령/가이드에서 검색된 원문 발췌이다.
-{regulation_context}
+[CONTEXT]
+{context}
 
 [INPUT]
 아래는 화장품 전성분(성분) 목록이다. (쉼표/줄바꿈으로 구분될 수 있음)
@@ -189,7 +181,7 @@ INPUT의 성분과 매칭되는 레코드가 있으면 해당 제한사항을 �
 }}
 """.strip()
 
-        raw = self.generate(prompt) # reflection 추가시 여기 수정
+        raw = self._generate_with_reflection(prompt, context) # reflection 적용
 
         # ```json ... ``` 형태 제거
         cleaned = raw.strip()

@@ -1,21 +1,19 @@
 from __future__ import annotations
 
-import re
-import json
-from typing import List, Optional, Tuple
+from typing import List
 
 from langchain_core.documents import Document
 
 from app.repositories.vectorstore_repo import get_retriever
 from app.services.llm_service import LlmService
 
-from app.schemas.compliance import LabelingLlmResult, Finding
+from app.schemas.compliance import LabelingLlmResult
 
 
 def _normalize_text(text: str) -> str:
     return "\n".join([line.strip() for line in (text or "").splitlines() if line.strip()])
 
-def _format_docs_for_context(docs: List[Document], max_chars: int = 8000) -> str:
+def _format_docs_for_context(docs: List[Document], max_chars: int = 16000) -> str:
     chunks: List[str] = []
     total = 0
     for i, d in enumerate(docs, start=1):
@@ -54,29 +52,6 @@ Label text:
 {text}""".strip()
 
 
-def _extract_flagged_ingredients(docs: List[Document]) -> List[str]:
-    """제한 원료 레코드에서 표준명/영문명을 추출한다."""
-    names: List[str] = []
-    for d in docs:
-        text = d.page_content or ""
-        # 표준명 추출
-        m = re.search(r"표준명:\s*(.+)", text)
-        if m:
-            names.append(m.group(1).strip())
-        # 영문명 추출
-        m = re.search(r"영문명:\s*(.+)", text)
-        if m:
-            names.append(m.group(1).strip())
-    # 중복 제거, 순서 유지
-    seen = set()
-    unique: List[str] = []
-    for n in names:
-        if n not in seen:
-            seen.add(n)
-            unique.append(n)
-    return unique
-
-
 class ComplianceService:
     def __init__(self):
         self.llm = LlmService()
@@ -110,7 +85,7 @@ class ComplianceService:
         )
         return llm_result
 
-    # 전성분 규제용 (2단계 검색)
+    # 전성분 규제용
     def check_ingredients(
         self,
         market: str,
@@ -121,40 +96,17 @@ class ComplianceService:
         if not normalized:
             return LabelingLlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
 
-        # ── Step 1: 제한 원료 DB에서 문제 성분 탐색 ──
-        step1_retriever = get_retriever(
-            market=market, domain="restricted_ingredients",
-            k=3, fetch_k=20, bm25_weight=0.6, vector_weight=0.4,
-        )
-        restricted_docs = step1_retriever.invoke(normalized)
+        # 1) RAG
+        rag_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
+        retriever = get_retriever(market=market, domain="ingredients", k=15, fetch_k=60, bm25_weight=0.8, vector_weight=0.2,)
+        docs = retriever.invoke(rag_query)
+        context = _format_docs_for_context(docs)
 
-        # ── Step 2: 문제 성분이 발견되면, 해당 성분에 대한 규제 원문 검색 ──
-        reg_docs: List[Document] = []
-        if restricted_docs:
-            flagged = _extract_flagged_ingredients(restricted_docs)
-            if flagged:
-                reg_query = f"{market} 화장품 규제: {', '.join(flagged)}"
-                step2_retriever = get_retriever(
-                    market=market, domain="ingredients", k=6, fetch_k=20,
-                )
-                reg_docs = step2_retriever.invoke(reg_query)
-        else:
-            fallback_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
-            fallback_retriever = get_retriever(
-                market=market, domain="ingredients", k=10, fetch_k=40,
-            )
-            reg_docs = fallback_retriever.invoke(fallback_query)
-
-        # ── Step 3: 두 결과를 분리하여 LLM context 구성 ──
-        restricted_context = _format_docs_for_context(restricted_docs)
-        regulation_context = _format_docs_for_context(reg_docs)
-
-        # 4) LLM 호출
+        # 2) LLM 호출
         llm_result = self.llm.analyze_ingredients(
             market=market,
             ingredients=normalized,
-            restricted_context=restricted_context,
-            regulation_context=regulation_context,
+            context=context,
         )
         return llm_result
 
