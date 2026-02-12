@@ -11,6 +11,7 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
     force=True,
 )
+logging.getLogger("fontTools").setLevel(logging.WARNING)
 
 def create_app() -> FastAPI:
     app = FastAPI(

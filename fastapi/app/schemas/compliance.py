@@ -63,3 +63,20 @@ class ReportDownloadRequest(BaseModel):
     domain: Literal["labeling","ingredients"] = Field(...,description="분석 영역")
     product_name: str
     analysis_data: Dict[str, Any]
+
+class IngredientDetail(BaseModel):
+    ingredient: str
+    regulation: str
+    severity: str
+    content: Optional[str] = None
+    action: str
+
+class ReportData(BaseModel):
+    market: str
+    product_name: str
+    details: List[IngredientDetail]
+    notes: Optional[List[str]] = []
+
+class BatchReportRequest(BaseModel):
+    domain: str = Field("ingredients", description="전성분 분석 영역")
+    reports: List[ReportData] = Field(..., description="일괄 생성할 리포트들의 목록")
