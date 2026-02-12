@@ -2,6 +2,8 @@ import io
 import os
 import json
 import re
+import zipfile
+from typing import List
 from datetime import datetime
 from fpdf import FPDF
 from app.services.llm_service import get_llm_service
@@ -122,6 +124,32 @@ class ReportService:
         pdf.cell(0, 10, txt="(주) Cosy 컴플라이언스 팀", ln=True, align='C')
 
         return io.BytesIO(pdf.output())
+    
+    async def create_batch_zip_report(self, domain, reports_data):
+        zip_buffer = io.BytesIO() 
+        
+        with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
+            for data in reports_data:
+                if not isinstance(data, dict):
+                    report_dict = data.model_dump()
+                else:
+                    report_dict = data
+
+                market = report_dict.get("market")
+                product_name = report_dict.get("product_name")
+                
+                pdf_content = await self.create_pdf_report(
+                    market=market,
+                    domain=domain,
+                    product_name=product_name,
+                    analysis_data=report_dict
+                )
+                
+                file_name = f"Ingredients_Regulartory_Report_{product_name}_{market}.pdf"
+                zip_file.writestr(file_name, pdf_content.getvalue())
+        
+        zip_buffer.seek(0)
+        return zip_buffer
 
 _report_service = None
 def get_report_service():

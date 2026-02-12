@@ -1,11 +1,11 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Query
 from starlette.concurrency import run_in_threadpool
 from app.schemas.compliance import LabelingCheckResponse, Finding, LabelingLlmResult, IngredientsCheckResponse, Detail, \
-    IngredientsCheckRequest, LabelingCheckRequest
+    IngredientsCheckRequest, LabelingCheckRequest, BatchReportRequest
 from app.services.compliance_service import get_compliance_service
 
 from fastapi.responses import StreamingResponse
-from app.services.report_service import get_report_service
+from app.services.report_service import get_report_service, ReportService
 from app.schemas.compliance import ReportDownloadRequest
 from urllib.parse import quote
 
@@ -90,4 +90,19 @@ async def download_report(req: ReportDownloadRequest):
             "Content-Disposition": f"attachment; filename*=UTF-8''{encoded_filename}",
             "Access-Control-Expose-Headers": "Content-Disposition"
         }
+    )
+
+@router.post("/batch-download")
+async def batch_download(payload: BatchReportRequest):
+    service = get_report_service()
+    
+    zip_result = await service.create_batch_zip_report(
+        domain=payload.domain,
+        reports_data=payload.reports
+    )
+    
+    return StreamingResponse(
+        zip_result,
+        media_type="application/x-zip-compressed",
+        headers={"Content-Disposition": "attachment; filename=reports.zip"}
     )
