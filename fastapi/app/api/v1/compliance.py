@@ -44,6 +44,7 @@ async def check_from_image(req: LabelingCheckRequest):
 # 성분규제용
 @router.post("/ingredients", response_model=IngredientsCheckResponse)
 async def check_ingredients(req: IngredientsCheckRequest):
+    print("성분 규제 검사 시작")
     if not req.ingredients.strip():
         raise HTTPException(status_code=400, detail="Empty Ingredients")
 

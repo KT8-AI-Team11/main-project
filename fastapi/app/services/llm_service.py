@@ -7,12 +7,12 @@ from app.schemas.compliance import LabelingLlmResult, Finding, IngLlmResult, Det
 
 REFLECTION_THRESHOLD = 7  # 이 점수 미만이면 재생성
 
-
 class LlmService:
     def __init__(self):
         self.client = OpenAI(api_key=OPENAI_API_KEY)
         self.model = OPENAI_MODEL
         self.reflection_model = REFLECTION_MODEL  # .env의 REFLECTION_MODEL로 변경 가능
+
 
     # 문구규제 페이지에서 바로 쓸 수 있는 텍스트 생성 함수
     def _format_for_ui(self, data: dict) -> str:
@@ -144,8 +144,8 @@ class LlmService:
 아래 [CONTEXT]는 검색된 공식 규정/가이드 원문 발췌이다.
 반드시 CONTEXT에 근거해서만 판단하라.
 만약 [CONTEXT]가 비어있거나, [CONTEXT]에 해당 국가({market})의
-성분 규제 근거가 없으면 반드시 "근거 부족"으로 판단하고
-추론하거나 일반 지식을 사용하지 말아라.
+성분 규제 근거가 없으면 반드시 "근거 부족"으로 판단하고 risk는 LOW로 표시한다.
+절대 추론하거나 일반 지식을 사용하지 말아라.
 
 [CONTEXT]
 {context}
@@ -155,7 +155,6 @@ class LlmService:
 {ingredients}
 
 [NOTE]
-추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
 입력받은 모든 성분에 대한 내용을 details에 빠짐없이 표시해라.
 어떤 경우에도 INPUT의 성분을 details에서 생략하지 마라.
 조항명은 원어 그대로 표기해도 되지만, content, action 등 세부 내용은 반드시 한글로만 작성해라.
@@ -168,14 +167,10 @@ class LlmService:
 
 2) [CONTEXT]에 출처 식별자가 명확히 보이지 않거나, 어떤 문서/조항인지 특정할 수 없으면 regulation="근거 부족"으로 작성하라.
 
-- 단, 최종 출력에서 severity가 MEDIUM 또는 HIGH인데 regulation이 "근거 부족"이라면,
-  regulation을 반드시 "사용 제한/금지 성분 목록"으로 변경하라.
-  (이때도 content/action은 반드시 [CONTEXT]에 기반해서만 작성한다. [CONTEXT]에 내용이 없으면 "근거 부족"이라고 적어라.)
-
-- regulation에는 "사용 제한/금지 성분 목록" 외의 임의의 일반 라벨을 쓰지 마라.
-- [CONTEXT]에 해당 국가({market}) 성분 규제 근거가 전혀 없으면, 모든 성분의 severity는 LOW로만 작성하라.
-- HIGH/MEDIUM 판단을 한 성분은, regulation에 반드시 [CONTEXT]에 실제로 등장하는 문서명/조항명 후보를 최소 1개 이상 먼저 찾아서 시도하라.
+- 단, 최종 출력에서 severity가 HIGH/MEDIUM 판단을 한 성분은, regulation에 반드시 [CONTEXT]에 실제로 등장하는 문서명/조항명 후보를 최소 1개 이상 먼저 찾아서 시도하라.
   찾을 수 없을 때에만 "사용 제한/금지 성분 목록"을 사용하라.
+  (이때도 content/action은 반드시 [CONTEXT]에 기반해서만 작성한다. [CONTEXT]에 내용이 없으면 "근거 부족"이라고 적어라.)
+- [CONTEXT]에 해당 국가({market}) 성분 규제 근거가 전혀 없으면, 모든 성분의 severity는 LOW로만 작성하라.
 
 [OUTPUT JSON]
 반드시 아래 JSON 형식으로만 답하라. 다른 텍스트를 절대 출력하지 마라.
@@ -196,7 +191,8 @@ class LlmService:
 }}
 """.strip()
 
-        raw = self._generate_with_reflection(prompt, context) # reflection 적용
+        # raw = self._generate_with_reflection(prompt, context) # reflection 적용
+        raw = self.generate(prompt)
 
         # ```json ... ``` 형태 제거
         cleaned = raw.strip()
@@ -228,7 +224,52 @@ class LlmService:
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
             details=details,
         )
-    
+
+        # =========================================
+        # 성분 정규화 (Synonym / Canonical 생성용)
+        # =========================================
+    def normalize_ingredient(self, name: str) -> dict:
+        prompt = f"""
+너는 화학 성분명 정규화 도우미다.
+
+입력된 성분명을:
+1) 규제 문서에서 흔히 쓰는 표준 영어명(canonical)
+2) 동일 물질의 흔한 동의어/별칭(다국어/로마자표기/약어/IUPAC)
+3) CAS 번호(알고 있을 경우)
+
+로 정리하라.
+
+모르면 추측하지 말고 빈 값으로 두어라.
+
+반드시 아래 JSON 형식으로만 답하라:
+
+{{
+  "canonical": "string",
+  "aliases": ["string", ...],
+  "cas": "string|null"
+}}
+
+성분명: {name}
+""".strip()
+
+        raw = self.generate(prompt)
+
+        cleaned = raw.strip()
+        if cleaned.startswith("```"):
+            cleaned = cleaned.strip("`")
+            cleaned = cleaned.replace("json\n", "", 1).strip()
+
+        try:
+            data = json.loads(cleaned)
+        except Exception:
+            return {"canonical": "", "aliases": [], "cas": None}
+
+        return {
+            "canonical": (data.get("canonical") or "").strip(),
+            "aliases": data.get("aliases") or [],
+            "cas": data.get("cas"),
+        }
+
     # ========================================================
     # 보고서 생성용 함수 (ReportService에서 호출)
     # ========================================================

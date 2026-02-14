@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from typing import List, Dict, Any
-
+from typing import Optional, Callable
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.retrievers import BM25Retriever
@@ -133,20 +133,22 @@ class HybridRetriever:
     - weights는 '결과 비율'로 반영(점수 기반 정교 랭킹은 최소 도입에선 생략)
     """
 
-    def __init__(self, bm25, vector, k: int, bm25_weight: float = 0.45, vector_weight: float = 0.55):
+    def __init__(self, bm25, vector, k: int, bm25_weight: float = 0.45, vector_weight: float = 0.55, query_expander: Optional[Callable[[str], str]] = None,):
         self.bm25 = bm25
         self.vector = vector
         self.k = k
         self.bm25_weight = bm25_weight
         self.vector_weight = vector_weight
+        self.query_expander = query_expander
 
     def invoke(self, query: str) -> List[Document]:
+        q = self.query_expander(query) if self.query_expander else query
         # 각 retriever에서 충분히 가져온 뒤 합치기
         bm25_k = max(1, int(round(self.k * self.bm25_weight)))
         vec_k  = max(1, int(round(self.k * self.vector_weight)))
 
-        bm25_docs = self.bm25.invoke(query)[:bm25_k]
-        vec_docs  = self.vector.invoke(query)[:vec_k]
+        bm25_docs = self.bm25.invoke(q)[:bm25_k]
+        vec_docs  = self.vector.invoke(q)[:vec_k]
 
         # 중복 제거 (source/page/content prefix 기준)
         seen = set()
@@ -165,7 +167,7 @@ class HybridRetriever:
 
         # 만약 합친 결과가 k보다 적으면, 남은 자리는 vector에서 더 채움(선택)
         if len(merged) < self.k:
-            extra = self.vector.invoke(query)
+            extra = self.vector.invoke(q)
             for d in extra:
                 meta = d.metadata or {}
                 key = (meta.get("source"), meta.get("page"), (d.page_content or "")[:200])
@@ -187,6 +189,7 @@ def get_retriever(
     use_hybrid: bool = True,
     bm25_weight: float = 0.45,
     vector_weight: float = 0.55,
+    query_expander=None
 ):
     """
     market/domain 메타데이터 필터를 포함한 Retriever 반환.
@@ -224,6 +227,7 @@ def get_retriever(
         k=k,
         bm25_weight=bm25_weight,
         vector_weight=vector_weight,
+        query_expander=query_expander
     )
 
 

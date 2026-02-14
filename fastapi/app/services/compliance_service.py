@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import List
 
+import redis, os
+from app.services.query_expander import QueryExpander
 from langchain_core.documents import Document
 
 from app.repositories.vectorstore_repo import get_retriever
@@ -55,6 +57,10 @@ Label text:
 class ComplianceService:
     def __init__(self):
         self.llm = LlmService()
+        host = os.getenv("REDIS_HOST", "localhost")
+        port = int(os.getenv("REDIS_PORT", "6379"))
+        r = redis.Redis(host=host, port=port, decode_responses=True)
+        self.expander = QueryExpander(redis_client=r, llm_service=self.llm, max_llm_calls_per_request=2)
 
     # 문구 규제용
     def check_labeling(
@@ -98,8 +104,9 @@ class ComplianceService:
 
         # 1) RAG
         rag_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
+        expanded_query = self.expander.expand_ingredients_query(rag_query, ingredients_text=normalized)
         retriever = get_retriever(market=market, domain="ingredients", k=15, fetch_k=60, bm25_weight=0.8, vector_weight=0.2,)
-        docs = retriever.invoke(rag_query)
+        docs = retriever.invoke(expanded_query)
         context = _format_docs_for_context(docs)
 
         # 2) LLM 호출
