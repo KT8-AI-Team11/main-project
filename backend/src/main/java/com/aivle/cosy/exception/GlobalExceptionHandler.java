@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleException(Exception e) {
-        log.error("서버 에러 발생", e);
-        return ResponseEntity.status(500).body("서버 오류");
+    public ResponseEntity<ErrorResponse> handleException(Exception e) {
+        log.error("서버 에러 발생: {}", e.getMessage());
+        ErrorResponse response = new ErrorResponse("INTERNAL_ERROR", "서버 오류가 발생했습니다.");
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(BusinessException.class)
@@ -25,18 +26,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, httpStatus);
     }
 
-    // TODO: @Valid 검증 실패 시 처리
+    // @Valid 검증 실패 시 처리
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex) {
         ErrorResponse response = new ErrorResponse("INTERNAL_ERROR", "서버 오류가 발생했습니다.");
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    // TODO: 예상치 못한 예외 처리 (스택트레이스 노출 방지)
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ErrorResponse> handleException(Exception ex) {
-//        ErrorResponse response = new ErrorResponse("INTERNAL_ERROR", "서버 오류가 발생했습니다.");
-//        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
-
 }
