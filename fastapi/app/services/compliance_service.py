@@ -1,19 +1,19 @@
 from __future__ import annotations
 
-from typing import List
+import json
+from typing import List, Optional, Tuple
 
 from langchain_core.documents import Document
 
 from app.repositories.vectorstore_repo import get_retriever
 from app.services.llm_service import LlmService
 
-from app.schemas.compliance import LabelingLlmResult
-
+from app.schemas.compliance import LabelingLlmResult, Finding
 
 def _normalize_text(text: str) -> str:
     return "\n".join([line.strip() for line in (text or "").splitlines() if line.strip()])
 
-def _format_docs_for_context(docs: List[Document], max_chars: int = 16000) -> str:
+def _format_docs_for_context(docs: List[Document], max_chars: int = 8000) -> str:
     chunks: List[str] = []
     total = 0
     for i, d in enumerate(docs, start=1):
@@ -85,7 +85,6 @@ class ComplianceService:
         )
         return llm_result
 
-    # 전성분 규제용
     def check_ingredients(
         self,
         market: str,
@@ -97,9 +96,13 @@ class ComplianceService:
             return LabelingLlmResult(overall_risk="LOW", findings=[], notes=["Empty input text."])
 
         # 1) RAG
+        # 1-1. 벡터db에게 무엇을 물어볼지 쿼리 생성
         rag_query = _build_rag_query(market=market, domain="ingredients", text=normalized)
-        retriever = get_retriever(market=market, domain="ingredients", k=15, fetch_k=60, bm25_weight=0.8, vector_weight=0.2,)
+        # 1-2. 벡터db retriever 생성 (벡터db에서 관련 문서 찾아주는 탐색기)
+        retriever = get_retriever(market=market, domain="ingredients", k=15, fetch_k=60, bm25_weight=0.6, vector_weight=0.4,)
+        # 1-3. 문서 검색 실행
         docs = retriever.invoke(rag_query)
+        # 1-4. LLM에게 전달할 문자열 context 생성
         context = _format_docs_for_context(docs)
 
         # 2) LLM 호출
