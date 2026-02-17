@@ -2,6 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Search, X, CheckCircle } from "lucide-react";
 
+
+function normalizeBaseUrl(v) {
+  if (!v) return "";
+  const s = String(v).trim();
+
+  // GitHub Secret에 "" 넣어서 들어오는 케이스 방어
+  if (s === '""' || s === "''") return "";
+
+  // 끝 슬래시 제거
+  return s.endsWith("/") ? s.slice(0, -1) : s;
+}
+
 export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLogin }) {
   const [showNotice, setShowNotice] = useState(true);
   const [searchText, setSearchText] = useState("");
@@ -29,15 +41,17 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
   });
 
   const userEmail = localStorage.getItem("cosy_user_email") || "";
+  const BASE = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL);
+
   useEffect(() => {
       if (isLoggedIn) {
-          // axios.get("/api/dashboard/stats", {headers: getAuthHeader()})
-          //     .then(response => {
-          //         setStats(response.data);
-          //     })
-          //     .catch(error => {
-          //         console.error("대시보드 데이터를 가져오는데 실패했습니다:", error);
-          //     });
+          axios.get(`${BASE}/api/dashboard/stats`, {headers: getAuthHeader()})
+              .then(response => {
+                  setStats(response.data);
+              })
+              .catch(error => {
+                  console.error("대시보드 데이터를 가져오는데 실패했습니다:", error);
+              });
       }
   }, [isLoggedIn]);
 
@@ -120,23 +134,6 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
                   }}
                 >
                   로그인하고 제품관리 시작하기
-                </button>
-
-                <button
-                  type="button"
-                  onClick={onDemoLogin}
-                  style={{
-                    height: "44px",
-                    padding: "0 16px",
-                    borderRadius: "12px",
-                    border: "1px solid #dbeafe",
-                    cursor: "pointer",
-                    fontWeight: 800,
-                    backgroundColor: "white",
-                    color: "#1d4ed8",
-                  }}
-                >
-                  임의 로그인(코치)
                 </button>
               </>
             )}

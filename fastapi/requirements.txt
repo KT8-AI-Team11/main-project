@@ -17,3 +17,4 @@ chromadb
 python-dotenv
 pypdf
 rank-bm25
+fpdf2

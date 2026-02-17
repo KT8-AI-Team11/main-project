@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Products")
@@ -44,6 +46,9 @@ public class Product {
 
     @UpdateTimestamp
     private LocalDateTime updDate;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Log> logs = new ArrayList<>();
 
     public enum ProductType{
         SKINCARE, MAKEUP, SUNSCREEN, BODYCARE

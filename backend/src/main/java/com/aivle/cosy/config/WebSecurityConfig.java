@@ -51,12 +51,14 @@ public class WebSecurityConfig {
      public CorsConfigurationSource corsConfigurationSource() {
        CorsConfiguration config = new CorsConfiguration();
 
+       // todo: 허용 원본 정리
        // 1. 허용할 출처 (우리 프론트엔드 주소)
        config.addAllowedOrigin("http://localhost:5173");
        config.addAllowedOrigin("http://127.0.0.1:5500");
-         config.addAllowedOrigin("http://cosy-frontend-bucket.s3.ap-northeast-2.amazonaws.com");
-       config.addAllowedOrigin("https://dd1luume97j85.cloudfront.net");
-       config.addAllowedOrigin("http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com");
+       config.addAllowedOrigin("http://cosy-frontend-bucket.s3.ap-northeast-2.amazonaws.com"); // s3 버킷
+       config.addAllowedOrigin("http://cosy-alb-1486968001.ap-northeast-2.elb.amazonaws.com"); // ELB
+       config.addAllowedOrigin("https://dd1luume97j85.cloudfront.net"); // CloudFront
+       config.addAllowedOrigin("https://dk26fz6kuu4it.cloudfront.net"); // CloudFront
 
        // 2. 허용할 HTTP 메서드 (GET, POST, PUT, DELETE 등)
        config.addAllowedMethod("*");

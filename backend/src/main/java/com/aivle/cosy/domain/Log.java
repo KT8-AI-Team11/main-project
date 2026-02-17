@@ -60,7 +60,7 @@ public class Log {
     public Log(Country country, Product product, Company company, ApprovalStatus ingredientStatus, ApprovalStatus marketingStatus,
                String cautiousIngredient, String ingredientLaw, String marketingLaw) {
         this.country = country;
-        this.product = product;
+        setProduct(product);
         this.company = company;
         this.ingredientStatus = ingredientStatus;
         this.marketingStatus = marketingStatus;
@@ -78,6 +78,16 @@ public class Log {
     public void updateMarketingAnalysis(ApprovalStatus status, String law) {
         this.marketingStatus = status;
         this.marketingLaw = law;
+    }
+
+    public void setProduct(Product product){
+        if(this.product != null){
+            this.product.getLogs().remove(this);
+        }
+        this.product = product;
+        if(product != null && !product.getLogs().contains(this)){
+            product.getLogs().add(this);
+        }
     }
 
 }

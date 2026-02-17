@@ -235,7 +235,7 @@ export default function RegisterPage({ onRegisterSuccess, onBackToLogin }) {
                         value={email}
                         onKeyDown={handleNoSpaceKeyDown} // 물리적 공백 입력 차단
                         onChange={(e) => setEmail(e.target.value.replace(/\s/g, ""))} // 공백 제거 후 반영
-                        placeholder="example@email.com"
+                        placeholder="이메일을 입력하세요"
                         autoComplete="email"
                         style={{
                             height: "44px",

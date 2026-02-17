@@ -157,7 +157,7 @@ export default function Sidebar({
   <SidebarItem
     active={currentPage === "home"}
     onClick={() => onNavigate("home")}
-    label="AI 성분 분석기"
+    label="홈"
     icon={Home}
     isLoggedIn={isLoggedIn}
     collapsed={collapsed}
@@ -176,7 +176,7 @@ export default function Sidebar({
   <SidebarItem
       active={currentPage === "log-history"}
       onClick={() => onNavigate("log-history")}
-      label="제품 규제 목록"
+      label="규제 검토 기록"
       icon={Database}
       requiresLogin={true}
       isLoggedIn={isLoggedIn}

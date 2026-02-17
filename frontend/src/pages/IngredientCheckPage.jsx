@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Search, Check, Loader2, SlidersHorizontal, X } from "lucide-react";
+import { Search, Check, Loader2, SlidersHorizontal, X, UploadCloud } from "lucide-react";
 import CountryMultiSelect from "../components/CountryMultiSelect";
 import { checkIngredients } from "../api/compliance";
 import { useProducts } from "../store/ProductsContext";
@@ -138,6 +138,9 @@ export default function IngredientCheckPage({
 }) {
   const { products: ctxProducts = [] } = useProducts();
   const resultsRef = useRef(null);
+
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [productName, setProductName] = useState("");
 
   // ✅ 결과 패널 고정 높이
   const [resultsPanelHeight, setResultsPanelHeight] = useState(null);
@@ -413,6 +416,71 @@ export default function IngredientCheckPage({
     return rows;
   }, [comboResults, productById]);
 
+  const handleDownloadReport = async () => {
+      if (!filteredRows || filteredRows.length === 0) {
+          alert("다운로드할 검사 결과가 없습니다.");
+          return;
+      }
+
+      const actualProductName = filteredRows[0].productName;
+
+      setIsDownloading(true);
+      try {
+          // 제품-국가 조합별로 데이터를 그룹화
+          const groupedData = filteredRows.reduce((acc, row) => {
+              const key = `${row.productName}__${row.market}`;
+              if (!acc[key]) {
+                  acc[key] = {
+                      market: row.market,
+                      product_name: row.productName,
+                      details: [],
+                      notes: []
+                  };
+              }
+              acc[key].details.push({
+                  ingredient: row.ingredient,
+                  regulation: row.regulation,
+                  severity: row.severity,
+                  content: row.content || "",
+                  action: row.action
+              });
+              return acc;
+          }, {});
+
+          const payload = {
+              domain: "ingredients",
+              reports: Object.values(groupedData)
+          };
+
+          // const response = await fetch("http://localhost:8000/v1/compliance/download-report", {
+          const response = await fetch("http://localhost:8000/v1/compliance/batch-download", {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+                const errorDetail = await response.text();
+                throw new Error(`서버 에러: ${response.status} - ${errorDetail}`);
+          }
+
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `Regulatory_Reports_Batch_${new Date().getDate()}.zip`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(url);
+      } catch (error) {
+          console.error("다운로드 로직 에러:", error);
+          alert(`보고서 생성 중 오류가 발생했습니다.\n${error.message}`);
+      } finally {
+          setIsDownloading(false);
+      }
+  };
+
   // ✅ 성분 필터 후보: '현재 결과에 등장한 성분'만 유니크로 생성
   const uniqueIngredients = useMemo(() => {
     const set = new Set();
@@ -473,7 +541,6 @@ export default function IngredientCheckPage({
 
   // summary
   const summary = useMemo(() => {
-    let overall = "LOW";
     let high = 0;
     let mid = 0;
     let low = 0;
@@ -481,14 +548,14 @@ export default function IngredientCheckPage({
     Object.values(comboResults).forEach((v) => {
       if (!v?.ok) {
         if (v?.error) {
-          overall = worstRisk(overall, "HIGH");
+          // overall = worstRisk(overall, "HIGH");
           high += 1;
         }
         return;
       }
       const data = v.data || {};
       const r = String(data.overall_risk || "").toUpperCase();
-      overall = worstRisk(overall, r || "LOW");
+      // overall = worstRisk(overall, r || "LOW");
 
       const details = Array.isArray(data.details) ? data.details : [];
       if (details.length === 0) {
@@ -502,6 +569,10 @@ export default function IngredientCheckPage({
         else low += 1;
       });
     });
+
+    let overall = "LOW";
+    if (high > 0) overall = "HIGH";
+    else if (mid > 0) overall = "MEDIUM";
 
     return { overall, high, mid, low };
   }, [comboResults]);
@@ -1194,6 +1265,38 @@ export default function IngredientCheckPage({
                   </tbody>
                 </table>
               </div>
+                {hasRun && !showNoIssue && !showFilteredEmpty && (
+                    <div style={{ display: "flex", justifyContent: "flex-end", padding: "12px 16px", borderTop: "1px solid #E5E7EB" }}>
+                        <button
+                            type="button"
+                            className="cosy-btn"
+                            onClick={handleDownloadReport}
+                            disabled={isDownloading}
+                            style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 8,
+                                backgroundColor: "#16a34a",
+                                borderColor: "#16a34a",
+                                color: "#fff",
+                                fontWeight: "900",
+                                padding: "8px 16px"
+                            }}
+                        >
+                            {isDownloading ? (
+                                <>
+                                    <Loader2 size={16} className="cosy-spin" />
+                                    보고서 생성 중...
+                                </>
+                            ) : (
+                                <>
+                                    <UploadCloud size={16} />
+                                    레포트 PDF 다운로드
+                                </>
+                            )}
+                        </button>
+                    </div>
+                )}
             </div>
           )}
         </div>
