@@ -1,4 +1,4 @@
-package com.aivle.cosy.util;
+package com.aivle.cosy.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
