@@ -1,4 +1,4 @@
-package com.aivle.cosy.util;
+package com.aivle.cosy.security;
 
 import com.aivle.cosy.service.TokenBlacklistService;
 import jakarta.servlet.FilterChain;

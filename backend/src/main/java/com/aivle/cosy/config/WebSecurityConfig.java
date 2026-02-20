@@ -1,8 +1,8 @@
 package com.aivle.cosy.config;
 
 import com.aivle.cosy.service.TokenBlacklistService;
-import com.aivle.cosy.util.JwtFilter;
-import com.aivle.cosy.util.JwtTokenProvider;
+import com.aivle.cosy.security.JwtFilter;
+import com.aivle.cosy.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

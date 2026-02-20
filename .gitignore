@@ -1,6 +1,10 @@
 # Python virtual environment
 .venv/
+venv/
 .env
+
+# macOS
+.DS_Store
 
 __pycache__/
 **/__pycache__/
