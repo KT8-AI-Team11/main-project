@@ -78,7 +78,6 @@ export default function CosyUI() {
     try {
       const token = localStorage.getItem("cosy_access_token");
       const data = await apiFetch("/api/products", { token });
-      console.log("products response.data =", data);
       setProducts(data);
     } catch (error) {
       console.error("데이터 로딩 실패", error);
@@ -293,7 +292,6 @@ export default function CosyUI() {
 
               {currentPage === "profile" && <ProfilePage />}
 
-            {/* ✅ 여기 추가가 핵심 */}
             {currentPage === "country-regulations" && <CountryRegulationsPage />}
           </div>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Search, X, CheckCircle } from "lucide-react";
+import { X, CheckCircle } from "lucide-react";
 
 
 function normalizeBaseUrl(v) {
@@ -16,9 +16,7 @@ function normalizeBaseUrl(v) {
 
 export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLogin }) {
   const [showNotice, setShowNotice] = useState(true);
-  const [searchText, setSearchText] = useState("");
 
-  // ✅ (홈 3번) 로그인 후 요약(임시) - 추후 백엔드/전역상태로 교체
   const safeJson = (v, fallback) => {
     try {
       return JSON.parse(v);
@@ -64,16 +62,6 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
     }
     alert(`${actionName} 기능은 로그인 후 이용할 수 있어요.`);
     onGoLogin?.();
-  };
-
-  const handleSearch = () => {
-    if (!searchText.trim()) return alert("검색어를 입력해주세요.");
-    if (!isLoggedIn) {
-      alert("검색은 가능하지만, 저장/검토 기능은 로그인 후 이용할 수 있어요.");
-      onGoLogin?.();
-      return;
-    }
-    alert(`"${searchText}" 검색 (데모 단계: 추후 API 연동)`);
   };
 
   return (
@@ -197,43 +185,6 @@ export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLo
             </div>
           )}
 
-          {/* 검색창 */}
-          <div style={{ position: "relative", maxWidth: "650px", margin: "0 auto" }}>
-            <input
-              type="text"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              placeholder="성분명 또는 제품명을 검색해 보세요"
-              style={{
-                width: "100%",
-                padding: "16px 56px 16px 24px",
-                border: "2px solid #3b82f6",
-                borderRadius: "9999px",
-                fontSize: "16px",
-                outline: "none",
-                boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
-                boxSizing: "border-box",
-                display: "block",
-              }}
-            />
-            <button
-              type="button"
-              onClick={handleSearch}
-              style={{
-                position: "absolute",
-                right: "16px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                border: "none",
-                background: "transparent",
-                cursor: "pointer",
-                padding: 0,
-              }}
-              aria-label="검색"
-            >
-              <Search color="#3b82f6" />
-            </button>
-          </div>
         </div>
       </div>
 

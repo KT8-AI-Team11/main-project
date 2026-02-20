@@ -1,20 +1,11 @@
-// src/api/ocr.js
 // FastAPI OCR 연동
 // - POST /v1/ocr/extract?lang=korean
 // - form-data key: image
 
-// const OCR_BASE_PROD = import.meta.env.VITE_OCR_BASE_URL || "";
-// // DEV에선 vite proxy를 쓰기 위해 base를 비워서 상대경로로 호출
-// const OCR_BASE = import.meta.env.DEV ? "" : OCR_BASE_PROD;
-
-// const OCR_PATH = import.meta.env.VITE_OCR_EXTRACT_PATH || "/v1/ocr/extract";
-
-// 배포 환경에서는 VITE_API_BASE_URL 하나로 모든 요청을 nginx에게 보냄
 const BASE = import.meta.env.VITE_V1_BASE_URL || import.meta.env.VITE_API_BASE_URL;
 
 function buildUrl(lang = "korean") {
   // base가 비어있으면 현재 origin 기준으로 상대경로 호출 (vite proxy 타게 됨)
-  // const base = OCR_BASE || window.location.origin;
   const u = new URL("/v1/ocr/extract", BASE);
   u.searchParams.set("lang", lang);
   return u.toString();
@@ -50,7 +41,7 @@ export async function ocrExtract(file, { lang = "korean" } = {}) {
   return {
   language: data?.language || lang,
   text,
-  normalized_text: data?.normalized_text ?? text, //
+  normalized_text: data?.normalized_text ?? text,
   lines: Array.isArray(data?.lines) ? data.lines : Array.isArray(data) ? data : [],
   raw: data,
 };

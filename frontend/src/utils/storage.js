@@ -1,4 +1,3 @@
-// src/utils/storage.js
 export const LS_KEYS = {
   LOGGED_IN: "cosy_logged_in",
   LOGIN_TYPE: "cosy_login_type",

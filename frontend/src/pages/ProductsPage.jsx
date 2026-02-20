@@ -99,7 +99,6 @@ export default function ProductsPage({ onNavigate }) {
   const fetchProducts = async () => {
     try {
       const response = await api.get("/products");
-      console.log("products response.data =", response.data);
       setProducts(response.data);
     } catch (error) {
       console.error("데이터 로딩 실패", error);
@@ -161,7 +160,6 @@ export default function ProductsPage({ onNavigate }) {
       setIsAddModalOpen(false);
       resetInputFields();
     } catch (error) {
-      console.log(error);
       alert("제품 등록 중 오류가 발생했습니다.");
     }
   };
@@ -188,7 +186,6 @@ export default function ProductsPage({ onNavigate }) {
       alert("제품 정보가 성공적으로 수정되었습니다.");
       setIsEditModalOpen(false);
     } catch (error) {
-      console.log(error)
       alert("수정 중 오류가 발생했습니다.");
     }
   };
@@ -427,7 +424,6 @@ export default function ProductsPage({ onNavigate }) {
               <div style={{ textAlign: "center" }}>
                 <div style={{ width: "160px", height: "200px", backgroundColor: "#f9fafb", borderRadius: "12px", marginBottom: "12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", border: "1px solid #e5e7eb" }}>
                   {previewUrl ? (  <img src={previewUrl} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover", }} />) : <Camera size={40} color="#9ca3af" />}
-                  {/* {newProductImage ? <img src={newProductImage} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Camera size={40} color="#9ca3af" />} */}
                 </div>
                 <label htmlFor="file-up" style={{ fontSize: "14px", color: "#3b82f6", cursor: "pointer", fontWeight: "600" }}>이미지 업로드</label>
                 <input id="file-up" type="file" accept="image/*" hidden onChange={handleImageUpload} />
