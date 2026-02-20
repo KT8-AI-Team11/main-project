@@ -14,6 +14,8 @@ import { checkRegulation } from "../api/compliance";
 import { saveInspectionLog } from "../api/log";
 
 
+const FASTAPI_BASE = import.meta.env.VITE_V1_BASE_URL || import.meta.env.VITE_API_BASE_URL;
+
 const COUNTRY_CODES = ["US", "EU", "CN", "JP"];
 const SUPPORTED_MARKETS = new Set(COUNTRY_CODES);
 
@@ -360,7 +362,7 @@ export default function ClaimCheckPage({
               }
           };
 
-          const response = await fetch("http://localhost:8000/v1/compliance/download-report", {
+          const response = await fetch(`${FASTAPI_BASE}/v1/compliance/download-report`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload),

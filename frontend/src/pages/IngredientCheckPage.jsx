@@ -5,6 +5,8 @@ import { checkIngredients } from "../api/compliance";
 import { useProducts } from "../store/ProductsContext";
 import { saveInspectionLog } from "../api/log";
 
+const FASTAPI_BASE = import.meta.env.VITE_V1_BASE_URL || import.meta.env.VITE_API_BASE_URL;
+
 const COUNTRY_OPTIONS = [
   { code: "US", name: "미국" },
   { code: "EU", name: "유럽연합" },
@@ -452,8 +454,7 @@ export default function IngredientCheckPage({
               reports: Object.values(groupedData)
           };
 
-          // const response = await fetch("http://localhost:8000/v1/compliance/download-report", {
-          const response = await fetch("http://localhost:8000/v1/compliance/batch-download", {
+          const response = await fetch(`${FASTAPI_BASE}/v1/compliance/batch-download`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload),
