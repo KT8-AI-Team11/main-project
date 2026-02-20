@@ -29,9 +29,7 @@ public class AuthService {
     private final TokenBlacklistService tokenBlacklistService;
     private final PasswordEncoder passwordEncoder;
 
-    /**
-     * 로그인 서비스
-     */
+    // 로그인 서비스
     @Transactional(readOnly = true)
     public LoginResponse login(LoginRequest loginInfo) {
         String email = loginInfo.getEmail();
@@ -53,16 +51,12 @@ public class AuthService {
         return response;
     }
 
-    /**
-     * 로그아웃, 현재 유저의 access token과 refresh token이 유효할 경우, 블랙리스트에 저장.
-     */
+    // 로그아웃, 현재 유저의 access token과 refresh token이 유효할 경우, 블랙리스트에 저장.
     public void logout(String accessToken, String refreshToken) {
         tokenBlacklistService.invalidateSession(accessToken, refreshToken);
     }
 
-    /**
-     * access token 재발급용
-     */
+    // access token 재발급용
     @Transactional(readOnly = true)
     public RefreshResponse refresh(String refreshToken) {
         if (!tokenProvider.validateRefreshToken(refreshToken) || tokenBlacklistService.isBlacklisted(refreshToken)) {
@@ -106,7 +100,7 @@ public class AuthService {
             throw new BusinessException(ChangePasswordErrorCode.CHANGE_PASSWORD_FAILED, e.getMessage());
         }
 
-        // 그 후, 세션 만료
+        // 세션 만료
         tokenBlacklistService.invalidateSession(accessToken, refreshToken);
     }
 }

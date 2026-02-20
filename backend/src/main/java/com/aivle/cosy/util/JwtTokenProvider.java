@@ -47,9 +47,6 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + accessExpiration);
 
-        //Map<String, Object> claims = new HashMap<>();
-        //claims.put("companyId",companyId); // 나중에 필요시 확장, 변경
-
         return Jwts.builder()
                 .id(UUID.randomUUID().toString())
                 .subject(email)
@@ -63,7 +60,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    //TODO: refresh token 발급
     public String createRefreshToken(String email) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + refreshExpiration);
@@ -110,7 +106,6 @@ public class JwtTokenProvider {
         }
     }
 
-    //TODO:필요시 protected나 private으로 변경
     public Claims extractClaims(String token) {
         return Jwts.parser()
                 .verifyWith(secretKey)

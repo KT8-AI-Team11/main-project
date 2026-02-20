@@ -27,7 +27,7 @@ public class UserProfileController {
     @DeleteMapping("")
     public ResponseEntity<Void> delete(@RequestHeader("Authorization") String token,
                                        @CookieValue(name = "refresh_token", required = false) String refreshToken) {
-        if (token == null || !token.startsWith("Bearer ")) { // TODO: 검증용, 나중에 refactoring 가능
+        if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -45,7 +45,7 @@ public class UserProfileController {
     public ResponseEntity<Void> password(@RequestHeader("Authorization") String token,
                                          @CookieValue(name = "refresh_token", required = false) String refreshToken,
                                          @RequestBody ChangePasswordRequest request) {
-        if (token == null || !token.startsWith("Bearer ")) { // TODO: 검증용, 나중에 refactoring 가능
+        if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 

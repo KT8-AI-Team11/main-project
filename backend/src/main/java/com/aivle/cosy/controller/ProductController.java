@@ -27,9 +27,8 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResponse.DetailResponse>> getMyCompanyProducts(
             @RequestHeader("Authorization") String bearerToken) {
-        log.info("getMyCompanyProducts 진입");
-        String token = bearerToken.substring(7); // "Bearer " 제거
-        Long companyId = tokenProvider.getCompanyId(token); // 토큰에서 회사 ID 추출
+        String token = bearerToken.substring(7);
+        Long companyId = tokenProvider.getCompanyId(token);
 
         return ResponseEntity.ok(productService.getProducts(companyId));
     }
@@ -40,8 +39,6 @@ public class ProductController {
             @RequestHeader("Authorization") String bearerToken,
             @RequestPart("data") ProductRequest.SaveRequest request,
             @RequestPart(value = "image", required = false) MultipartFile imageFile) {
-
-        log.info("createProduct 진입");
         Long companyId = tokenProvider.getCompanyId(bearerToken.substring(7));
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(productService.createProduct(companyId, request, imageFile));
@@ -54,8 +51,6 @@ public class ProductController {
             @RequestHeader("Authorization") String bearerToken,
             @RequestPart("data") ProductRequest.SaveRequest request,
             @RequestPart(value = "image", required = false) MultipartFile imageFile) {
-
-        log.info("patchProduct 진입");
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 
@@ -68,8 +63,6 @@ public class ProductController {
     public ResponseEntity<ProductResponse.MessageResponse> deleteProduct(
             @PathVariable Long id,
             @RequestHeader("Authorization") String bearerToken){
-
-        log.info("deleteProduct 진입");
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 
@@ -79,9 +72,7 @@ public class ProductController {
     @DeleteMapping("/batch")
     public ResponseEntity<ProductResponse.MessageResponse> deleteMultipleProducts(
             @RequestHeader("Authorization") String bearerToken,
-            @RequestBody List<Long> ids) { // 삭제할 ID 리스트를 Body로 받음
-
-        log.info("deleteMultipleProducts 진입");
+            @RequestBody List<Long> ids) {
         String token = bearerToken.substring(7);
         Long companyId = tokenProvider.getCompanyId(token);
 

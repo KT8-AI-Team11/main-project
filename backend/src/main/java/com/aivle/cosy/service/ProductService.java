@@ -41,7 +41,6 @@ public class ProductService {
 
         String imageUrl = null;
         if (imageFile != null && !imageFile.isEmpty()) {
-            log.info("제품생성 중 s3 접근");
             imageUrl = s3Service.uploadFile(imageFile, "products/" + companyId);
         }
 
@@ -54,7 +53,6 @@ public class ProductService {
                 .status(request.getStatus())
                 .build();
 
-        log.info("제품생성 중 db 접근");
         Product savedProduct = productRepository.save(product);
         return new ProductResponse.CreateResponse(savedProduct.getId(), "제품이 성공적으로 등록되었습니다.");
     }
@@ -72,7 +70,6 @@ public class ProductService {
         if (imageFile != null && !imageFile.isEmpty()) {
             s3Service.deleteFileByUrl(imageUrl);
             imageUrl = s3Service.uploadFile(imageFile, "products/" + companyId);
-            // (선택) 기존 이미지 S3 삭제까지 하고 싶으면 여기서 처리
         }
 
         // 엔티티 내 update 메서드 호출

@@ -25,7 +25,7 @@ public class JwtFilter extends GenericFilterBean {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        // 1. Authorization 헤더에서 토큰 추출
+        // Authorization 헤더에서 토큰 추출
         String header = request.getHeader("Authorization");
         String token = null;
 
@@ -33,7 +33,7 @@ public class JwtFilter extends GenericFilterBean {
             token = header.substring(7);
         }
 
-        // 2. 토큰 유효성 검증 및 인증 설정
+        // 토큰 유효성 검증 및 인증 설정
         if (jwtProvider.validateAccessToken(token) && !tokenBlacklistService.isBlacklisted(token)) {
             String email = jwtProvider.extractEmail(token);
 
@@ -45,7 +45,7 @@ public class JwtFilter extends GenericFilterBean {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        // 3. 다음 필터로 진행
+        // 다음 필터로 진행
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

@@ -20,7 +20,7 @@ public class CookieUtils {
                         value)
                 .httpOnly(true)
                 .path(COOKIE_PATH)
-                .maxAge(maxAge) // 즉시 만료
+                .maxAge(maxAge)
                 .secure(true)
                 .sameSite("Strict")
                 .build();

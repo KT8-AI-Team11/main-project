@@ -7,7 +7,7 @@ public interface ErrorCode {
         if (!(this instanceof Enum<?>)) {
             throw new IllegalStateException("ErrorCode must be implemented by Enum");
         }
-        return ((Enum<?>) this).name(); // 코드명을 반환
+        return ((Enum<?>) this).name();
     }
     String defaultMessage();
     HttpStatus defaultHttpStatus();

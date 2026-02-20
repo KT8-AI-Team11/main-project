@@ -22,7 +22,6 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
-    // 외래키
     private Company company;
 
     @Column(nullable = false,length = 255)
@@ -68,7 +67,6 @@ public class Product {
         this.status = status;
     }
 
-    // Setter 대신
     public void update(String name, String type, String image, String fullIngredient, Status status) {
         this.name = name;
         this.type = ProductType.valueOf(type);
