@@ -4,7 +4,7 @@ import com.aivle.cosy.domain.Log;
 import com.aivle.cosy.dto.DashboardResponse;
 import com.aivle.cosy.repository.LogRepository;
 import com.aivle.cosy.repository.ProductRepository;
-import com.aivle.cosy.util.JwtTokenProvider;
+import com.aivle.cosy.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

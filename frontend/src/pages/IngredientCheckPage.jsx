@@ -426,26 +426,6 @@ export default function IngredientCheckPage({
 
       setIsDownloading(true);
       try {
-          // const currentCountry = (selectedCountries && selectedCountries.length > 0)
-          //     ? selectedCountries[0]
-          //     : "US";
-          // const payload = {
-          //     market: currentCountry,
-          //     domain: "ingredients",
-          //     product_name: actualProductName,
-          //     analysis_data: {
-          //         market: currentCountry,
-          //         details: filteredRows.map(row => ({
-          //             ingredient: row.ingredient || "-",
-          //             regulation: row.regulation || "-",
-          //             severity: row.severity,
-          //             content: row.content || "-",
-          //             action: row.action || "-"
-          //         }))
-          //     }
-          // };
-
-
           // 제품-국가 조합별로 데이터를 그룹화
           const groupedData = filteredRows.reduce((acc, row) => {
               const key = `${row.productName}__${row.market}`;
@@ -561,7 +541,6 @@ export default function IngredientCheckPage({
 
   // summary
   const summary = useMemo(() => {
-    let overall = "LOW";
     let high = 0;
     let mid = 0;
     let low = 0;
@@ -569,14 +548,14 @@ export default function IngredientCheckPage({
     Object.values(comboResults).forEach((v) => {
       if (!v?.ok) {
         if (v?.error) {
-          overall = worstRisk(overall, "HIGH");
+          // overall = worstRisk(overall, "HIGH");
           high += 1;
         }
         return;
       }
       const data = v.data || {};
       const r = String(data.overall_risk || "").toUpperCase();
-      overall = worstRisk(overall, r || "LOW");
+      // overall = worstRisk(overall, r || "LOW");
 
       const details = Array.isArray(data.details) ? data.details : [];
       if (details.length === 0) {
@@ -590,6 +569,10 @@ export default function IngredientCheckPage({
         else low += 1;
       });
     });
+
+    let overall = "LOW";
+    if (high > 0) overall = "HIGH";
+    else if (mid > 0) overall = "MEDIUM";
 
     return { overall, high, mid, low };
   }, [comboResults]);

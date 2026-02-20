@@ -14,7 +14,6 @@ class LlmService:
         self.model = OPENAI_MODEL
         self.reflection_model = REFLECTION_MODEL  # .env의 REFLECTION_MODEL로 변경 가능
 
-    # 문구규제 페이지에서 바로 쓸 수 있는 텍스트 생성 함수
     def _format_for_ui(self, data: dict) -> str:
         overall = data.get("overall_risk", "MEDIUM")
         findings = data.get("findings", []) or []
@@ -49,7 +48,6 @@ class LlmService:
 
         return "\n".join(lines)
 
-    # 문구 규제 분석
     def analyze_labeling(self, market: str, text: str, context: str) -> LabelingLlmResult:
         prompt = f"""
 너는 {market} 화장품 규제 검토를 도와주는 컴플라이언스 전문가다.
@@ -94,7 +92,6 @@ class LlmService:
 
         raw = self._generate_with_reflection(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
 
-        # ```json ... ``` 제거 대응
         cleaned = raw.strip()
         if cleaned.startswith("```"):
             cleaned = cleaned.strip("`")
@@ -103,7 +100,6 @@ class LlmService:
         try:
             data = json.loads(cleaned)
         except Exception:
-            # 파싱 실패해도 서비스가 안 죽게 방어
             return LabelingLlmResult(
                 overall_risk="MEDIUM",
                 findings=[],
@@ -136,7 +132,6 @@ class LlmService:
             formatted_text=formatted_text,
         )
 
-    # 전성분 규제 분석
     def analyze_ingredients(self, market: str, ingredients: str, context: str) -> IngLlmResult:
         prompt = f"""
 너는 {market} 화장품 "전성분(성분) 규제" 검토를 도와주는 컴플라이언스 전문가다.
@@ -157,9 +152,25 @@ class LlmService:
 [NOTE]
 추가 정보가 필요할 경우 무조건 risk는 LOW로 표시한다.
 입력받은 모든 성분에 대한 내용을 details에 빠짐없이 표시해라.
-규제 근거를 찾지 못한 성분도 반드시 details에 포함하고, severity를 "LOW", regulation을 "근거 부족"으로 표시해라.
 어떤 경우에도 INPUT의 성분을 details에서 생략하지 마라.
-조항명은 원어 그대로 표기해도 되지만, content, action, notes 등 세부 내용은 반드시 한글로만 작성해라.
+조항명은 원어 그대로 표기해도 되지만, content, action 등 세부 내용은 반드시 한글로만 작성해라.
+
+[REGULATION 작성 규칙(중요)]
+- regulation 필드는 아래 우선순위를 반드시 지켜라.
+
+1) [CONTEXT]에서 문서명/조항명/Annex(부속서)/Schedule/Appendix/Article/Section/표 번호 등 "출처 식별자"가 보이면,
+   regulation에는 그 식별자를 그대로 포함해 작성하라. (예: "Regulation (EC) No ... Annex II", "Cap. 456 ... Schedule 2" 등)
+
+2) [CONTEXT]에 출처 식별자가 명확히 보이지 않거나, 어떤 문서/조항인지 특정할 수 없으면 regulation="근거 부족"으로 작성하라.
+
+- 단, 최종 출력에서 severity가 MEDIUM 또는 HIGH인데 regulation이 "근거 부족"이라면,
+  regulation을 반드시 "사용 제한/금지 성분 목록"으로 변경하라.
+  (이때도 content/action은 반드시 [CONTEXT]에 기반해서만 작성한다. [CONTEXT]에 내용이 없으면 "근거 부족"이라고 적어라.)
+
+- regulation에는 "사용 제한/금지 성분 목록" 외의 임의의 일반 라벨을 쓰지 마라.
+- [CONTEXT]에 해당 국가({market}) 성분 규제 근거가 전혀 없으면, 모든 성분의 severity는 LOW로만 작성하라.
+- HIGH/MEDIUM 판단을 한 성분은, regulation에 반드시 [CONTEXT]에 실제로 등장하는 문서명/조항명 후보를 최소 1개 이상 먼저 찾아서 시도하라.
+  찾을 수 없을 때에만 "사용 제한/금지 성분 목록"을 사용하라.
 
 [OUTPUT JSON]
 반드시 아래 JSON 형식으로만 답하라. 다른 텍스트를 절대 출력하지 마라.
@@ -177,13 +188,11 @@ class LlmService:
       "severity": "LOW|MEDIUM|HIGH"
     }}
   ],
-  "notes": ["추가 참고/한계/확인이 필요한 사항"]
 }}
 """.strip()
 
-        raw = self._generate_with_reflection(prompt, context) # reflection 적용
+        raw = self._generate_with_reflection(prompt, context)
 
-        # ```json ... ``` 형태 제거
         cleaned = raw.strip()
         if cleaned.startswith("```"):
             cleaned = cleaned.strip("`")
@@ -213,10 +222,7 @@ class LlmService:
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
             details=details,
         )
-    
-    # ========================================================
-    # 보고서 생성용 함수 (ReportService에서 호출)
-    # ========================================================
+
     def generate_labeling_report(self, analysis_data: dict, domain: str) -> str:
         findings = analysis_data.get('findings', [])
         content_section = "\n".join([
@@ -300,8 +306,6 @@ class LlmService:
     def generate(self, prompt: str) -> str:
         return self._call_llm(prompt, model=self.model)
 
-    # for reflection
-
     def _reflect(self, original_prompt: str, response: str, context: str) -> dict:
         """
         LLM 응답을 평가하여 score(1~10)와 feedback을 반환한다.
@@ -355,13 +359,8 @@ class LlmService:
         return {"score": score, "feedback": feedback}
 
     def _generate_with_reflection(self, prompt: str, context: str) -> str:
-        """
-        1차 생성 → reflection 평가 → 점수 미달 시 피드백 포함 재생성 (최대 1회).
-        """
-        # 1차 생성
         first_response = self.generate(prompt)
 
-        # 평가
         reflection = self._reflect(
             original_prompt=prompt,
             response=first_response,
@@ -371,7 +370,6 @@ class LlmService:
         if reflection["score"] >= REFLECTION_THRESHOLD:
             return first_response
 
-        # 재생성: 피드백을 포함한 보강 프롬프트
         retry_prompt = f"""
 {prompt}
 

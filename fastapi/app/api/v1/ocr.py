@@ -7,36 +7,31 @@ from starlette.concurrency import run_in_threadpool
 router = APIRouter()
 
 
-# 이미지 받아서 텍스트 추출
 @router.post("/extract", response_model=OcrExtractResponse)
 async def extract_text_from_image(image: UploadFile = File(...),
 lang: str = Query(default="korean", description="korean | en | ch 등")
     ):
-    # 1) 기본 검증
     if image.content_type not in ("image/png", "image/jpeg", "image/webp"):
         raise HTTPException(status_code=400, detail=f"Unsupported content-type: {image.content_type}")
 
-    # 2) 파일 바이트 읽기
     image_bytes = await image.read()
     if not image_bytes:
         raise HTTPException(status_code=400, detail="Empty file")
 
-    # 여기서부터 OCR 처리로 이어짐
-    service = get_ocr_service(lang=lang) # 일단은 한국어 default로. todo: 다른 언어로 설정할 경우가 있나?
+    service = get_ocr_service(lang=lang)
     full_text, lines = await run_in_threadpool(service.extract, image_bytes)
     parts = [l.strip() for l in full_text.splitlines() if l.strip()]
     normalized_text = " ".join(parts)
 
-    # 3) JSON 응답
     return OcrExtractResponse(
         language=lang,
         text=full_text,
         normalized_text=normalized_text,
-        lines=[ # todo: 이 부분 활용?
+        lines=[
             OcrLine(
-                text=line.text, # 텍스트
-                score=line.score, # 예상되는 정확도
-                box=line.box, # 텍스트 박스의 꼭짓점.
+                text=line.text,
+                score=line.score,
+                box=line.box,
             )
             for line in lines
         ],

@@ -39,7 +39,6 @@ class PaddleOcrService:
         return full_text, lines
 
 
-# --- 싱글턴(프로세스 1개당 1번만 모델 로딩) ---
 _ocr_service: PaddleOcrService | None = None
 
 

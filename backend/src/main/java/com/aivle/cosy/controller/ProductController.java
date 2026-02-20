@@ -3,7 +3,7 @@ package com.aivle.cosy.controller;
 import com.aivle.cosy.dto.ProductRequest;
 import com.aivle.cosy.dto.ProductResponse;
 import com.aivle.cosy.service.ProductService;
-import com.aivle.cosy.util.JwtTokenProvider;
+import com.aivle.cosy.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
