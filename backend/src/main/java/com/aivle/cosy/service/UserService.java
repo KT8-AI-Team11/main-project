@@ -11,7 +11,7 @@ import com.aivle.cosy.exception.UserErrorCode;
 import com.aivle.cosy.exception.SignUpErrorCode;
 import com.aivle.cosy.repository.CompanyRepository;
 import com.aivle.cosy.repository.UserRepository;
-import com.aivle.cosy.util.JwtTokenProvider;
+import com.aivle.cosy.security.JwtTokenProvider;
 import com.aivle.cosy.util.ValidationUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

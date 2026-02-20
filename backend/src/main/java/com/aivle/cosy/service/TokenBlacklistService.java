@@ -1,6 +1,6 @@
 package com.aivle.cosy.service;
 
-import com.aivle.cosy.util.JwtTokenProvider;
+import com.aivle.cosy.security.JwtTokenProvider;
 import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
