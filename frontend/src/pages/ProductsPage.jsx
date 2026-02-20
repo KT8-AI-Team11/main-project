@@ -99,7 +99,6 @@ export default function ProductsPage({ onNavigate }) {
   const fetchProducts = async () => {
     try {
       const response = await api.get("/products");
-      console.log("products response.data =", response.data);
       setProducts(response.data);
     } catch (error) {
       console.error("데이터 로딩 실패", error);
@@ -161,7 +160,6 @@ export default function ProductsPage({ onNavigate }) {
       setIsAddModalOpen(false);
       resetInputFields();
     } catch (error) {
-      console.log(error);
       alert("제품 등록 중 오류가 발생했습니다.");
     }
   };
@@ -188,7 +186,6 @@ export default function ProductsPage({ onNavigate }) {
       alert("제품 정보가 성공적으로 수정되었습니다.");
       setIsEditModalOpen(false);
     } catch (error) {
-      console.log(error)
       alert("수정 중 오류가 발생했습니다.");
     }
   };

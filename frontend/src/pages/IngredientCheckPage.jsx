@@ -474,7 +474,7 @@ export default function IngredientCheckPage({
           a.remove();
           window.URL.revokeObjectURL(url);
       } catch (error) {
-          console.error("다운로드 로직 에러:", error);
+          console.error("다운로드 에러:", error);
           alert(`보고서 생성 중 오류가 발생했습니다.\n${error.message}`);
       } finally {
           setIsDownloading(false);
@@ -779,10 +779,9 @@ export default function IngredientCheckPage({
                           };
 
                           saveInspectionLog(logRequest)
-                              .then(() => console.log(`[Log Success] ${p.name} (${market})`))
                               .catch(err => console.error(`[Log Error] ${p.name}:`, err));
                       }
-                      // -----------------------------------------------------------------
+
 
                   } catch (e) {
                       if (mountedRef.current) {

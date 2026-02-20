@@ -54,7 +54,7 @@ export default function ProfilePage() {
   }, []);
 
   /**
-   * UX 개선: 입력 시 공백 제거 핸들러
+   * 입력 시 공백 제거 핸들러
    */
   const handleInputChange = (field, value) => {
     const cleanValue = value.replace(/\s/g, "");
@@ -83,7 +83,6 @@ export default function ProfilePage() {
 
   // 전체 설정 저장 핸들러
   const handleSave = () => {
-    console.log('저장될 데이터:', { profileData, notifications });
     alert('프로필 및 알림 설정이 저장되었습니다.');
   };
 
@@ -121,7 +120,7 @@ export default function ProfilePage() {
       setPasswordLoading(false);
     }
   };
-  // ─────────────────────────────────────────────────────────────
+
 
   // ─── 계정 삭제 핸들러 (API 호출) ────────────────────────────
   const handleDeleteAccount = async () => {
@@ -144,7 +143,7 @@ export default function ProfilePage() {
       setDeleteLoading(false);
     }
   };
-  // ─────────────────────────────────────────────────────────────
+
 
   // 토글 스위치 컴포넌트
   const ToggleSwitch = ({ checked, onChange }) => (

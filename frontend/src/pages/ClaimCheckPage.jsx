@@ -308,7 +308,6 @@ export default function ClaimCheckPage({
                   marketingLaw: apiJson.findings?.map(f => `[${f.snippet}] ${f.reason}`).join("\n") || "규제 근거 정보 없음",
               };
               await saveInspectionLog(logRequest);
-              console.log(`[Log Saved] ${c} 결과가 DB에 기록되었습니다.`);
           }
         } catch (err) {
           setResultsByCountry((prev) => ({

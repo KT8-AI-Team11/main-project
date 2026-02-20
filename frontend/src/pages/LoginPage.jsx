@@ -15,7 +15,7 @@ export default function LoginPage({ onLoginSuccess, onGoToRegister }) {
     const [errorMsg, setErrorMsg] = useState("");
 
     /**
-     * UX 개선: 입력 시 실시간으로 공백 제거
+     * 입력 시 실시간으로 공백 제거
      */
     const handleNoSpaceChange = (setter) => (e) => {
         const value = e.target.value.replace(/\s/g, ""); // 모든 공백 제거

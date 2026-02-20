@@ -1,12 +1,3 @@
-// src/api/compliance.js
-// DEV: base="" -> /v1/... 상대경로 호출 -> vite proxy가 FastAPI(8000)로 전달
-// PROD: 필요하면 VITE_COMPLIANCE_BASE_URL로 base 지정 가능
-
-// const COMPLIANCE_BASE_PROD =
-//   import.meta.env.VITE_COMPLIANCE_BASE_URL ||
-//   import.meta.env.VITE_COMPLIANCE_API_BASE ||
-//   "";
-
 const BASE = import.meta.env.VITE_V1_BASE_URL || import.meta.env.VITE_API_BASE_URL;
 
 // ✅ 백엔드 최신 스펙
@@ -30,7 +21,7 @@ function pickErrorMessage(data, fallback) {
   return fallback;
 }
 
-/** ✅ 문구 규제: POST /v1/compliance/labeling + JSON body { market, text } */
+// ✅ 문구 규제: POST /v1/compliance/labeling + JSON body { market, text }
 export async function checkRegulation({ market, text }) {
   if (!market) throw new Error("market(국가 코드)이 없습니다.");
   if (!text || String(text).trim() === "") throw new Error("검사할 텍스트가 비어있습니다.");
@@ -53,7 +44,7 @@ export async function checkRegulation({ market, text }) {
   return data;
 }
 
-/** ✅ 성분 규제: POST /v1/compliance/ingredients + JSON body { market, ingredients } */
+// ✅ 성분 규제: POST /v1/compliance/ingredients + JSON body { market, ingredients }
 export async function checkIngredients({ market, ingredients }) {
   if (!market) throw new Error("market(국가 코드)이 없습니다.");
   if (!ingredients || String(ingredients).trim() === "") {
