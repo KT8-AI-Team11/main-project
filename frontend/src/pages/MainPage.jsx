@@ -17,7 +17,6 @@ function normalizeBaseUrl(v) {
 export default function MainPage({ isLoggedIn, onGoLogin, onGoProducts, onDemoLogin }) {
   const [showNotice, setShowNotice] = useState(true);
 
-  // ✅ (홈 3번) 로그인 후 요약(임시) - 추후 백엔드/전역상태로 교체
   const safeJson = (v, fallback) => {
     try {
       return JSON.parse(v);

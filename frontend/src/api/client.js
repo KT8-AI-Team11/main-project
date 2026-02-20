@@ -1,10 +1,9 @@
-// /**
-//  * API 클라이언트 모듈
-//  * - 모든 API 요청의 공통 로직 처리
-//  * - 토큰 자동 갱신 (refresh) 로직 포함
-//  * - 세션 만료 시 자동 로그아웃 처리
-//  */
-
+ /**
+  * API 클라이언트 모듈
+  * - 모든 API 요청의 공통 로직 처리
+  * - 토큰 자동 갱신 (refresh) 로직 포함
+  * - 세션 만료 시 자동 로그아웃 처리
+  */
 function normalizeBaseUrl(v) {
   if (!v) return "";
   const s = String(v).trim();

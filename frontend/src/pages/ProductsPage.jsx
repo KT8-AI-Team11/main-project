@@ -424,7 +424,6 @@ export default function ProductsPage({ onNavigate }) {
               <div style={{ textAlign: "center" }}>
                 <div style={{ width: "160px", height: "200px", backgroundColor: "#f9fafb", borderRadius: "12px", marginBottom: "12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", border: "1px solid #e5e7eb" }}>
                   {previewUrl ? (  <img src={previewUrl} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover", }} />) : <Camera size={40} color="#9ca3af" />}
-                  {/* {newProductImage ? <img src={newProductImage} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Camera size={40} color="#9ca3af" />} */}
                 </div>
                 <label htmlFor="file-up" style={{ fontSize: "14px", color: "#3b82f6", cursor: "pointer", fontWeight: "600" }}>이미지 업로드</label>
                 <input id="file-up" type="file" accept="image/*" hidden onChange={handleImageUpload} />

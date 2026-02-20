@@ -5,7 +5,6 @@ const PATH_LABELING = "/v1/compliance/labeling";
 const PATH_INGREDIENTS = "/v1/compliance/ingredients";
 
 function buildUrl(path) {
-  // const base = BASE || window.location.origin;
   return new URL(path, BASE).toString();
 }
 

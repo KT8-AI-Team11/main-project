@@ -1,4 +1,3 @@
-// src/api/ocr.js
 // FastAPI OCR 연동
 // - POST /v1/ocr/extract?lang=korean
 // - form-data key: image
@@ -7,7 +6,6 @@ const BASE = import.meta.env.VITE_V1_BASE_URL || import.meta.env.VITE_API_BASE_U
 
 function buildUrl(lang = "korean") {
   // base가 비어있으면 현재 origin 기준으로 상대경로 호출 (vite proxy 타게 됨)
-  // const base = OCR_BASE || window.location.origin;
   const u = new URL("/v1/ocr/extract", BASE);
   u.searchParams.set("lang", lang);
   return u.toString();
