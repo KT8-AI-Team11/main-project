@@ -21,7 +21,6 @@ public class Company {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 255)
-    // 기업명
     private String companyName;
 
     @Column(nullable = false, length = 255)

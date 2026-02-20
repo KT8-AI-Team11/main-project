@@ -28,9 +28,7 @@ public class TokenBlacklistService {
         redisTemplate.opsForValue().set(key, "1", expirationMs, TimeUnit.MILLISECONDS);
     }
 
-    /**
-     * 토큰이 블랙리스트에 있는지 확인
-     */
+    // 토큰이 블랙리스트에 있는지 확인
     public boolean isBlacklisted(String token) {
         String jti = jwtTokenProvider.extractJti(token);
         if (jti == null) return false;

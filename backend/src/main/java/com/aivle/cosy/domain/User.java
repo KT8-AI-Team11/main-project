@@ -19,7 +19,6 @@ public class User {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id",nullable = false)
-    // 외래키
     private Company company;
 
     @Column(nullable = false, unique = true)

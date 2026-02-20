@@ -57,15 +57,10 @@ public class S3Service {
             throw new RuntimeException("파일 업로드 실패", e);
         }
 
-        // ✅ public URL 생성 (region이 표준인 경우)
         return "https://" + bucket + ".s3.amazonaws.com/" + key;
-        // region 포함이 필요하면:
-        // return "https://" + bucket + ".s3." + region + ".amazonaws.com/" + key;
     }
 
-    /**
-     * key로 삭제 (예: products/12/uuid-cat.png)
-     */
+    // key로 삭제
     public void deleteFileByKey(String key) {
         if (key == null || key.isBlank()) return;
 
@@ -77,18 +72,12 @@ public class S3Service {
         s3Client.deleteObject(delReq);
     }
 
-    /**
-     * URL로 삭제 (DB에 URL 저장하는 경우 편의 메서드)
-     */
+    // URL로 삭제 (DB에 URL 저장하는 경우 편의 메서드)
     public void deleteFileByUrl(String fileUrl) {
         String key = extractKeyFromUrl(fileUrl);
         deleteFileByKey(key);
     }
 
-    /**
-     * https://bucket.s3.amazonaws.com/products/12/uuid.png  -> products/12/uuid.png
-     * https://bucket.s3.ap-northeast-2.amazonaws.com/...   -> ...
-     */
     private String extractKeyFromUrl(String fileUrl) {
         if (fileUrl == null || fileUrl.isBlank()) return null;
 
