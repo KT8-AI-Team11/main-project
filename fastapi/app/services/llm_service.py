@@ -14,7 +14,6 @@ class LlmService:
         self.model = OPENAI_MODEL
         self.reflection_model = REFLECTION_MODEL  # .env의 REFLECTION_MODEL로 변경 가능
 
-    # 문구규제 페이지에서 바로 쓸 수 있는 텍스트 생성 함수
     def _format_for_ui(self, data: dict) -> str:
         overall = data.get("overall_risk", "MEDIUM")
         findings = data.get("findings", []) or []
@@ -49,7 +48,6 @@ class LlmService:
 
         return "\n".join(lines)
 
-    # 문구 규제 분석
     def analyze_labeling(self, market: str, text: str, context: str) -> LabelingLlmResult:
         prompt = f"""
 너는 {market} 화장품 규제 검토를 도와주는 컴플라이언스 전문가다.
@@ -94,7 +92,6 @@ class LlmService:
 
         raw = self._generate_with_reflection(prompt, context) # reflection이 없는걸 원할 경우 여기를 변경
 
-        # ```json ... ``` 제거 대응
         cleaned = raw.strip()
         if cleaned.startswith("```"):
             cleaned = cleaned.strip("`")
@@ -103,7 +100,6 @@ class LlmService:
         try:
             data = json.loads(cleaned)
         except Exception:
-            # 파싱 실패해도 서비스가 안 죽게 방어
             return LabelingLlmResult(
                 overall_risk="MEDIUM",
                 findings=[],
@@ -136,7 +132,6 @@ class LlmService:
             formatted_text=formatted_text,
         )
 
-    # 전성분 규제 분석
     def analyze_ingredients(self, market: str, ingredients: str, context: str) -> IngLlmResult:
         prompt = f"""
 너는 {market} 화장품 "전성분(성분) 규제" 검토를 도와주는 컴플라이언스 전문가다.
@@ -196,9 +191,8 @@ class LlmService:
 }}
 """.strip()
 
-        raw = self._generate_with_reflection(prompt, context) # reflection 적용
+        raw = self._generate_with_reflection(prompt, context)
 
-        # ```json ... ``` 형태 제거
         cleaned = raw.strip()
         if cleaned.startswith("```"):
             cleaned = cleaned.strip("`")
@@ -228,10 +222,7 @@ class LlmService:
             overall_risk=str(data.get("overall_risk", "MEDIUM")),
             details=details,
         )
-    
-    # ========================================================
-    # 보고서 생성용 함수 (ReportService에서 호출)
-    # ========================================================
+
     def generate_labeling_report(self, analysis_data: dict, domain: str) -> str:
         findings = analysis_data.get('findings', [])
         content_section = "\n".join([
@@ -315,8 +306,6 @@ class LlmService:
     def generate(self, prompt: str) -> str:
         return self._call_llm(prompt, model=self.model)
 
-    # for reflection
-
     def _reflect(self, original_prompt: str, response: str, context: str) -> dict:
         """
         LLM 응답을 평가하여 score(1~10)와 feedback을 반환한다.
@@ -370,13 +359,8 @@ class LlmService:
         return {"score": score, "feedback": feedback}
 
     def _generate_with_reflection(self, prompt: str, context: str) -> str:
-        """
-        1차 생성 → reflection 평가 → 점수 미달 시 피드백 포함 재생성 (최대 1회).
-        """
-        # 1차 생성
         first_response = self.generate(prompt)
 
-        # 평가
         reflection = self._reflect(
             original_prompt=prompt,
             response=first_response,
@@ -386,7 +370,6 @@ class LlmService:
         if reflection["score"] >= REFLECTION_THRESHOLD:
             return first_response
 
-        # 재생성: 피드백을 포함한 보강 프롬프트
         retry_prompt = f"""
 {prompt}
 

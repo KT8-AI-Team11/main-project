@@ -3,10 +3,6 @@ from dataclasses import dataclass
 from pydantic import BaseModel, Field
 from typing import List, Optional, Literal, Dict, Any
 
-#---------------------------------------------------------#
-# 문구용
-#---------------------------------------------------------#
-
 class LabelingCheckRequest(BaseModel):
     market: str = Field(default="US", description="국가 코드 (US, JP 등)")
     text: str = Field(..., description="문구 텍스트")
@@ -31,10 +27,6 @@ class LabelingCheckResponse(BaseModel):
     notes: List[str]
     formatted_text: str | None = None
 
-#---------------------------------------------------------#
-# 전성분용
-#---------------------------------------------------------#
-
 class IngredientsCheckRequest(BaseModel):
     market: str = Field(default="US", description="국가 코드 (US, JP 등)")
     ingredients: str = Field(..., description="전성분 텍스트")
@@ -55,9 +47,6 @@ class IngredientsCheckResponse(BaseModel):
     overall_risk: str
     details: List[Detail]
 
-#---------------------------------------------------------#
-# 보고서 생성용
-#---------------------------------------------------------#
 class ReportDownloadRequest(BaseModel):
     market: str = Field(..., description="국가 코드")
     domain: Literal["labeling","ingredients"] = Field(...,description="분석 영역")

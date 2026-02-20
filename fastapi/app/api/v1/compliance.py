@@ -12,7 +12,6 @@ from urllib.parse import quote
 router = APIRouter()
 
 
-# 텍스트 받으면 규제 확인
 @router.post("/labeling", response_model=LabelingCheckResponse)
 async def check_from_image(req: LabelingCheckRequest):
     if req.text == "":
@@ -41,7 +40,6 @@ async def check_from_image(req: LabelingCheckRequest):
         formatted_text=llm_result.formatted_text,
     )
 
-# 성분규제용
 @router.post("/ingredients", response_model=IngredientsCheckResponse)
 async def check_ingredients(req: IngredientsCheckRequest):
     if not req.ingredients.strip():
@@ -68,7 +66,6 @@ async def check_ingredients(req: IngredientsCheckRequest):
         ]
     )
 
-# 보고서 다운로드/발행용
 @router.post("/download-report")
 async def download_report(req: ReportDownloadRequest):
     svc = get_report_service()

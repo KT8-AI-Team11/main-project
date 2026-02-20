@@ -48,7 +48,6 @@ def add_metadata(docs: List, country: str, domain: str) -> List:
 
 
 def _split_by_record(docs: List) -> List[Document]:
-    """제한 원료 텍스트를 [레코드 N] 단위로 분할."""
     chunks: List[Document] = []
     for doc in docs:
         records = re.split(r'\n(?=\[레코드 \d+\])', doc.page_content)
@@ -95,7 +94,7 @@ def ingest(country: str, domain: str, target_dir: Path = None):
 
 
 if __name__ == "__main__":
-    # 규제 문서
+
     ingest(country="JP", domain="ingredients")
     ingest(country="JP", domain="labeling")
     ingest(country="US", domain="ingredients")
@@ -105,7 +104,6 @@ if __name__ == "__main__":
     ingest(country="CN", domain="ingredients")
     ingest(country="CN", domain="labeling")
 
-    # 사용 제한 원료
     for c in ["JP", "US", "EU", "CN"]:
         target = INGREDIENTS_DIR / c
         if target.exists() and any(target.iterdir()):

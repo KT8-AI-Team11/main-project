@@ -152,6 +152,7 @@ class ReportService:
         return zip_buffer
 
 _report_service = None
+
 def get_report_service():
     global _report_service
     if _report_service is None:
